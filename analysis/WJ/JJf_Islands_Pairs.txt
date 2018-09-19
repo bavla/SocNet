@@ -1,0 +1,108 @@
+The highest values of lines: 
+
+      Rank       Value    Line-Id
+---------------------------------
+         1    17.38371    SEX TRANSM DIS    //     AIDS
+         2    14.16732    PREV VET MED    //     TRANSBOUND EMERG DIS
+         3    10.46667    ACTA PSYCHIAT SCAND    //     BRIT J PSYCHIAT
+         4    10.26519    IEEE T PARALL DISTR    //     IEEE INFOCOM SER
+         5     8.09848    IEEE T VEH TECHNOL    //     IEEE T MOBILE COMPUT
+         6     6.77170    J CONSTR ENG M    //     J CONSTR ENG M ASCE
+         7     5.68182    SOC COGN AFFECT NEUR    //     NEUROIMAGE
+         8     5.00000    APHASIOLOGY    //     ADULT EDUC QUART
+         9     4.67222    J INTELL DISABIL RES    //     J APPL RES INTELLECT
+        10     4.66667    APPL ENERG    //     ENERG BUILDINGS
+        11     4.66667    J ISL COAST ARCHAEOL    //     ANTIQUITY
+        12     4.66667    INFORM SOC-ESTUD    //     PERSPECT CIENC INF
+        13     4.50000    J ACAD LIBR    //     REF USER SERV Q
+        14     4.18489    CIENC SAUDE COLETIVA    //     CAD SAUDE PUBLICA
+        15     4.00000    ETHN DIS    //     HEART LUNG
+        16     4.00000    EPIDEMIOL PREV    //     HUM VACC IMMUNOTHER
+        17     4.00000    OPTIM LETT    //     ARTIF LIFE
+        18     4.00000    ACTAS UROL ESP    //     AESTHET SURG J
+        19     4.00000    J RETAIL CONSUM SERV    //     AUSTRALAS MARK J
+        20     4.00000    J MARITAL FAM THER    //     J CONSTR PSYCHOL
+        21     4.00000    IEEE INT SYMP INFO    //     IEEE T INFORM THEORY
+        22     4.00000    HEALTH RISK SOC    //     RISK ANAL
+        23     4.00000    QUAL RES SPORT EXERC    //     SPORT MANAG REV
+        24     4.00000    UROL ONCOL-SEMIN ORI    //     BJU INT
+        25     4.00000    PSYCHIAT DANUB    //     QJM-INT J MED
+        26     4.00000    COMMUNITY DENT ORAL    //     J AM DENT ASSOC
+        27     4.00000    Z ETHNOL    //     J SOC HIST
+        28     4.00000    J AM SOC HYPERTENS    //     NAT BIOTECHNOL
+        29     4.00000    MATERN CHILD HLTH J    //     J NERV MENT DIS
+        30     4.00000    TRANSPL P    //     AM J TRANSPLANT
+        31     4.00000    J AFFECT DISORDERS    //     DEATH STUD
+        32     4.00000    J NEW APPROACHES EDU    //     ESTUD SOBRE MENSAJ P
+        33     4.00000    J ADDICT NURS    //     CLIN PSYCHOL REV
+        34     4.00000    INT J CARDIOL    //     WIRES DATA MIN KNOWL
+        35     4.00000    MCN-AM J MATERN-CHIL    //     AM J NURS
+        36     4.00000    INT J PEDIATR-MASSHA    //     BEHAV MED
+        37     4.00000    HEALTH EXPECT    //     CAN J CARDIOL
+        38     4.00000    ARCTIC ANTHROPOL    //     ARCTIC
+        39     4.00000    REV BRAS ENFERM    //     REV LAT-AM ENFERM
+        40     3.36111    J CHILD PSYCHOL PSYC    //     J AUTISM DEV DISORD
+        41     3.13333    BRIT J SPORT MED    //     DISABIL REHABIL
+        42     2.67500    PHYS EDUC RES CONF    //     PHYS REV SPEC TOP-PH
+        43     2.66667    EDUC ASIA PAC REG-IS    //     ASIA PAC EDUC REV
+        44     2.44444    INT J SPEECH-LANG PA    //     TOP STROKE REHABIL
+        45     2.40000    J INTELLECT DISABIL RES    //     J MENT DEFIC RES
+        46     2.20000    RESOUR CONSERV RECY    //     J IND ECOL
+        47     2.15385    AUST NZ J PSYCHIAT    //     CURR OPIN PSYCHIATR
+        48     2.00000    AUST PSYCHOL    //     ACAD PEDIATR
+        49     2.00000    CURR OPIN PULM MED    //     CHEST
+        50     2.00000    MITT OSTERR GEOGR G    //     Z WIRTSCHAFTSGEOGR
+        51     2.00000    GRUPPENPSYCHOTHER GR    //     FORUM PSYCHOANAL
+        52     2.00000    AFR TODAY    //     LAW SOCIAL INQUIRY
+        53     2.00000    INQUIRY-J HEALTH CAR    //     J EVID-INFORM SOC WO
+        54     2.00000    RAWAL MED J    //     ENERG ENVIRON-UK
+        55     2.00000    STATIC DYN GAME TH    //     DYN GAMES APPL
+        56     2.00000    B MAR SCI    //     PAC SCI
+        57     2.00000    CAD BRAS TER OCUP    //     CAD TER OCUP UFSCAR
+        58     2.00000    LOGOS CIENC TECNOL    //     REV ESP DERECHO CONS
+        59     2.00000    CONFL SECUR DEV    //     SOUTH EAST ASIA RES
+        60     2.00000    FOTOCINEMA    //     J SCREENWRITING
+        61     2.00000    REV LLENG DRET    //     J SPAN CULT STUD
+        62     2.00000    FRONT PHARMACOL    //     ARCH BRONCONEUMOL
+        63     2.00000    BMJ OPEN DIAB RES CA    //     DIABETES EDUCATOR
+        64     2.00000    INT J GAME-BASED LEA    //     INT J EDUC RES
+        65     2.00000    IEEE SARNOFF SYMPOS    //     IEEE PERVAS COMPUT
+        66     2.00000    J LIMNOL    //     BIODIVERS CONSERV
+        67     2.00000    TRENDS MICROBIOL    //     CANCER RES
+        68     2.00000    INT C CLOUD COMP BIG    //     YONSEI MED J
+        69     2.00000    CLIN TRANSL GASTROEN    //     INFLAMM BOWEL DIS
+        70     2.00000    LECT N PROD ENG    //     PROC CIRP
+        71     2.00000    INF CONSTR    //     MATER CONSTRUCC
+        72     2.00000    COAST MANAGE    //     ENVIRON CONSERV
+        73     2.00000    ROBOT CIM-INT MANUF    //     J LOCAT BASED SERV
+        74     2.00000    J EXP PSYCHOL-APPL    //     J EXP PSYCHOL LEARN
+        75     2.00000    IEEE INT CONF INTELL    //     STUD INFORM CONTROL
+        76     2.00000    J ENDOCRINOL INVEST    //     DIABETES NUTR METAB
+        77     2.00000    ACM INT SYM MOB MAN    //     IEEE T SYST MAN CY B
+        78     2.00000    RIE-REV INVESTIG EDU    //     ADICCIONES
+        79     2.00000    J PSYCHOPATHOL-G PSI    //     WORLD PSYCHIATRY
+        80     2.00000    DISCOURSE-ABINGDON    //     EDUC PHILOS THEORY
+        81     2.00000    BIOSCIENCE    //     NAT REV NEUROSCI
+        82     1.00000    REV SOC POLIT    //     ZDR VESTN
+        83     1.00000    J OCCUP REHABIL    //     INTELLECT DEV DISABIL
+        84     1.00000    NORTHERN HIST    //     J MEDIEVAL HIST
+        85     1.00000    CAN J LAT AM CARIBB    //     LAT AM PERSPECT
+        86     1.00000    J OPT COMMUN NETW    //     INT C TRANS OPT NETW
+        87     1.00000    J INDIAN I SCI    //     NAT REV DIS PRIMERS
+        88     1.00000    IEEE PAC RIM CONF CO    //     P IEEE CSFW
+        89     1.00000    CIR CIR    //     MICROBES INFECT
+        90     1.00000    ATL STUD-GLOB CURR    //     CARAVELLE
+        91     1.00000    FORO EDUC    //     APPL PREV PSYCHOL
+        92     1.00000    TRIPLEC-COMMUN CAPIT    //     COMMUN CRIT-CULT STU
+        93     1.00000    SURG OBES RELAT DIS    //     ABCD-ARQ BRAS CIR DI
+        94     1.00000    R ADV GAME STUD    //     ROUT STUD TECH COM
+        95     1.00000    EXPERT REV CLIN IMMU    //     ANN ALLERG ASTHMA IM
+        96     1.00000    INT IEEE CONSUM ELEC    //     IEEE INT SYM BROADB
+        97     1.00000    OPUSCULA-ANNU SWEDIS    //     ROUT STUD ARCHAEOL
+        98     1.00000    INT J CLIN PHARM-NET    //     PHARM WORLD SCI
+        99     1.00000    SOC HIST    //     J URBAN HIST
+       100     1.00000    J EARLY CHRISTIAN ST    //     TRANSFORM CLASS HER
+       101     1.00000    AZANIA    //     MAN
+       102     0.75000    RANGELAND ECOL MANAG    //     J RANGE MANAGE
+       103     0.66667    LANG EDUC-UK    //     AILA REV
+       104     0.50000    J PEDIATR GASTR NUTR    //     J PEDIAT GASTROENTEROL NUTR
