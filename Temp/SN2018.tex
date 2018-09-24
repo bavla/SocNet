@@ -40,12 +40,12 @@
 
 % title page --------------------------------------------------------------
 % \pgfdeclareimage[width=7.8mm]{uniLJ}{../../../2014/barcelona/slides/pics/logoUL.pdf}
-\pgfdeclareimage[width=16mm]{imfm}{./pics/imfm.png}
+\pgfdeclareimage[width=16mm]{imfm}{./pics/bled.jpg}
 \setbeamercolor*{logo}{fg=red,bg=white}
 \logo{\pgfuseimage{imfm}}
 %\title[Bikes]{\textbf{Bikes }}\subtitle{data}
 \title[SNA. Evolution of the field]{\textbf{Social Network Analysis}}\subtitle{The evolution of the field}
-\author[V. Batagelj, D. Maltseva]{Vladimir Batagelj, Daria Maltseva} 
+\author[V. Batagelj, D. Maltseva]{Vladimir Batagelj, Darja Maljceva} 
 \institute[IMFM \& IAM UP]{IMFM Ljubljana, IAM UP Koper and NRU HSE Moscow }
 \date[September 23-26, 2018]{\small
 \textcolor{BrickRed}{\textbf{Applied Statistics}} \\
@@ -134,7 +134,7 @@ Ribno, 23-26. September 2018}
 \item Data collection 
 \item Networks construction 
 \item Statistics on networks
-\item Citation network
+\item Citation network analysis
 \end{enumerate}
 
 %\parbox{44mm}{\tableofcontents}
@@ -161,9 +161,11 @@ Ribno, 23-26. September 2018}
 \frametitle{Inroduction}
 \small
 
-Aim of the study - to trace the development of the field of Social Network Analysis as a discipline. \medskip
+Social Network Analysis (SNA) has moved from a fragmented direction represented by the works of individual scientific groups unrelated to each other, to a discipline whose representatives by 1990 have formed an “invisible college” and achieved the status of  what Kuhn had labeled a “normal science” [Freeman, 2004; Hummon and Carley, 1993]. \medskip
 
-Previous studies on SNA were done by:
+Starting from that time, the field has grown significantly, which can be seen by the number of scientific publications [Otte and Rousseau, 2002] in different scientific fields, including Natural Sciences, which lead to the so called “physicists` invasion” into SNA [Batagelj et al., 2014] and resulted with the development of Network Science discipline. \medskip
+
+This calls into a question whether the field remains unified and which scientific groups (by disciplines, thematic agenda, etc.) it is currently formed of. Thus, the aim of the current study is to trace the evolution of the field of Social Network Analysis using bibliographic approach.  \medskip 
 
 \end{frame}
 
@@ -247,8 +249,7 @@ ER
 
 \end{frame}
 
-\section{Networks construction}
-
+\section{Networks}
 
 %******************************************************************************
 
@@ -332,15 +333,18 @@ We have to shrink also partitions $year$,  $DC$ and the vector $NP$.
 
 Works with complete description =70795 \medskip
 
-1-mode network $Cite$: 
+1-mode network $Cite$: \medskip
 
+\begin{center}
 \begin{tabular}{l|r|r|}
  	& N of nodes & N of arcs \\ \hline		
-CiteN	& 1297133	& 2753767	\\ \hline
-\end{tabular}\bigskip
-\medskip
+Cite	& 1297133	& 2753767	\\ \hline
+\end{tabular}
+\end{center}
+\bigskip
 
-2-mode networks $WA$, $WJ$, $WK$: 
+2-mode networks $WA$, $WJ$, $WK$:  \medskip 
+
 \begin{tabular}{l|r|r|r|r|}
 	& N of nodes 1	& N of nodes 2	& N of nodes (sum)	& N of arcs \\ \hline		 
 WA	& 1297133	          & 395972	          & 1693105	           & 1442242 \\ 
@@ -352,32 +356,32 @@ An important property of all these networks is that they share as the first node
 
 \end{frame}
 
-\section{Statistics on networks}
+\section{Statistics}
 
 %******************************************************************************\
 
 \begin{frame}[fragile]
-\frametitle{Citation network\label{maxin}\\ \normalsize Distribution by years}
+\frametitle{Cite network\label{maxin}\\ \normalsize Distribution of works by years}
 \begin{center}
-\includegraphics[width=43mm]{pubYear.pdf}
+\includegraphics[width=75mm]{pubYear.pdf}
 \end{center}
 \end{frame}
 
 
 \begin{frame}[fragile]
-\frametitle{Citation network\label{maxin}\\ \normalsize Indegree distribution}
+\frametitle{Cite network\label{maxin}\\ \normalsize Indegree distribution}
 
 \begin{center}
 %\includegraphics[width=43mm,viewport=100 40 405 550,clip=]{island2.pdf}
-\includegraphics[width=43mm]{CiteIndegCum.png}
-\includegraphics[width=43mm]{CiteIndegplfit.png}
+\includegraphics[width=50mm]{CiteIndegCum.png}
+\includegraphics[width=50mm]{CiteIndegplfit.png}
 \end{center}
 
 \end{frame}
 
 
 \begin{frame}[fragile]
-\frametitle{The most cited works\label{maxin}\\ \normalsize indegree in Cite}
+\frametitle{Cite net\label{maxin}\\ \normalsize The most cited works - indegree}
 
 \renewcommand{\arraystretch}{0.82}
 \tiny
@@ -418,7 +422,7 @@ i	& freq	& id	                                           & i	& freq & id \\ \hli
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{The most citing works\label{maxin}\\ \normalsize outdegree in Cite}
+\frametitle{Cite net \label{maxin}\\ \normalsize The most citing work - outdegree}
 \small
 \renewcommand{\arraystretch}{0.82}
 \tiny
@@ -454,11 +458,12 @@ i&	freq& 	id&	i&	freq&	id	\\ \hline
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Authors with the largest number of papers \label{numpap}\\ \normalsize indegree in WA}
+\frametitle{WA net \label{numpap}\\ \normalsize Authors with the largest number of papers - indegree}
 
 \renewcommand{\arraystretch}{0.82}
 \tiny
-\begin{tabular}{r|r|l||r|r|l}
+\begin{center}
+\begin{tabular}{l|l|l||l|l|l}
 Rank& 	Value& 	Id& 	Rank& 	Value& 	Id\\  \hline   
 1& 	1169& 	WANG\_Y& 	21& 	552& 	KIM\_H\\ 
 2& 	883& 	ZHANG\_Y& 	22& 	550& 	CHEN\_J\\ 
@@ -481,7 +486,7 @@ Rank& 	Value& 	Id& 	Rank& 	Value& 	Id\\  \hline
 19& 	557& 	KIM\_S& 	39& 	420& 	WANG\_W\\ 
 20& 	554& 	WANG\_C& 	40& 	417& 	LI\_L\\ \hline  
 \end{tabular}
-
+\end{center}
 
 \medskip
 
@@ -490,10 +495,11 @@ The large number of Chinese authors in the list is a \href{https://en.wikipedia.
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Number of authors in works \label{numpap}\\ \normalsize outdegree in WA}
+\frametitle{WA net \label{numpap}\\ \normalsize Number of authors in works - outdegree}
 \renewcommand{\arraystretch}{0.82}
 \tiny
-\begin{tabular}{r|r|l||r|r|l}
+\begin{center}
+\begin{tabular}{l|l|l||l|l|l}
 Cluster&  	Freq&  	Freq\% &  	Cluster&   Freq &	Freq\%\\ \hline   
 1&  	1239496&  	95.5566&  	21&  	4&  	0.0003\\
 2&  	18637&  	1.4368&  	22&  	3&  	0.0002\\
@@ -517,13 +523,17 @@ Cluster&  	Freq&  	Freq\% &  	Cluster&   Freq &	Freq\%\\ \hline
 20&  	2&  	0.0002&  	&	 &	\\ 
 SUM &     &              &       &  1297133 & 100  \\ \hline   
 \end{tabular}
+\end{center}
 \medskip
 
-Works with the largest number of authors
-\medskip
+\footnotesize
 
+Works with the largest number of authors:
+\medskip
+\begin{center}
 \renewcommand{\arraystretch}{0.82}
-\begin{tabular}{l|r|r|r|}
+\tiny 
+\begin{tabular}{l|l|l|l|}
      Rank    & Freq & Id \\ \hline
          1   & 126  & WANG\_M(2016)34:828 \\
          2    & 53   & VASHISHT\_R(2012)7:0039808 \\ 
@@ -532,11 +542,12 @@ Works with the largest number of authors
          5    & 42   & DOLL\_L(1992)29:1 \\ 
          6   &41 &  MAGLIANO\_L(2006)15:219 \\ \hline
 \end{tabular}
+\end{center}
 
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Works with the largest number of authors \label{numpap}\\ \normalsize outdegree in WA}
+\frametitle{WA net  \label{numpap}\\ \normalsize Works with the largest number of authors - outdegree}
 
 Sharing and community curation of mass spectrometry data with Global Natural Products Social Molecular Networking / Nature Biotechnology volume 34, pages 828–837 (2016)
 \medskip
@@ -551,7 +562,7 @@ Mingxun Wang, Jeremy J Carver, Vanessa V Phelan, Laura M Sanchez, Neha Garg, Yao
 
 
 \begin{frame}[fragile]
-\frametitle{The most used journals \\ \normalsize indegree in WJ}
+\frametitle{WJ net \\ \normalsize The most used journals - indegree}
 
 \renewcommand{\arraystretch}{0.82}
 \tiny
@@ -593,11 +604,12 @@ Rank&   	Value&   	Id&   	Rank&   	Value&   	Id \\ \hline
 
 
 \begin{frame}[fragile]
-\frametitle{The most used keywords \\ \normalsize indegree in WK}
+\frametitle{WK net \\ \normalsize The most used keywords - indegree}
 
 
 \renewcommand{\arraystretch}{0.82}
 \tiny
+\begin{center}
 \begin{tabular}{r|r|l||r|r|l}
 Rank&  	Value&  	Id&  	Rank&  	Value&  	Id\\ \hline
 1&  	51333&  	social&  	31&  	3485&  	structure\\
@@ -631,15 +643,16 @@ Rank&  	Value&  	Id&  	Rank&  	Value&  	Id\\ \hline
 29&  	3534&  	service&  	59&  	2333&  	trust\\
 30&  	3512&  	dynamics&  	60&  	2332&  	family\\ \hline
 \end{tabular}
+\end{center}
 
 \end{frame}
 
-\section{Citation network analysis}  
+\section{Citation network}  
 
 %******************************************************************************
 
 \begin{frame}[fragile]
-\frametitle{Boundary problem in citation network}
+\frametitle{Cite net \\ \normalsize Boundary problem}
 \small 
 
 The network Cite has 1297133  nodes and 2753767 arcs.
@@ -662,86 +675,184 @@ Most of nodes are terminal $(DCr=0)$ or nodes cited only once (indegree=1). We d
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Components}
+\frametitle{Cite net \\ \normalsize Components}
 \small 
 To get an acyclic network we applied the \keyw{preprint transformation} to CiteB. The resulting network CiteT has 222 189 nodes and 1 521 658 arcs. 
- We computed the SPC weights on its arcs. The total flow is equal to (??) 1.625 10$^{20}$.\medskip
 
-First we determine the CPM path in this network, followed by the key-routes approach. \medskip
+We computed the SPC weights on network arcs, and determined 
+\begin{itemize}
+\item CPM path (Main path) = 59 nodes
+\item Key-routes = 127 nodes  
+\item SPC link islands [Line weights] of sizes [20, 200] = 5 islands of 138, 65, 13, 12, and 11 nodes  
+\item SPC node islands [Vertex weights] of sizs  [20, 200] = 1 island of 200 nodes
+\end{itemize}
 
-Afterward we determine SPC link islands [Line weights] of sizes [20, 200] and got 5 islands. Also we computed SPC node islands [Vertex weights] of sizs  [20, 200] and got 1 island. Node islands were also counted for a network with probabilistic flow (got 1 island). 
+\medskip 
 
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Cite network}
-\small
-
-Pictures: 
-Main path 
-Key route 
-Islands
-Prob flow 
+We computed the Probabilistic flow on weighted network, and determined node islands [Vertex weights] of sizs  [10, 200] = 200 nodes
 
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Cite network}
-\small
-%to be done better 
+\frametitle{Strong components \\ \normalsize from SPC network}
 
-\renewcommand{\arraystretch}{0.5}
+\begin{center}
+\includegraphics[width=80mm,viewport=90 34 690 535,clip=]{strong.pdf}
+%\includegraphics[width=100mm,viewport=90 320 670 535,clip=]{strong.pdf}
+\end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Main path, Key Routes, and Island 4 \\ \normalsize from SPC network}
+\begin{center}
+\includegraphics[width=9mm,viewport=120 27 235 682 ,clip=]{CPMpath.pdf}
+\includegraphics[width=40mm,viewport=75 37 440 590,clip=]{KeyRouteW.pdf}
+\includegraphics[width=37mm,viewport=75 40 400 600,clip=]{Island4w.pdf}
+\end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Islands 1-3, 4 \\ \normalsize from SPC network}
+\begin{center}
+\includegraphics[width=40mm,viewport=160 75 540 488 ,clip=]{Island1-3w.pdf}
+\includegraphics[width=40mm,viewport=280 37 500 488,clip=]{Island5w.pdf}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Most important works \\ \normalsize from Probabilistic  Flow network}
+\small
+
+\renewcommand{\arraystretch}{0.82}
 \tiny
-\begin{tabular}{r|r|r|r|r|}
-N&   	author&   	title&   	journal&   	components \\ \hline 
-1&   	GRANOVET.MS&   	 STRENGTH OF WEAK TIES&   	AMER J SOCIOL&   	1, 2, 4, 5, 6\\
-2&   	Newman, MEJ&   	 The structure and function of complex networks&   	SIAM REV&   	1, 2, 4, 5, 6\\
-3&   	Albert, R&   	 Statistical mechanics of complex networks&   	REV MOD PHYS&   	1, 2, 4, 5, 6\\
-4&   	Boccaletti, S&   	 Complex networks: Structure and dynamics&   	PHYS REP-REV SECT PHYS LETT&   	1, 2, 4, 5, 6\\
-5&   	WHITE, HC&   	 SOCIAL-STRUCTURE FROM MULTIPLE NETWORKS .1. BLOCKMODELS OF ROLES AND POSITIONS&   	AMER J SOCIOL&   	1, 2, 4, 5, 6\\
-6&   	Newman, MEJ&   	 Clustering and preferential attachment in growing networks&   	PHYS REV E&   	1, 2, 4, 5, 6\\
-7&   	Newman, MEJ&   	 Finding and evaluating community structure in networks&   	PHYS REV E&   	1, 2, 4, 5, 6\\
-8&   	Newman, MEJ&   	 Mixing patterns in networks&   	PHYS REV E&   	1, 2, 4, 5, 6\\
-9&   	Strogatz, SH&   	 Exploring complex networks&   	NATURE&   	1, 2, 4, 5, 6\\
-10&   	Newman, MEJ&   	 Detecting community structure in networks&   	EUR PHYS J B&   	1, 2, 4, 5, 6\\
-11&   	Newman, MEJ&   	 Spread of epidemic disease on networks&   	PHYS REV E&   	1, 2, 4, 5, 6\\
-12&   	Newman, MEJ&   	 Finding community structure in networks using the eigenvectors of matrices&   	PHYS REV E&   	1, 2, 4, 5, 6\\
-13&   	CARTWRIGHT, D&   	 STRUCTURAL BALANCE - A GENERALIZATION OF HEIDER THEORY&   	PSYCHOL REV&   	1, 2, 4, 5, 6\\
-14&   	Clauset, A&   	 Finding community structure in very large networks&   	PHYS REV E&   	1, 2, 4, 5, 6\\
-15&   	Newman, MEJ&   	 Models of the small world&   	J STATIST PHYS&   	1, 2, 4, 5\\
-16&   	Newman, MEJ&   	 Scaling and percolation in the small-world network model&   	PHYS REV E&   	1, 2, 4, 5\\
-17&   	Valente, TW&   	 Social network thresholds in the diffusion of innovations&   	SOC NETWORKS&   	1, 2, 4, 5\\
-18&   	BURT, RS&   	 COHESION VERSUS STRUCTURAL EQUIVALENCE AS A BASIS FOR NETWORK SUBGROUPS&   	SOCIOL METHOD RES&   	1, 2, 4, 5\\
-19&   	STEPHENSON, K&   	 RETHINKING CENTRALITY - METHODS AND EXAMPLES&   	SOC NETWORKS&   	1, 2, 4, 5\\
-20&   	BREIGER, RL&   	 ALGORITHM FOR CLUSTERING RELATIONAL DATA WITH APPLICATIONS TO SOCIAL NETWORK ANALYSIS AND COMPARISON WITH MULTIDIMENSIONAL-SCALING&   	J MATH PSYCHOL&   	1, 2, 4, 5\\
-21&   	FREEMAN, LC&   	 CENTRALITY IN VALUED GRAPHS - A MEASURE OF BETWEENNESS BASED ON NETWORK FLOW&   	SOC NETWORKS&   	1, 2, 4, 5\\
-22&   	BURT, RS&   	 MODELS OF NETWORK STRUCTURE&   	ANNU REV SOCIOL&   	1, 2, 4, 5\\
-23&   	HOLLAND, PW&   	 METHOD FOR DETECTING STRUCTURE IN SOCIOMETRIC DATA&   	AMER J SOCIOL&   	1, 2, 4, 5\\
-24&   	ALBA, RD&   	 INTERSECTION OF SOCIAL CIRCLES - NEW MEASURE OF SOCIAL PROXIMITY IN NETWORKS&   	SOCIOL METHOD RES&   	1, 2, 4, 5\\
-25&   	Moore, C&   	 Exact solution of site and bond percolation on small-world networks&   	PHYS REV E&   	1, 2, 4, 5\\
-26&   	MCPHERSON, JM&   	 HYPERNETWORK SAMPLING - DUALITY AND DIFFERENTIATION AMONG VOLUNTARY ORGANIZATIONS&   	SOC NETWORKS&   	1, 2, 4, 5\\
-27&   	MARIOLIS, P&   	 CENTRALITY IN CORPORATE INTERLOCK NETWORKS - RELIABILITY AND STABILITY&   	ADMIN SCI QUART&   	1, 2, 4, 5\\
-28&   	BURT, RS&   	 POSITIONS IN MULTIPLE NETWORK SYSTEMS .1. GENERAL CONCEPTION OF STRATIFICATION AND PRESTIGE IN A SYSTEM OF ACTORS CAST AS A SOCIAL TOPOLOGY&   	SOC FORCES&   	1, 2, 4, 5\\
-29&   	BURT, RS&   	 POSITIONS IN MULTIPLE NETWORK SYSTEMS .2. STRATIFICATION AND PRESTIGE AMONG ELITE DECISION-MAKERS IN COMMUNITY OF ALTNEUSTADT&   	SOC FORCES&   	1, 2, 4, 5\\
-30&   	MIZRUCHI, MS&   	 INTERLOCK GROUPS, CLIQUES, OR INTEREST-GROUPS - COMMENT&   	SOC NETWORKS&   	1, 2, 4, 5\\ \hline 
+\begin{tabular}{c|c|l||c|c|l|l}
+Rank&   	Value&   	Id&   	Rank&   	Value&   	Id\\ \hline
+1&   	4691.7033&   	WASSERMA\_S(1994):&   	31&   	545.5328&   	BLONDEL\_V(2008):P10008\\
+2&   	2941.1761&   	WATTS\_D(1998)393:440&   	32&   	527.9645&   	KATZ\_L(1953)18:39\\
+3&   	2676.7765&   	GRANOVET\_M(1973)78:1360&   	33&   	526.3830&   	NEWMAN\_M(2010):\\
+4&   	2445.6729&   	BOYD\_D(2007)13:210&   	34&   	520.1086&   	STROGATZ\_S(2001)410:268\\
+5&   	2241.3353&   	BARABASI\_A(1999)286:509&   	35&   	517.8303&   	PALLA\_G(2005)435:814\\
+6&   	1926.1505&   	FREEMAN\_L(1979)1:215&   	36&   	499.7478&   	CLAUSET\_A(2004)70:066111\\
+7&   	1396.7653&   	GIRVAN\_M(2002)99:7821&   	37&   	497.4825&   	ERDOS\_P(1960)5:17\\
+8&   	1299.3284&   	NEWMAN\_M(2003)45:167&   	38&   	488.1258&   	ROGERS\_E(2003):\\
+9&   	1227.6464&   	MCPHERSO\_M(2001)27:415&   	39&   	485.0419&   	NEWMAN\_M(2006)103:8577\\
+10&   	1158.1156&   	ALBERT\_R(2002)74:47&   	40&   	481.1530&   	COLEMAN\_J(1990):\\
+11&   	1105.4924&   	SCOTT\_J(2000):&   	41&   	478.3532&   	BRIN\_S(1998)30:107\\
+12&   	1098.3635&   	BURT\_R(1992):&   	42&   	477.1407&   	AMARAL\_L(2000)97:11149\\
+13&   	1045.2931&   	MILGRAM\_S(1967)1:61&   	43&   	475.3617&   	ERDOS\_P(1959)6:290\\
+14&   	1013.5490&   	NEWMAN\_M(2004)69:026113&   	44&   	465.2929&   	WATTS\_D(1999):\\
+15&   	928.3289&   	KAPLAN\_A(2010)53:59&   	45&   	462.8299&   	LAVE\_J(1991):\\
+16&   	878.0197&   	FREEMAN\_L(1977)40:35&   	46&   	460.1905&   	KLEINBER\_J(1999)46:604\\
+17&   	852.0768&   	PUTNAM\_R(2000):&   	47&   	449.5945&   	SCOTT\_J(1991):\\
+18&   	847.1235&   	COLEMAN\_J(1988)94:95&   	48&   	446.7720&   	BOLLOBAS\_B(1985):\\
+19&   	835.6368&   	BLEI\_D(2003)3:993&   	49&   	442.9941&   	PAGE\_L(1999):\\
+20&   	742.6433&   	GRANOVET\_M(1985)91:481&   	50&   	440.0067&   	NEWMAN\_M(2001)64:025102\\
+21&   	731.1789&   	CHRISTAK\_N(2007)357:370&   	51&   	436.9754&   	NEWMAN\_M(2004)69:066133\\
+22&   	727.1355&   	EVERETT\_M(2002):&   	52&   	431.0422&   	REDNER\_S(1998)4:131\\
+23&   	726.4118&   	NEWMAN\_M(2001)98:404&   	53&   	429.5661&   	CHRISTAK\_N(2008)358:2249\\
+24&   	719.2622&   	ALBERT\_R(1999)401:130&   	54&   	424.2269&   	ADOMAVIC\_G(2005)17:734\\
+25&   	701.0592&   	O'REILLY\_T(2005):&   	55&   	424.0579&   	KEMP\_D(2003):137\\
+26&   	669.0536&   	BORGATTI\_S(2002):&   	56&   	423.4092&   	DOMINGOS\_P(2001):57\\
+27&   	667.5963&   	FORTUNAT\_S(2010)486:75&   	57&   	423.0635&   	MITCHELL\_J(1969):\\
+28&   	633.3008&   	HANNEMAN\_R(2005):&   	58&   	415.6691&   	ALBERT\_R(2000)406:378\\
+29&   	569.2848&   	STEINFIE\_C(2007)12:1143&   	59&   	415.3695&   	GLASER\_B(1967):\\
+30&   	549.4440&   	ZACHARY\_W(1977)33:452&   	60&   	410.1489&   	ROGERS\_E(1995):\\ \hline
 \end{tabular}
 
 \end{frame}
 
+
 \begin{frame}[fragile]
-\frametitle{Cite network}
+\frametitle{Main island\\ \normalsize from Probabilistic  Flow network}
 \small
 
-Prob flow table 
+Prob flow pic 
 %to be done 
 
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Cite net\\ \normalsize Overlapping of components}
+\small
+
+\renewcommand{\arraystretch}{0.2}
+\tiny
+\begin{tabular}{c|l|l|l|l|}
+i&   	name & title & jour & comp \\ \hline 
+1&   	Granovet M &   	 Strength of weak ties&   	amer j sociol&   	1, 2, 4, 5, 6\\
+2&   	Newman M&   	 The structure and function of complex networks&   	siam rev&   	1, 2, 4, 5, 6\\
+3&   	Albert R&   	 Statistical mechanics of complex networks&   	rev mod phys&   	1, 2, 4, 5, 6\\
+4&   	Boccaletti S&   	 Complex networks: structure and dynamics&   	phys rept&   	1, 2, 4, 5, 6\\
+5&   	White H&   	 Soc. str. from mult. nets. Blockmodels &   	amer j sociol&   	1, 2, 4, 5, 6\\
+6&   	Newman M&   	 Clustering and pref.l attach. in growing nets&   	phys rev e&   	1, 2, 4, 5, 6\\
+7&   	Newman M&   	 Finding and evaluating comm. struct. in nets&   	phys rev e&   	1, 2, 4, 5, 6\\
+8&   	Newman M&   	 Mixing patterns in networks&   	phys rev e&   	1, 2, 4, 5, 6\\
+9&   	Strogatz S&   	 Exploring complex networks&   	nature&   	1, 2, 4, 5, 6\\
+10&   	Newman M&   	 Detecting community structure in nets&   	eur phys j b&   	1, 2, 4, 5, 6\\
+11&   	Newman M&   	 Spread of epidemic disease on nets&   	phys rev e&   	1, 2, 4, 5, 6\\
+12&   	Newman M&   	 Finding community str. in nets using eigenvectors &   	phys rev e&   	1, 2, 4, 5, 6\\
+13&   	Cartwright D&   	 Structural balance - a generaliz. of heider theory&   	psychol rev&   	1, 2, 4, 5, 6\\
+14&   	Clauset A&   	 Finding community struct. in very large nets&   	phys rev e&   	1, 2, 4, 5, 6\\
+15&   	Newman M&   	 Models of the small world&   	j statist phys&   	1, 2, 4, 5\\
+16&   	Newman M&   	 Scaling and percolation in small-world net model&   	phys rev e&   	1, 2, 4, 5\\
+17&   	Valente T&   	 Social net thresholds in the diff. of innov.&   	soc networks&   	1, 2, 4, 5\\
+18&   	Burt R&   	 Cohesion versus structural equivalences&   	soc meth res&   	1, 2, 4, 5\\
+&   	&   	as a basis for net subgroups&   	&   	\\
+19&   	Stephenson K&   	 Rethinking centrality - methods and examples&   	soc networks&   	1, 2, 4, 5\\
+20&   	Breiger R&   	 Algorithm for clustering relational data  &   j math psychl&   	1, 2, 4, 5\\
+21&   	Freeman L&   	 Centrality in valued graphs - a measure &   soc networks&   	1, 2, 4, 5\\
+&   	&   	 of betweenness based on net flow&   	&   	\\
+22&   	Burt R&   	 Models of network structure&   	annu rev soc&   	1, 2, 4, 5\\
+23&   	Holland P&   	 Method for detecting structure in sociom. data&   amer j sociol&   	1, 2, 4, 5\\
+24&   	Alba R&   	 Intersection of social circles &   socl meth res&   	1, 2, 4, 5\\
+25&   	Moore C&   	 Exact solution of site and bond percolation &   	phys rev e&   	1, 2, 4, 5\\
+&   	&   	on small-world net&   	&   	\\
+26&   	Mcpherson J&   	 Hypernetwork sampling - duality and &   	soc networks&   	1, 2, 4, 5\\
+&   	&   	 differentiation among voluntary organizations&   	&   \\
+27&   	Mariolis P&   	 Centrality in corporate interlock networks &   	adm sci quart&   	1, 2, 4, 5\\
+28&   	Burt R&   	 Positions in multiple network systems &   	soc forces&   	1, 2, 4, 5\\
+&   	&   	1. General conception of stratification and prestige &   	&   \\
+29&   	Burt R&   	 Positions in multiple network systems &   	soc forces&   	1, 2, 4, 5\\
+&   	&   	2. Stratification and prestige among elite &   	&   	\\
+30&   	Mizruchi M&   Interlock groups, cliques, or interest-groups &   	soc networks&   	1, 2, 4, 5\\ \hline 
+\end{tabular}
+1- Key Routes, 2- Main Path (CPM), 3- Island5, 4 - Island 4, Node Island, 5 - Prob Flow Island
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Conclusions}
+\small
+
+Write some \medskip
+
+\end{frame}
+
+\section{Bibliography}  
+
+%******************************************************************************
+
+\begin{frame}[fragile]
+\frametitle{Bibliography}
+\small
+
+\begin{enumerate}
+\item Batagelj, V., Doreian P., V., Ferligoj, A., Kejzar N. Understanding Large Temporal Networks and Spatial Networks: Exploration, Pattern Searching, Visualization and Network Evolution, 2014.
+\item Freeman, L. (2004). The development of social network analysis. A Study in the Sociology of Science, 1.
+\item Hummon, N. P., & Carley, K. (1993). Social networks as normal science∗. Social networks, 15(1), 71-106.
+\item Otte, E., & Rousseau, R. (2002). Social network analysis: a powerful strategy, also for the information sciences. Journal of information Science, 28(6), 441-453. 
+\end{enumerate}
+\end{frame}
+
 \end{document}
 
-%******************************************************************************
-%******************************************************************************
 
+%******************************************************************************
+%******************************************************************************
 
 \begin{frame}[fragile]
 \frametitle{Citation network}

@@ -1,6 +1,9 @@
-\frametitle{Cite network}
+\frametitle{Bibliography}
 \small
 
-Prob flow table
-%to be done
-
+\begin{enumerate}
+\item Batagelj, V., Doreian P., V., Ferligoj, A., Kejzar N. Understanding Large Temporal Networks and Spatial Networks: Exploration, Pattern Searching, Visualization and Network Evolution, 2014.
+\item Freeman, L. (2004). The development of social network analysis. A Study in the Sociology of Science, 1.
+\item Hummon, N. P., & Carley, K. (1993). Social networks as normal science∗. Social networks, 15(1), 71-106.
+\item Otte, E., & Rousseau, R. (2002). Social network analysis: a powerful strategy, also for the information sciences. Journal of information Science, 28(6), 441-453.
+\end{enumerate}

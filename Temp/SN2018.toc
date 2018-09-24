@@ -1,5 +1,6 @@
 \beamer@sectionintoc {1}{Introduction}{3}{0}{1}
 \beamer@sectionintoc {2}{Data}{4}{0}{2}
-\beamer@sectionintoc {3}{Networks construction}{7}{0}{3}
-\beamer@sectionintoc {4}{Statistics on networks}{11}{0}{4}
-\beamer@sectionintoc {5}{Citation network analysis}{20}{0}{5}
+\beamer@sectionintoc {3}{Networks}{7}{0}{3}
+\beamer@sectionintoc {4}{Statistics}{11}{0}{4}
+\beamer@sectionintoc {5}{Citation network}{20}{0}{5}
+\beamer@sectionintoc {6}{Bibliography}{29}{0}{6}
