@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.9.23)  24 SEP 2018 17:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.9.23)  24 SEP 2018 18:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -659,15 +659,6 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 (c:/texlive/2018/texmf-dist/tex/latex/beamer/beamerinnerthemecircles.sty)
 (./SN2018.aux
 
-LaTeX Warning: Label `maxin' multiply defined.
-
-
-LaTeX Warning: Label `maxin' multiply defined.
-
-
-LaTeX Warning: Label `maxin' multiply defined.
-
-
 LaTeX Warning: Label `numpap' multiply defined.
 
 
@@ -939,12 +930,7 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
 ]
 \openout4 = `SN2018.vrb'.
 
- (./SN2018.vrb
-Overfull \hbox (5.48013pt too wide) in paragraph at lines 18--24
-[][]  
- []
-
-) [10
+ (./SN2018.vrb) [10
 
 ]
 \openout4 = `SN2018.vrb'.
@@ -956,7 +942,7 @@ File: ./pics/pubYear.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./pics/pubYear.pdf  used on input line 3.
 (pdftex.def)             Requested size: 213.39566pt x 213.39369pt.
 )
-Overfull \vbox (14.6512pt too high) detected at line 370
+Overfull \vbox (14.6512pt too high) detected at line 375
  []
 
 [11
@@ -965,12 +951,12 @@ Overfull \vbox (14.6512pt too high) detected at line 370
 \openout4 = `SN2018.vrb'.
 
  (./SN2018.vrb
-<./pics/CiteIndegCum.png, id=430, 555.07375pt x 554.07pt>
+<./pics/CiteIndegCum.png, id=431, 555.07375pt x 554.07pt>
 File: ./pics/CiteIndegCum.png Graphic file (type png)
 <use ./pics/CiteIndegCum.png>
 Package pdftex.def Info: ./pics/CiteIndegCum.png  used on input line 5.
 (pdftex.def)             Requested size: 142.26378pt x 142.00883pt.
-<./pics/CiteIndegplfit.png, id=431, 555.07375pt x 554.07pt>
+<./pics/CiteIndegplfit.png, id=432, 555.07375pt x 554.07pt>
 File: ./pics/CiteIndegplfit.png Graphic file (type png)
 <use ./pics/CiteIndegplfit.png>
 Package pdftex.def Info: ./pics/CiteIndegplfit.png  used on input line 6.
@@ -980,22 +966,12 @@ Package pdftex.def Info: ./pics/CiteIndegplfit.png  used on input line 6.
  <./pics/CiteIndegCum.png> <./pics/CiteIndegplfit.png>]
 \openout4 = `SN2018.vrb'.
 
-pdfTeX warning (ext4): destination with the same identifier (name{maxin}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.424 \end{frame}
-                  (./SN2018.vrb) [13
+ (./SN2018.vrb) [13
 
 ]
 \openout4 = `SN2018.vrb'.
 
-pdfTeX warning (ext4): destination with the same identifier (name{maxin}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.460 \end{frame}
-                  (./SN2018.vrb
+ (./SN2018.vrb
 Overfull \hbox (9.50684pt too wide) in paragraph at lines 5--18
 [][]  
  []
@@ -1005,17 +981,16 @@ Overfull \hbox (9.50684pt too wide) in paragraph at lines 5--18
 ]
 \openout4 = `SN2018.vrb'.
 
-pdfTeX warning (ext4): destination with the same identifier (name{maxin}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.497 \end{frame}
-                  (./SN2018.vrb) [15
+ (./SN2018.vrb) [15
 
 ]
 \openout4 = `SN2018.vrb'.
 
- (./SN2018.vrb) [16
+ (./SN2018.vrb)
+Overfull \vbox (3.71559pt too high) detected at line 554
+ []
+
+[16
 
 ]
 \openout4 = `SN2018.vrb'.
@@ -1024,7 +999,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{numpap}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.561 \end{frame}
+l.566 \end{frame}
                   (./SN2018.vrb) [17
 
 ]
@@ -1034,7 +1009,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{numpap}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.605 \end{frame}
+l.610 \end{frame}
                   (./SN2018.vrb) [18
 
 ]
@@ -1057,28 +1032,28 @@ l.605 \end{frame}
 \openout4 = `SN2018.vrb'.
 
  (./SN2018.vrb
-<./pics/strong.pdf, id=772, 903.375pt x 692.5875pt>
+<./pics/strong.pdf, id=777, 903.375pt x 692.5875pt>
 File: ./pics/strong.pdf Graphic file (type pdf)
 <use ./pics/strong.pdf>
 Package pdftex.def Info: ./pics/strong.pdf  used on input line 4.
-(pdftex.def)             Requested size: 227.62204pt x 190.06047pt.
+(pdftex.def)             Requested size: 227.62204pt x 185.4258pt.
 ) [22
 
  <./pics/strong.pdf>]
 \openout4 = `SN2018.vrb'.
 
  (./SN2018.vrb
-<./pics/CPMpath.pdf, id=812, 903.375pt x 692.5875pt>
+<./pics/CPMpath.pdf, id=816, 903.375pt x 692.5875pt>
 File: ./pics/CPMpath.pdf Graphic file (type pdf)
 <use ./pics/CPMpath.pdf>
 Package pdftex.def Info: ./pics/CPMpath.pdf  used on input line 3.
 (pdftex.def)             Requested size: 25.60747pt x 145.84502pt.
-<./pics/KeyRouteW.pdf, id=814, 903.375pt x 692.5875pt>
+<./pics/KeyRouteW.pdf, id=818, 903.375pt x 692.5875pt>
 File: ./pics/KeyRouteW.pdf Graphic file (type pdf)
 <use ./pics/KeyRouteW.pdf>
 Package pdftex.def Info: ./pics/KeyRouteW.pdf  used on input line 4.
 (pdftex.def)             Requested size: 113.81102pt x 172.42723pt.
-<./pics/Island4w.pdf, id=816, 903.375pt x 692.5875pt>
+<./pics/Island4w.pdf, id=820, 903.375pt x 692.5875pt>
 File: ./pics/Island4w.pdf Graphic file (type pdf)
 <use ./pics/Island4w.pdf>
 Package pdftex.def Info: ./pics/Island4w.pdf  used on input line 5.
@@ -1090,18 +1065,18 @@ Package pdftex.def Info: ./pics/Island4w.pdf  used on input line 5.
 
 
 (./SN2018.vrb
-<./pics/Island1-3w.pdf, id=863, 903.375pt x 692.5875pt>
+<./pics/Island1-3w.pdf, id=867, 903.375pt x 692.5875pt>
 File: ./pics/Island1-3w.pdf Graphic file (type pdf)
 <use ./pics/Island1-3w.pdf>
 Package pdftex.def Info: ./pics/Island1-3w.pdf  used on input line 3.
 (pdftex.def)             Requested size: 113.81102pt x 123.69537pt.
-<./pics/Island5w.pdf, id=865, 903.375pt x 692.5875pt>
+<./pics/Island5w.pdf, id=869, 903.375pt x 692.5875pt>
 File: ./pics/Island5w.pdf Graphic file (type pdf)
 <use ./pics/Island5w.pdf>
 Package pdftex.def Info: ./pics/Island5w.pdf  used on input line 4.
 (pdftex.def)             Requested size: 113.81102pt x 233.31529pt.
 )
-Overfull \vbox (34.5728pt too high) detected at line 725
+Overfull \vbox (34.5728pt too high) detected at line 730
  []
 
 [24
@@ -1110,16 +1085,11 @@ Overfull \vbox (34.5728pt too high) detected at line 725
 \openout4 = `SN2018.vrb'.
 
  (./SN2018.vrb
-Overfull \hbox (24.78809pt too wide) in paragraph at lines 6--39
+Overfull \hbox (2.99602pt too wide) in paragraph at lines 6--39
 [][]  
  []
 
 ) [25
-
-]
-\openout4 = `SN2018.vrb'.
-
- (./SN2018.vrb) [26
 
 ]
 \openout4 = `SN2018.vrb'.
@@ -1129,40 +1099,17 @@ Overfull \hbox (16.00421pt too wide) in paragraph at lines 6--46
 [][] 
  []
 
-) [27
+) [26
+
+]
+\openout4 = `SN2018.vrb'.
+
+ (./SN2018.vrb) [27
 
 ]
 \openout4 = `SN2018.vrb'.
 
  (./SN2018.vrb) [28
-
-]
-\openout4 = `SN2018.vrb'.
-
- (./SN2018.vrb
-! Misplaced alignment tab character &.
-l.7 \item Hummon, N. P., &
-                           Carley, K. (1993). Social networks as normal scie...
-
-? 
-
-! Package inputenc Error: Unicode character ∗ (U+2217)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 ...1993). Social networks as normal science∗
-                                                  . Social networks, 15(1), ...
-
-? 
-! Misplaced alignment tab character &.
-l.8 \item Otte, E., &
-                      Rousseau, R. (2002). Social network analysis: a powerf...
-
-? 
-) [29
 
 ]
 \tf@nav=\write6
@@ -1187,11 +1134,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 17480 strings out of 492641
- 331573 string characters out of 6133116
- 441983 words of memory out of 5000000
- 20819 multiletter control sequences out of 15000+600000
- 13431 words of font info for 52 fonts, out of 8000000 for 9000
+ 17509 strings out of 492641
+ 331933 string characters out of 6133116
+ 445085 words of memory out of 5000000
+ 20840 multiletter control sequences out of 15000+600000
+ 18683 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,16n,57p,2153b,568s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/tex
@@ -1206,10 +1153,10 @@ mssi9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2018/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2018/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on SN2018.pdf (29 pages, 339399 bytes).
+Output written on SN2018.pdf (28 pages, 339415 bytes).
 PDF statistics:
- 1134 PDF objects out of 1200 (max. 8388607)
- 1054 compressed objects within 11 object streams
- 67 named destinations out of 1000 (max. 500000)
+ 1106 PDF objects out of 1200 (max. 8388607)
+ 1027 compressed objects within 11 object streams
+ 68 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 

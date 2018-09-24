@@ -3,4 +3,4 @@
 \beamer@sectionintoc {3}{Networks}{7}{0}{3}
 \beamer@sectionintoc {4}{Statistics}{11}{0}{4}
 \beamer@sectionintoc {5}{Citation network}{20}{0}{5}
-\beamer@sectionintoc {6}{Bibliography}{29}{0}{6}
+\beamer@sectionintoc {6}{Bibliography}{28}{0}{6}
