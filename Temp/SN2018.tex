@@ -176,7 +176,7 @@ This calls into a question whether the field remains unified and which scientifi
 \frametitle{WoS}
 \small
 
-To the Web of Science (WoS)\index{topic}{Web of Science}, Clarivate Analytics’s multidisciplinary databases of bibliographic
+To the Web of Science (WoS), Clarivate Analytics’s multidisciplinary databases of bibliographic
 information, we put the query
 \begin{verbatim} 
 "social network*"
@@ -192,16 +192,6 @@ Networks, Journal of Social Structure, Connections
 We limited the search to the Web of Science Core Collection because for other data bases from WoS the CR-fields (containing citation information) can not
 be exported.The first data set was collected in 2007, second - in June, 2018. 
 \end{frame}
-
-\begin{frame}[fragile]
-\frametitle{WoS}
-\small
-
-We call a \keyw{terminal} node  a node without a description in the collected data set -- it appears only in the WoS CR field as a reference. We additionally collected on WoS and Google data for terminal nodes with large indegree in the citation network -- highly cited works without description in the collected data set. If a description of a node was not available in WoS we manually constructed a corresponding description without CR data (using RIS biblographic format and converting it to WoS).\medskip
-
-As the data set of 2007 was already completed, we made this additional search only for works 2008-* in July 2018. 
-\end{frame}
-
 
 \begin{frame}[fragile]
 \frametitle{WoS record}
@@ -248,6 +238,18 @@ ER
 \end{verbatim}
 
 \end{frame}
+
+\begin{frame}[fragile]
+\frametitle{WoS}
+\small
+
+We call a \keyw{terminal} node  a node without a description in the collected data set -- it appears only in the WoS CR field as a reference. \medskip
+
+We additionally collected on WoS and Google data for terminal nodes with large indegree in the citation network -- highly cited works without description in the collected data set. If a description of a node was not available in WoS we manually constructed a corresponding description without CR data (using RIS biblographic format and converting it to WoS).\medskip
+
+As the data set of 2007 was already completed, we made this additional search only for works 2008-* in July 2018. 
+\end{frame}
+
 
 \section{Networks}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.9.23)  24 SEP 2018 16:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.9.23)  24 SEP 2018 17:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -881,23 +881,24 @@ Overfull \vbox (6.20195pt too high) detected at line 170
 ]
 \openout4 = `SN2018.vrb'.
 
- (./SN2018.vrb) [5
+ (./SN2018.vrb)
+Overfull \vbox (7.4583pt too high) detected at line 240
+ []
+
+[5
 
 ]
 \openout4 = `SN2018.vrb'.
 
- (./SN2018.vrb)
-Overfull \vbox (7.4583pt too high) detected at line 250
- []
-
-[6
+ (./SN2018.vrb) [6
 
 ]
 \openout4 = `SN2018.vrb'.
 
  (./SN2018.vrb
 LaTeX Font Info:    Try loading font information for U+msa on input line 7.
- (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+
+(c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 7.
@@ -917,7 +918,7 @@ line 7.
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 ))
-Overfull \vbox (2.20195pt too high) detected at line 277
+Overfull \vbox (2.20195pt too high) detected at line 279
  []
 
 [7
@@ -955,7 +956,7 @@ File: ./pics/pubYear.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./pics/pubYear.pdf  used on input line 3.
 (pdftex.def)             Requested size: 213.39566pt x 213.39369pt.
 )
-Overfull \vbox (14.6512pt too high) detected at line 368
+Overfull \vbox (14.6512pt too high) detected at line 370
  []
 
 [11
@@ -983,7 +984,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{maxin}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.422 \end{frame}
+l.424 \end{frame}
                   (./SN2018.vrb) [13
 
 ]
@@ -993,7 +994,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{maxin}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.458 \end{frame}
+l.460 \end{frame}
                   (./SN2018.vrb
 Overfull \hbox (9.50684pt too wide) in paragraph at lines 5--18
 [][]  
@@ -1008,7 +1009,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{maxin}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.495 \end{frame}
+l.497 \end{frame}
                   (./SN2018.vrb) [15
 
 ]
@@ -1023,7 +1024,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{numpap}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.559 \end{frame}
+l.561 \end{frame}
                   (./SN2018.vrb) [17
 
 ]
@@ -1033,7 +1034,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{numpap}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.603 \end{frame}
+l.605 \end{frame}
                   (./SN2018.vrb) [18
 
 ]
@@ -1100,7 +1101,7 @@ File: ./pics/Island5w.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./pics/Island5w.pdf  used on input line 4.
 (pdftex.def)             Requested size: 113.81102pt x 233.31529pt.
 )
-Overfull \vbox (34.5728pt too high) detected at line 723
+Overfull \vbox (34.5728pt too high) detected at line 725
  []
 
 [24
@@ -1173,11 +1174,11 @@ l.8 \item Otte, E., &
 \tf@snm=\write8
 \openout8 = `SN2018.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 851.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 851.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 853.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 853.
  (./SN2018.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 851.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 851.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 853.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 853.
 Package rerunfilecheck Info: File `SN2018.out' has not changed.
 (rerunfilecheck)             Checksum: D0862F65423476C9E7CEA412D71EBFA3;272.
 
@@ -1186,10 +1187,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 17478 strings out of 492641
- 331557 string characters out of 6133116
+ 17480 strings out of 492641
+ 331573 string characters out of 6133116
  441983 words of memory out of 5000000
- 20817 multiletter control sequences out of 15000+600000
+ 20819 multiletter control sequences out of 15000+600000
  13431 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,16n,57p,2153b,568s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1205,7 +1206,7 @@ mssi9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2018/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2018/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on SN2018.pdf (29 pages, 339373 bytes).
+Output written on SN2018.pdf (29 pages, 339399 bytes).
 PDF statistics:
  1134 PDF objects out of 1200 (max. 8388607)
  1054 compressed objects within 11 object streams
