@@ -1,0 +1,1365 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage[english]{babel}
+\usepackage{hyperref}
+%\usepackage[cp1250]{inputenc}
+%\usepackage[utf8]{inputenc}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{times}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{crayola}
+%\usepackage{datum}
+\usepackage{xspace}
+\usepackage{algorithmicx}
+\usepackage{natbib}
+\usepackage{authblk}
+\usepackage{longtable}
+
+
+\renewcommand{\textfraction}{.05}
+\renewcommand{\topfraction}{.95}
+
+\oddsidemargin 5pt \evensidemargin 5pt \marginparwidth 20pt
+\marginparsep 10pt \topmargin -12 true mm \headheight 12pt \headsep 25pt
+\textheight 23 true cm \textwidth 16 true cm
+\columnsep 10pt \columnseprule 0pt
+
+% title page --------------------------------------------------------------
+
+\newcommand*{\affaddr}[1]{#1} % No op here. Customize it for different styles.
+\newcommand*{\affmark}[1][*]{\textsuperscript{#1}}
+\newcommand*{\email}[1]{\texttt{#1}}
+
+\title{\LARGE\textbf{Social Network Analysis}\protect\\ The evolution of the field}
+%\thanks{\textcolor{BrickRed}{\textbf{Applied Statistics}}, Ribno, 23-26. September 2018}
+
+\author{%
+Darja Maltseva\affmark[1], Vladimir Batagelj\affmark[1,2,3]\\
+\affaddr{\affmark[1]NRU HSE Moscow}\\
+\affaddr{\affmark[2]IMFM Ljubljana}\\
+\affaddr{\affmark[3]IAM UP Koper}\\
+\email{vladimir.batagelj@fmf.uni-lj.si}\\ \email{d.maltseva@gmail.com} %\\
+%\affaddr{\LaTeX\ University}%
+}
+% \author{Darja Maljceva, Vladimir Batagelj  IMFM Ljubljana, IAM UP Koper, NRU HSE Moscow}
+
+
+% user's macros ----------------------------------------------------------
+\newcommand{\Pajek}{\texttt{\textbf{Pajek}}\xspace}
+\newcommand{\WoSPajek}{\texttt{\textbf{WoS2Pajek}}\xspace}
+%\newcommand{\Pajek}{Pajek}
+\newcommand{\keyw}[1]{\textcolor{red}{\emph{#1}}}
+\newcommand{\important}[1]{\textcolor{NavyBlue}{#1}}
+\newcommand{\RR}{\Bbb{R}}
+\newcommand{\NN}{\Bbb{N}}
+\newcommand{\ZZ}{\Bbb{Z}}
+\newcommand{\QQ}{\Bbb{Q}}
+\newcommand{\network}[1]{\mathcal{#1}}
+\newcommand{\vertices}[1]{\mathcal{#1}}
+\newcommand{\edges}[1]{\mathcal{#1}}
+\newcommand{\arcs}[1]{\mathcal{#1}}
+\newcommand{\Net}{\network{N}}
+\newcommand{\argmin}{\mathop{\mbox{argmin}}\nolimits}
+\newcommand{\relation}[1]{\textbf{\emph{$\_\!\_$~#1~$\_\!\_$\,}}}
+\newcommand{\functions}[1]{\mathcal{#1}}
+\newcommand{\define}[1]{\emph{\textcolor{red}{#1}}}
+\newcommand{\card}[1]{\mbox{card}(#1)}
+\newcommand{\URL}[1]{{\footnotesize\texttt{#1}}}
+\newcommand{\tita}[1]{\textit{#1}}      % italic
+\newcommand{\cling}{\mathbf{C}}
+\newcommand{\unitX}{\mbox{X}}
+\newcommand{\unitY}{\mbox{Y}}
+\newcommand{\unitZ}{\mbox{Z}}
+\newcommand{\outdeg}{\mbox{outdeg}}
+\newcommand{\indeg}{\mbox{indeg}}
+\newcommand{\ato}{\mathrel{:=}}
+\newcommand{\unit}{\mbox{X}}
+\newcommand{\Units}{\vertices{U}}
+\def\Min{\mathop{\mbox{Min}}\nolimits}
+\def\Max{\mathop{\mbox{Max}}\nolimits}
+\newcommand{\graph}[1]{\mathcal{#1}}
+\newcommand{\function}[3]{#1\,{:}\ #2\to#3}
+\newcommand{\Gph}{\network{G}}
+\newcommand{\GphH}{\network{H}}
+\newcommand{\Graph}{\mathbf{G}}
+\newcommand{\tit}[1]{\textit{#1}}      % italic
+\newcommand{\diag}{\mbox{diag}}
+\newcommand{\func}[1]{\textit{#1}}
+\newcommand{\Relation}[1]{\mathbf{#1}}
+\newcommand{\Time}{\mathcal{T}}
+%\newcommand{\cmdkey}{\raisebox{-.035em}{\includegraphics[height=.75em]{command.pdf}}}
+\newcommand{\cmdkey}{\raisebox{-.025em}{\includegraphics[height=.7em]{command.pdf}}}
+\newcommand{\Mw}{\mathop{\raisebox{-1.5pt}{\mbox{$\Box$\kern-.55em\raisebox{2.5pt}{{\tiny $r$}}\kern2.9pt}}}}
+\newcommand{\Mv}{\mathop{\raisebox{-1.5pt}{\mbox{$\Box$\kern-.55em\raisebox{2.5pt}{{\tiny $h$}}\kern2.9pt}}}}
+\newcommand{\Ct}{\mathbf{Ct}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\WA}{\mathbf{W\!A}}
+
+\newcommand{\clock}{\count254=\time \divide\count254 by 60
+ \count255=\count254 \multiply\count255 by -60
+ \advance\count255 by \time
+ \ifnum\count254<10 0\fi\number\count254\,:\,%
+ \ifnum\count255<10 0\fi\number\count255}
+
+
+%\newcommand{\diag}{\mathop{\rm diag}\nolimits}
+
+%\graphicspath{{./pics/}}
+\graphicspath{{./pics/}}
+
+%******************************************************************************
+\begin{document}
+
+
+\hypersetup{pdfauthor={D. Maltseva, V. Batagelj}}
+%\hypersetup{pdftitle={Bikes; 1. data}}
+\hypersetup{pdftitle={SNA. Evolution of the field}}
+
+\maketitle
+
+
+%******************************************************************************
+
+\section{Introduction}
+
+Social Network Analysis (SNA) has moved from a fragmented direction represented by the works of individual scientific groups unrelated to each other, to a discipline whose representatives by 1990 have formed an “invisible college” and achieved the status of  what Kuhn had labeled a “normal science”  \citep{SNAdev,normSci}. Starting from that time, the field has grown significantly, which can be seen by the number of scientific publications \citep{SNAinf} in different scientific fields, including Natural Sciences, which lead to the so called “physicists` invasion” into SNA \citep{Understand} and resulted with the development of Network Science discipline. This calls into a question whether the field remains unified and which scientific groups (by disciplines, thematic agenda, etc.) it is currently formed of. Thus, the aim of the current study is to trace the evolution of the field of Social Network Analysis using bibliographic approach.  \medskip 
+
+The phenomenon of scientific collaboration and communication by means of bibliometric tools has been extensively studied and reviewed over the last decades. The studies were devoted to the descriptions of scientific fields in different scientific traditions, such as co-authorship trends in Sociology in the USA (Moody, 2004; Hunter and Leahy, 2008), the USA and France (Pontille, 2003), Slovenia (Mali et al. 2010), Russia (Sokolov et al., 2010); Scientometrics and Informetrics (Hou et al., 2008), Library and Information science in Argentina (Chinchilla-Rodríguez et al., 2012), Economics in Poland (Lopaciuk-Gonczaryk, 2016); citation trends in some disciplines represented by thematic journals (Carley et al., 1993) and thematic sets of literature (Hummon and Doreian, 1989; Batagelj et al., 2017).   \medskip 
+
+Different patterns of collaboration and their change over time were studied based on the analysis of co-authorship networks from different subjects, such as Biology, Physics and Mathematics (Newman 2001; Newman 2004)  , Mathematics and Neuro-science (Barabasi et al., 2002), or even all research disciplines in one country (Kronegger et al., 2012; Ferligoj et al., 2015; Cugmas et al., 2016). Scientific networks on multinational level (Glänzel and Schubert, 2004) and international collaboration in science (Wagner and Leydesdorff, 2005) were studied.  \medskip 
+
+The development of the field of our interest, Social Network Analysis, was reflected in several studies focused both on its historiographical description (Freeman, 2004), as well as structures of citation (Hummon and Carley, 1993 Batagelj et al., 2014) and co-authorship (Leidesdorff et al., 2008; Otte, Rousseau, 2002). Attention was also given to citation structures of works written on some topics in SNA - centrality-productivity (Hummon et al., 1990; Batagelj et al., 2014, pp. 117-139), clustering and classification (Kejzar et al., 2010; Batagelj), blockmodeling (Batagelj). \medskip 
+
+Following Hummon and Carley (1993), we formulate the research purpose of the current study as to determine “whether the research in social networks hangs together, whether there are major divisional splits, either institutional or paradigmatic, and whether the members of the specialty attend to each other’s work” (Hummon and Carley, 1993). We believe that the study of scientific community of Russian network researchers is not only important from epistemological point of view, but also can help to identify main active clusters and groups of knowledge exchange and have a possibility to facilitate the development of the field in the future.  \medskip  
+
+\section{Social network analysis: review of the previous studies}
+
+The issues of collaboration and citation in the field of Social Network analysis was studied by the means of historiographical and bibliometric studies. 
+Using the first approach, patterning the links among the people who were involved in the development of the field — its social network — and pointing out the main events and in the field, Freeman (2004) presented “the history of social network analysis written from a social network perspective”. As Freeman shows, the period started from 1940 till the late 1960`s can be associated with the emergence of a large number of “schools”, not aware of each other but potentially competing, which caused a fragmentation of the field in the 1970`s. The special survey conducted by Freeman showed that there was no common agreement about the intellectual antecedents among the “founding fathers” of the discipline. It was only with some special efforts started in 1970`s that caused the institutionalization of the field, among which Freeman points out “bridging” positions of some scholars travelling around different institutions, production of computer programs standardizing analysis of social network data, conferences and regular meetings that brought separate groups together (including those connected by early kind of internet), organization of INSNA association and creation of special journal “Social Networks”, educational programs at the universities. \medskip 
+
+The early example of studying the SNA discipline by bibliometric tools is done by Hummon and Carley (1993). Analyzing citations within the first 12 volumes of journal “Social Network” and important articles that were cited by its authors and brief historical review, authors came to the conclusion that by the 1990`s the members of SNA community have met the requirements for being an invisible college – a core active group of scientists “in the know” (INSNA members), having shared paradigm (understanding of the society as a network), defining important problems, promoting common methods of analysis, and establishing criteria of accomplishment and advance, working in core substantive areas in which ideas developed incrementally. They also had primary professional outlet (Social Networks Journal) and regular face-to-face interaction (through the conferences). Moreover, they also found that the main paths through the citation network were few in number, densely connected, extensive in the number of articles linked together, and continuous, that’s why they made a conclusion that the SNA not only acceded the status of discipline, but also that the type of science engaged in within social networks field was what Kuhn had labeled “normal science”.\medskip 
+
+The institutionalization of the SNA reflected in the intensification of the works within the field. Studying Social Network analysis in Information sciences based on data obtained from Sociological Abstracts base in period 1974-1999, Otte and Rousseau (2002), demonstrated that the yearly number of articles related to SNA was constantly growing, starting from 1980`s. According to Freeman (2004), these data shows that the study of social networks is rapidly becoming one of the major areas of social science research (Freeman, 2004).  \medskip 
+
+The most important works and central players, influencing others, were studied by the means of co-authorship networks analysis (Leidesdorff et al., 2008; Otte, Rousseau, 2002) and analysis of citations structures (Hummon, Carley, 1993; Batagelj et al., 2014). (What was found)  Some studies focused on some subfields of SNA, such as centrality (Batagelj et al., 2014, pp. 117-139), clustering and classification (Kejzar et al., 2010; Batagelj – new), blockmodeling (Batagelj) (What was found) \medskip 
+
+Even though the Initial involvement into the field of Social Network Analysis was interdisciplinary (Hummon, Carley, 1993) and the field did not develop only within Sociology (Otte, Rousseau, 2002), recently it passed through some major changes. In their study of citation analysis of the literature on Social Network Analysis Batagelj et al. (2014, pp. 160-172) demonstrated that at the beginning (1970`s) this direction was developing in the fields of Social Sciences, but starting from 2000`s key works on this topic moves to the sphere of Physics and Neurosciences. The same trend is seen in the analysis of literature on centrality - one of the metrics in SNA (Batagelj et al., 2014, pp. 117-139). \medskip  
+ 
+%Peter Groenewegen, Iina Hellsten, Loet Leydesdorff) на конференции INSNA Sunbelt-2015 под названием «Social Networks as a looking glass on the social networks community».
+%Варга Аттила и Намеслаки Андрес - Формируют ли исследования организационных сетей единое коммуникационное поле? Картирование контекста цитирования в исследованиях организационных сетей.
+
+%******************************************************************************
+
+\section{Data}
+
+\subsection{Data collection and cleaning}
+
+The resource for the data collection is Web of Science (WoS), Clarivate Analytics’s multidisciplinary databases of bibliographic information. The data set is composed of two parts. First part SN5 data collected in 2008 [Batagelj et al., 2014], contains all the records found by query  \texttt {"social network*"}, as well as all articles from the\texttt{Social Networks Journal}, till 2007. Another part was collected in June 2018 using same search scheme. Additionally, in 2018, all the articles from the networks-related journals were included - such as  \texttt{Network Science}, \texttt{Computational Social Networks}, \texttt{Applied Network Science}, \texttt{Social Network Analysis and Mining}, \texttt{Online Social Networks and Media}, \texttt{Journal of Complex  Networks}, \texttt{Journal of Social Structure}, and \texttt{Connections}. Figure 1 shows an example of records that are extracted from WoS. We had to linit the search to the Web of Science Core Collection because for other data bases in WoS special CR fields, which contain citation information, can not be exported.
+
+\begin{figure}
+\renewcommand{\baselinestretch}{0.8}
+\scriptsize
+\begin{verbatim}
+PT J
+AU JOHNSTON, RD
+   BARTON, GW
+AF JOHNSTON, RD
+   BARTON, GW
+TI STRUCTURAL EQUIVALENCE AND MODEL-REDUCTION
+SO INTERNATIONAL JOURNAL OF CONTROL
+LA English
+DT Article
+RP JOHNSTON, RD (reprint author), UNIV SYDNEY,DEPT CHEM ENGN,SYDNEY,NSW 2006,AUSTRALIA.
+CR JOHNSTON RD, 1984, INT J CONTROL, V40, P257, DOI 10.1080/00207178408933271
+   JOHNSTON RD, 1984, UNPUB COMPUT CHEM EN
+   MORARI M, 1980, AICHE J, V26, P232, DOI 10.1002/aic.690260206
+   Morari M., 1977, THESIS U MINNESOTA
+NR 4
+TC 6
+Z9 6
+U1 0
+U2 0
+PU TAYLOR & FRANCIS LTD
+PI LONDON
+PA ONE GUNDPOWDER SQUARE, LONDON, ENGLAND EC4A 3DE
+SN 0020-7179
+J9 INT J CONTROL
+JI Int. J. Control
+PY 1985
+VL 41
+IS 6
+BP 1477
+EP 1491
+DI 10.1080/0020718508961210
+PG 15
+WC Automation & Control Systems
+SC Automation & Control Systems
+GA AQJ42
+UT WOS:A1985AQJ4200007
+ER
+\end{verbatim}
+\caption{WoS record}\label{wos}
+\end{figure}
+
+The nodes, which are described only in WoS CR fields as references, do not have a full description in the colleced data set, and are called \keyw{terminal} nodes. As such nodes can be higly cited and in this sense important, we additionally collected the full descriptions for those which had the  largest values of citing by others (indegree value between 1506 and 150), using WoS. If a description of a node was not available in WoS we constructed a corresponding description without CR data, searching for the work in Google Scholar (and then using RIS biblographic format and converting it to WoS with special R program). We also included manual descriptions of important works without the CR field from data set BM.WoS on the topic of blockmodeling [Batagelj, Chapter 2?]. We should note that such additional influental papers, usually published earlier, could be overlooked by our research queries because it could happen that they do not use the now established terminology. Finally, our data set included 70,795 records with complete descripton (there were 15 duplicates).  \medskip
+
+\subsection{Original networks construction}
+
+Using WoS2Pajek 1.5  (Batagelj, 2007), we transformed our data into a collection of networks: the citation network $Cite$ on works (from the field CR), the authorship network $WA$ on works $\times$ authors  (from the field AU),  the journalship network $WJ$ on  works $\times$ journals  (from the field CR or J9),and the keywordship network $WK$ on works  $\times$ keywords (from the field ID or DE or TI). An important property of all these networks is that they share the same node set as the first one – i.e. the set of works (papers, reports, books, etc.) - wich means that they are \keyw{linked} and can be easily multiplied with each other, creating other networks. \medskip
+
+Works that appears in descriptions can be of two types: those which has full descriptions (called hits), and those, which wer eonly cited (listed in the CR fields, but not presented among the hits). These data was stored in a partition DC, where DC[w] = 1 if a work w has a WoS description, and DC[w] = 0 otherwise. Partition year contains the work`s publication year from the fields PY or CR. Also the vector NP was obtained, where NP[w] = number of pages in each work w. WoS2Pajek also builds a CSV file titles with main data about works with DC = 1 (name, WoS line, author, title, journal, year), which can be used to list results. \medskip 
+
+The usual \keyw{ISI name} of a work (its description in the field CR) has the following structure: \texttt {AU {+ ', ' +} PY \texttt{+ ', ' +} SO[:20] \texttt{+ ', V' +} VL\texttt{+ ', P' +} BP} (surname, first letters of name, year of publication, abbreviation of the journal, its volume and number of starting page), which results in such descriptions as \texttt{LEFKOVITCH LP, 1985, THEOR APPL GENET, V70, P585} (all the elements are in upper case). As in WoS the same work can have different ISI names, the  program WoS2Pajek supports also \keyw{short names} (similar to the names used in HISTCITE output), which has the following format: \texttt {LastNm[:8] \texttt{+ '\_' +} FirstNm[0] \texttt{+ '(' +} PY\texttt{+ ')' +} VL \texttt{+ ':' +} BP}. For example, for the mentioned work the ISI name is \texttt{LEFKOVIT\_L(1985)70:585}. From the last names with prefixes \texttt{VAN}, \texttt{DE}, \ldots the space is deleted, and unusual names start with characters \texttt{*} or \texttt{\$}.\medskip 
+
+However, some problems associated with names recognition still can occur in the data base. It can turn out, that the same works can be named by different names. For example, in our case, the names \texttt {BOYD\_D(2007)13} and \texttt {BOYD\_D(2008)13:210} were describing the same work of Danah Boyd, originally published in 2007, but in many cases referenced as being published in 2008. \medskip 
+
+Two possibilities to correct the data are: (1) to make corrections in the local copy of original data (WoS file); and (2) to make the equivalence partition of nodes and shrink the set of works accordingly in all  obtained networks. We used the second option (Batagelj, Chapter 2). For the works with largest counts we prepared lists of possible equivalents and manually determined equivalence classes. With a program in R we produced a Pajek's partition $EQ.clu$ file used for shrinking the set of works. Using the partition $p=worksEQ$,in Pajek we shrunk the Citation network $cite$, $WA$, $WJ$, and $WK$. The partitions $year$,  $DC$ and the vector $NP$ were also shrunk.  \medskip 
+
+After these iterations, we finally constructed the data set used in this paper. From 70,792 hits (works with full description, DC=1) we produced networks with sets of the following sizes: works |W| = 1,297,133, authors |A| = 395,972, journals |J| = 70,425, key words |K| = 32,409. We removed multiple linkes and loops from the networks and obtaind cleaned networks \textbf{CiteN}, \textbf{WAn}, \textbf{WJn}, and \textbf{WKn}. In the following section, we present some The statistical properties of the obtained networks are presented in the section 4. \medskip  
+
+\subsection{Redused networks construction}
+
+As it was shown above, for the works which are cited only (DC=0) information is provided in a restricted way: we have only information about the first author, and we have no information on the keywords (as there is no titles in the descriptions). That is why, for further analysis we also constructed networks, which contain only works with complete description (DC>0). All the lines in the obtained networks were set to 1. The sizes of the obtained \textbf {reduced networks} are shown in the Table~\ref{rednet}. In obtaind reduced networks \textbf{CiteR}, \textbf{WAr}, \textbf{WJr}, and \textbf{WKr} the amount of sets is the following:works |W| = 70,792, authors |A| = 93,012, journals |J| = 9,219, key words |K| = 32,409 (remained the same).\medskip 
+
+\begin{table}
+\caption{Reduced networks}\label{rednet}\medskip
+\begin{center}
+\begin{tabular}{c|r|r|r|r}
+	&\# nodes (sum)	& \# nodes 1	&\# nodes 2	& \# arcs \\ \hline		 
+WKn &  	1,329,542	& 1,297,133	& 32,409	& 1,167,670 \\
+\textbf{WKr}	& 103,201	& 70,792	& 32,409	& 1,167,666 \\ \hline	
+WJn & 	1,367,558	& 1,297,133	& 70,425	& 1,301,276 \\ 
+\textbf{WJr} 	& 80,011	& 70,792	& 9,219	& 74,933 \\ \hline	
+WAn	& 1693105	& 1,297,133	& 395,972	& 1,442,242 \\ 
+\textbf{WAr}	& 163,804	& 70,792	& 93,012	& 215,901 \\ \hline	
+CiteN & 1,297,133 & & & 2,753,767\\ 
+\textbf{CiteR} & 70,792 & & & 398,199 \\ \hline
+\end{tabular}				
+\end{center}
+\end{table}
+
+\subsection{Boundary problem in Citation network}
+
+The original network \textbf{CiteN} had 1,297,133 nodes and 2,753,767 arcs. Considering the indegree distribution in this network we got the following  counts for the lowest number of recieved citations: 0 (41,954), 1 (933,315), 2 (154,895), 3 (58,141), and 4 (29, 885), which alltogether  combine 94\% of citations. Thus, most of the works were terminal (DC=0) or were referenced only once (indegree = 1). Therefore, we decided to remove all the `cited only' nodes with indegree smaller then 3 (DC = 0 and indeg<3) - the boundary problem (Batagelj et al. 2014). We also removed all the nodes starting with string \texttt{[ANON}.  Finally, we got a subnetwork \textbf{CiteB} with  222,086 nodes and 1 ,521,434 arcs.
+			
+\subsection{Derieved networks}
+
+Using obtained networks - original \textbf{CiteN}, \textbf{WAn}, \textbf{WJn}, and \textbf{WKn}, reduced \textbf{CiteR}, \textbf{WAr}, \textbf{WJr}, and \textbf{WKr}, and bounded \textbf{CiteB} we constructed other networks for the further analysis. These networks can be of two types. First type are one-mode networks made by the multiplication of two two-mode networks: network of co-occurence of key words \textbf{KK} (out of WK net), networks of coauthorship \textbf{Co}, \textbf{Cn}, and \textbf{Ct`} (out of WA net), network of authors and keywods \textbf{AK} (out of WA and WK). Another type of networks are those which are produced by the multiplication of three networks: network of citations among authors (made out of Citation net and WA net) \textbf{AACite}, network of citations among journals \textbf{JJCite}, co-citation network \textbf{ACoj'}. The normalization was also used in production of these networks. The description on each derieved network construction is presented in the corresponding sections. 
+
+\section{Statistics on original networks}
+
+\normalsize
+\subsection{Distributions on CiteN}
+
+In the Figure~\ref{yeard}, the distribution of all works (hits + cited only) by year is shown. It is ineteresting to note that this distribution fits very well the log normal distribution (Batagelj et al. 2014, pp. 119–121): 
+
+\[ c\cdot \mbox{dlnorm}(2019-year,a,b), where \]
+$a = 2.543$,
+$b = 0.7206$,
+$c = 1.278 10^6$
+
+\begin{figure}
+\centerline{\includegraphics[width=80mm]{pubYear.pdf}}
+\caption{Citation network: Distribution of works by years}\label{yeard}
+\end{figure}
+\medskip   
+
+In the Figure~\ref{cindeg}, the indegree distribution in citation network - cumulative and usual - logarithmic scale (?) is shown. This distribution fits well the the \keyw{power law} $f = c \cdot n^{-\alpha}$, where fitted $\alpha = 2.3007$, $c=749338$, which means that the small number of works   attracts a large number of citations, and the large number of works attarcts only small number of citations. Works with the largest indegrees are the most cited papers. 
+
+\begin{figure}
+\centerline{
+\includegraphics[width=0.45\textwidth]{CiteIndegCum.pdf} \qquad
+\includegraphics[width=0.45\textwidth]{CiteIndegplfit.pdf} }
+\caption{Citation network: Indegree distribution}\label{cindeg}
+\end{figure}
+\medskip   
+
+Table~\ref{mostcited} shows 60 the most $cited$ works (indegree in \textbf{CiteN}). It can be seen that half of these works (28 works) are published earlier, before 2000. It is also seen that some of these works (15) are books. The top ranked work is the well-known book of Wasserman and Faust published in 1994, and the second ranked work is also a classical article of Granovetter on the ``strenght of weak ties'' concept. The other books of  ``social'' networks scientists cited more then 500 times (number in parentheses) are:  Burt RS, Structural Holes: The Social Structure of Competition, 1992 (2333); Putnam RD, Bowling alone: America’s declining social capital, 2000 (1510); Scott J, Social Network Analysis: A Handbook, 2000 (1192); Everett MG, $Ucinet for Windows: Software for social network analysis, 2002$ (1171); Coleman J, Foundations of Social Theory, 1990 (1093); Borgatti SP,  $Ucinet for Windows: Software for Social Network Analysis, 2002$ (999); Hanneman RA, Introduction to social network methods, 2005 (854); Lin N, Social capital. A theory of social structure and action, 2001 (800); Rogers EM, Diffusion of innovations, 2003 (628); Putnam RD, Making democracy work: Civic institutions in modern Italy, 1993 (613); Zachary WW, An information flow model for conflict and fission in small groups, 1977 (583); Burt, RS	Brokerage and closure: An introduction to social capital, 2005 (565);  Rogers EM, Diffusion of Innovation. 4th, 1995 (555);  Fischer CS, To dwell among friends: Personal networks in town and city, 1982 (539). Other artciles of ``social'' network scientists listed in the table (topics in parentheses) belong to McPherson (homophily), Freeman and Bonachich (centrality, betweenness), Burt (structural holes), Coleman, Portes, Adler (social capital), Granovetter, Uzzi (embeddedness), Milgram (small world), Borgatti. \medskip 
+
+Interestingly, the list also includes a lot of names of phisicists working with network approach: highly ranked articles of Watts DJ - Collective dynamics of 'small-world' networks, appeared in NATURE in 1998 (2906), as well as Barabasi AL-  Emergence of scaling in random networks, appeared in SCIENCE	in 1999 (2614). Other works are of Newman, Albert, Girvan, Fortunato, Blondel, Clauset on large and complex networks, community detection and clustering. A famous work of Erdos ``On random graphs'', published in 1959, is also in the list. \medskip 
+
+There are also some representatives of the other spheres - in such expecte  topics as social network sites and social media (including highly rated artile of Boyd ``Social network sites: Definition, history, and scholarship'', published in 2007 and having 2447 citations); medicine (including famous works of Christakis NA on spread of obesity and smoking), and management. \medskip 
+
+\begin{table}
+\caption{Citation net:\label{mostcited} The most cited works - indegree}\medskip
+\renewcommand{\arraystretch}{0.95}
+%\small
+\begin{tabular}{r|r|l||r|r|l}
+i	& freq	& id	                                           & i	& freq & id \\ \hline
+1& 	5348& 	WASSERMA\_S(1994):& 	31& 	734& 	NEWMAN\_M(2001)98:404	\\
+2& 	4471& 	GRANOVET\_M(1973)78:1360& 	32& 	719& 	NEWMAN\_M(2010):	\\
+3& 	2906& 	WATTS\_D(1998)393:440& 	33& 	701& 	PORTES\_A(1998)24:1	\\
+4& 	2614& 	BARABASI\_A(1999)286:509& 	34& 	687& 	BLEI\_D(2003)3:993	\\
+5& 	2561& 	FREEMAN\_L(1979)1:215& 	35& 	670& 	BURT\_R(2004)110:349	\\
+6& 	2447& 	BOYD\_D(2007)13:210& 	36& 	654& 	HANSEN\_M(1999)44:82	\\
+7& 	2429& 	MCPHERSO\_M(2001)27:415& 	37& 	639& 	PALLA\_G(2005)435:814	\\
+8& 	2330& 	BURT\_R(1992):& 	38& 	634& 	CLAUSET\_A(2004)70:066111	\\
+9& 	1886& 	COLEMAN\_J(1988)94:95& 	39& 	629& 	BONACICH\_P(1987)92:1170	\\
+10& 	1572& 	NEWMAN\_M(2003)45:167& 	40& 	628& 	ERDOS\_P(1959)6:290	\\
+11& 	1520& 	GIRVAN\_M(2002)99:7821& 	41& 	628& 	UZZI\_B(1997)42:35	\\
+12& 	1510& 	PUTNAM\_R(2000):& 	42& 	628& 	ROGERS\_E(2003):	\\
+13& 	1285& 	ALBERT\_R(2002)74:47& 	43& 	613& 	PUTNAM\_R(1993):	\\
+14& 	1240& 	GRANOVET\_M(1985)91:481& 	44& 	593& 	BERKMAN\_L(1979)109:186	\\
+15& 	1192& 	SCOTT\_J(2000):& 	45& 	583& 	ZACHARY\_W(1977)33:452	\\
+16& 	1171& 	EVERETT\_M(2002):& 	46& 	572& 	BORGATTI\_S(2009)323:892	\\
+17& 	1166& 	NEWMAN\_M(2004)69:026113& 	47& 	569& 	NEWMAN\_M(2001)64:025102	\\
+18& 	1093& 	COLEMAN\_J(1990):& 	48& 	565& 	BURT\_R(2005):	\\
+19& 	1058& 	STEINFIE\_C(2007)12:1143& 	49& 	561& 	ADLER\_P(2002)27:17	\\
+20& 	1034& 	FORTUNAT\_S(2010)486:75& 	50& 	559& 	CHRISTAK\_N(2008)358:2249	\\
+21& 	999& 	BORGATTI\_S(2002):& 	51& 	555& 	ROGERS\_E(1995):	\\
+22& 	945& 	CHRISTAK\_N(2007)357:370& 	52& 	554& 	MILGRAM\_S(1967)1:61	\\
+23& 	867& 	FREEMAN\_L(1977)40:35& 	53& 	553& 	BARON\_R(1986)51:1173	\\
+24& 	854& 	HANNEMAN\_R(2005):& 	54& 	550& 	GRANOVET\_M(1978)83:1420	\\
+25& 	800& 	LIN\_N(2001):& 	55& 	539& 	FISCHER\_C(1982):	\\
+26& 	757& 	KAPLAN\_A(2010)53:59& 	56& 	537& 	BRIN\_S(1998)30:107	\\
+27& 	756& 	BLONDEL\_V(2008):P10008& 	57& 	524& 	MARSDEN\_P(1990)16:435	\\
+28& 	742& 	NAHAPIET\_J(1998)23:242& 	58& 	523& 	KEMP\_D(2003):137	\\
+29& 	740& 	FORNELL\_C(1981)18:39& 	59& 	523& 	KLEINBER\_J(1999)46:604	\\
+30& 	740& 	NEWMAN\_M(2006)103:8577& 	60& 	517& 	BOCCALET\_S(2006)424:175	\\ \hline
+\end{tabular}
+\end{table}
+
+Table~\ref{maxciting} shows 20 the most $citing$ works (works with the largest outdegree in \textbf{CiteN}). These works are books, books introductory chapters, and review articles. Most of these works belong to the field of social sciences and cover different topics, including education, human relationships, archeology, migration, internet studies, and social media. The topic of social network analysis is not presented separately in this type of works. However, it is presented in the works published in journals in physics and computer science from the list (Bocaletti on complex networks, Costa on complex networks, Castellano on social physics of social dynamics, Brandes on methodological foundations of network analysis), as well as works representing the field of animal social networks. 
+
+\begin{table}
+\caption{Citation net: \label{maxciting} The most citing work -- outdegree}
+\renewcommand{\arraystretch}{0.95}
+%\small
+\begin{tabular}{r|r|l||r|r|l}
+i&	freq& 	id&	i&	freq&	id	\\ \hline 
+1& 	1572& 	CHAPMAN\_C(2016):1&	11& 	731& 	TSATSOU\_P(2014):1\\
+2& 	1406& 	HRUSCHKA\_D(2010)5:1&	12& 	654& 	GOODALE\_E(2017):IX\\
+3& 	1293& 	COWARD\_F(2015):1&	13& 	649& 	PEPPER\_G(2017)40:S0140525X1700190X\\
+4& 	1254& 	FITZGERA\_P(2008):1&	14& 	632& 	STROM\_R(2012):1\\
+5& 	1207& 	DAVIES\_N(2015):V&	15& 	613& 	SCHACHNE\_G(2015)23:49\\
+6& 	1055& 	MARSH\_C(2009):1&	16& 	597& 	COSTA\_L(2011)60:329\\
+7& 	942& 	YUS\_F(2011)213:1&	17& 	593& 	BRANDES\_U(2005)3418:1\\
+8& 	929& 	BOCCALET\_S(2006)424:175&	18& 	586& 	ROBERTS\_J(2014):1\\
+9& 	799& 	REEVES\_M(2017):1&	19& 	557& 	GUNTER\_B(2016):1\\
+10& 	768& 	GROSS\_J(2007):1&	20& 	547& 	CASTELLA\_C(2009)81:591\\ \hline 
+\end{tabular}
+\end{table}
+
+\subsection{Distributions on WAn}
+
+Table~\ref{numpap} shows authors with the largest number of papers, which is shown by the indegree distribution of the \textbf{WAn} network. It can be seen that almost all of these names, except Newman, belong to Chinese authors. However, this is the result of the well-known \href{https://en.wikipedia.org/wiki/List_of_common_Chinese_surnames}{"three Zhang, four Li"} effect: as the number of original surnames in China is relatively small, there is a high chance that different authors, having the same surname and first letter of the name, shrink together, creating ``generalized'' authors. Such problem could be overcame if we had a special ID for each scientists. 
+
+\begin{table}
+\caption{WA net: \label{numpap} Authors with the largest number of papers -- indegree}
+\renewcommand{\arraystretch}{0.9}
+\begin{center}
+\begin{tabular}{l|l|l||l|l|l}
+Rank& 	Value& 	Id& 	Rank& 	Value& 	Id\\  \hline   
+1& 	1169& 	WANG\_Y& 	21& 	552& 	KIM\_H\\ 
+2& 	883& 	ZHANG\_Y& 	22& 	550& 	CHEN\_J\\ 
+3& 	868& 	CHEN\_Y& 	23& 	536& 	LIU\_X\\ 
+4& 	847& 	LI\_Y& 	24& 	533& 	WANG\_L\\ 
+5& 	838& 	WANG\_X& 	25& 	509& 	LI\_H\\ 
+6& 	819& 	ZHANG\_J& 	26& 	490& 	KIM\_Y\\ 
+7& 	788& 	WANG\_J& 	27& 	485& 	ZHANG\_Z\\ 
+8& 	786& 	LIU\_Y& 	28& 	474& 	WANG\_Z\\ 
+9& 	766& 	LEE\_J& 	29& 	471& 	WANG\_S\\ 
+10& 	765& 	LEE\_S& 	30& 	471& 	CHEN\_X\\ 
+11& 	749& 	LI\_J& 	31& 	471& 	\textbf{NEWMAN\_M}\\ 
+12& 	708& 	LI\_X& 	32& 	462& 	CHEN\_L\\ 
+13& 	696& 	CHEN\_C& 	33& 	461& 	ZHANG\_L\\ 
+14& 	690& 	KIM\_J& 	34& 	450& 	YANG\_Y\\ 
+15& 	620& 	WANG\_H& 	35& 	450& 	ZHANG\_H\\ 
+16& 	611& 	ZHANG\_X& 	36& 	432& 	WU\_J\\ 
+17& 	611& 	LIU\_J& 	37& 	431& 	LEE\_H\\ 
+18& 	570& 	CHEN\_H& 	38& 	420& 	LI\_Z\\ 
+19& 	557& 	KIM\_S& 	39& 	420& 	WANG\_W\\ 
+20& 	554& 	WANG\_C& 	40& 	417& 	LI\_L\\ \hline  
+\end{tabular}
+\end{center}
+\end{table}
+
+Looking at the outdegree of \textbf{WAn} network, we can get an information on the number of authors in works. This distribution is presented in the Table~\ref{numpapout}. It can be seen that the majority of works (95.5\%) has only one author (however, the majority of this group are works that are cited only, which contain information only on the first author). Other 4\% of all the works have from 2 to 5 authors. In some works, hovever, the amount of authors is pretty high. On the (Table~\ref{maxnumofauthors}) we present the works which have more then 25 authors. The most ``extreme'' case is the work ``Sharing and community curation of mass spectrometry data with Global Natural Products Social Molecular Networking'', published in $Nature Biotechnology$ in 2016, which has 126 authors. Almost all the works from this list belong to the fields of Natural science - medical, health, epidemiological, and behavioral studies. For these fields, the inclusion of all the authors inplementing a research project to the paper is quite a frequent situation.  However, the third rated article - ``Discussion on the paper by Handcock, Raftery and Tantrum'', - published in $Royal Statistical Society. Journal. Series A : Statistics in Society$ collect 48 ``social'' networks scientists.\medskip
+
+\begin{table}
+\caption{WA net: \label{numpapout} Number of authors in works -- outdegree}
+\renewcommand{\arraystretch}{0.9}
+\begin{center}
+\begin{tabular}{l|l|l||l|l|l}
+outdeg&  	Freq&  	Freq\% &  	outdeg&   Freq &	Freq\%\\ \hline   
+1&  	1239496&  	95.5566&  	21&  	4&  	0.0003\\
+2&  	18637&  	1.4368&  	22&  	3&  	0.0002\\
+3&  	16661&  	1.2844&  	23&  	4&  	0.0003\\
+4&  	10617&  	0.8185&  	24&  	2&  	0.0002\\
+5&  	5759&  	0.4440&  	25&  	1&  	0.0001\\
+6&  	2802&  	0.2160&  	26&  	2&  	0.0002\\
+7&  	1322&  	0.1019&  	27&  	5&  	0.0004\\
+8&  	686&  	0.0529&  	28&  	2&  	0.0002\\
+9&  	384&  	0.0296&  	29&  	1&  	0.0001\\
+10&  	247&  	0.0190&  	31&  	3&  	0.0002\\
+11&  	155&  	0.0119&  	36&  	1&  	0.0001\\
+12&  	90&  	0.0069&  	41&  	1&  	0.0001\\
+13&  	70&  	0.0054&  	42&  	1&  	0.0001\\
+14&  	54&  	0.0042&  	43&  	1&  	0.0001\\
+15&  	32&  	0.0025&  	48&  	1&  	0.0001\\
+16&  	12&  	0.0009&  	53&  	1&  	0.0001\\
+17&  	14&  	0.0011&  	126&  	1&  	0.0001\\
+18&  	9&  	0.0007&  	  & 	 & 	\\
+19&  	6&  	0.0005&  	 &	 &	\\
+20&  	2&  	0.0002&  	&	 &	\\ \hline
+SUM &     &              &       &  1297133 & 100  \\ \hline   
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{longtable}{l|p{1.8cm}|p{9cm}|p{3cm}|l|}
+\caption{WA net: \label{maxnumofauthors} Works with the largest number of authors}\\ 
+\small
+\renewcommand{\arraystretch}{0.7}
+Value& First author & Title & Journal & Year \\ \hline\endhead
+126&	Wang, MX&	 Sharing and community curation of mass spectrometry data with Global Natural Products Social Molecular Networking&	NAT BIOTECHNOL&	2016\\
+53&	Vashisht, R&	 Crowd Sourcing a New Paradigm for Interactome Driven Drug Target Identification in Mycobacterium tuberculosis&	PLOS ONE&	2012\\
+48&	Snijders, TAB&	 Discussion on the paper by Handcock, Raftery and Tantrum&	J ROY STATIST SOC SER A STAT&	2007\\
+43&	Gustavsson, A&	 Cost of disorders of the brain in Europe 2010&	EUR NEUROPSYCHOPHARM&	2011\\
+42&	DOLL, LS&	 Homosexually and nonhomosexually identified men who have sex with men - a behavioral-comparison&	J SEX RES&	1992\\
+41&	Magliano, L&	 Family psychoeducational interventions for schizophrenia in routine settings: impact on patients' clinical status and social functioning and on relatives' burden and resources&	EPIDEMIOL PSICHIATR SOC&	2006\\
+36&	Auradkar, A&	 Data Infrastructure at LinkedIn&	PROC INT CONF DATA&	2012\\
+31&	Durkee, T&	 Prevalence of pathological internet use among adolescents in Europe: demographic and social factors&	ADDICTION&	2012\\
+31&	Kaur, K&	 Fluoroquinolone-related neuropsychiatric and mitochondrial toxicity: a collaborative investigation by scientists and members of a social network&	J COMMUNITY SUPPORT&	2016\\
+31&	Hermanussen, M&	 Adolescent Growth: Genes, hormones and the Peer Group. Proceedings of the 20th Aschauer Soiree, held at Gkicksburg castle, Germany, 15th to 17th November 2013&	PEDIATR ENDOCR REV P&	2014\\
+29&	Corazza, O&	 Promoting innovation and excellence to face the rapid diffusion of Novel Psychoactive Substances in the EU: the outcomes of the ReDNet project&	HUM PSYCHOPHARM CLIN&	2013\\
+28&	Magliano, L&	 "I have got something positive out of this situation'': psychological benefits of caregiving in relatives of young people with muscular dystrophy&	J NEUROL&	2014\\
+28&	Console, L&	 WantEat: interacting with social networks of smart objects for sharing cultural heritage and supporting sustainability&	FRONT ARTIF INTEL AP&	2012\\
+27&	Sikora, M&	 Ancient genomes show social and reproductive behavior of early Upper Paleolithic foragers&	SCIENCE&	2017\\
+27&	Magliano, L&	 Burden, professional support, and social network in families of children and young adults with muscular dystrophies&	MUSCLE NERVE&	2015\\
+27&	Lopez-Fernandez, O&	 Self-reported dependence on mobile phones in young adults: A European cross-cultural empirical survey&	J BEHAV ADDICT&	2017\\
+27&	Gine-Garriga, M&	 The SITLESS project: exercise referral schemes enhanced by self-management strategies to battle sedentary behaviour in older adults: study protocol for a randomised controlled trial&	TRIALS&	2017\\
+27&	Maher, BS&	 The AVPR1A Gene and Substance Use Disorders: Association, Replication, and Functional Evidence&	BIOL PSYCHIAT&	2011\\
+26&	SEMPLE, SJ&	 Identification of psychobiological stressors among hiv-positive women&	WOMEN HEALTH&	1993\\
+26&	Wang, X&	 Reliability and validity of the international dementia alliance schedule for the assessment and staging of care in China&	BMC PSYCHIATRY&	2017\\
+25&	Banos, O&	 An Innovative Platform for Person-Centric Health and Wellness Support&	LECT N BIOINFORMAT&	2015\\
+\end{longtable}
+
+\subsection{Distributions on WJn}
+
+Table~\ref{jourind} shows the most used journals, which have the maximum values of indegree distribution of the \textbf{WJn} network. In general, there are quite a lot of journals from the social sciences in the list, which are marked in boldface. The dominant journal is $Lecture Notes in Computer Science$, which has more then 7,000 citations, followed by \textit{Social Science \& Medicine} and \textit{Journal of Personality and Social Psychology} with more then 3,000 citations. Other journals that have more then 2,000 citations are multidisciplinary journals \textit{Science, Proceedings of the National Academy of Sciences of the USA, Nature}, as well as  such disciplinary journals as \textit{Computers in Human Behavior, American Journal of Public Health, and American Sociological Review}.These journals are followed by other top-ranked journals in different disciplines having more than 1,500 citations, such as (descending number of citations) \textit{Physica A, Animal Behaviour, Journal of the American Medical Association, Lancet, Scientometrics, American Journal of Sociology, Academy of Management Journal, Lecture Notes in Artificial Intelligence, Journal of Applied Psychology, American Economic Review}. The top-ranked social science journal Social Networks is in 19-th place. The remaining journals cover many disciplines such as  medicine, psychiatry, gerontology, epidemiology, psychology, management, marketing, computer and information science. 
+
+\medskip
+
+As an idea: we can make a distributioN of WJ\_IndegreeN
+
+\begin{table}
+\caption{WJ net:\label{jourind}The most used journals -- indegree}\medskip
+\small
+\renewcommand{\arraystretch}{0.95}
+%\small
+\begin{tabular}{c|r|l||c|r|l}
+Rank&   	Value&   	Id&   	Rank&   	Value&   	Id \\ \hline
+1&   	7080&   	LECT NOTES COMPUT SC&   	31&   	1258&   	RES POLICY{AM J PSYCHIAT}\\   
+2&   	3859&   	SOC SCI MED&   	32&   	1221&   	J BUS RES\\   
+3&   	3408&   	J PERS SOC PSYCHOL&   	33&   	1217&   	\textbf{MANAGE SCI}\\   
+4&   	2719&   	COMPUT HUM BEHAV&   	34&   	1185&   	\textbf{ACAD MANAGE REV}\\   
+5&   	2631&   	SCIENCE&   	35&   	1182&   	\textbf{J CONSULT CLIN PSYCH}\\   
+6&   	2602&   	AM J PUBLIC HEALTH&   	36&   	1151&  \textbf {ORGAN SCI}\\   
+7&   	2599&   	P NATL ACAD SCI USA&   	37&   	1150&   	ADDICTION\\   
+8&   	2208&   	NATURE&   	38&   	1143&   	\textbf{STRATEGIC MANAGE J}\\   
+9&   	2058&   	\textbf{AM SOCIOL REV}&   	39&   	1087&   	\textbf{J GERONTOL B-PSYCHOL}\\   
+10&   	1945&   	PHYSICA A&   	40&   	1075&   	PEDIATRICS\\   
+11&   	1815&   	ANIM BEHAV&   	41&   	1055&   	AM J EPIDEMIOL\\   
+12&   	1778&   	JAMA-J AM MED ASSOC&   	42&   	1050&   	COMPUT EDUC\\   
+13&   	1763&   	LANCET&   	43&   	1022&   	DEV PSYCHO\\   
+14&   	1759&   	\textbf{SCIENTOMETRICS}&   	44&   	1022&   	\textbf{PSYCHOL BULL}\\   
+15&   	1734&   	\textbf{AM J SOCIOL}&   	45&   	1007&   	J ADOLESCENT HEALTH\\   
+16&   	1703&   	\textbf{ACAD MANAGE J}&   	46&   	997&   	\textbf{J MARKETING}\\   
+17&   	1632&   	LECT NOTES ARTIF INT&   	47&   	996&   	ARCH GEN PSYCHIAT\\   
+18&   	1573&   	\textbf{J APPL PSYCHOL}&   	48&   	994&   	AIDS BEHAV\\   
+19&   	1551&   	\textbf{SOC NETWORKS}&   	49&   	972&   	PERS INDIV DIFFER\\   
+20&   	1509&   	\textbf{AM ECON REV}&   	50&   	949&   	PERS SOC PSYCHOL B\\   
+21&   	1433&   	\textbf{J MARRIAGE FAM}&   	51&   	947&   	J BUS ETHICS\\   
+22&   	1400&   	BRIT MED J&   	52&   	939&   	\textbf{J MARKETING RES}\\   
+23&   	1399&   	CHILD DEV&   	53&   	925&   	INFORM SCIENCES\\   
+24&   	1373&   	EXPERT SYST APPL&   	54&   	916&   	\textbf{HARVARD BUS REV}\\   
+25&   	1365&   	NEW ENGL J MED&   	55&   	915&   	IEEE T KNOWL DATA EN\\   
+26&   	1363&   	COMMUN ACM&   	56&   	901&   	DRUG ALCOHOL DEPEN\\   
+27&   	1355&   	RES POLICY&   	57&   	900&   	WORLD DEV\\   
+28&   	1279&   	GERONTOLOGIST&   	58&   	899&   	AM J PREV MED\\   
+29&   	1275&   	BRIT J PSYCHIAT&   	59&   	895&   	ADDICT BEHAV\\   
+30&   	1271&   	\textbf{SOC FORCES}&   	60&   	893&   	\textbf{J CONSUM RES}\\  \hline
+\end{tabular}
+
+\end{table}
+
+\subsection{Distributions on WKn}
+
+For some works, the keywords are presented in the description in the special fields \texttt {DE} (Author Keywords) and \texttt {ID} (Keywords Plus). However, for some articles this information is not provided, thats is why they are constructed by \textbf{WoS2Pajek} from the titles of works. All composite keywords were split into single words, and lemmatization was used to deal with the ``word-equivalence problem''. \medskip
+
+The majority of works in \textbf{WKn} (95\%) do not have any keywords - these are the works which do not have a complete description (DC=0). The amount of keywords for other 70,792 works varies from 1 to 84. Idea: loolk at moda, or average? \medskip
+ 
+The most frequent keywords are presented in the Table~\ref{keyind}. We have `social' and `network' as the highest rated words, followed (with a large margin) by `analysis', which is trivial. Some frequently used words - model, community, graph, structure, relationship, tie (marked in boldface) - are connected to network analysis, while others - datum, base, information, research, theory, algorithm, approach, pattern, effect - to the scientific research in general. There are also words that belongs to some exact topics - online,  networking, facebook, internet, site, web; health, behavior; support; communication; influence; innovation; trust - which are being studied in network analysis. We should note that keywords can have different meanings in different contexts; however, their identification in differnt subgroups (of authors or works) can bring us better understading of the topic structure of the field. \medskip
+
+\begin{table}
+\caption{WK net: \label{keyind} The most used keywords -- indegree}\medskip
+\renewcommand{\arraystretch}{0.9}
+%\small
+\begin{center}
+\begin{tabular}{r|r|l||r|r|l}
+Rank&  	Value&  	Id&  	Rank&  	Value&  	Id\\ \hline
+1&  	51333&  	\textbf{social}&  	31&  	3485&  	\textbf{structure}\\
+2&  	46191&  	\textbf{network}&  	32&  	3479&  	life\\
+3&  	11751&         \textbf {analysis}&  	33&  	3444&  	risk\\
+4&  	10219&  	\textbf{model}&  	34&  	3358&  	research\\
+5&  	8104&  	\textbf{community}&  	35&  	3143&  	learn\\
+6&  	8090&  	use&  	36&  	3116&  	influence\\
+7&  	7596&  	base&  	37&  	3054&  	student\\
+8&  	7439&  	information&  	38&  	3054&  	impact\\
+9&  	7061&  	health&  	39&  	3049&  	perspective\\
+10&  	7023&  	behavior&  	40&  	3042&  	complex\\
+11&  	6745&  	online&  	41&  	3024&  	theory\\
+12&  	6087&  	networking&  	42&  	2859&  	organization\\
+13&  	5833&  	media&  	43&  	2828&  	\textbf{relationship}\\
+14&  	5404&  	support&  	44&  	2802&  	algorithm\\
+15&  	5101&  	communication&  	45&  	2776&  	education\\
+16&  	5013&  	study&  	46&  	2714&  	group\\
+17&  	4759&  	datum&  	47&  	2704&  	mobile\\
+18&  	4376&  	management&  	48&  	2698&  	\textbf{tie}\\
+19&  	4372&  	internet&  	49&  	2695&  	adult\\
+20&  	4164&  	knowledge&  	50&  	2633&  	approach\\
+21&  	4126&  	user&  	51&  	2608&  	care\\
+22&  	4023&  	facebook&  	52&  	2551&  	adolescent\\
+23&  	3984&  	technology&  	53&  	2479&  	role\\
+24&  	3907&  	site&  	54&  	2472&  	state\\
+25&  	3888&  	web&  	55&  	2467&  	innovation\\
+26&  	3855&  	self&  	56&  	2434&  	pattern\\
+27&  	3784&  	\textbf{graph}&  	57&  	2385&  	effect\\
+28&  	3676&  	performance&  	58&  	2339&  	people\\
+29&  	3534&  	service&  	59&  	2333&  	trust\\
+30&  	3512&  	dynamics&  	60&  	2332&  	family\\ \hline
+\end{tabular}
+\end{center}
+
+\end{table}
+
+%******************************************************************************
+\section{Topic structure of the field}  
+
+We already presented the most common keywords in the  Table~\ref{keyind}. In this section we present the results of keywords co-occurence in different articles.  \medskip
+
+\subsection{Network KKn production}
+
+To construct the one-mode network \textbf{KKn}, we applied the Newman normalization  to the \textbf{reduced WKr net}: the weight of each arc [w, k] was divided by the sum of weights of all arcs having the same initial node as this arc (outdegree of a node) subtracting the initial node (article), equal to 1. Then the normalized network was transposed and multiplied with normalized network. In the obtained network, the loops were deleted and bidirected arcts were transformed to edges (with summation of the line weights). The obtained network KKn consists of 32,409 nodes and 2,799,530 edges. \medskip
+
+\texttt{KKn = t(n(WK))*n(WK), where n(W,K)[w,k] = WK[w,k]/ (outdeg(w)-1)} \medskip
+
+\subsection{Networks of key words co-occurence}
+
+However, exploratory analysis showed that in the obtained network, the most frequentlty words \textit{social}, \textit{network}, and \textit{analysis} were connecting most of the other keywords, that`s why we deleted these 3 nodes from the obtained network. Using Islands approach, we tried to obtain subnetwork with the size minimum 2 and maximum 75 nodes. We got a large number of islands - 342, - where the majority of islands (301) represent just pairs of keywords. The main island includes 75 nodes; there are also some islands of smaller sizes. 
+
+%make picture of KK\_Main Island net (75 nodes) 
+%picture KK_2-41(132 nodes)
+%picture KK_Pairs 
+
+
+%******************************************************************************
+\section{Citation network}  
+
+We restricted the original citation network \textbf{CiteN} to its `boundary' - \textbf{CiteB} with 222,086 nodes and 1,521,434 arcs. A citation network is usually (almost) acyclic; however, it can include some small cyclic parts, which can be obtained as strong components of the network (with the minimum size 2). At first we searched for nontrivial strong components.To get an acyclic network we applied the \keyw{preprint transformation} to CiteB. The preprint transformation function replaces each work u from a strong component by pair of nodes - published work u and its preprint version u`. A published work could cite only preprints. Each strong component was replaced by a corresponding complete bipartite graph on pairs (Batagelj et al. 2014). The resulting network \textbf{CiteT} had 222,189 nodes and 1,521,658 arcs. The increase in the number of works is due to some of them appearing twice with one name starting with an = sign indicating the “preprint” version of a paper.\medskip
+
+Then we computed the \textbf{SPC weights} on \textbf{CiteT} network arcs. The total flow is [xx]. We identified main paths (CPM main path and Key-route paths) in this network, and then used an \textit{Link islands approach} () to find the most connected components of this network. For the same network, we also computed the \textbf{probabilistic flow}, and used the \textit{Vertex islands approach} to get its components. The obtained results are presented in the following section. \medskip
+
+\subsection{Strong components}  
+
+The citation network CiteB has 41 nontrivial strong components of different size, which are presented in the  Figure~\ref{citecomp}). The reciprocal (cycle) links are marked with the bluse colour, while directed pink lines also show the connections of these nodes with others. In the majority of the cases, mutual referencing between the works is a characteristic of papers published in the same issue of the journal. For example, the first large cycle combined of 12 works published in a special issue named “Social Networks: new perspectives” in the journal `Behavioral Ecology and Sociobiology (Volume 63, Issue 7, May 2009). Another example are the works \texttt {BATAGELJ\_V(1992)14:63} and \texttt {BATAGELJ\_V(1992)14:121}, and \texttt {FAUST\_K(1992)14:5} and \texttt {ANDERSON\_C(1992)14:137} in the special Issue on Blockmodels in the journal `Social networks' (Volume 14, Issues 1–2, March–June 1992). \medskip
+
+Other cases are: \texttt {TUMMINEL\_M(2011):P01019} and \texttt {TUMMINEL\_M(2011)6:0017994}, \texttt {WILSON\_A(2015)69:1617} and \texttt {WILSON\_A(2015)26:1577}, \texttt { PARSEGOV\_S(2015):3475} and \texttt {PARSEGOV\_S(2017)62:2270} (same author); \texttt {VEENSTRA\_R(2013)23:399} and \texttt {DAHL\_V(2014)24:399} (same journal); \texttt {ALMAHMOU\_E(2015)33:152} and \texttt {MOK\_K(2017)35:463}, \texttt {XIA\_W(2016)3:46} and \texttt {PROSKURN\_A(2016)61:1524} (different authors and journals). \medskip
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,viewport=75 34 690 535,clip=]{strong.pdf}
+\end{center}
+\caption{Strong components  \normalsize from SPC network} \label{citecomp}
+\end{figure}
+
+\subsection{CPM main path and Key Routes}  
+
+Figure~\ref{mainFrag} shows the CPM main path through the social network analysis literature (which is the same to the one obtained with Main path procedure), which includes 59 nodes. We devided this CPM main to three parts, according to the disciplinary of the works that are presented. The first group composed of the works published in 1944 -- 1996, present the works of `social' network scientists. These works appeared in such journals as `Social networks', `Administrative Science Quarterly',`Annual Review of Sociology', `American Sociological Review', `Social Forces `, `Sociological Methods \& Research', `Journal of Mathematical Psychology', `Psychological Review', `The Journal of Psychology `, recalling the history of social network analysis formation. 6 of 20 works in this group belong to R. Burt. \medskip 
+
+However, since 1999 the initiative in this discipline goes to the physicists, whose works appears in such journals  as `Physical Review E', `Journal of Statistical Physics', `Reviews of Modern Physics', `European Physical Journal B', `Physics Reports', `Nature', and `SIAM Review'. 9 of 14 works in this part of network belong to M. Newman. \medskip 
+
+The third part of the main path, which contains works from 2008 to 2018, is devoted to completely another topic -- animal social networks. The works apper at such journals as `Animal Behaviour', `American Journal of Primatology', `Primates',`Journal of Evolutionary Biology', `Journal of Animal Ecology', `Journal of Evolutionary Biology', `Trends in Ecology \& Evolution', and others. The most active author in this group is D. Farine, who has 6 out of 25 works.  \medskip 
+
+While the ``invasion of physics'' into the social network analysis was already shown by other studies (), the appearance of the third group in the main path is quite surprising, because previously it was shown that the trend goes from physics to neuroscience (). \medskip  
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.3\textwidth,viewport=118   28 235 262,clip=]{CPMpath.pdf}\qquad
+\includegraphics[width=0.3\textwidth,viewport=118 239 235 416,clip=]{CPMpath.pdf}\qquad
+\includegraphics[width=0.3\textwidth,viewport=118 394 235 681,clip=]{CPMpath.pdf}
+\end{center}
+\caption{Main path by fragments -- sociology, physics, biology}\label{mainFrag}
+\end{figure}
+
+The procedure of key-route paths () produces a more nuanced image of most important paths in the social network analysis literature, as it  implies some deviations from the structure of the network, identified with the CPM path method.  Figure~\ref{keyRoute} shows the obtained Key-route paths, which contain 127 nodes. Basically, we can see the division into three previously mentioned groups. \medskip   
+
+\textbf{The first period (1944--1999)} includes 50 works of the `Network science' discipline. It starts with two works of Heider on his theory of social perception and cognitive organization of 1944 and 1946, which form the basis for the work of Cartwright of 1956 on structural balance. Then , with some marin, two works of Holland on structural models follows, published in 1970-1971. Next comes a classical paper of Granovetter on strength of weak ties (1973), which is a basis for the works of Breiger on clustering relational data and White on blockmodels, followed by the one by Alba on the measure based on social proximity in networks, and Boorman on role structures in multiple networks, published in 1975-76. Then there are 6 works of Burt on the `main' path on the topics of positions in multiple networks (stratifiction and prestige), structural equivalence and networks subgoups, published from 1977 to 1981, which also have connections to  the works of Holland on social structure, Breiger, Lauman, and Wellman on communities structures, Breiger on social roles, and Faust on structural and general equivalences, published at about the same time period. Summing up, this group of works is dealing with network and community strcutures, positions, structural equivalence, and blockmodels.  \medskip 
+
+These works are followed by the works on measurement and different network metrics - Romney and Bernard (1982) on recalled data for networks constructin, and Stephenson on centrality (1989). The last work is also connected to the works of Mizruchi on measures of influence, Bonacich on power and centrality measures, and Burt, Mariolis, Mizruchi on interlock networks. This is followed by the work of Freeman on the measure of centrality, which was published in 1991, and it is very strongly connected to the work of Valente on social network thresholds in the diffusion of innovations (1996). Another strong connection of Valente goes to the previous work of Michaelson (1993) on thedevelopment of a scientific speciality as diffusion through social relations.  \medskip 
+
+The work of Valente is the one bridging the first group of `social' network scientists with the group of physicists, which includes 28 works from the `Network science' discipline and form the \textbf{second period (1999--2008)}. It is cited by Newman in the work on the small-world network model, appeared in 1999. This work is followed by others on the same topic (small-world networks), written by Moore, Newman, as well as by the work of Callaway on random graphs (2000). Then both directions meet at the work of Strogatz on complex networks, and then this topic continues, including 
+clustering and preferential attachment in growing networks and spread of epidemic disease on networks (Newman, 2001, 2002). Sincel 2003 to 2006, the topic went to the direction of community structures identification in large networks. \medskip 
+ 
+We should note, however, that there is also a `epidemiological turn' in the observed network, which starts from the works of Stephens and Freeman, followed by Milardo, Neaigus, and Rothenberg in the works on the deseases transmission (1992-98), and Potterat in the infections transmission (1999). These works are cited by Ferguson (desease transmission), and then the route comes back to the main path - the Newman`s on the structure and function of complex networks (2003). \medskip 
+
+ Since that time, the topics of the obtained Key-routes network changes significantly. The work of Newman on community stractures is strongly connected to the work of Lusseau (2009) on animal social networks, which starts the \textbf{third period (2008--2018)}, which includes 49 works of the behavioural ecologists. This work is followed by many others, at the same topic - Krause, James (2009) with general works on animal social network analysis, and Ramos-Fernandez, Kasper, Voell, Lehmann, Brent, Sueur (2009-2011), working with social networks of Nonhuman Primates (monkeys, baboons). These works are followed by the one of Croft (2011), which represent a practical guide on  hypothesis testing in animal social networks. This work is cited by the works presented the research on mixed-species groups (Farine), killer whales (Foster), sharks (Mourier), dolphins (Cantor), published in 2012, and birds (Silk), and starlings (Boogert), published in 2014. There are also some more works on and methodological issues of Hobson ( `An analytical framework for quantifying and testing patterns of temporal dynamics in social networks'), Castels (` Social networks created with different techniques are not comparable'), and Pinter-Wollman ( `The dynamics of animal social networks: analytical, conceptual, and theoretical advances'), published in 2013-2014. These works are followed by four works of Farine, published in 2015, on both methodological issues on constructing, conducting and interpreting animal social network analysis, and study of the wild birds territory acquisition. We should also note that there are some works connected to the `main' path, which represents the social personality and phenotypic types (Wilson, Alpin, Farine), published in 2013-14.\medskip   
+ 
+The upper part of the network contains works published in the last years, 2016-18. It presents studies on desease transmission (Adelman, Sah, Silk, Dougherty), and the studies of animal paths tracking (Leu, Spiegel). Also it contains works on theoretical issues ( `Current directions in animal social networks' by Croft, `Social traits, social networks and evolutionary biology' by Fisher) and implementation of different models of network analysis to animal behaviour research:  exponential random graph models and statistical network models (Silk), the potential of stochastic actor-oriented models (Fisher),  dynamic vs. static social network analysis (Farine). \medskip   
+
+The full information on the papers (label of the work, first author, title, journal where it was published, year of publication) included into the Main path and Key-route paths is presented on the Table~\ref{compareA}. They are also relevant for our analysis on the islands, presented in the following subsections. In this table, the second column (code) describes in which analysis the work appeared (1- Key-routes, 2- Main Path (CPM), 3- Island 5, 4 - Island 4, 5 - Node Island, 6 - Probilistic Flow Island). 
+ 
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,viewport=120 15 605 700,clip=]{KeyRouteWxy.pdf}
+\end{center}
+\caption{Key Routes} \label{keyRoute}
+\end{figure}
+
+\subsection{Link Islands}
+
+Using Islands approach, we searched for SPC link islands (on line weights) with the number of nodes between 20 and 200, and found 5 islands of 138, 65, 13, 12, and 11 nodes. The obtained largest Islands 4 of 138 is presented on the Figure~\ref{island4}. It structure reminds the structure if the Key-route paths - there are 89 overlapping nodes in two networks. The majority of the works presented in this island (from bottom to the work of Valente, published in 1996) belong to the `social' network scientists, whose works were alreday discussed upper. In comparison to the Key-routes, this network includes more evident group of works on blockmodeling - by Faust, Doreian, and Batagelj, published in 1992-1997. In the `physicists`' part (from Newman, 1999 to Newman, 2006 on the `main' route) the topic of evolving networks is also presented (Bianconi, Yook, 2001, Jeong, 2003). The third, behavioural ecologists` part is pretty short and finishes by the works on animal social networks published in 2010.  \medskip   
+
+However, this group is fully presented in another Island 5 containing 65 nodes and presented on the Figure~\ref{island4}. It has 39 overlapping nodes with the Key-routes. `New' works presented in the island also belong to the topics on animal social networks described above. Howver, there are some more works devoted to the methodological issues of network analysis itself -  reconstructing animal social networks from independent small-group observations Perreault, 2010), temporal dynamics and network analysis (Blonder, 2012), mining of animal social systems (Krause, 2013), animal social network inference and permutations for ecologists in R  (Farine, 2013), estimating uncertainty and reliability of social network data using Bayesian inference (Farine, 2015). It is ineteresting, that this group form a separate subnetwork, even though it is connected to the upper part of Island 4 by topic. It may mean that the works included into this subnetwork are more connected to each other, while social animal network works in the Island 4 are more stongly connected to the works of phisicists.  \medskip   
+
+Three other obtained islands are presented on the Figure~\ref{citeisl1-3}. For the purpose of better visibility of the picture, the weights were maximized by 100. The left Island 2 consitst of 12 work in the field of social networks in educations, imcluding issues of leadership, teachers and students communication and collaboration. Another very coherent group is presented in the same figure on the bottom left. These are 11 works in neuropsychiatrie written bu Ausrian authors. The left upper island presenets 13 works of physicists with the strongest links between the work of Bocaletti published in 2014 on the structure and dynamics of multilayer networks and others on the topics of complex, multilayer, dynamic, and temporal networks, as well as spreading processes in these networks.  \medskip    
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,viewport=45 0 615 695,clip=]{Island4Wxy.pdf}
+\end{center}
+\caption{Island 4, from SPC network} \label{island4}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,viewport=150 5 585 420,clip=]{Island5Wxy.pdf}
+\end{center}
+\caption{Island 5, from SPC network} \label{island5}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,viewport=25 55 595 330,clip=]{Island1-3Wxy.pdf}
+\end{center}
+\caption{Islands 1-3, from SPC network} \label{citeisl1-3}
+\end{figure}
+
+% Node Island (200) - will we present? 	
+% SPC node islands [Vertex weights] of sizs  [20, 200] = 1 island of 200 nodes
+
+%******************************************************************************
+
+\subsection{Probabilistic flow}
+
+We computed the Probabilistic flow on weighted network, and determined node islands (on vertex weights) with the number of nodes between 10 and 200 and got one island with the size of 200 of nodes.
+%Will we show it? Picture can be - Prob flow Island.net 
+
+Table~\ref{pFlow} present the list of the  most important works, which have the highest indegree values of Probabilistic flow network. For the purposes of visibility, the values were maximized by 1,000,000. 39 works from this list overlap with the table, obtained from the highest indegree values of network CiteN. First 30 works in the list, except \texttt{BLEI\_D(2003)3:993} on  latent dirichlet allocation, \texttt{ALBERT\_R(1999)401:130} on world-wide web, and \texttt{O`REILLY\_T(2005)} on web 2.0 are met in the both lists. Other works appeared in this island, which are not in the list of the most cited works, are works of physicists (Strogatz, Watts, Albert), computer scientists (Brin), mathematics (Bollobas), scientometrics (Page, Redner), and social scientists (Katz, Mitchell, Glaser). 
+
+\begin{table}
+\caption{Most important works from Probabilistic Flow network}\label{pFlow}\medskip
+\small
+\renewcommand{\arraystretch}{0.9}
+\small
+\begin{tabular}{c|c|l||c|c|l|l}
+Rank&   	Value&   	Id&   	Rank&   	Value&   	Id\\ \hline
+1&   	4691&   	WASSERMA\_S(1994):&   	31&   	545&   	BLONDEL\_V(2008):P10008\\
+2&   	2941&   	WATTS\_D(1998)393:440&   	32&   	527&   	KATZ\_L(1953)18:39\\
+3&   	2676&   	GRANOVET\_M(1973)78:1360&   	33&   	526&   	NEWMAN\_M(2010):\\
+4&   	2445&   	BOYD\_D(2007)13:210&   	34&   	520&   	STROGATZ\_S(2001)410:268\\
+5&   	2241&   	BARABASI\_A(1999)286:509&   	35&   	517&   	PALLA\_G(2005)435:814\\
+6&   	1926&   	FREEMAN\_L(1979)1:215&   	36&   	499&   	CLAUSET\_A(2004)70:066111\\
+7&   	1396&   	GIRVAN\_M(2002)99:7821&   	37&   	497&   	ERDOS\_P(1960)5:17\\
+8&   	1299&   	NEWMAN\_M(2003)45:167&   	38&   	488&   	ROGERS\_E(2003):\\
+9&   	1227&   	MCPHERSO\_M(2001)27:415&   	39&   	485&   	NEWMAN\_M(2006)103:8577\\
+10&   	1158&   	ALBERT\_R(2002)74:47&   	40&   	481&   	COLEMAN\_J(1990):\\
+11&   	1105&   	SCOTT\_J(2000):&   	41&   	478&   	BRIN\_S(1998)30:107\\
+12&   	1098&   	BURT\_R(1992):&   	42&   	477&   	AMARAL\_L(2000)97:11149\\
+13&   	1045&   	MILGRAM\_S(1967)1:61&   	43&   	475&   	ERDOS\_P(1959)6:290\\
+14&   	1013&   	NEWMAN\_M(2004)69:026113&   	44&   	465&   	WATTS\_D(1999):\\
+15&   	928&   	KAPLAN\_A(2010)53:59&   	45&   	462&   	LAVE\_J(1991):\\
+16&   	878&   	FREEMAN\_L(1977)40:35&   	46&   	460&   	KLEINBER\_J(1999)46:604\\
+17&   	852&   	PUTNAM\_R(2000):&   	47&   	449&   	SCOTT\_J(1991):\\
+18&   	847&   	COLEMAN\_J(1988)94:95&   	48&   	446&   	BOLLOBAS\_B(1985):\\
+19&   	835&   	BLEI\_D(2003)3:993&   	49&   	442&   	PAGE\_L(1999):\\
+20&   	742&   	GRANOVET\_M(1985)91:481&   	50&   	440&   	NEWMAN\_M(2001)64:025102\\
+21&   	731&   	CHRISTAK\_N(2007)357:370&   	51&   	436&   	NEWMAN\_M(2004)69:066133\\
+22&   	727&   	EVERETT\_M(2002):&   	52&   	431&   	REDNER\_S(1998)4:131\\
+23&   	726&   	NEWMAN\_M(2001)98:404&   	53&   	429&   	CHRISTAK\_N(2008)358:2249\\
+24&   	719&   	ALBERT\_R(1999)401:130&   	54&   	424&   	ADOMAVIC\_G(2005)17:734\\
+25&   	701&   	O'REILLY\_T(2005):&   	55&   	424&   	KEMP\_D(2003):137\\
+26&   	669&   	BORGATTI\_S(2002):&   	56&   	423&   	DOMINGOS\_P(2001):57\\
+27&   	667&   	FORTUNAT\_S(2010)486:75&   	57&   	423&   	MITCHELL\_J(1969):\\
+28&   	633&   	HANNEMAN\_R(2005):&   	58&   	415&   	ALBERT\_R(2000)406:378\\
+29&   	569&   	STEINFIE\_C(2007)12:1143&   	59&   	415&   	GLASER\_B(1967):\\
+30&   	549&   	ZACHARY\_W(1977)33:452&   	60&   	410&   	ROGERS\_E(1995):\\ \hline
+\end{tabular}
+\end{table}
+
+%******************************************************************************
+
+\begin{longtable}{p{0.8cm}|p{1.25cm}|p{2.8cm}|p{7.5cm}|p{3cm}l}
+\caption{Cite net: \label{compareA} Overlapping of components: \\
+(1- Key Routes, 2- Main Path (CPM), 3- Island5, 4 - Island 4, Node Island, 5 - Prob Flow Island)} \\
+\small
+\renewcommand{\arraystretch}{0.7}
+year&	code&	author&	title&	journal\\ \hline \endhead
+1934&	6&	Moreno, JL&	 Who Shall Survive: A New Approach to the Problem of Human Interrelations&*****\\
+1941&	6&	Davis, A &	 Deep South: A Social Anthropological Study of Caste and Class&*****\\
+1944&	1,2&	Heider, F&	 Social perception and phenomenal causality&	PSYCHOL REV\\
+1946&	1,2&	Heider, F&	 Attitudes and cognitive organization&	J PSYCHOL\\
+1948&	6&	Bavelas, A&	 A mathematical model for group structure&	HUM ORGAN\\
+1950&	6&	Homans, GC&	 The human group&	*****\\
+1951&	6&	Leavitt, HJ&	 Some effects of certain communication patterns on group performance&	J ABNORM SOC PSYCH\\
+1953&	6&	Katz, L&	 A new status index derived from sociometric analysis&	PSYCHOMETRIKA\\
+1954&	6&	Barnes, JA&	 Class and committees in a norwegian island parish&	HUM RELAT\\
+1955&	6&	Katz, E&	 Personal influence&	*****\\
+1956&	1,2,4,5,6&	Cartwright, D&	 Structural balance - a generalization of heider theory&	PSYCHOL REV\\
+1957&	6&	Bott, E&	 Family and social network: roles&	*****\\
+1958&	6&	Heider, F&	 The psychology of interpersonal relations&	*****\\
+1959&	6&	Goffman, E&	 The presentation of self in everyday life&	*****\\
+1959&	6&	Erdos, P&	 On random graphs I&	*****\\
+1960&	6&	Erdos, P&	On the evolution of random graphs&	PUBL MAT INST HUNG ACAD SCI\\
+1962&	6&	Rogers, EM&	 Diffusion of innovations&	*****\\
+1965&	6&	Price, DJD&	 Networks of scientific papers&	SCIENCE\\
+1965&	6&	Harary, F&	 Structural models: an introduction to the theory of directed graphs&	*****\\
+1965&	6&	Hubbell, CH &	"An input-output approach to clique
+identification& SOCIOMETRY\\
+1966&	6&	Sabidussi, G&	 the centrality of a graph&	*****\\
+1966&	6&	Coleman, JS&	 Equality of educational opportunity&	*****\\
+1967&	6&	Glaser, BG&	 The discovery of grounded theory: strategies for qualitative theory&	*****\\
+1967&	6&	Milgram, S&	The small world problem&	PSYCHOL TODAY\\
+1967&	6&	Milgram, S&	 The small world problem&	*****\\
+1969&	6&	Travers, J&	 An experimental study of the small world problem&	*****\\
+1969&	6&	Kauffman, S&	 Metabolic stability and epigenesis in randomly constructed genetic nets&	THEORET BIOL \\
+1969&	6&	Mitchell, JC&	 Social networks in urban situations: analyses of personal relationships in central african towns&	*****\\
+1970&	1,2,4,5&	Holland, PW&	 Method for detecting structure in sociometric data&	AMER J SOCIOL\\
+1970&	5&	White, HC&	 Search parameters for small world problem&	SOC FORCES\\
+1970&	6&	Kernighan, BW&	 An efficient heuristic procedure for partitioning graphs&	*****\\
+1971&	1,4,5&	Holland, PW&	 Transitivity in structural models of small groups&	COMP GROUP STUD\\
+1971&	6&	Lorrain, F  &	 Structural equivalence of individuals in social networks&	*****\\
+1972&	6&	Bonacich, P&	 Factoring and weighting approaches to status scores and clique identification&	J MATH SOCIOL\\
+1973&	1,2,4,5,6&	Granovet,MS&	 Strength of weak ties&	AMER J SOCIOL\\
+1973&	4&	White, HC&	 Everyday life in stochastic networks&	SOCIOL INQ\\
+1973&	5&	Holland, PW&	 Structural implications of measurement error in sociometry&	J MATH SOCIOL\\
+1973&	6&	Laumann, EO&	 Bonds of pluralism: the form and substance of urban social networks&	*****\\
+1974&	4,5&	Breiger, RL&	 Duality of persons and groups&	SOC FORCES\\
+1974&	6&	Granovetter, M.S.&	 Getting a job: a study of contacts and careers&	*****\\
+1975&	1,2,4,5&	Breiger, RL&	 Algorithm for clustering relational data with applications to social network analysis and comparison with multidimensional-scaling&	J MATH PSYCHOL\\
+1975&	6&	Fishbein, M&	 Intention and behavior: an introduction to theory and research&	*****\\
+1976&	1,2,4,5,6&	White, HC&	 Social-structure from multiple networks 1 Blockmodels of roles and positions&	AMER J SOCIOL\\
+1976&	1,2,4,5&	Alba, RD&	 Intersection of social circles - new measure of social proximity in networks&	SOCIOL METHOD RES\\
+1976&	1,4,5&	Burt, RS&	 Positions in networks&	SOC FORCES\\
+1976&	1,4,5&	Boorman, SA&	 Social-structure from multiple networks 2 Role structures&	AMER J SOCIOL\\
+1977&	1,2,4,5&	Burt, RS&	 Positions in multiple network systems 1 General conception of stratification and prestige in a system of actors cast as a social topology&	SOC FORCES\\
+1977&	1,2,4,5&	Burt, RS&	 Positions in multiple network systems 2 Stratification and prestige among elite decision-makers in community of altneustadt&	SOC FORCES\\
+1977&	1,4,5&	Holland, PW&	 Social-structure as a network process&	Z SOZ\\
+1977&	4,5&	Laumann, EO&	 Community-elite influence structures - extension of a network approach&	AMER J SOCIOL\\
+1977&	4,5&	White, HC&	 Probabilities of homomorphic mappings from multiple graphs&	J MATH PSYCHOL\\
+1977&	6&	Freeman, LC&	 Set of measures of centrality based on betweenness&	SOCIOMETRY\\
+1977&	6&	Zachary, WW&	 An information flow model for conflict and fission in small groups&	*****\\
+1978&	1,2,4,5&	Burt, RS&	 Cohesion versus structural equivalence as a basis for network subgroups&	SOCIOL METHOD RES\\
+1978&	1,4,5&	Holland, PW&	 Omnibus test for social-structure using triads&	SOCIOL METHOD RES\\
+1978&	1,4,5&	Laumann, EO&	 Community structure as interorganizational linkages&	ANNU REV SOCIOL\\
+1978&	1,4,5&	Breiger, RL&	 Joint role structure of 2 communities elites&	SOCIOL METHOD RES\\
+1978&	4,5,6&	Pool, ID&	 Contacts and influence&	SOC NETWORKS\\
+1978&	4,5&	Killworth, PD&	 Reversal small-world experiment&	SOC NETWORKS\\
+1978&	4,5&	Burt, RS&	 Stratification and prestige among elite experts in methodological and mathematical sociology circa 1975&	SOC NETWORKS\\
+1978&	6&	Granovetter, M&	 Threshold models of collective behavior&	AM J SOCIOL\\
+1979&	1,2,4,5&	Burt, RS&	 Relational equilibrium in a social topology&	J MATH SOCIOL\\
+1979&	1,4,5&	Wellman, B&	 Community question - intimate networks of east yorkers&	AMER J SOCIOL\\
+1979&	4,5&	Breiger, RL&	 Toward an operational theory of community elite structures&	QUAL QUANT\\
+1979&	4,5&	Burt, RS&	 Structural theory of interlocking corporate directorates&	SOC NETWORKS\\
+1979&	6&	Freeman, LC&	 Centrality in social networks conceptual clarification&	SOC NETWORKS\\
+1979&	6&	Berkman, LF&	 Social networks, host-resistance, and mortality - 9-year follow-up-study of alameda county residents&	AMER J EPIDEMIOL\\
+1979&	6&	Garey, MR&	 Computers and intractability: a guide to the theory of np-completeness&	*****\\
+1980&	1,2,4,5&	Burt, RS&	 Models of network structure&	ANNU REV SOCIOL\\
+1980&	1,2,4,5&	Burt, RS&	 Testing a structural theory of corporate cooptation - interorganizational directorate ties as a strategy for avoiding market constraints on profits&         	AMER SOCIOL REV\\
+1980&	4,5&	Burt, RS&	 Cooptive corporate actor networks - a reconsideration of interlocking directorates involving american manufacturing&         	ADMIN SCI QUART\\
+1980&	4,5&	Burt, RS&	 Autonomy in a social topology&         	AMER J SOCIOL\\
+1981&	1,4,5&	Mizruchi, MS&	 Influence in corporate networks - an examination of 4 measures&         	ADMIN SCI QUART\\
+1981&	1,4,5&	Burt, RS&	 A note on inferences regarding network subgroups&         	SOC NETWORKS\\
+1981&	6&	Holland, PW&	 An exponential family of probability-distributions for directed-graphs&         	J AMER STATIST ASSN\\
+1981&	6&	Feld, SL&	 The focused organization of social ties&         	AM J SOCIOL\\
+1982&	1,2,4,5&	Mcpherson, JM&	 Hypernetwork sampling - duality and differentiation among voluntary organizations&         	SOC NETWORKS\\
+1982&	1,2,4,5&	Mariolis, P&	 Centrality in corporate interlock networks - reliability and stability&         	ADMIN SCI QUART\\
+1982&	1,4,5&	Bernard, HR&	 Informant accuracy in social-network data  5  An experimental attempt to predict actual communication from recall data&       	SOC SCI RES\\
+1982&	1,4,5&	Romney, AK&	 Predicting the structure of a communications network from recalled data&         	SOC NETWORKS\\
+1982&	1,4,5&	Dow, MM&	 Network auto-correlation - a simulation study of a foundational problem in regression and survey-research&         	SOC NETWORKS\\
+1982&	6&	Fischer, CS&	 To dwell among friends: personal networks in town and city&         	*****\\
+1982&	6&	Burt, RS &	 Toward a structural theory of action: network models of social structure, perception and action&         	*****\\
+1983&	1,4,5&	Cook, KS&	 The distribution of power in exchange networks - theory and experimental results&         	AM J SOCIOL\\
+1983&	6&	Granovetter, M &	"The strength of weak ties: a network theory
+revisited& SOCIOL THEORY\\
+1983&	6&	Salton, G&	introduction to modern information retrieval&         	*****\\
+1984&	1,2,4,5&	Mizruchi, MS&	 Interlock groups, cliques, or interest-groups - comment&         	SOC NETWORKS\\
+1984&	4,5&	Burt, RS&	 Network items and the general social survey&         	SOC NETWORKS\\
+1984&	4,5&	Marsden, PV&	 Mathematical ideas in social structural-analysis&         	J MATH SOCIOL\\
+1984&	6&	Lazarus, R&	Stress, appraisal, and coping&         	*****\\
+1984&	6&	Axelrod, R&	 The evolution of cooperation&         	*****\\
+1984&	6&	Kuramoto, Y &	Chemical oscillations, waves, and turbulence&         	*****\\
+1985&	1,4,5&	Faust, K&	 Does structure find structure - a critique of burt use of distance as a measure of structural equivalence&         	SOC NETWORKS\\
+1985&	1,4,5&	Tutzauer, F&	 Toward a theory of disintegration in communication-networks&         	SOC NETWORKS\\
+1985&	6&	Cohen, S&	 Stress, social support, and the buffering hypothesis&         	PSYCHOL BULL\\
+1985&	6&	Granovetter, M&	 Economic-action and social-structure - the problem of embeddedness&         	AMER J SOCIOL\\
+1985&	6&	Bollobas, B&	 Random graphs&         	*****\\
+1986&	1,4,5&	Breiger, RL&	 Cumulated social roles - the duality of persons and their algebras&         	SOC NETWORKS\\
+1986&	4,5&	Burt, RS&	 A cautionary note&         	SOC NETWORKS\\
+1986&	6&	Bourdieu P &	The forms of capital&         	*****\\
+1986&	6&	Baron, RM&	 The moderator mediator variable distinction in social psychological-research - conceptual, strategic, and statistical considerations&         	J PERSONAL SOC PSYCHOL\\
+1986&	6&	Bandura, A&	Social foundations of thought and action: a social cognitive theory&         	*****\\
+1987&	1,4,5,6&	Bonacich, P&	 Power and centrality - a family of measures&         	AMER J SOCIOL\\
+1987&	1,4,5&	Burt, RS&	 Social contagion and innovation - cohesion versus structural equivalence&         	AMER J SOCIOL\\
+1988&	1,4,5&	Faust, K&	 Comparison of methods for positional analysis - structural and general equivalences&         	SOC NETWORKS\\
+1988&	6&	House, JS&	 Social relationships and health&         	SCIENCE\\
+1988&	6&	Coleman, JS&	Social capital in the creation of human capital&         	AM JOUR SOC\\
+1988&	6&	Wellman, B&	Social structures: a network approach&         	******\\
+1989&	1,2,4,5&	Stephenson, K&	 Rethinking centrality - methods and examples&         	SOC NETWORKS\\
+1989&	6&	Kamada, T&	 An algorithm for drawing general undirected graphs&         	INFORM PROCESS LETT\\
+1989&	6&	Davis, FD&	 Perceived usefulness, perceived ease of use, and user acceptance of information technology&         	MIS QUART\\
+1989&	6&	Kochen, M &	The small world&         	*****\\
+1990&	1,4,5,6&	Marsden, PV&	 Network data and measurement&         	ANNU REV SOCIOL\\
+1990&	4&	Burkhardt, ME&	 Changing patterns or patterns of change - the effects of a change in technology on social network structure and power&         	ADMIN SCI QUART\\
+1990&	4&	Rice, RE&	 Individual and network influences on the adoption and perceived outcomes of electronic messaging&         	SOC NETWORKS\\
+1990&	6&	Coleman,J.&	Foundations of social theory&         	*****\\
+1990&	6&	Guare, J&	Six degrees of separation: a play&         	*****\\
+1990&	6&	Deerwester, S&	Indexing by latent semantic analysis&         	J AM SOC INF SCI TEC\\
+1991&	1,2,4,5&	Freeman, LC&	 Centrality in valued graphs - a measure of betweenness based on network flow&         	SOC NETWORKS\\
+1991&	6&	Ajzen, I&	The theory of planned behavior&         	ORGAN BEHAV HUM DEC\\
+1991&	6&	Scott, J&	Social network analysis: a handbook &         	*****\\
+1991&	6&	Lave, J &	Situated learning: legitimate peripheral participation  &        	*****\\
+1991&	6&	Fruchterman, TMJ&	 Graph drawing by force-directed placement&         	SOFTWARE PRACT EXPER\\
+1992&	1,4,5&	Milardo, RM&	 Comparative methods for delineating social networks&         	J SOC PERSON RELAT\\
+1992&	4,5&	Faust, K&	 Blockmodels - interpretation and evaluation&         	SOC NETWORKS\\
+1992&	4,5&	Faust, K&	 Blockmodels - interpretation and evaluation&         	SOC NETWORKS\\
+1992&	5&	Batagelj, V&	 Direct and indirect methods for structural equivalence&         	SOC NETWORKS\\
+1992&	5&	Batagelj, V&	 An optimizational approach to regular equivalence&         	SOC NETWORKS\\
+1992&	5&	Batagelj, V&	 Direct and indirect methods for structural equivalence&         	SOC NETWORKS\\
+1992&	5&	Batagelj, V&	 An optimizational approach to regular equivalence&         	SOC NETWORKS\\
+1992&	6&	Burt, RS &	 Structural holes: the social structure of competition&         	*****\\
+1992&	6&	Nowak, MA&	 Evolutionary games and spatial chaos&         	NATURE\\
+1993&	1,4,5&	Michaelson, AG&	 The development of a scientific specialty as diffusion through social-relations - the case of role analysis&         	SOC NETWORKS\\
+1993&	6&	Putnam, RD&	Making democracy work: civic institutions in modern italy &        	*****\\
+1993&	6&	Padgett, JF&	 Robust action and the rise of the medici, 1400-1434&         	AMER J SOCIOL\\
+1993&	6&	Manski, CF&	 Identification of endogenous social effects - the reflection problem&         	REV ECON STUD\\
+1993&	6&	Ahuja, RK&	 Network flows: theory, algorithms, and applications &         	*****\\
+1994&	1,4,5&	Neaigus, A&	 The relevance of drug injectors social and risk networks for understanding and preventing hiv-infection&         	SOC SCI MED\\
+1994&	4,5&	Doreian, P&	 Partitioning networks based on generalized concepts of equivalence&         	J MATH SOCIOL\\
+1994&	6&	Wasserman, S &	 Social network analysis: methods and applications&         	*****\\
+1995&	1,4,5&	Rothenberg, RB&	 Choosing a centrality measure - epidemiologic correlates in the colorado-springs study of social networks&         	SOC NETWORKS\\
+1995&	6&	Molloy, M&	 A critical-point for random graphs with a given degree sequence&         	RANDOM STRUCT ALGOR\\
+1995&	6&	Rogers, EM&	 Diffusion of Innovation. 4th&         	*****\\
+1995&	6&	Granovetter, M.S.&	 Getting a Job: A Study of Contacts and Careers&         	*****\\
+1995&	6&	Nonaka, I&	 The knowledge creation company: how Japanese companies create the dynamics of innovation&         	*****\\
+1995&	6&	Putnam, RD&	Bowling Alone: America's Declining Social Capital. An Interview with Robert Putnam&         	J DEMOCR\\
+1996&	1,2,4,5&	Valente, TW&	 Social network thresholds in the diffusion of innovations&         	SOC NETWORKS\\
+1996&	1,4,5&	Rothenberg, R&	 The relevance of social network concepts to sexually transmitted disease control&         	SEX TRANSM DIS\\
+1996&	4,5&	Doreian, P&	 A partitioning approach to structural balance&         	SOC NETWORKS\\
+1996&	4&	Frank, KA&	 Mapping interactions within and between cohesive subgroups&         	SOC NETWORKS\\
+1996&	6&	Wasserman, S&	 Logit models and logistic regressions for social networks .1. An introduction to Markov graphs and p&         	PSYCHOMETRIKA\\
+1996&	6&	Kretzschmar, M&	 Measures of concurrency in networks and the spread of infectious disease&         	MATH BIOSCI\\
+1997&	4,5&	Friedman, SR&	 Sociometric risk networks and risk for HIV infection&         	AMER J PUBLIC HEALTH\\
+1997&	4,5&	Batagelj, V&	 Notes on blockmodeling&         	SOC NETWORKS\\
+1997&	6&	Uzzi, B&	 Social structure and competition in interfirm networks: The paradox of embeddedness&         	ADMIN SCI QUART\\
+1998&	1,4,5&	Rothenberg, RB&	 Social network dynamics and HIV transmission&         	AIDS\\
+1998&	1,4&	Rothenberg, RB&	 Using social network and ethnographic tools to evaluate syphilis transmission&         	SEX TRANSM DIS\\
+1998&	4,5&	Frank, KA&	 Linking action to social structure within a system: Social capital within and between subgroups&         	AMER J SOCIOL\\
+1998&	6&	Watts, DJ&	 Collective dynamics of 'small-world' networks&         	NATURE\\
+1998&	6&	Portes, A&	 Social Capital: Its origins and applications in modern sociology&         	ANNU REV SOCIOL\\
+1998&	6&	Nahapiet, J&	 Social capital, intellectual capital, and the organizational advantage&         	ACAD MANAGE REV\\
+1998&	6&	Redner, S&	 How popular is your paper? An empirical study of the citation distribution&         	*****\\
+1998&	6&	Wenger, E&	 Communities ofpractice: Learning, meaning, and identity&         	*****\\
+1998&	6&	Page, L &	The pagerank citation ranking: Bringing order to the web.&         	*****\\
+1998&	6&	Brin, S&	 The anatomy of a large-scale hypertextual Web search engine&         	COMPUT NETWORKS ISDN\\
+1998&	6&	Huberman, B&	Strong regularities in world wide web surfing .&         	Science \\
+1999&	1,2,4,5&	Newman, MEJ&	 Scaling and percolation in the small-world network model&         	PHYS REV E\\
+1999&	1,4,5&	Potterat, JJ&	 Chlamydia transmission: Concurrency, reproduction number, and the epidemic trajectory&         	AMER J EPIDEMIOL\\
+1999&	1,4,5&	Potterat, JJ&	 Network structural dynamics acid infectious disease propagation&         	INT J STD AIDS\\
+1999&	4,5&	Batagelj, V&	 Partitioning approach to visualization of large graphs&         	LECT NOTE COMPUT SCI\\
+1999&	6&	Barabasi, AL&	 Emergence of scaling in random networks&         	SCIENCE\\
+1999&	6&	Hansen, MT&	 The search-transfer problem: The role of weak ties in sharing knowledge across organization subunits&         	ADMIN SCI QUART\\
+1999&	6&	Faloutsos, M&	 On power-law relationships of the internet topology&         	*****\\
+1999&	6&	Watts, DJ&	 Small Worlds: The Dynamics of Networks Between Order and Randomness&         	*****\\
+1999&	6&	Barabasi, AL&	 Mean-field theory for scale-free random networks&         	PHYSICA A\\
+1999&	6&	Albert, R&	 Internet - Diameter of the World-Wide Web&         	NATURE\\
+1999&	6&	Banavar, JR&	Size and form in efficient transportation networks. Nature,&         	Nature\\
+1999&	6&	Kleinberg, JM&	 Authoritative sources in a hyperlinked environment&         	J ACM\\
+1999&	6&	Haberman, B&	Internet: growth dynamics of the world-wide web&         	Nature\\
+1999&	6&	Lawrence, S&	Accessibility of information on the Web. &         	Nature \\
+1999&	6&	Barthélémy, M &	Small-world networks: Evidence for a crossover picture&         	PHYS REV LETT\\
+2000&	1,2,4,5&	Newman, MEJ&	 Models of the small world&         	J STATIST PHYS\\
+2000&	1,2,4,5&	Moore, C&	 Exact solution of site and bond percolation on small-world networks&         	PHYS REV E\\
+2000&	1,4,5&	Callaway, DS&	 Network robustness and fragility: Percolation on random graphs&         	PHYS REV LETT\\
+2000&	1,4,5&	Newman, MEJ&	 Mean-field solution of the small-world network model&         	PHYS REV LETT\\
+2000&	1,4,5&	Ferguson, NM&	 More realistic models of sexually transmitted disease transmission dynamics - Sexual partnership networks, pair models, and moment closure&         	SEX TRANSM DIS\\
+2000&	4,5&	Batagelj, V&	 Some analyses of Erdos collaboration graph&         	SOC NETWORKS\\
+2000&	6&	Putnam RD &	Bowling alone: America’s declining social capital&         	*****\\
+2000&	6&	Jeong, H&	 The large-scale organization of metabolic networks&         	NATURE\\
+2000&	6&	Berkman, LF&	 From social integration to health: Durkheim in the new millennium&         	SOC SCI MED\\
+2000&	6&	Albert, R&	 Error and attack tolerance of complex networks&         	NATURE\\
+2000&	6&	Amaral, LAN&	 Classes of small-world networks&         	PROC NAT ACAD SCI USA\\
+2000&	6&	Broder, A&	 Graph structure in the Web&         	COMPUT NETW\\
+2000&	6&	Scott, J&	 Social Network Analysis: A Handbook&         	*****\\
+2000&	6&	Shi, JB&	 Normalized cuts and image segmentation&         	IEEE T PATTERN ANAL\\
+2001&	1,2,4,5,6&	Newman, MEJ&	 Clustering and preferential attachment in growing networks&         	PHYS REV E\\
+2001&	1,2,4,5,6&	Strogatz, SH&	 Exploring complex networks&         	NATURE\\
+2001&	1,4,5&	Liljeros, F&	 The web of human sexual contacts&         	NATURE\\
+2001&	4,5,6&	Newman, MEJ&	 Scientific collaboration networks. II. Shortest paths, weighted networks, and centrality&         	PHYS REV E\\
+2001&	4,5&	Moody, J&	 Race, school integration, and friendship segregation in America&         	AMER J SOCIOL\\
+2001&	4,5&	Rothenberg, R&	 The risk environment for HIV transmission: Results from the Atlanta and Flagstaff network studies&         	J URBAN HEALTH\\
+2001&	4&	Yook, SH&	 Weighted evolving networks&         	PHYS REV LETT\\
+2001&	4&	Bianconi, G&	 Competition and multiscaling in evolving networks&         	EUROPHYS LETT\\
+2001&	6&	Mcpherson, M&	 Birds of a feather: Homophily in social networks&         	ANNU REV SOCIOL\\
+2001&	6&	Newman, MEJ&	 The structure of scientific collaboration networks&         	PROC NAT ACAD SCI USA\\
+2001&	6&	Lin, N&	 Social capital. A theory of social structure and action.&         	*****\\
+2001&	6&	Brandes, U&	 A faster algorithm for betweenness centrality&         	J MATH SOCIOL\\
+2001&	6&	Domingos, P&	 Mining the network value of customers&         	*****\\
+2001&	6&	Goldenberg, J&	 Talk of the network: A complex systems look at the underlying process of word-of-mouth&         	MARK LETT\\
+2001&	6&	Pastor-satorras, R&	 Epidemic spreading in scale-free networks&         	PHYS REV LETT\\
+2002&	1,2,4,5,6&	Albert, R&	 Statistical mechanics of complex networks&         	REV MOD PHYS\\
+2002&	1,2,4,5,6&	Newman, MEJ&	 Spread of epidemic disease on networks&         	PHYS REV E\\
+2002&	4,5,6&	Girvan, M&	 Community structure in social and biological networks&         	PROC NAT ACAD SCI USA\\
+2002&	4,5,6&	Newman, MEJ&	 Assortative mixing in networks&         	PHYS REV LETT\\
+2002&	4,5&	Dorogovtsev, SN&	 Evolution of networks&         	ADV PHYS\\
+2002&	4,5&	Newman, MEJ&	 Random graph models of social networks&         	PROC NAT ACAD SCI USA\\
+2002&	4&	Ravasz, E&	 Hierarchical organization of modularity in metabolic networks&         	SCIENCE\\
+2002&	4&	Newman, MEJ&	 The structure and function of networks&         	COMPUT PHYS COMMUN\\
+2002&	6&	Watts, DJ&	 Identity and search in social networks&         	SCIENCE\\
+2002&	6&	Barabasi, AL &	 Linked: The New Science Of Networks&         	*****\\
+2002&	6&	Barabasi, AL&	 Evolution of the social network of scientific collaborations&         	PHYSICA A\\
+2002&	6&	Adler, PS&	 Social capital: Prospects for a new concept&         	ACAD MANAGE REV\\
+2002&	6&	Otte, E&	 Social network analysis: a powerful strategy, also for the information sciences&         	J INFORM SCI\\
+2002&	6&	Richardson, M&	 Mining knowledge-sharing sites for viral marketing&         	*****\\
+2003&	1,2,4,5,6&	Newman, MEJ&	 The structure and function of complex networks&         	SIAM REV\\
+2003&	1,2,4,5,6&	Newman, MEJ&	 Mixing patterns in networks&         	PHYS REV E\\
+2003&	1,4,5&	Newman, MEJ&	 Why social networks are different from other types of networks&         	PHYS REV E\\
+2003&	1,4,5&	Gleiser, PM&	 Community structure in jazz&         	ADV COMPLEX SYST\\
+2003&	4,5&	Meyers, LA&	 Applying network theory to epidemics: Control measures for Mycoplasma pneumoniae outbreaks&         	EMERG INFECT DIS\\
+2003&	4&	Jeong, H&	 Measuring preferential attachment in evolving networks&         	EUROPHYS LETT\\
+2003&	5,6&	Guimera, R&	 Self-similar community structure in a network of human interactions&         	PHYS REV E\\
+2003&	6&	Rogers, EM&	 Diffusion of innovations&         	*****\\
+2003&	6&	Borgatti, SP&	 The network paradigm in organizational research: A review and typology&         	J MANAGE\\
+2003&	6&	Dorogovtsev, SN&	 Evolution of Networks: From Biological Nets to the Internet and WWW&         	*****\\
+2003&	6&	Watts, DJ&	 Six Degrees: The Science of a Connected Age&         	*****\\
+2003&	6&	Blei, DM&	 Latent Dirichlet allocation&         	J MACH LEARN RES\\
+2003&	6&	Adamic, LA&	 Friends and neighbors on the Web&         	SOC NETWORKS\\
+2003&	6&	Lusseau, D&	 The bottlenose dolphin community of Doubtful Sound features a large proportion of long-lasting associations - Can geographic isolation explain this unique trait?&         	BEHAV ECOL SOCIOBIOL\\
+2003&	6&	Venkatesh, V&	 User acceptance of information technology: Toward a unified view&         	MIS QUART\\
+2003&	6&	Kempe, D &	"Maximizing the spread of influence
+through a social network&ACM SIGKDD CONF \\
+2003&	6&	Kempe, D &	Maximizing the spread of influence through a social network&         	ACM SIGKDD CONF \\
+2004&	1,2,4,5,6&	Newman, MEJ&	 Finding and evaluating community structure in networks&         	PHYS REV E\\
+2004&	1,2,4,5,6&	Newman, MEJ&	 Detecting community structure in networks&         	EUR PHYS J B\\
+2004&	1,2,4,5,6&	Clauset, A&	 Finding community structure in very large networks&         	PHYS REV E\\
+2004&	1,4,5,6&	Radicchi, F&	 Defining and identifying communities in networks&         	P NATL ACAD SCI USA\\
+2004&	1,4,5,6&	Newman, MEJ&	 Fast algorithm for detecting community structure in networks&         	PHYS REV E\\
+2004&	1,4,5&	Arenas, A&	 Community analysis in social networks&         	EUR PHYS J B\\
+2004&	1,4,5&	Newman, MEJ&	 Analysis of weighted networks&         	PHYS REV E\\
+2004&	6&	Cross, RL&	 The hidden power of social networks: Understanding how work really gets done in organizations&         	*****\\
+2004&	6&	Freeman, LC&	The development of social network analysis. A Study in the Sociology of Science&         	*****\\
+2004&	6&	Eubank, S&	 Modelling disease outbreaks in realistic urban social networks&         	NATURE\\
+2004&	6&	Burt, RS&	 Structural holes and good ideas&         	AMER J SOCIOL\\
+2005&	1,4,5&	Danon, L&	 Comparing community structure identification&         	J STAT MECH-THEORY E\\
+2005&	4,5,6&	Guimera, R&	 Functional cartography of complex metabolic networks&         	NATURE\\
+2005&	4,5,6&	Palla, G&	 Uncovering the overlapping community structure of complex networks in nature and society&         	NATURE\\
+2005&	4&	Croft, DP&	 Assortative interactions and social networks in fish&         	OECOLOGIA\\
+2005&	6&	Burt, RS&	 Brokerage and closure: An introduction to social capital&         	*****\\
+2005&	6&	Adomavicius, G&	 Toward the next generation of recommender systems: A survey of the state-of-the-art and possible extensions&         	*****\\
+2005&	6&	Carrington, P&	Models and Methods in Social Network Analysis&         	*****\\
+2005&	6&	Borgatti, SP&	 Centrality and network flow&         	SOC NETWORKS\\
+2005&	6&	Gross, R&	 Information revelation and privacy in online social networks&         	*****\\
+2006&	1,2,4,5,6&	Boccaletti, S&	 Complex networks: Structure and dynamics&         	PHYS REP-REV SECT PHYS LETT\\
+2006&	1,2,4,5,6&	Newman, MEJ&	 Finding community structure in networks using the eigenvectors of matrices&         	PHYS REV E\\
+2006&	1,4,5,6&	Newman, MEJ&	 Modularity and community structure in networks&         	PROC NAT ACAD SCI USA\\
+2006&	6&	Kossinets, G&	 Empirical analysis of an evolving social network&         	SCIENCE\\
+2006&	6&	Newman, M &	 The Structure and Dynamics of Networks&         	*****\\
+2006&	6&	Eagle, N&	 Reality mining: sensing complex social systems&         	PERS UBIQUIT COMPUT\\
+2007&	1,4,5&	Newman, MEJ&	 Mixture models and exploratory analysis in networks&         	PROC NAT ACAD SCI USA\\
+2007&	5&	Krause, J&	 Social network theory in the behavioural sciences: potential applications&         	BEHAV ECOL SOCIOBIOL\\
+2007&	6&	Onnela, JP&	 Structure and tie strengths in mobile communication networks&         	PROC NAT ACAD SCI USA\\
+2007&	6&	Palla, G&	 Quantifying social group evolution&         	NATURE\\
+2007&	6&	Christakis, NA&	 The spread of obesity in a large social network over 32 years&         	N ENGL J MED\\
+2007&	6&	Mazer, JP&	 I'll see you on Facebook: The effects of computer-mediated teacher self-disclosure on student motivation, affective learning, and classroom climate&         	*****\\
+2007&	6&	Liben-nowell, D&	 The link-prediction problem for social networks&         	J AM SOC INF SCI TECHNOL\\
+2007&	6&	Robins, G&	 An introduction to exponential random graph (p*) models for social networks&         	SOC NETWORKS\\
+2007&	6&	Fortunato, S&	 Resolution limit in community detection&         	PROC NAT ACAD SCI USA\\
+2007&	6&	Boyd, DM&	 Social network sites: Definition, history, and scholarship&         	J COMPUT-MEDIAT COMM\\
+2007&	6&	Raghavan, UN&	 Near linear time algorithm to detect community structures in large-scale networks&         	PHYS REV E\\
+2007&	6&	Mislove, A&	 Measurement and Analysis of Online Social Networks&         	*****\\
+2007&	6&	Leskovec, J&	 Cost-effective Outbreak Detection in Networks&         	*****\\
+2007&	6&	Josang, A&	 A survey of trust and reputation systems for online service provision&         	DECIS SUPPORT SYST\\
+2007&	6&	Steinfield c&,	The benefits of Facebook “friends:” Social capital and college students’ use of online social network sites.&         	J COMPUT-MEDIAT COMM\\
+2007&	6&	Dwyer, C&	Trust and privacy concern within social networking sites: A comparison of Facebook and MySpace.&         	AMCIS 2007 proceedings\\
+2007&	6&	Lenhart, A&	 Teens, Privacy \& Online Social Networks: How Teens Manage Their Online Identities and Personal Information in the Age of MySpace&         	*****\\
+2007&	6&	Ellison, NB &	The benefits of Facebook “friends:” Social capital and college students’ use of online social network sites&         	J COMPUT-MEDIAT COMM\\
+2008&	1,2,4,5&	Lusseau, D&	 Incorporating uncertainty into the study of animal social networks&         	ANIM BEHAV\\
+2008&	1,4,5&	Wey, T&	 Social network analysis of animal behaviour: a promising tool for the study of sociality&         	ANIM BEHAV\\
+2008&	1,4,5&	Monni, S&	 Vertex clustering in random graphs via reversihle jump Markov chain Monte Carlo&         	J COMPUT GRAPH STAT\\
+2008&	6&	Blondel, VD&	 Fast unfolding of communities in large networks&         	J STAT MECH-THEORY E\\
+2008&	6&	Smith, KP&	 Social networks and health&         	ANNU REV SOCIOL\\
+2008&	6&	Gonzalez, MC&	 Understanding individual human mobility patterns&         	NATURE\\
+2008&	6&	Christakis, NA&	 The collective dynamics of smoking in a large social network&         	NEW ENGL J MED\\
+2008&	6&	Fowler, JH&	 Dynamic spread of happiness in a large social network: longitudinal analysis over 20 years in the Framingham Heart Study&         	BRIT MED J\\
+2009&	1,2,4,5&	Kasper, C&	 A social network analysis of primate groups&         	PRIMATES\\
+2009&	1,2,4,5&	Ramos-Fernandez, G&	 Association networks in spider monkeys (Ateles geoffroyi)&         	BEHAV ECOL SOCIOBIOL\\
+2009&	1,2,4,5&	Lusseau, D&	 The emergence of unshared consensus decisions in bottlenose dolphins&         	BEHAV ECOL SOCIOBIOL\\
+2009&	1,4,5&	Croft, DP&	 Behavioural trait assortment in a social network: patterns and implications&         	BEHAV ECOL SOCIOBIOL\\
+2009&	1,4,5&	James, R&	 Potential banana skins in animal social network analysis&         	BEHAV ECOL SOCIOBIOL\\
+2009&	1,4,5&	Krause, J&	 Animal social networks: an introduction&         	BEHAV ECOL SOCIOBIOL\\
+2009&	1,4,5&	James, R&	 Potential banana skins in animal social network analysis&         	BEHAV ECOL SOCIOBIOL\\
+2009&	1,4,5&	Krause, J&	 Animal social networks: an introduction&         	BEHAV ECOL SOCIOBIOL\\
+2009&	1,4&	Lehmann, J&	 Network cohesion, group size and neocortex size in female-bonded Old World primates&         	P ROY SOC B-BIOL SCI\\
+2009&	4,5&	Godfrey, SS&	 Network structure and parasite transmission in a group living lizard, the gidgee skink, Egernia stokesii&         	BEHAV ECOL SOCIOBIOL\\
+2009&	4,5&	Sih, A&	 Social network theory: new insights and issues for behavioral ecologists&         	BEHAV ECOL SOCIOBIOL\\
+2009&	4,5&	Naug, D&	 Structure and resilience of the social network in an insect colony as a function of colony size&         	BEHAV ECOL SOCIOBIOL\\
+2009&	4,5&	Madden, JR&	 The social network structure of a wild meerkat population: 2. Intragroup interactions&         	BEHAV ECOL SOCIOBIOL\\
+2009&	4,5&	Henzi, SP&	 Cyclicity in the structure of female baboon social networks&         	BEHAV ECOL SOCIOBIOL\\
+2009&	4,5&	Sih, A&	 Social network theory: new insights and issues for behavioral ecologists&         	BEHAV ECOL SOCIOBIOL\\
+2009&	5&	Mcdonald, DB&	 Young-boy networks without kin clusters in a lek-mating manakin&         	BEHAV ECOL SOCIOBIOL\\
+2009&	6&	Pempek, TA&	 College students' social networking experiences on Facebook&         	J APPL DEV PSYCHOL\\
+2009&	6&	Borgatti, SP&	 Network Analysis in the Social Sciences&         	SCIENCE\\
+2009&	6&	Chen, W&	 Efficient Influence Maximization in Social Networks&         	*****\\
+2009&	6&	Clauset, A&	 Power-Law Distributions in Empirical Data&         	SIAM REV\\
+2009&	6&	Eagle, N&	 Inferring friendship network structure by using mobile phone data&         	P NATL ACAD SCI USA\\
+2010&	1,2,4,5&	Voelkl, B&	 Simulation of information propagation in real-life primate networks: longevity, fecundity, fidelity&         	BEHAV ECOL SOCIOBIOL\\
+2010&	1,4,5&	Franks, DW&	 Sampling animal association networks with the gambit of the group&         	BEHAV ECOL SOCIOBIOL\\
+2010&	4,5&	Drewe, JA&	 Who infects whom? Social networks and tuberculosis transmission in wild meerkats&         	P ROY SOC B-BIOL SCI\\
+2010&	3,5&	Lea, AJ&	 Heritable victimization and the benefits of agonistic relationships&         	P NATL ACAD SCI USA\\
+2010&	3,5&	Wey, TW&	 Social cohesion in yellow-bellied marmots is established through age and kin structuring&         	ANIM BEHAV\\
+2010&	3,5&	Schurch, R&	 The building-up of social relationships: behavioural types, social networks and cooperative breeding in a cichlid&         	PHILOS T R SOC B\\
+2010&	3,5&	Perreault, C&	 A note on reconstructing animal social networks from independent small-group observations&         	ANIM BEHAV\\
+2010&	3,5&	Krause, J&	 Personality in the context of social networks&         	PHILOS T R SOC B\\
+2010&	6&	Fortunato, S&	 Community detection in graphs&         	PHYS REP\\
+2010&	6&	Kaplan, AM&	 Users of the world, unite! The challenges and opportunities of Social Media&         	BUS HORIZONS\\
+2010&	6&	Centola, D&	 The Spread of Behavior in an Online Social Network Experiment&         	SCIENCE\\
+2010&	6&	Roblyer, MD&	 Findings on Facebook in higher education: A comparison of college faculty and student uses and perceptions of social networking sites&         	INTERNET HIGH EDUC\\
+2011&	1,2,3,5&	Croft, DP&	 Hypothesis testing in animal social networks&         	TRENDS ECOL EVOL\\
+2011&	1,2,3,5&	Brent, LJN&	 Social Network Analysis in the Study of Nonhuman Primates: A Historical Perspective&         	AM J PRIMATOL\\
+2011&	1,2,3,5&	Sueur, C&	 How Can Social Network Analysis Improve the Study of Primate Behavior?&         	AM J PRIMATOL\\
+2011&	1,2,3,5&	Lehmann, J&	 Baboon (Papio anubis) Social Complexity-A Network Approach&         	AM J PRIMATOL\\
+2011&	1,2,3,5&	Sueur, C&	 How Can Social Network Analysis Improve the Study of Primate Behavior?&         	AM J PRIMATOL\\
+2011&	1,3,5&	Voelkl, B&	 Network Measures for Dyadic Interactions: Stability and Reliability&         	AM J PRIMATOL\\
+2011&	1&	Clark, FE&	 Space to Choose: Network Analysis of Social Preferences in a Captive Chimpanzee Community, and Implications for Management&         	AM J PRIMATOL\\
+2011&	3,5&	Bode, NWF&	 Social networks and models for collective motion in animals&         	BEHAV ECOL SOCIOBIOL\\
+2011&	3,5&	Kanngiesser, P&	 Grooming Network Cohesion and the Role of Individuals in a Captive Chimpanzee Group&         	AM J PRIMATOL\\
+2011&	3,5&	Bode, NWF&	 The impact of social networks on animal collective motion&         	ANIM BEHAV\\
+2011&	6&	Kietzmann, JH&	 Social media? Get serious! Understanding the functional building blocks of social media&         	BUS HORIZONS\\
+2011&	3&	Kelley, JL&	 Predation Risk Shapes Social Networks in Fission-Fusion Populations&         	PLOS ONE\\
+2012&	1,2,3,5&	Farine, DR&	 Social network analysis of mixed-species flocks: exploring the structure and evolution of interspecific social behaviour&         	ANIM BEHAV\\
+2012&	1,3,5&	Mourier, J&	 Evidence of social communities in a spatially structured network of a free-ranging shark species&         	ANIM BEHAV\\
+2012&	1,3,5&	Cantor, M&	 Disentangling social networks from spatiotemporal dynamics: the temporal structure of a dolphin society&         	ANIM BEHAV\\
+2012&	1,3,5&	Foster, EA&	 Social network correlates of food availability in an endangered population of killer whales, Orcinus orca&         	ANIM BEHAV\\
+2012&	3,5&	Blonder, B&	 Temporal dynamics and network analysis&         	METHODS ECOL EVOL\\
+2013&	1,2,3,5&	Aplin, LM&	 Individual personalities predict social behaviour in wild networks of great tits (Parus major)&         	ECOL LETT\\
+2013&	1,3,5&	Wilson, ADM&	 Network position: a key component in the characterization of social personality types&         	BEHAV ECOL SOCIOBIOL\\
+2013&	1,3,5&	Hobson, EA&	 An analytical framework for quantifying and testing patterns of temporal dynamics in social networks&         	ANIM BEHAV\\
+2013&	3,5&	Farine, DR&	 Animal social network inference and permutations for ecologists in R using asnipe&         	METHODS ECOL EVOL\\
+2013&	3,5&	Krause, J&	 Reality mining of animal social systems&         	TRENDS ECOL EVOL\\
+2013&	3,5&	Kurvers, RHJM&	 Contrasting context dependence of familiarity and kinship in animal social networks&         	ANIM BEHAV\\
+2013&	3,5&	Farine, DR&	 Social organisation of thornbill-dominated mixed-species flocks using social network analysis&         	BEHAV ECOL SOCIOBIOL\\
+2014&	1,2,3,5&	Farine, DR&	 Measuring phenotypic assortment in animal social networks: weighted associations are more robust than binary edges&         	ANIM BEHAV\\
+2014&	1,2,3,5&	Silk, MJ&	 The importance of fission-fusion social group dynamics in birds&         	IBIS\\
+2014&	1,3,5&	Pinter-Wollman, N&	 The dynamics of animal social networks: analytical, conceptual, and theoretical advances&         	BEHAV ECOL\\
+2014&	1,3,5&	Castles, M&	 Social networks created with different techniques are not comparable&         	ANIM BEHAV\\
+2014&	1,3,5&	Boogert, NJ&	 Perching but not foraging networks predict the spread of novel foraging skills in starlings&         	BEHAV PROCESS\\
+2014&	3,5&	Boogert, NJ&	 Developmental stress predicts social network position&         	BIOL LETTERS\\
+2014&	3,5&	Godfrey, SS&	 A contact-based social network of lizards is defined by low genetic relatedness among strongly connected individuals&         	ANIM BEHAV\\
+2014&	3&	Shizuka, D&	 Across-year social stability shapes network structure in wintering migrant sparrows&         	ECOL LETT\\
+2015&	1,2,3,5&	Farine, DR&	 Constructing, conducting and interpreting animal social network analysis&         	J ANIM ECOL\\
+2015&	1,2,3,5&	Farine, DR&	 Selection for territory acquisition is modulated by social network structure in a wild songbird&         	J EVOLUTION BIOL\\
+2015&	1,2,3,5&	Farine, DR&	 The role of social and ecological processes in structuring animal populations: a case study from automated tracking of wild birds&         	ROY SOC OPEN SCI\\
+2015&	1,2,3,5&	Farine, DR&	 Proximity as a proxy for interactions: issues of scale in social network analysis&         	ANIM BEHAV\\
+2015&	1,3,5&	Adelman, JS&	 Feeder use predicts both acquisition and transmission of a contagious pathogen in a North American songbird&         	P ROY SOC B-BIOL SCI\\
+2015&	3,5&	Silk, MJ&	 The consequences of unidentifiable individuals for the analysis of an animal social network&         	ANIM BEHAV\\
+2015&	3,5&	Aplin, LM&	 Consistent individual differences in the social phenotypes of wild great tits, Parus major&         	ANIM BEHAV\\
+2015&	3,5&	Farine, DR&	 Estimating uncertainty and reliability of social network data using Bayesian inference&         	ROY SOC OPEN SCI\\
+2015&	3,5&	Firth, JA&	 Experimental manipulation of avian social structure reveals segregation is carried over across contexts&         	P ROY SOC B-BIOL SCI\\
+2015&	3,5&	Farine, DR&	 Interspecific social networks promote information transmission in wild songbirds&         	P ROY SOC B-BIOL SCI\\
+2016&	1,2,3,5&	Spiegel, O&	 Socially interacting or indifferent neighbours? Randomization of movement paths to tease apart social preference and spatial constraints&         	METHODS ECOL EVOL\\
+2016&	1,2,3,5&	Croft, DP&	 Current directions in animal social networks&         	CURR OPIN BEHAV SCI\\
+2016&	1,2,3,5&	Leu, ST&	 Environment modulates population social structure: experimental evidence from replicated social networks of wild lizards&         	ANIM BEHAV\\
+2016&	3,5&	Firth, JA&	 Social carry-over effects underpin trans-seasonally linked structure in a wild bird population&         	ECOL LETT\\
+2016&	5&	Jacoby, DMP&	 Emerging Network-Based Tools in Movement Ecology&         	TRENDS ECOL EVOL\\
+2017&	1,2,3,5&	Fisher, DN&	 Analysing animal social network dynamics: the potential of stochastic actor-oriented models&         	J ANIM ECOL\\
+2017&	1,2,3,5&	Silk, MJ&	 Understanding animal social structure: exponential random graph models in animal behaviour research&         	ANIM BEHAV\\
+2017&	1,2,3,5&	Fisher, DN&	 Social traits, social networks and evolutionary biology&         	J EVOLUTION BIOL\\
+2017&	1,3,5&	Silk, MJ&	 The application of statistical network models in disease research&         	METHODS ECOL EVOL\\
+2017&	3,5&	Farine, DR&	 A guide to null models for animal social network analysis&         	METHODS ECOL EVOL\\
+2017&	5&	Formica, V&	 Consistency of animal social networks after disturbance&         	BEHAV ECOL\\
+2017&	5&	Mourier, J&	 Does detection range matter for inferring social networks in a benthic shark using acoustic telemetry?& ROY SOC OPEN SCI\\
+2017&	3&	Spiegel, O&	 What's your move? Movement as a link between personality and spatial dynamics in animal populations& ECOL LETT\\
+2018&	1,2,3,5&	Montiglio, PO&	 Social structure modulates the evolutionary consequences of social plasticity: A social network perspective on interacting phenotypes&         	ECOL EVOL\\
+2018&	1,3,5&	Dougherty, ER&	 Going through the motions: incorporating movement analyses into disease research& ECOL LETT\\
+2018&	1,3,5&	Silk, MJ&	 Contact networks structured by sex underpin sex-specific epidemiology of infection&         	ECOL LETT\\
+2018&	1,3,5&	Farine, DR&	 When to choose dynamic vs. static social network analysis&         	J ANIM ECOL\\
+2018&	1,3,5&	Sah, P&	 Disease implications of animal social network structure: A synthesis across social systems&         	J ANIM ECOL\\
+2018&	3,5&	Spiegel, O&	 Where should we meet? Mapping social network interactions of sleepy lizards shows sex-dependent social network structure&         	ANIM BEHAV\\
+2018&	3,5&	Sih, A&	 Integrating social networks, animal personalities, movement ecology and parasites: a framework with examples from a lizard&         	ANIM BEHAV\\
+2018&	3,5&	Spiegel, O&	 Where should we meet? Mapping social network interactions of sleepy lizards shows sex-dependent social network structure&         	ANIM BEHAV\\
+2018&	3,5&	Sih, A&	 Integrating social networks, animal personalities, movement ecology and parasites: a framework with examples from a lizard&         	ANIM BEHAV\\
+2018&	5&	Blaszczyk, MB&	 Consistency in social network position over changing environments in a seasonally breeding primate&         	BEHAV ECOL SOCIOBIOL\\
+2018&	3&	Bani-Yaghoub, M&	 A methodology to quantify the long-term changes in social networks of competing species&         	ECOL MODEL\\
+\end{longtable}
+
+
+%******************************************************************************
+\section{Authors Collaboration}  
+
+In the following part, we present the patterns of collaboration between authors working in the field of netwirks analysis. This results are based on the analysis of the reduced network \textbf{WAr}. In general, there are different ways to create one-mode networks of collaboration between authors (AA) out of two-mode networks of works and authors (WA). These ways were presented and used in the previous works [works of Vlado]. Multiplying the original WAr network to transposed WAr network, and using different types of normalizations, we created three collaboration networks \textbf{Co}, \textbf{Cn}, and \textbf{Ct`}. The results are presented below. \medskip  
+
+\subsection{Networks creation}  
+
+The standard and the easiest way to obtain the collaboration network from the WA network was to make a \textbf{first collaboration network Co} [Batagelj, Cerinšek 2013] by the multiplication of a transposed WA network (to AW) and initial one: \medskip 
+
+\texttt{Co = t(WA) * WA = AW * WA = AA} \medskip  
+
+In derived network  \textbf{Co}, the weight of the edges between the nodes is equal to total number of works author i and j wrote together. The degree of each author (node) is equal to the number of works he or she co-authored. The loops are equal to the total number of works that each author have (which is also equal to the indegree values of the WA network). \medskip 
+
+It was proved, however, that the proposed approach has some limitations, such as the overrating of the contribution of works with many authors. That`s why the textbf{fractional approach} (Batagelj, ...) was proposed which deals with the authors contribution in collaboration networks and propose different types of normalization. \medskip 
+
+Thus, in the \textbf{second collaboration network Cn} the contribution of authors to their own works and works written with co-authors is considered. The normalization which is used create network n(WA) where the weight of each arc is divided by the sum of weights of all arcs having the same initial node as this arc (outdegree of a node) (for example, if the work has 3 authors, each weight is equal to 1/3). The network is constructed by the transposition of the WA network (to AW) and multiplying it with the (normalized) n(WA) network.\medskip 
+
+\texttt{Cn = t(WA) * n(WA) = AW * n(WA), where n(WA)[w,a] = WA[w,a] / outdeg(w)} \medskip 
+
+In the derived network Cn, the weight of the edges between the nodes (authors) is equal to the contribution of author i to works, that he or she wrote together with author j (which can not be symmetric). The total contribution for a given work by all its authors is equal to the number of its authors. The total contribution for an author is equal to the number of works that he or she co-authored (indegree). The diagonal (loops) of the matrix is equal to the total contribution of author to his or her own works. Based on it, Batagelj and Cerinšek () proposed \textbf{self-sufficiency index} as the proportion of author's contribution to his/her works and the total number of works he/she co-authored, and the \textbf{collaborativness index}, which is complementary to it (is equal to 1 minus self-sufficiency). \medskip 
+
+Using another type of normalization - Newman normalization, who interpret the weight as a proportion of time spent for the collaboration with each co-author [Batagelj, slides], - the \textbf{fourth co-authorship network Ct`} can be constructed, considering the total contribution of “strict collaboration” of authors i and j to works. In this case, for the initial WA network the weight of each arc is divided by the sum of weights of all arcs having the same initial node as this arc (outdegree of a node) subtracting the initial article (which is 1): \medskip 
+
+\texttt{Ct` = t(n(WA)) * n’(WA), where n’(WA)[w,a] = WA[w,a] / (outdeg(w)-1)} 
+
+\subsection{Collaboration between authors}  
+
+As it was already shown in the section 4.1. (Table~ \ref{numpap} the authors having the largest number of papers have (except Newman) Chinese names. In this sense, it is not productive to look at the `most writing' authors. However, from the \textbf{Co} network we still get an important information about collaboration between groups of authors. The Figure (XX) shows the groups of authors, who have 20 and more works written together. As it can be seen, all of them are only pairs. 
+
+%Incert picture of Pairs - file Co\_Pairs.net (47 nodes). Make a description 
+
+ However, it is interesting to compare the values of the number of works that author has (in general, written by himself or herself or in collaboration) with the values of author`s contribution to these works and index of collaborativeness with others. Because of the `Chinese problem'  mentioned above we had to exclude the names of the Chinese authors from the output presented on the Table~\ref{collab}.  The names are ordered by authors` fractional total contribution to the field.\medskip  
+ 
+ The first rated author in sence of largest productivity is social scientist R. Burt, followed by phisician M. Newman. They are followed by P. Doreian, H. Park, and R. Dunbar. Other authors with large total contribution values are B. Wellamn, T. Valente, S. Park, P. Bonachich, L. Leidersdorf, C. Latkin, H. Litwin, and P. Marsden. There are a lot of authors representing social science in the table. The authors with the highest index of collaborativeness are marked in boldface. \medskip 
+
+\begin{table}
+\caption{Collaborativeness} \label{collab}\medskip
+\small
+\renewcommand{\arraystretch}{0.95}
+\small
+\begin{tabular}{c|l|p{1cm}|p{1cm}|p{1.5cm}||c|l|p{1cm}|p{1cm}|p{1.5cm}|} 
+\# & Author & Total contribution & Total \# works & Collabora tiveness & \# & Author & Total contribution & Total \# works & Collabora tiveness \\ \hline
+1& 	BURT\_R& 	55,73& 	71& 	0,22& 	31& 	\textbf{PATTISON\_P}& 	18,94& 	58& 	0,67\\
+2& 	NEWMAN\_M& 	50,02& 	81& 	0,38& 	32& 	THELWALL\_M& 	18,41& 	37& 	0,5\\
+3& 	DOREIAN\_P& 	46,19& 	72& 	0,36& 	33& 	KRACKHAR\_D& 	18,24& 	38& 	0,52\\
+4& 	\textbf{PARK\_H}& 	41,94& 	113& 	0,63& 	34& 	FALOUTSO\_C& 	17,86& 	60& 	0,7\\
+5& 	DUNBAR\_R& 	40,02& 	91& 	0,56& 	35& 	JACKSON\_M& 	17,78& 	38& 	0,53\\
+6& 	WELLMAN\_B& 	36,43& 	63& 	0,42& 	36& 	\textbf{GONZALEZ\_M}& 	17,76& 	52& 	0,66\\
+7& 	\textbf{VALENTE}\_T& 	34,96& 	97& 	0,64& 	37& 	MOODY\_J& 	17,7& 	40& 	0,56\\
+8& 	\textbf{PARK\_S}& 	34,59& 	109& 	0,68& 	38& 	SCOTT\_J& 	17,54& 	28& 	0,37\\
+9& 	BONACICH\_P& 	34& 	46& 	0,26& 	39& 	MORRIS\_M& 	17,22& 	43& 	0,6\\
+10& 	LEYDESDO\_L& 	33,28& 	51& 	0,35& 	40& 	\textbf{RODRIGUE\_J}& 	15,9& 	52& 	0,69\\
+11& 	LATKIN\_C& 	32,99& 	130& 	0,75& 	41& 	WASSERMA\_S& 	15,64& 	35& 	0,55\\
+12& 	LITWIN\_H& 	32,42& 	50& 	0,35& 	42& 	KLEINBER\_J& 	15,05& 	34& 	0,56\\
+13& 	MARSDEN\_P& 	30,17& 	39& 	0,23& 	43& 	BATAGELJ\_V& 	14,64& 	33& 	0,56\\
+14& 	BORGATTI\_S& 	29,72& 	71& 	0,58& 	44& 	WILLIAMS\_A& 	14,5& 	31& 	0,53\\
+15& 	SNIJDERS\_T& 	29,63& 	67& 	0,56& 	45& 	\textbf{SINGH\_A}& 	14,5& 	36& 	0,60\\
+16& 	FRIEDKIN\_N& 	28,17& 	36& 	0,22& 	46& 	BRANDES\_U& 	14,39& 	35& 	0,59\\
+17& 	CARLEY\_K& 	28,11& 	72& 	0,61& 	47& 	\textbf{BERKMAN\_L}& 	14,3& 	39& 	0,63\\
+18& 	BARABASI\_A& 	27,61& 	67& 	0,59& 	48& 	MASUDA\_N& 	14,26& 	28& 	0,49\\
+19& 	WHITE\_H& 	27,28& 	42& 	0,35& 	49& 	\textbf{SMITH\_A}& 	14,2& 	40& 	0,65\\
+20& 	\textbf{CHRISTAK\_N}& 	22,89& 	74& 	0,69& 	50& 	LAZEGA\_E& 	14,17& 	26& 	0,46\\
+21& 	EVERETT\_M& 	22,58& 	44& 	0,49& 	51& 	\textbf{CONTRACT\_N}& 	14,15& 	43& 	0,67\\
+22& 	\textbf{KAZIENKO\_P}& 	21,97& 	64& 	0,66& 	52& 	\textbf{GONZALEZ\_A}& 	14,13& 	35& 	0,60\\
+23& 	MARTINEZ\_M& 	21,9& 	53& 	0,59& 	53& 	\textbf{PENTLAND\_A}& 	14,12& 	41& 	0,66\\
+24& 	\textbf{JOHNSON\_J}& 	21,19& 	54& 	0,61& 	54& 	FARINE\_D& 	14,04& 	34& 	0,59\\
+25& 	\textbf{FOWLER\_J}& 	20,14& 	65& 	0,69& 	55& 	SCHNEIDE\_J& 	13,89& 	52& 	0,73\\
+26& 	SKVORETZ\_J& 	20,07& 	42& 	0,52& 	56& 	WATTS\_D& 	13,67& 	27& 	0,49\\
+27& 	FREEMAN\_L& 	20,03& 	27& 	0,26& 	57& 	FAUST\_K& 	13,5& 	25& 	0,46\\
+28& 	BREIGER\_R& 	19,73& 	31& 	0,36& 	58& 	\textbf{SMITH\_M}& 	13,29& 	39& 	0,66\\
+29& 	\textbf{ROBINS\_G}& 	19,67& 	64& 	0,69& 	59& 	\textbf{RODRIGUE\_M}& 	13,21& 	46& 	0,71\\
+30& 	\textbf{RAHMAN\_M}& 	19,18& 	59& 	0,67& 	60& 	\textbf{RICE\_E}& 	13,09& 	48& 	0,73\\
+\end{tabular}\\
+\end{table}
+
+Using Link islands approach, we extracted all the islands with the size between 5 and 50 nodes. We got a large number of islands - 2,195. Four largest island have, respectively, 35, 23, 21, and 19 nodes; other 70 islands have between 12 and 18 nodes. More then half - 58\% - of islands are composed of 5 nodes. The structures of these largest islands is presented on the Figure (xx). \medskip
+
+%Creat picture of Ct`\_Islands(1-74). 
+
+The next step is to explore some of the islands that looks `interesting'. In one sense, interesting islands can be distinguished according to their size. The largest islands with names of authors are presented on the Figure. \medskip
+
+However, another way is to look as the islands with the strongest ties between the nodes. \medskip
+
+TO BE DONE 
+1) Look at the largest islands. 
+2) Look at the islands with the largest links between nodes
+
+%******************************************************************************
+\section{Key words in coauthorship islands}
+
+\subsection{Network creation}  
+
+Key words for given Islands 
+
+
+%******************************************************************************
+\section{Citation among authors}
+
+\subsection{Network creation} 
+
+After analysing Cite network and WA network and looking at citations between works and collaborations between authors separately, we can also look at the derieved \textbf{Ci network}, which shows citations among authors. 
+
+ \medskip 
+
+Chapter 2, p.44 Acite=t(WAr) * nCiteR * WAr
+
+The value of element Acite[u;v] is equal to the number of citations from works coauthored by u to works coauthored by v.
+Islands - looked
+Islands without Wasserman (1994) 
+
+- without norm 
+Largest island: combination of large N of citations (to Wasserman, Granovetter, Boyd, Newman) blured with the Chinese cloud. This contatains well-known researchers from social networks and complex networks fields.
+
+- with norm 
+Then we made normalized version without Wasserman and run the same procedures. Islands [5, 200]
+
+saved Main Island
+saved Islands from 2 to 22 (up to 10 size)
+
+
+
+\section{Co-citation among authors. Bibliographic Coupling }
+
+\subsection{Network creation} 
+
+Jaccard 
+
+
+%******************************************************************************
+\section{Citation among journals}
+Fractional approach
+JJf = t(WJ) * n(Ci) * WJ
+
+Loops - highest number of self-citation
+
+\renewcommand{\arraystretch}{0.8}
+\small
+\begin{tabular}{c|l|l||c|l|l|} 
+\# &	Value&	Journal &	\# &	Value&	Journal \\  \hline 
+1&	1083,68&	SOC NETWORKS&	16&	44,97&	AIDS BEHAV\\
+2&	533,84&	COMPUT HUM BEHAV&	17&	42,14&	KNOWL-BASED SYST\\
+3&	212,1&	LECT NOTES COMPUT SC&	18&	38,02&	BEHAV ECOL SOCIOBIOL\\
+4&	163,32&	PHYSICA A&	19&	37,66&	NATURE\\
+5&	135,71&	J COMPUT-MEDIAT COMM&	20&	35,14&	LECT NOTES ARTIF INT\\
+6&	111,53&	SOC SCI MED&	21&	35,11&	PROF INFORM\\
+7&	110,49&	AM J SOCIOL&	22&	33,34&	DECIS SUPPORT SYST\\
+8&	84,33&	SCIENTOMETRICS&	23&	33,16&	PLOS ONE\\
+9&	68,29&	CYBERPSYCH BEH SOC N&	24&	32,93&	PHYS REV E\\
+10&	55,33&	NEW MEDIA SOC&	25&	32,34&	ORGAN SCI\\
+11&	54,94&	J MED INTERNET RES&	26&	30,86&	SEX TRANSM DIS\\
+12&	54,48&	EXPERT SYST APPL&	27&	28,59&	ACAD MANAGE J\\
+13&	51,01&	ANIM BEHAV&	28&	28,45&	INFORM COMMUN SOC\\
+14&	47,64&	P NATL ACAD SCI USA&	29&	27,53&	PERS INDIV DIFFER\\
+15&	46,82&	INFORM SCIENCES&	30&	27,26&	J MATH SOCIOL\\
+\end{tabular}\\
+
+! Islands - Generate networks with islands Extract Islands [1-11]
+Saved
+Hierarchical organization (picture, saved) (JJf Islands Main) 
+
+TO BE DONE 
+
+Make those islands of the size 2
+Extract the Islands [12-115] Network - Info 104 (number of lines) 
+JJf- Islands - Pairs
+
+\begin{table}
+
+\renewcommand{\arraystretch}{0.82}
+\small
+\begin{tabular}{c|l|p{6cm}||c|l|p{6cm}|}
+\# &	Value&	Journals &	\# &	Value&	Journals \\  \hline 
+1&	17,38&	SEX TRANSM DIS --  AIDS       &	21&	4&	IEEE INT SYMP INFO --  IEEE T INFORM THEORY   \\
+2&	14,17&	PREV VET MED --  TRANSBOUND EMERG DIS     &	22&	4&	HEALTH RISK SOC --  RISK ANAL      \\
+3&	10,47&	ACTA PSYCHIAT SCAND --  BRIT J PSYCHIAT     &	23&	4&	QUAL RES SPORT EXERC --  SPORT MANAG REV    \\
+4&	10,27&	IEEE T PARALL DISTR --  IEEE INFOCOM SER    &	24&	4&	UROL ONCOL-SEMIN ORI --  BJU INT      \\
+5&	8,1&	IEEE T VEH TECHNOL --  IEEE T MOBILE COMPUT   &	25&	4&	PSYCHIAT DANUB --  QJM-INT J MED      \\
+6&	6,77&	J CONSTR ENG M --  J CONSTR ENG M ASCE  &	26&	4&	COMMUNITY DENT ORAL --  J AM DENT ASSOC    \\
+7&	5,68&	SOC COGN AFFECT NEUR --  NEUROIMAGE      &	27&	4&	Z ETHNOL --  J SOC HIST      \\
+8&	5&	APHASIOLOGY --  ADULT EDUC QUART       &	28&	4&	J AM SOC HYPERTENS --  NAT BIOTECHNOL     \\
+9&	4,67&	J INTELL DISABIL RES --  J APPL RES INTELLECT   &	29&	4&	MATERN CHILD HLTH J --  J NERV MENT DIS   \\
+10&	4,67&	APPL ENERG --  ENERG BUILDINGS       &	30&	4&	TRANSPL P --  AM J TRANSPLANT      \\
+11&	4,67&	J ISL COAST ARCHAEOL --  ANTIQUITY      &	31&	4&	J AFFECT DISORDERS --  DEATH STUD      \\
+12&	4,67&	INFORM SOC-ESTUD --  PERSPECT CIENC INF      &	32&	4&	J NEW APPROACHES EDU --  ESTUD SOBRE MENSAJ P   \\
+13&	4,5&	J ACAD LIBR --  REF USER SERV Q    &	33&	4&	J ADDICT NURS --  CLIN PSYCHOL REV     \\
+14&	4,18&	CIENC SAUDE COLETIVA --  CAD SAUDE PUBLICA     &	34&	4&	INT J CARDIOL --  WIRES DATA MIN KNOWL    \\
+15&	4&	ETHN DIS --  HEART LUNG       &	35&	4&	MCN-AM J MATERN-CHIL --  AM J NURS     \\
+16&	4&	EPIDEMIOL PREV --  HUM VACC IMMUNOTHER      &	36&	4&	INT J PEDIATR-MASSHA --  BEHAV MED      \\
+17&	4&	OPTIM LETT --  ARTIF LIFE       &	37&	4&	HEALTH EXPECT --  CAN J CARDIOL      \\
+18&	4&	ACTAS UROL ESP --  AESTHET SURG J     &	38&	4&	ARCTIC ANTHROPOL --  ARCTIC        \\
+19&	4&	J RETAIL CONSUM SERV --  AUSTRALAS MARK J    &	39&	4&	REV BRAS ENFERM --  REV LAT-AM ENFERM     \\
+20&	4&	J MARITAL FAM THER --  J CONSTR PSYCHOL    &	40&	3,36&	J CHILD PSYCHOL PSYC --  J AUTISM DEV DISORD   \\ \hline 
+\end{tabular}\\
+\end{table}  
+
+
+
+
+
+%******************************************************************************
+\section{Conclusions}
+
+
+Basic statistics of derived networks allow us to get the most important works, authors, journals, keywords. \medskip
+
+Citation network analysis reveals its main structure - gropus of works which are connected with each other. Obtained components are interlinked. \medskip
+
+Deeper analysis of other derived networks, including those which can be constructed out of different initial ones (e.g., WA and WK), will show other patterns of Social Network Analysis field development. 
+
+
+%******************************************************************************
+
+% \section{Bibliography}
+
+
+\begin{thebibliography}{99}
+\bibitem[Batagelj et al.(2014)]{Understand}
+Batagelj, V., Doreian P., V., Ferligoj, A., Kejžar N. Understanding Large Temporal Networks and Spatial Networks: Exploration, Pattern Searching, Visualization and Network Evolution, 2014.
+\bibitem[Freeman(2004)]{SNAdev}
+   Freeman, L. (2004). The development of social network analysis. A Study in the Sociology of Science, 1.
+\bibitem[Hummon and Carley(1993)]{normSci}
+   Hummon, N. P., Carley, K. (1993). Social networks as normal science. Social networks, 15(1), 71-106.
+\bibitem[Otte and Rousseau(2002)]{SNAinf}
+   Otte, E., Rousseau, R. (2002). Social network analysis: a powerful strategy, also for the information sciences. Journal of information Science, 28(6), 441-453. 
+\end{thebibliography}
+
+
+\end{document}
+
+%******************************************************************************
+\renewcommand{\arraystretch}{0.95}
+\small
+\begin{tabular}{c|r|r||c|r|r|} 
+\# & Value & Id & \# & Value & Id \\  \hline 
+1&	126,64&	WANG\_Y&	16&	64,25&	LIU\_J\\
+2&	98,16&	WANG\_X&	17&	61,45&	WANG\_L\\
+3&	97,72&	CHEN\_Y&	18&	59,53&	ZHANG\_X\\
+4&	94,5&	ZHANG\_Y&	19&	57,77&	KIM\_H\\
+5&	91,27&	LIU\_Y&	20&	55,73&	BURT\_R\\
+6&	85,61&	LI\_Y&	21&	54,1&	ZHANG\_Z\\
+7&	85,28&	ZHANG\_J&	22&	53,92&	CHEN\_C\\
+8&	83,12&	LI\_J&	23&	51,93&	LIU\_X\\
+9&	81,67&	WANG\_H&	24&	51,43&	WU\_J\\
+10&	79,3&	LEE\_J&	25&	51,17&	WANG\_S\\
+11&	77,46&	LI\_X&	26&	50,99&	WANG\_C\\
+12&	74,94&	LEE\_S&	27&	50,75&	CHEN\_L\\
+13&	72,84&	WANG\_J&	28&	50,66&	LI\_H\\
+14&	70,58&	KIM\_J&	29&	50,02&	NEWMAN\_M\\
+15&	65,13&	CHEN\_H&	30&	49,49&	CHEN\_X\
+\end{tabular}\\
