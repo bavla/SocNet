@@ -556,12 +556,16 @@ To construct the one-mode network \textbf{KKn}, we applied the Newman normalizat
 
 \subsection{Networks of key words co-occurence}
 
-However, exploratory analysis showed that in the obtained network, the most frequentlty words \textit{social}, \textit{network}, and \textit{analysis} were connecting most of the other keywords, that`s why we deleted these 3 nodes from the obtained network. Using Islands approach, we tried to obtain subnetwork with the size minimum 2 and maximum 75 nodes. We got a large number of islands - 342, - where the majority of islands (301) represent just pairs of keywords. The main island includes 75 nodes; there are also some islands of smaller sizes. 
+However, exploratory analysis showed that in the obtained network, the most frequentlty words \textit{social}, \textit{network}, and \textit{analysis} were connecting most of the other keywords, that`s why we deleted these 3 nodes from the obtained network. Using Islands approach, we tried to obtain subnetwork with the size minimum 2 and maximum 75 nodes. We got a large number of islands - 342, - where the majority of islands (301) represent just pairs of keywords. The main island includes 75 nodes; there are also some islands of smaller sizes. All these islands are shown below.\medskip
+
+Large part of Main island are the keywords on the topic of networking sites and social media (such as \textit{networking, media, online, site, facebook, internet, technology, we 2.0}). Other central nodes are \textit{information} associated with networking topic,  words \textit{diffusion} and \textit{privacy}, as well as \textit{base} and \textit{datum} (which also have links to many other keywords, including \textit{big}, and \textit{mining}). Other two central keywords are \textit{model} and \textit{graph}, which are connected to each other and other nodes, such as \textit{dynamics, complex, spread, influence} (for the first one) and \textit{random, theory, centrality - betweenness, large - scale - free, cluster} (for the second). These central nodes are also connected to the words \textit{community} and \textit{algorithm}, which have links to \textit{detection} and \textit{structure}. Other topics appeared in this subnetwork are associated with \textit{health} and \textit{education}. \medskip
 
 %make picture of KK\_Main Island net (75 nodes) 
-%picture KK_2-41(132 nodes)
-%picture KK_Pairs 
 
+Other islands represented at the Figure XX identify some topics being studied in network analysis (\textit{strength, weak, tie; corporate - interlock - directorate; triadic - closure; small - world}, or some broade topics under study (\textit{organ - donor - donation; persecutory - delusion - paranoia; trade - international - migration}), as well as some stable phrases (\textit{special, issue, introduction}). \medskip
+
+%picture KK_2-41(132 nodes)
+%picture KK_Pairs (should we include it?) 
 
 %******************************************************************************
 \section{Citation network}  
@@ -1140,13 +1144,13 @@ Using another type of normalization - Newman normalization, who interpret the we
 
 \subsection{Collaboration between authors}  
 
-As it was already shown in the section 4.1. (Table~ \ref{numpap} the authors having the largest number of papers have (except Newman) Chinese names. In this sense, it is not productive to look at the `most writing' authors. However, from the \textbf{Co} network we still get an important information about collaboration between groups of authors. The Figure (XX) shows the groups of authors, who have 20 and more works written together. As it can be seen, all of them are only pairs. 
+As it was already shown in the section 4.1. (Table~ \ref{numpap} the authors having the largest number of papers have (except Newman) Chinese names. In this sense, it is not productive to look at the `most writing' authors. However, from the \textbf{Co} network we still get an important information about collaboration between groups of authors. The Figure (XX) shows the groups of authors, who have 20 and more works written together. As it can be seen, all of them are only pairs. \medskip  
 
 %Incert picture of Pairs - file Co\_Pairs.net (47 nodes). Make a description 
 
- However, it is interesting to compare the values of the number of works that author has (in general, written by himself or herself or in collaboration) with the values of author`s contribution to these works and index of collaborativeness with others. Because of the `Chinese problem'  mentioned above we had to exclude the names of the Chinese authors from the output presented on the Table~\ref{collab}.  The names are ordered by authors` fractional total contribution to the field.\medskip  
+However, it is interesting to compare the values of the number of works that author has (in general, written by himself or herself or in collaboration) with the values of author`s contribution to these works and index of collaborativeness with others. Because of the `Chinese problem'  mentioned above we had to exclude the names of the Chinese authors from the output presented on the Table~\ref{collab}.  The names are ordered by authors` fractional total contribution to the field.\medskip  
  
- The first rated author in sence of largest productivity is social scientist R. Burt, followed by phisician M. Newman. They are followed by P. Doreian, H. Park, and R. Dunbar. Other authors with large total contribution values are B. Wellamn, T. Valente, S. Park, P. Bonachich, L. Leidersdorf, C. Latkin, H. Litwin, and P. Marsden. There are a lot of authors representing social science in the table. The authors with the highest index of collaborativeness are marked in boldface. \medskip 
+The first rated author in sence of largest productivity is social scientist R. Burt, followed by phisician M. Newman. They are followed by P. Doreian, H. Park, and R. Dunbar. Other authors with large total contribution values are B. Wellamn, T. Valente, S. Park, P. Bonachich, L. Leidersdorf, C. Latkin, H. Litwin, and P. Marsden. There are a lot of authors representing social science in the table. The authors with the highest index of collaborativeness are marked in boldface. \medskip 
 
 \begin{table}
 \caption{Collaborativeness} \label{collab}\medskip
@@ -1188,100 +1192,138 @@ As it was already shown in the section 4.1. (Table~ \ref{numpap} the authors hav
 \end{tabular}\\
 \end{table}
 
-Using Link islands approach, we extracted all the islands with the size between 5 and 50 nodes. We got a large number of islands - 2,195. Four largest island have, respectively, 35, 23, 21, and 19 nodes; other 70 islands have between 12 and 18 nodes. More then half - 58\% - of islands are composed of 5 nodes. The structures of these largest islands is presented on the Figure (xx). \medskip
+Using Link islands approach, we extracted all the islands with the size between 5 and 50 nodes from the network \textbf{Ct`}. We got a large number of islands - 2,195 - with 14,227 nodes. Four largest island have, respectively, 35, 23, 21, and 19 nodes; other 70 islands have between 12 and 18 nodes. More then half of islands - 58\% -  are composed of 5 nodes.  \medskip
 
-%Creat picture of Ct`\_Islands(1-74). 
+The structures of the largest islands of size from 12 to 35 nodes is presented on the Figure (xx) (1,037 nodes). These subnetworks have different structures. Part of these structures are not very interesting: they are star-like networks, which represent one author collaborating with many others, or (almost) complete clusters (cliques), where all authors collaborate with (mostly) everyone else. However, some islands can be intesting to inspect - those large islands, which have more interesting structures. \medskip
 
-The next step is to explore some of the islands that looks `interesting'. In one sense, interesting islands can be distinguished according to their size. The largest islands with names of authors are presented on the Figure. \medskip
+%Creat picture of Ct`\_Islands   (1-74), without labels, only structures 
 
-However, another way is to look as the islands with the strongest ties between the nodes. \medskip
+%Creat picture of Ct`islands with ``interesting structure: the problem is that the numbers of clusters, to which each island belongs, are not order in the same ordering as they are painted on the picture with 74 islands. I wanted to extract those with interestng structures. I could chose only 1,2,7,8,11,12,17 (but I wanted to get more). 
 
-TO BE DONE 
-1) Look at the largest islands. 
-2) Look at the islands with the largest links between nodes
+Another way to get interesting cases to inspect is to find the islands which have the strongest ties between the nodes. For this, we removed all the lines lower then certain trashold from the \textbf{Ct` net} and got the network of 32 nodes. Then we used and Island approach and got simple line weight islands of size [2,50] out of the same metwork (number of islands = 14,222). Then we manualy searched for the islands to which these 32 nodes belong, and extracted them. We also found the islands for T. Snijders (should we add someone else?).These islands are presented below. Some of the authors having the strongest ties with each other goes from the field of social sciences (Everett and Boragatti, Pattison and Robins), some - from physics (Barabasi, Albert, Posfai), some - from both of the fields (Christakis and Fowler). \medskip
+
+To better know what these authors are working at, we made an analysis of key words in coauthorship islands, which is presented in the following section.  \medskip
+
+%picture fromCt`_largest line weights.net (100 nodes)
 
 %******************************************************************************
+
 \section{Key words in coauthorship islands}
+
+In this section we look at the key words for some of the islands inspected in the previous section. 
 
 \subsection{Network creation}  
 
-Key words for given Islands 
+To construct the network of authors and keywords \textbf{AK}, we used normalized \textbf{reduced} networkds \textbf{WAr} and \textbf{WKr}.The first network was transpose and then multiplied with the second in the following way: \medskip
 
+\texttt{nAWr x nWKr = AK}
+
+\subsection{Key words in largest islands and islands with largest weights between the nodes}  
+
+Using this two-mode network we can inspect all the keywords which are associated with each author. However, what is interesting is to look at the keywords for certain islands. \medskip
+
+Again, we start with the largest islands 1-3, which have, respectively, 35, 23, and 21 nodes. These islands are associated with large number of keywords. However, we can extract some `special' wirds in each group. In Island 1 these are the keywords \textit{uganda, south,saharan, epidemiology,africa,  rural, agricultural,development, tuberculosis, molecular, mycobacterium, transmission, genotype, hiv, drug}, in Island 2 - \textit{support, risk, woman, abuse, health, environment, self, drug, hiv, echange, behavior, injection, transition, population, city, integration}, in Island 3 - \textit{radiation, radioactivity, environment, measurement, cancer, clinical, medicine, family, community}.  \medskip
+
+Then we also looked at some certain islands with the largest values of weights between the nodes, which were identified before. For the group of authors with Barabasi in the center the keywords are \textit{network, model, time, social, scale, dynamics, community, web}. The group of Fowler, Christakis, and Shakya have keywords \textit{group, population, association, mobilization, facebook,  ownership, child, weight, national, and state}. The island of Borgatti,  Everett, and Halgin is associated with the keywords \textit{world, disease, model, structural, network, structure, role, social, exchange, graph}.  Other group of social network analysts Robins and Pattison have the words \textit{complex, difference, wireless, group, population, association, ground, chain, perceive, similarity}. The group of Snijders have the keywords \textit{similarity, peer, model, network, family, orient, use, actor, social, behavior} which of course represent their work in stochastic actor-oriented models. \medskip
+
+The group with large weight of lines between Grabowska and Kosinski have the keywords \textit{network, time, model, community, social, scale, dynamics, web, world, behavior}. The large group of Litwin in the center connected to Stoekel and Shiovitz have the keywords \textit{social, older,  network, health, support, life, people, adult, israel, family}. The island of  Chinese authors wih strong ties between Wang and Ma have the keywords \textit{network, social, ranking, community, link, world, framework, model, evolution, attack}. \medskip
+
+%I have not looked at all of them - should we? 
+%need to have a look at the works 
 
 %******************************************************************************
 \section{Citation among authors}
 
+After analysing Cite network and WA network and looking at citations between works and collaborations between authors separately, we can also look at the derieved \textbf{CiteA network}, which shows citations among authors. \medskip 
+
 \subsection{Network creation} 
 
-After analysing Cite network and WA network and looking at citations between works and collaborations between authors separately, we can also look at the derieved \textbf{Ci network}, which shows citations among authors. 
+To get information about citations among authors we computed the \textbf{derived CiteA network} as a product of multiplication of the networks \textbf{WAr net} and \textbf{CiteR net}.In this network, the value of element CiteA[u;v] is equal to the number of citations from works coauthored by u to works coauthored by v.
 
- \medskip 
+\texttt{CiteA=t(WAr) * CiteR * WAr}
 
-Chapter 2, p.44 Acite=t(WAr) * nCiteR * WAr
+We also produced the normalized version of this network, \textbf{CiteAn}, where the value of element CiteAn[u;v] is equal to the number of {fractional} contribution of citations from works coauthored by u to works coauthored by v.\medskip 
 
-The value of element Acite[u;v] is equal to the number of citations from works coauthored by u to works coauthored by v.
-Islands - looked
-Islands without Wasserman (1994) 
+\texttt{CiteA=t(WAr) * nCiteR * WAr}
 
-- without norm 
-Largest island: combination of large N of citations (to Wasserman, Granovetter, Boyd, Newman) blured with the Chinese cloud. This contatains well-known researchers from social networks and complex networks fields.
+\subsection{Citations} 
 
-- with norm 
-Then we made normalized version without Wasserman and run the same procedures. Islands [5, 200]
+After the exploratory analysis of the obtined networks, we had to exclude the top-cited work of Wasserman and Faus (\texttt{[WASSERMA\_S(1994):}] from the data set as a lot of nodes were connected to it. \medskip 
 
-saved Main Island
-saved Islands from 2 to 22 (up to 10 size)
+Then we used Islands approach to get islands of the size [5, 200] from the \textbf{CiteA}. However, the combination of nodes with large number of citations (to Wasserman, Granovetter, Boyd, Newman) with the `Chinese cloud', which was already identified above, blured the results. This why the normalized network \textbf{CiteAn} was used for identification of islands. We got 195 islands of size between 5 and 200. \medskip 
 
+The Main island of CiteAn network consits of 200 nodes. In this network, cutations separates between M. Granovetter and D. Boyd, each of them have their own `cloud' of other authors. They are also connected through several authors citing both of them. However, most of these authors are againg from the `Chinese group'.  \medskip  
 
+%pictures CiteAn_Main Island - has 212 nodes. I looked at the network, and extracted Island1 again - it is file CiteAn_Island1(200). They are different. Probably, first one - is the main island frim CiteA not normalized?
+
+Figure XX presents other 21 islands consists of minimum 10 nodes (in sum, 268 nodes). Most of these islands are star-like islands, meaning that the author in the center actively cites a set of other authors. There are also two more `clique-like' islands, identifying groups of connected authors who cites each other. However, there are several more interesting structures 1, 2, 3), which shows several groups of authors connected to each other. \medskip  
+
+%picture CiteAn_Islands2-22
 
 \section{Co-citation among authors. Bibliographic Coupling }
 
 \subsection{Network creation} 
 
-Jaccard 
-
+Jaccard - ? 
 
 %******************************************************************************
 \section{Citation among journals}
-Fractional approach
-JJf = t(WJ) * n(Ci) * WJ
 
-Loops - highest number of self-citation
+In this section, we present the results on the citations between journals featuring works in the area of network analysis. 
 
-\renewcommand{\arraystretch}{0.8}
-\small
-\begin{tabular}{c|l|l||c|l|l|} 
-\# &	Value&	Journal &	\# &	Value&	Journal \\  \hline 
-1&	1083,68&	SOC NETWORKS&	16&	44,97&	AIDS BEHAV\\
-2&	533,84&	COMPUT HUM BEHAV&	17&	42,14&	KNOWL-BASED SYST\\
-3&	212,1&	LECT NOTES COMPUT SC&	18&	38,02&	BEHAV ECOL SOCIOBIOL\\
-4&	163,32&	PHYSICA A&	19&	37,66&	NATURE\\
-5&	135,71&	J COMPUT-MEDIAT COMM&	20&	35,14&	LECT NOTES ARTIF INT\\
-6&	111,53&	SOC SCI MED&	21&	35,11&	PROF INFORM\\
-7&	110,49&	AM J SOCIOL&	22&	33,34&	DECIS SUPPORT SYST\\
-8&	84,33&	SCIENTOMETRICS&	23&	33,16&	PLOS ONE\\
-9&	68,29&	CYBERPSYCH BEH SOC N&	24&	32,93&	PHYS REV E\\
-10&	55,33&	NEW MEDIA SOC&	25&	32,34&	ORGAN SCI\\
-11&	54,94&	J MED INTERNET RES&	26&	30,86&	SEX TRANSM DIS\\
-12&	54,48&	EXPERT SYST APPL&	27&	28,59&	ACAD MANAGE J\\
-13&	51,01&	ANIM BEHAV&	28&	28,45&	INFORM COMMUN SOC\\
-14&	47,64&	P NATL ACAD SCI USA&	29&	27,53&	PERS INDIV DIFFER\\
-15&	46,82&	INFORM SCIENCES&	30&	27,26&	J MATH SOCIOL\\
-\end{tabular}\\
+\subsection{Network JJf creation}
 
-! Islands - Generate networks with islands Extract Islands [1-11]
-Saved
-Hierarchical organization (picture, saved) (JJf Islands Main) 
+To get information about citations among journals we computed the \textbf{derived JJf network}, which takes into account citations from papers published in journal \textit{i} to papers published in journal \textit{j}, which appeared in the works included into the \textbf{WJr net}. We used a \textbf{CiteR net} to get information on citations between works. As journals of different sizes were included into the data set, using the \textit{fractional approach} this network was normalized. Then the networks were multyplied in the following way. Thus, the weights in the obtained network take into account \textit{fractional} contribution of citations from papers published in journal \textit{i} to papers published in journal \textit{j}.   \medskip 
 
-TO BE DONE 
+\texttt{JJf = t(WJr) * n(CiteR) * WJr}
 
-Make those islands of the size 2
-Extract the Islands [12-115] Network - Info 104 (number of lines) 
-JJf- Islands - Pairs
+\subsection{Citations}
+
+Looking at the loops of this network, we got the list of journals with highest self-citation (Table~\ref{jselfcite}). The highest value belongs to the \textit{Social Networks} journal, which is one of the main journals in the field of social network analysis. Second highest ranked is the \textit{Computers in Human Behavior} - a journal in the field of computer interactions and cyberpsychology. Other quite highly ranked journals are \textit{Physica A-Statistical Mechanics And Its Applications, Journal of Computer-Mediated Communication, Social Science \& Medicine, and American Journal of Sociology}. However, we note that the differences between values of first and last mentioned journals are quite significant. \medskip 
 
 \begin{table}
+\caption{Journals with the highest self-citation} \label{jselfcite}\medskip
+\renewcommand{\arraystretch}{0.95}
+\small
+\begin{center}
+\begin{tabular}{c|l|l} 
+\# &	Value&	Journal  \\  \hline 
+1&	1083,68&	SOC NETWORKS\\
+2&	533,84&	COMPUT HUM BEHAV \\
+3&	212,1&	LECT NOTES COMPUT SC \\
+4&	163,32&	PHYSICA A\\
+5&	135,71&	J COMPUT-MEDIAT COMM\\
+6&	111,53&	SOC SCI MED\\
+7&	110,49&	AM J SOCIOL\\
+8&	84,33&	SCIENTOMETRICS\\
+9&	68,29&	CYBERPSYCH BEH SOC \\
+10&	55,33&	NEW MEDIA SOCI\\
+11&	54,94&	J MED INTERNET RES\\
+12&	54,48&	EXPERT SYST APPL\\
+13&	51,01&	ANIM BEHAV\\ \hline 
+\end{tabular} \\ 
+\end{center}
+\end{table}  
 
-\renewcommand{\arraystretch}{0.82}
+We also generated Islands of size between 2 and 5, and got 115 islands, with the largest island containing 50 nodes. The islands 1-11 (with maximum 3 nodes) are presented on the Figure XX. In the main island, there are three groups of journals: two large groups of journals in Social Sciences and Computer Science, as well as one smaller group of journals in Physics. Citations among journals have clear acyclic (hierarchical) organization. \medskip 
+
+In the Social Sciences group, the most citing journal is \textit{Social Networks}, which is strongly connected to the \textit{Amercian Journal of Sociology}, as well as have connections with many other sociological journals (\textit{Structural Analysis in Social Sciences, American Sociological Review, Social Forces, Journal of Mathematical Sociology, Social Network Analysis}, which are, in turn, also have connections to the American Journal of Sociology. This journal is also cited by a large number of other journals from differnt fields of social sciences: sociology, family studies, social work, psychology, behavioral science, communication, migration studies, business, management, organization studies, urban and rural studies. \medskip 
+
+In the Computer Science group of journals, the most citing position is taken by \textit{Computers in Human Behavior} journal, which is largerly citing \textit{Journal of Computer-Mediated Communication}, as well as to \textit{CyberPsychology \& Behavior, Cyberpsychology, Behavior, and Social Networking}, which are are also connected to it, and the \textit{American Journal of Sociology}. \textit{Journal of Computer-Mediated Communication} is also cited by other journals from computer science, education technology. \medskip 
+
+Both top cited journals have shared journals which cite both of them. The are \textit{Information, Communication \& Society, Communications in Computer and Information Science, Lecture Notes in Artificial Intelligence, New Media \& Society}. The journal with the largest citations of both of these jornals is \textit{Lecture Notes in Computer Science}, which is also citing other journals, such as \textit{Social Networks, Structural Analysis in Social Science, and Nature}.\medskip 
+
+The Physics group has is presented by the journals \textit{Physica A-Statistical Mechanics And Its Applications, Physical Review E}, and also include some interdisciplinary journals \textit{Plos One}, \textit{Science}, and \textit{Nature}. There are links from \textit{Physica A} and \textit{Plos One} to  the \textit{American Journal of Sociology}. \medskip  
+
+Other groups of journals citing each other are the ones on the topics of substance abuse and addiction; archeology, anthropology and antiquity, behavioral ecology and animal behavior; geriatric psychiatry; psychology and deviation; child psychology and psychiatry; medicine; family medicine, sexual and reproductive health; speech-language; computer graphics. \medskip  
+
+%Picture from JJf_Islands_Main.net (83)
+
+Other islands 12-115 contains only 2 nodes - they are pairs of journals. Journals with the largest weights of lines are presented on the Table~\ref{jpairs}. The links are directed: first written journal cites second one. These journals cover the wide range of disciplines, including health studies, epidemiology, medicine, surgery, veterinary disciplines, biotechnology, psychiatry, family studies, neuroscience, education, sport, archeology, ethnology, anthropology, history, engineering, mobile computing, information science.  
+
+\begin{table}
+\caption{Pairs of journals} \label{jpairs}\medskip
+\renewcommand{\arraystretch}{0.9}
 \small
 \begin{tabular}{c|l|p{6cm}||c|l|p{6cm}|}
 \# &	Value&	Journals &	\# &	Value&	Journals \\  \hline 
@@ -1309,19 +1351,14 @@ JJf- Islands - Pairs
 \end{table}  
 
 
-
-
-
 %******************************************************************************
 \section{Conclusions}
-
 
 Basic statistics of derived networks allow us to get the most important works, authors, journals, keywords. \medskip
 
 Citation network analysis reveals its main structure - gropus of works which are connected with each other. Obtained components are interlinked. \medskip
 
 Deeper analysis of other derived networks, including those which can be constructed out of different initial ones (e.g., WA and WK), will show other patterns of Social Network Analysis field development. 
-
 
 %******************************************************************************
 
