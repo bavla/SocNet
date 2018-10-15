@@ -46,8 +46,8 @@
 Darja Maltseva\affmark[1], Vladimir Batagelj\affmark[1,2,3]\\
 \affaddr{\affmark[1]NRU HSE Moscow}\\
 \affaddr{\affmark[2]IMFM Ljubljana}\\
-\affaddr{\affmark[3]IAM UP Koper}\\
-\email{vladimir.batagelj@fmf.uni-lj.si}\\ \email{d.maltseva@gmail.com} %\\
+\affaddr{\affmark[3]IAM UP Koper}\\ \email{d.maltseva@gmail.com}\\
+\email{vladimir.batagelj@fmf.uni-lj.si} %\\
 %\affaddr{\LaTeX\ University}%
 }
 % \author{Darja Maljceva, Vladimir Batagelj  IMFM Ljubljana, IAM UP Koper, NRU HSE Moscow}
@@ -58,6 +58,23 @@ Darja Maltseva\affmark[1], Vladimir Batagelj\affmark[1,2,3]\\
 \newcommand{\WoSPajek}{\texttt{\textbf{WoS2Pajek}}\xspace}
 %\newcommand{\Pajek}{Pajek}
 \newcommand{\keyw}[1]{\textcolor{red}{\emph{#1}}}
+
+\newcommand{\WA}{\mathbf{W\!\!A}}
+\newcommand{\AW}{\mathbf{A\!\!W}}
+\newcommand{\WK}{\mathbf{W\!K}}
+\newcommand{\KW}{\mathbf{K\!W}}
+\newcommand{\WC}{\mathbf{W\!C}}
+\newcommand{\WJ}{\mathbf{W\!J}}
+\newcommand{\Ci}{\mathbf{Cite}}
+\newcommand{\Co}{\mathbf{Co}}
+\newcommand{\Cn}{\mathbf{Cn}}
+\newcommand{\Ct}{\mathbf{Ct}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\NP}{N\!P}
+%\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\sgn}{\operatorname{sgn}}
+% \newcommand{\WA}{\mathbf{W\!A}}
+
 \newcommand{\important}[1]{\textcolor{NavyBlue}{#1}}
 \newcommand{\RR}{\Bbb{R}}
 \newcommand{\NN}{\Bbb{N}}
@@ -100,15 +117,23 @@ Darja Maltseva\affmark[1], Vladimir Batagelj\affmark[1,2,3]\\
 \newcommand{\cmdkey}{\raisebox{-.025em}{\includegraphics[height=.7em]{command.pdf}}}
 \newcommand{\Mw}{\mathop{\raisebox{-1.5pt}{\mbox{$\Box$\kern-.55em\raisebox{2.5pt}{{\tiny $r$}}\kern2.9pt}}}}
 \newcommand{\Mv}{\mathop{\raisebox{-1.5pt}{\mbox{$\Box$\kern-.55em\raisebox{2.5pt}{{\tiny $h$}}\kern2.9pt}}}}
-\newcommand{\Ct}{\mathbf{Ct}}
-\newcommand{\N}{\mathbf{N}}
-\newcommand{\WA}{\mathbf{W\!A}}
+
+\newcommand{\Remark}[1]{\ifodd\value{page} \normalmarginpar
+ \else \reversemarginpar \fi \marginpar{{\footnotesize #1}} }
 
 \newcommand{\clock}{\count254=\time \divide\count254 by 60
  \count255=\count254 \multiply\count255 by -60
  \advance\count255 by \time
  \ifnum\count254<10 0\fi\number\count254\,:\,%
  \ifnum\count255<10 0\fi\number\count255}
+
+ \renewcommand{\textfraction}{.05}
+ \renewcommand{\topfraction}{.95}
+
+\oddsidemargin 5pt \evensidemargin 5pt \marginparwidth 60pt
+\marginparsep 10pt \topmargin -12 true mm \headheight 12pt \headsep 25pt
+\textheight 23 true cm \textwidth 16 true cm
+\columnsep 10pt \columnseprule 0pt
 
 
 %\newcommand{\diag}{\mathop{\rm diag}\nolimits}
@@ -122,24 +147,30 @@ Darja Maltseva\affmark[1], Vladimir Batagelj\affmark[1,2,3]\\
 
 \hypersetup{pdfauthor={D. Maltseva, V. Batagelj}}
 %\hypersetup{pdftitle={Bikes; 1. data}}
-\hypersetup{pdftitle={SNA. Evolution of the field}}
+\hypersetup{pdftitle={SNA. The evolution of the field}}
 
 \maketitle
+
+\begin{abstract}
+Abstract ...
+\\[4pt]
+\textbf{Keywords:}  social network analysis, bibliographic networks, main path,  island,
+\end{abstract}
 
 
 %******************************************************************************
 
 \section{Introduction}
 
-Social Network Analysis (SNA) has moved from a fragmented direction represented by the works of individual scientific groups unrelated to each other, to a discipline whose representatives by 1990 have formed an “invisible college” and achieved the status of  what Kuhn had labeled a “normal science”  \citep{SNAdev,normSci}. Starting from that time, the field has grown significantly, which can be seen by the number of scientific publications \citep{SNAinf} in different scientific fields, including Natural Sciences, which lead to the so called “physicists` invasion” into SNA \citep{Understand} and resulted with the development of Network Science discipline. This calls into a question whether the field remains unified and which scientific groups (by disciplines, thematic agenda, etc.) it is currently formed of. Thus, the aim of the current study is to trace the evolution of the field of Social Network Analysis using bibliographic approach.  \medskip 
+Social Network Analysis (SNA) has moved from a fragmented direction represented by the works of individual scientific groups unrelated to each other, to a discipline whose representatives by 1990 have formed an “invisible college” and achieved the status of  what Kuhn had labeled a “normal science”  \citep{SNAdev,normSci}. \Remark{around 1980: association, conference, journal} Starting from that time, the field has grown significantly, which can be seen by the number of scientific publications \citep{SNAinf} in different scientific fields, including Natural Sciences, which lead to the so called “physicists` invasion” into SNA \citep{Understand} and resulted with the development of Network Science discipline. This calls into a question whether the field remains unified and which scientific groups (by disciplines, thematic agenda, etc.) it is currently formed of. \Remark{online social networks}Thus, the aim of the current study is to trace the evolution of the field of Social Network Analysis using bibliographic approach.  \medskip 
 
-The phenomenon of scientific collaboration and communication by means of bibliometric tools has been extensively studied and reviewed over the last decades. The studies were devoted to the descriptions of scientific fields in different scientific traditions, such as co-authorship trends in Sociology in the USA (Moody, 2004; Hunter and Leahy, 2008), the USA and France (Pontille, 2003), Slovenia (Mali et al. 2010), Russia (Sokolov et al., 2010); Scientometrics and Informetrics (Hou et al., 2008), Library and Information science in Argentina (Chinchilla-Rodríguez et al., 2012), Economics in Poland (Lopaciuk-Gonczaryk, 2016); citation trends in some disciplines represented by thematic journals (Carley et al., 1993) and thematic sets of literature (Hummon and Doreian, 1989; Batagelj et al., 2017).   \medskip 
+The phenomenon of scientific collaboration and communication by means of bibliometric tools has been extensively studied and reviewed over the last decades. The studies were devoted to the descriptions of scientific fields in different scientific traditions, such as co-authorship trends in Sociology in the USA (Moody, 2004; Hunter and Leahy, 2008), the USA and France (Pontille, 2003),\Remark{Refs !?} Slovenia (Mali et al. 2010), Russia (Sokolov et al., 2010); Scientometrics and Informetrics (Hou et al., 2008), Library and Information science in Argentina (Chinchilla-Rodríguez et al., 2012), Economics in Poland (Lopaciuk-Gonczaryk, 2016); citation trends in some disciplines represented by thematic journals (Carley et al., 1993) and thematic sets of literature (Hummon and Doreian, 1989; Batagelj et al., 2017).   \medskip 
 
 Different patterns of collaboration and their change over time were studied based on the analysis of co-authorship networks from different subjects, such as Biology, Physics and Mathematics (Newman 2001; Newman 2004)  , Mathematics and Neuro-science (Barabasi et al., 2002), or even all research disciplines in one country (Kronegger et al., 2012; Ferligoj et al., 2015; Cugmas et al., 2016). Scientific networks on multinational level (Glänzel and Schubert, 2004) and international collaboration in science (Wagner and Leydesdorff, 2005) were studied.  \medskip 
 
 The development of the field of our interest, Social Network Analysis, was reflected in several studies focused both on its historiographical description (Freeman, 2004), as well as structures of citation (Hummon and Carley, 1993 Batagelj et al., 2014) and co-authorship (Leidesdorff et al., 2008; Otte, Rousseau, 2002). Attention was also given to citation structures of works written on some topics in SNA - centrality-productivity (Hummon et al., 1990; Batagelj et al., 2014, pp. 117-139), clustering and classification (Kejzar et al., 2010; Batagelj), blockmodeling (Batagelj). \medskip 
 
-Following Hummon and Carley (1993), we formulate the research purpose of the current study as to determine “whether the research in social networks hangs together, whether there are major divisional splits, either institutional or paradigmatic, and whether the members of the specialty attend to each other’s work” (Hummon and Carley, 1993). We believe that the study of scientific community of Russian network researchers is not only important from epistemological point of view, but also can help to identify main active clusters and groups of knowledge exchange and have a possibility to facilitate the development of the field in the future.  \medskip  
+Following Hummon and Carley (1993), we formulate the research purpose of the current study as to determine “whether the research in social networks hangs together, whether there are major divisional splits, either institutional or paradigmatic, and whether the members of the specialty attend to each other’s work” (Hummon and Carley, 1993). We believe that the study of scientific community of Russian\Remark{Russian???} network researchers is not only important from epistemological point of view, but also can help to identify main active clusters and groups of knowledge exchange and have a possibility to facilitate the development of the field in the future.  \medskip  
 
 \section{Social network analysis: review of the previous studies}
 
@@ -150,9 +181,9 @@ The early example of studying the SNA discipline by bibliometric tools is done b
 
 The institutionalization of the SNA reflected in the intensification of the works within the field. Studying Social Network analysis in Information sciences based on data obtained from Sociological Abstracts base in period 1974-1999, Otte and Rousseau (2002), demonstrated that the yearly number of articles related to SNA was constantly growing, starting from 1980`s. According to Freeman (2004), these data shows that the study of social networks is rapidly becoming one of the major areas of social science research (Freeman, 2004).  \medskip 
 
-The most important works and central players, influencing others, were studied by the means of co-authorship networks analysis (Leidesdorff et al., 2008; Otte, Rousseau, 2002) and analysis of citations structures (Hummon, Carley, 1993; Batagelj et al., 2014). (What was found)  Some studies focused on some subfields of SNA, such as centrality (Batagelj et al., 2014, pp. 117-139), clustering and classification (Kejzar et al., 2010; Batagelj – new), blockmodeling (Batagelj) (What was found) \medskip 
+The most important works and central players, influencing others, were studied by the means of co-authorship networks analysis (Leidesdorff et al., 2008; Otte, Rousseau, 2002) and analysis of citations structures (Hummon, Carley, 1993; Batagelj et al., 2014). *** \Remark{What was found}  Some studies focused on some subfields of SNA, such as centrality (Batagelj et al., 2014, pp. 117-139), clustering and classification (Kejzar et al., 2010; Batagelj – new), blockmodeling (Batagelj) ***  \Remark{What was found} \medskip 
 
-Even though the Initial involvement into the field of Social Network Analysis was interdisciplinary (Hummon, Carley, 1993) and the field did not develop only within Sociology (Otte, Rousseau, 2002), recently it passed through some major changes. In their study of citation analysis of the literature on Social Network Analysis Batagelj et al. (2014, pp. 160-172) demonstrated that at the beginning (1970`s) this direction was developing in the fields of Social Sciences, but starting from 2000`s key works on this topic moves to the sphere of Physics and Neurosciences. The same trend is seen in the analysis of literature on centrality - one of the metrics in SNA (Batagelj et al., 2014, pp. 117-139). \medskip  
+Even though the Initial involvement into the field of Social Network Analysis was interdisciplinary (Hummon, Carley, 1993) and the field did not develop only within Sociology (Otte, Rousseau, 2002), recently it passed through some major changes. In their study of citation analysis of the literature on Social Network Analysis Batagelj et al. (2014, pp. 160-172) demonstrated that at the beginning (1970`s) this direction was developing in the fields of Social Sciences, but starting from 2000`s key works on this topic moves to the sphere of Physics and Neurosciences. The same trend is seen in the analysis of literature on centrality -- one of the metrics in SNA (Batagelj et al., 2014, pp. 117-139). \medskip  
  
 %Peter Groenewegen, Iina Hellsten, Loet Leydesdorff) на конференции INSNA Sunbelt-2015 под названием «Social Networks as a looking glass on the social networks community».
 %Варга Аттила и Намеслаки Андрес - Формируют ли исследования организационных сетей единое коммуникационное поле? Картирование контекста цитирования в исследованиях организационных сетей.
@@ -163,7 +194,10 @@ Even though the Initial involvement into the field of Social Network Analysis wa
 
 \subsection{Data collection and cleaning}
 
-The resource for the data collection is Web of Science (WoS), Clarivate Analytics’s multidisciplinary databases of bibliographic information. The data set is composed of two parts. First part SN5 data collected in 2008 [Batagelj et al., 2014], contains all the records found by query  \texttt {"social network*"}, as well as all articles from the\texttt{Social Networks Journal}, till 2007. Another part was collected in June 2018 using same search scheme. Additionally, in 2018, all the articles from the networks-related journals were included - such as  \texttt{Network Science}, \texttt{Computational Social Networks}, \texttt{Applied Network Science}, \texttt{Social Network Analysis and Mining}, \texttt{Online Social Networks and Media}, \texttt{Journal of Complex  Networks}, \texttt{Journal of Social Structure}, and \texttt{Connections}. Figure 1 shows an example of records that are extracted from WoS. We had to linit the search to the Web of Science Core Collection because for other data bases in WoS special CR fields, which contain citation information, can not be exported.
+The source of data for our research was Web of Science (WoS), Clarivate Analytics’s multidisciplinary databases of bibliographic information. The data set is composed of two parts. The data set is based on the  SN5 data collected for the Viszards session at the Sunbelt 2008 [Batagelj et al., 2014]. It contains all the records obtained for the query  \texttt {"social network*"}, as well as all articles from the journal \texttt{Social Networks}, till 2007. We additionally searchrd for the most frequent references without record and papers on networks of around one hundred social networkers. The final version of SN5 contained
+ 193376 works,  7950 works with a description,  75930 authors,  14651 journals, and  29267 keywords.
+The SN5 data were extended  in June 2018 using the same search scheme. Additionally, in 2018, all the articles from the networks-related journals were included -- such as  \textit{Network Science}, \textit{Computational Social Networks}, \textit{Applied Network Science}, \textit{Social Network Analysis and Mining}, \textit{Online Social Networks and Media}, \textit{Journal of Complex  Networks}, \textit{Journal of Social Structure}, and \textit{Connections}. Figure~1 shows an example of record describing an article as obtained from WoS. We had to limit our search to the Web of Science Core Collection because for other data bases in WoS the CR fields, which contain citation information, can not be exported.\Remark{other example?}
+
 
 \begin{figure}
 \renewcommand{\baselinestretch}{0.8}
@@ -210,28 +244,35 @@ ER
 \caption{WoS record}\label{wos}
 \end{figure}
 
-The nodes, which are described only in WoS CR fields as references, do not have a full description in the colleced data set, and are called \keyw{terminal} nodes. As such nodes can be higly cited and in this sense important, we additionally collected the full descriptions for those which had the  largest values of citing by others (indegree value between 1506 and 150), using WoS. If a description of a node was not available in WoS we constructed a corresponding description without CR data, searching for the work in Google Scholar (and then using RIS biblographic format and converting it to WoS with special R program). We also included manual descriptions of important works without the CR field from data set BM.WoS on the topic of blockmodeling [Batagelj, Chapter 2?]. We should note that such additional influental papers, usually published earlier, could be overlooked by our research queries because it could happen that they do not use the now established terminology. Finally, our data set included 70,795 records with complete descripton (there were 15 duplicates).  \medskip
+The nodes, which are described only in WoS CR fields as references, do not have a full description in the collected data set, and are called \keyw{terminal} nodes. As such nodes can be higly cited and in this sense important, we additionally collected the full descriptions for those which had the  largest values of citing by others (indegree value between 1506 and 150), using WoS. If a description of a node was not available in WoS we constructed a corresponding description without CR data, searching for the work in Google Scholar (and then using RIS biblographic format and converting it to WoS with special R program). We also included manual descriptions of important works without the CR field from data set BM on blockmodeling. WoS on the topic of blockmodeling [Batagelj, Chapter 2?]. We should note that such additional influental papers, usually published earlier, could be overlooked by our research queries because it could happen that they do not use the now established terminology. Finally, our data set included 70,795 records with complete descripton (there were 15 duplicates).  \medskip
 
 \subsection{Original networks construction}
 
-Using WoS2Pajek 1.5  (Batagelj, 2007), we transformed our data into a collection of networks: the citation network $Cite$ on works (from the field CR), the authorship network $WA$ on works $\times$ authors  (from the field AU),  the journalship network $WJ$ on  works $\times$ journals  (from the field CR or J9),and the keywordship network $WK$ on works  $\times$ keywords (from the field ID or DE or TI). An important property of all these networks is that they share the same node set as the first one – i.e. the set of works (papers, reports, books, etc.) - wich means that they are \keyw{linked} and can be easily multiplied with each other, creating other networks. \medskip
+Using \WoSPajek 1.5  (Batagelj, 2007), we transformed our data into a collection of networks: the citation network $\Ci$ on works (from the field CR), the authorship network $\WA$ on works $\times$ authors  (from the field AU),  the journalship network $\WJ$ on  works $\times$ journals  (from the field CR or J9),and the keywordship network $\WK$ on works  $\times$ keywords (from the field ID or DE or TI). An important property of all these networks is that they share the same node set as the first one -- i.e. the set of works (papers, reports, books, etc.) -- wich means that they are \keyw{linked} and can be easily combined using the network multiplication into new \keyw{derived}  networks. \medskip
 
-Works that appears in descriptions can be of two types: those which has full descriptions (called hits), and those, which wer eonly cited (listed in the CR fields, but not presented among the hits). These data was stored in a partition DC, where DC[w] = 1 if a work w has a WoS description, and DC[w] = 0 otherwise. Partition year contains the work`s publication year from the fields PY or CR. Also the vector NP was obtained, where NP[w] = number of pages in each work w. WoS2Pajek also builds a CSV file titles with main data about works with DC = 1 (name, WoS line, author, title, journal, year), which can be used to list results. \medskip 
+Works that appear in descriptions can be of two types: those which has full descriptions (called hits), and those, which were only cited (listed in the CR fields, but not contained in the hits). These information was stored in a partition $DC$, where $DC[w] = 1$ if a work w has a WoS description, and $DC[w] = 0$ otherwise. Partition year contains the work`s publication year from the fields PY or CR. Also the vector $\NP$ was obtained, where $\NP[w] =$ number of pages in a work $w$. \WoSPajek also builds a CSV file titles with main data about works with $DC = 1$ (name, WoS data file line, first author, title, journal, year), which can be used to list results. \medskip 
 
-The usual \keyw{ISI name} of a work (its description in the field CR) has the following structure: \texttt {AU {+ ', ' +} PY \texttt{+ ', ' +} SO[:20] \texttt{+ ', V' +} VL\texttt{+ ', P' +} BP} (surname, first letters of name, year of publication, abbreviation of the journal, its volume and number of starting page), which results in such descriptions as \texttt{LEFKOVITCH LP, 1985, THEOR APPL GENET, V70, P585} (all the elements are in upper case). As in WoS the same work can have different ISI names, the  program WoS2Pajek supports also \keyw{short names} (similar to the names used in HISTCITE output), which has the following format: \texttt {LastNm[:8] \texttt{+ '\_' +} FirstNm[0] \texttt{+ '(' +} PY\texttt{+ ')' +} VL \texttt{+ ':' +} BP}. For example, for the mentioned work the ISI name is \texttt{LEFKOVIT\_L(1985)70:585}. From the last names with prefixes \texttt{VAN}, \texttt{DE}, \ldots the space is deleted, and unusual names start with characters \texttt{*} or \texttt{\$}.\medskip 
+The usual \keyw{ISI name} of a work (its description in the field CR) has the following structure: \smallskip
+ 
+ \texttt {AU {+ ', ' +} PY \texttt{+ ', ' +} SO[:20] \texttt{+ ', V' +} VL\texttt{+ ', P' +} BP}  \smallskip\\
+(first author's surname, first letters of name, year of publication, abbreviation of the journal, its volume and number of starting page; \texttt{+} denotes concatenation), which results in such descriptions as \Remark{other example ?}\smallskip
 
-However, some problems associated with names recognition still can occur in the data base. It can turn out, that the same works can be named by different names. For example, in our case, the names \texttt {BOYD\_D(2007)13} and \texttt {BOYD\_D(2008)13:210} were describing the same work of Danah Boyd, originally published in 2007, but in many cases referenced as being published in 2008. \medskip 
+\texttt{LEFKOVITCH LP, 1985, THEOR APPL GENET, V70, P585}\smallskip\\  (all the elements are in upper case). As in WoS the same work can have different ISI names, the  program WoS2Pajek supports also \keyw{short names} (similar to the names used in HISTCITE output), which has the following format:\smallskip
 
-Two possibilities to correct the data are: (1) to make corrections in the local copy of original data (WoS file); and (2) to make the equivalence partition of nodes and shrink the set of works accordingly in all  obtained networks. We used the second option (Batagelj, Chapter 2). For the works with largest counts we prepared lists of possible equivalents and manually determined equivalence classes. With a program in R we produced a Pajek's partition $EQ.clu$ file used for shrinking the set of works. Using the partition $p=worksEQ$,in Pajek we shrunk the Citation network $cite$, $WA$, $WJ$, and $WK$. The partitions $year$,  $DC$ and the vector $NP$ were also shrunk.  \medskip 
+ \texttt {LastNm[:8] \texttt{+ '\_' +} FirstNm[0] \texttt{+ '(' +} PY\texttt{+ ')' +} VL \texttt{+ ':' +} BP}. \smallskip\\ For example, for the mentioned work the ISI name is \texttt{LEFKOVIT\_L(1985)70:585}. From the last names with prefixes \texttt{VAN}, \texttt{DE}, \ldots the space is deleted, and unusual names start with characters \texttt{*} or \texttt{\$}.\medskip 
 
-After these iterations, we finally constructed the data set used in this paper. From 70,792 hits (works with full description, DC=1) we produced networks with sets of the following sizes: works |W| = 1,297,133, authors |A| = 395,972, journals |J| = 70,425, key words |K| = 32,409. We removed multiple linkes and loops from the networks and obtaind cleaned networks \textbf{CiteN}, \textbf{WAn}, \textbf{WJn}, and \textbf{WKn}. In the following section, we present some The statistical properties of the obtained networks are presented in the section 4. \medskip  
+However, some problems associated with names recognition still can occur in the data base. It can turn out, that the same works can be named by different names. For example, in our case, the names \texttt {BOYD\_D(2007)13} and \texttt {BOYD\_D(2008)13:210} were referencing the same work of Danah Boyd, originally published in 2007, but in many cases referenced as being published in 2008. \medskip 
+
+Two possibilities to correct the data are: (1) to make corrections in the local copy of original data (WoS file); and (2) to make the equivalence partition of nodes and shrink the set of works accordingly in all  obtained networks. We used the second option (Batagelj, Chapter 2). For the works with the largest counts we prepared lists of possible equivalents and manually determined equivalence classes. With a program in R we produced a \Pajek's partition of equivalent work names representing the same work. We used this partition to shrink the networks $\Ci$, $\WA$, $\WJ$, and $\WK$. The partitions $year$,  $DC$ and the vector $\NP$ were also shrunk.  \medskip 
+
+After some iterations of cleaning, we finally constructed the data set used in this paper. From 70,792 hits (works with full description, $DC=1$) we produced networks with sets of the following sizes: works $|W| = 1,297,133$, authors $|A| = 395,972$, journals $|J| = 70,425$, key words $|K| = 32,409$. We also removed multiple linkes and loops from the networks and named obtained cleaned networks \textbf{CiteN}, \textbf{WAn}, \textbf{WJn}, and \textbf{WKn}. The statistical properties of the obtained networks are presented in the section 4. \medskip  
 
 \subsection{Redused networks construction}
 
-As it was shown above, for the works which are cited only (DC=0) information is provided in a restricted way: we have only information about the first author, and we have no information on the keywords (as there is no titles in the descriptions). That is why, for further analysis we also constructed networks, which contain only works with complete description (DC>0). All the lines in the obtained networks were set to 1. The sizes of the obtained \textbf {reduced networks} are shown in the Table~\ref{rednet}. In obtaind reduced networks \textbf{CiteR}, \textbf{WAr}, \textbf{WJr}, and \textbf{WKr} the amount of sets is the following:works |W| = 70,792, authors |A| = 93,012, journals |J| = 9,219, key words |K| = 32,409 (remained the same).\medskip 
+As it was shown above, for the cited only  works  $(DC=0)$ only partial information is provided: we have information about the first author, and we have no information on the keywords (as there is no title in the descriptions). That is why, for further analysis we also constructed networks, which contain only works with complete description $(DC>0)$. All the link weights in the obtained networks were set to 1. The sizes of the obtained \keyw{reduced networks} \textbf{CiteR}, \textbf{WAr}, \textbf{WJr}, and \textbf{WKr} are shown in the Table~\ref{rednet}. In obtained reduced networks  the sizes of sets are as follows: works $|W| = 70,792$, authors $|A| = 93,012$, journals $|J| = 9,219$, key words $|K| = 32,409$ (remained the same).\medskip 
 
 \begin{table}
-\caption{Reduced networks}\label{rednet}\medskip
+\caption{Sizes of Cleaned and Reduced networks}\label{rednet}\medskip
 \begin{center}
 \begin{tabular}{c|r|r|r|r}
 	&\# nodes (sum)	& \# nodes 1	&\# nodes 2	& \# arcs \\ \hline		 
@@ -249,31 +290,33 @@ CiteN & 1,297,133 & & & 2,753,767\\
 
 \subsection{Boundary problem in Citation network}
 
-The original network \textbf{CiteN} had 1,297,133 nodes and 2,753,767 arcs. Considering the indegree distribution in this network we got the following  counts for the lowest number of recieved citations: 0 (41,954), 1 (933,315), 2 (154,895), 3 (58,141), and 4 (29, 885), which alltogether  combine 94\% of citations. Thus, most of the works were terminal (DC=0) or were referenced only once (indegree = 1). Therefore, we decided to remove all the `cited only' nodes with indegree smaller then 3 (DC = 0 and indeg<3) - the boundary problem (Batagelj et al. 2014). We also removed all the nodes starting with string \texttt{[ANON}.  Finally, we got a subnetwork \textbf{CiteB} with  222,086 nodes and 1 ,521,434 arcs.
+The original network \textbf{CiteN} had 1,297,133 nodes and 2,753,767 arcs. Considering the indegree distribution in this network we got the following  counts for the lowest number of recieved citations: 0 (41,954), 1 (933,315), 2 (154,895), 3 (58,141), and 4 (29, 885), which alltogether  cover 94\% of citations. Thus, most of the works were terminal (DC=0) or were referenced only once (indegree = 1). Therefore, we decided to remove all the `cited only' nodes with indegree smaller then 3 $(DC = 0$ and indeg$<3)$ -- the boundary problem (Batagelj et al. 2014). We also removed all the nodes starting with string \texttt{[ANON}.  Finally, we got a subnetwork \textbf{CiteB} with  222,086 nodes and 1 ,521,434 arcs.
 			
 \subsection{Derieved networks}
 
+\Remark{Move somewhere else}
 Using obtained networks - original \textbf{CiteN}, \textbf{WAn}, \textbf{WJn}, and \textbf{WKn}, reduced \textbf{CiteR}, \textbf{WAr}, \textbf{WJr}, and \textbf{WKr}, and bounded \textbf{CiteB} we constructed other networks for the further analysis. These networks can be of two types. First type are one-mode networks made by the multiplication of two two-mode networks: network of co-occurence of key words \textbf{KK} (out of WK net), networks of coauthorship \textbf{Co}, \textbf{Cn}, and \textbf{Ct`} (out of WA net), network of authors and keywods \textbf{AK} (out of WA and WK). Another type of networks are those which are produced by the multiplication of three networks: network of citations among authors (made out of Citation net and WA net) \textbf{AACite}, network of citations among journals \textbf{JJCite}, co-citation network \textbf{ACoj'}. The normalization was also used in production of these networks. The description on each derieved network construction is presented in the corresponding sections. 
 
-\section{Statistics on original networks}
+\section{Statistics on basic networks}
 
 \normalsize
 \subsection{Distributions on CiteN}
 
+\Remark{Add figure of \# of hits per year ?}
 In the Figure~\ref{yeard}, the distribution of all works (hits + cited only) by year is shown. It is ineteresting to note that this distribution fits very well the log normal distribution (Batagelj et al. 2014, pp. 119–121): 
-
-\[ c\cdot \mbox{dlnorm}(2019-year,a,b), where \]
+\[ c\cdot \mbox{dlnorm}(2019-year,a,b), \]
+ where
 $a = 2.543$,
 $b = 0.7206$,
-$c = 1.278 10^6$
+$c = 1.278 10^6$.
 
 \begin{figure}
 \centerline{\includegraphics[width=80mm]{pubYear.pdf}}
 \caption{Citation network: Distribution of works by years}\label{yeard}
 \end{figure}
 \medskip   
-
-In the Figure~\ref{cindeg}, the indegree distribution in citation network - cumulative and usual - logarithmic scale (?) is shown. This distribution fits well the the \keyw{power law} $f = c \cdot n^{-\alpha}$, where fitted $\alpha = 2.3007$, $c=749338$, which means that the small number of works   attracts a large number of citations, and the large number of works attarcts only small number of citations. Works with the largest indegrees are the most cited papers. 
+(
+In the Figure~\ref{cindeg}, the indegree distribution in citation network -- cumulative and density in double-logarithmic scale  is shown. This distribution fits well the the \keyw{power law} $f = c \cdot n^{-\alpha}$, with fitted $\alpha = 2.3007$, $c=749338$, which means that the small number of works   attracts a large number of citations, and the large number of works attracts only small number of citations. Works with the largest indegrees are the most cited papers. 
 
 \begin{figure}
 \centerline{
@@ -283,11 +326,11 @@ In the Figure~\ref{cindeg}, the indegree distribution in citation network - cumu
 \end{figure}
 \medskip   
 
-Table~\ref{mostcited} shows 60 the most $cited$ works (indegree in \textbf{CiteN}). It can be seen that half of these works (28 works) are published earlier, before 2000. It is also seen that some of these works (15) are books. The top ranked work is the well-known book of Wasserman and Faust published in 1994, and the second ranked work is also a classical article of Granovetter on the ``strenght of weak ties'' concept. The other books of  ``social'' networks scientists cited more then 500 times (number in parentheses) are:  Burt RS, Structural Holes: The Social Structure of Competition, 1992 (2333); Putnam RD, Bowling alone: America’s declining social capital, 2000 (1510); Scott J, Social Network Analysis: A Handbook, 2000 (1192); Everett MG, $Ucinet for Windows: Software for social network analysis, 2002$ (1171); Coleman J, Foundations of Social Theory, 1990 (1093); Borgatti SP,  $Ucinet for Windows: Software for Social Network Analysis, 2002$ (999); Hanneman RA, Introduction to social network methods, 2005 (854); Lin N, Social capital. A theory of social structure and action, 2001 (800); Rogers EM, Diffusion of innovations, 2003 (628); Putnam RD, Making democracy work: Civic institutions in modern Italy, 1993 (613); Zachary WW, An information flow model for conflict and fission in small groups, 1977 (583); Burt, RS	Brokerage and closure: An introduction to social capital, 2005 (565);  Rogers EM, Diffusion of Innovation. 4th, 1995 (555);  Fischer CS, To dwell among friends: Personal networks in town and city, 1982 (539). Other artciles of ``social'' network scientists listed in the table (topics in parentheses) belong to McPherson (homophily), Freeman and Bonachich (centrality, betweenness), Burt (structural holes), Coleman, Portes, Adler (social capital), Granovetter, Uzzi (embeddedness), Milgram (small world), Borgatti. \medskip 
+Table~\ref{mostcited} presents 60 the most $cited$ works (indegree in \textbf{CiteN}). It can be seen that half of these works (28 works) are published earlier, before 2000. It is also seen that some of these works (15) are books. The top ranked work is the well-known book of Wasserman and Faust published in 1994, and the second ranked work is also a classical article of Granovetter on the ``strenght of weak ties'' concept. The other books of  ``social'' networks scientists cited more then 500 times (number in parentheses) are:  Burt RS, Structural Holes: The Social Structure of Competition, 1992 (2333); Putnam RD, Bowling alone: America’s declining social capital, 2000 (1510); Scott J, Social Network Analysis: A Handbook, 2000 (1192); Everett MG, \textit{Ucinet for Windows: Software for social network analysis}, 2002 (1171); Coleman J, Foundations of Social Theory, 1990 (1093); Borgatti SP,  \textit{Ucinet for Windows: Software for Social Network Analysis}, 2002 (999); Hanneman RA, Introduction to social network methods, 2005 (854); Lin N, Social capital. A theory of social structure and action, 2001 (800); Rogers EM, Diffusion of innovations, 2003 (628); Putnam RD, Making democracy work: Civic institutions in modern Italy, 1993 (613); Zachary WW, An information flow model for conflict and fission in small groups, 1977 (583); Burt, RS	Brokerage and closure: An introduction to social capital, 2005 (565);  Rogers EM, Diffusion of Innovation. 4th, 1995 (555);  Fischer CS, To dwell among friends: Personal networks in town and city, 1982 (539). Other artciles of ``social'' network scientists listed in the table (topics in parentheses) belong to McPherson (homophily), Freeman and Bonachich (centrality, betweenness), Burt (structural holes), Coleman, Portes, Adler (social capital), Granovetter, Uzzi (embeddedness), Milgram (small world), and Borgatti. \medskip 
 
-Interestingly, the list also includes a lot of names of phisicists working with network approach: highly ranked articles of Watts DJ - Collective dynamics of 'small-world' networks, appeared in NATURE in 1998 (2906), as well as Barabasi AL-  Emergence of scaling in random networks, appeared in SCIENCE	in 1999 (2614). Other works are of Newman, Albert, Girvan, Fortunato, Blondel, Clauset on large and complex networks, community detection and clustering. A famous work of Erdos ``On random graphs'', published in 1959, is also in the list. \medskip 
+Interestingly, the list also includes a lot of names of phisicists working with network approach: highly ranked articles of Watts DJ -- Collective dynamics of 'small-world' networks, appeared in NATURE in 1998 (2906), as well as Barabasi AL-  Emergence of scaling in random networks, appeared in SCIENCE	in 1999 (2614). Other works are of Newman, Albert, Girvan, Fortunato, Blondel, Clauset on large and complex networks, community detection and clustering. A famous work of Erd\H{o}s ``On random graphs'', published in 1959, is also in the list. \medskip 
 
-There are also some representatives of the other spheres - in such expecte  topics as social network sites and social media (including highly rated artile of Boyd ``Social network sites: Definition, history, and scholarship'', published in 2007 and having 2447 citations); medicine (including famous works of Christakis NA on spread of obesity and smoking), and management. \medskip 
+There are also some representatives of the other spheres -- in such expected  topics as social network sites and social media (including highly rated article of Boyd ``Social network sites: Definition, history, and scholarship'', published in 2007 and having 2447 citations); medicine (including famous works of Christakis NA on spread of obesity and smoking), and management. \medskip 
 
 \begin{table}
 \caption{Citation net:\label{mostcited} The most cited works - indegree}\medskip
@@ -328,7 +371,8 @@ i	& freq	& id	                                           & i	& freq & id \\ \hli
 \end{tabular}
 \end{table}
 
-Table~\ref{maxciting} shows 20 the most $citing$ works (works with the largest outdegree in \textbf{CiteN}). These works are books, books introductory chapters, and review articles. Most of these works belong to the field of social sciences and cover different topics, including education, human relationships, archeology, migration, internet studies, and social media. The topic of social network analysis is not presented separately in this type of works. However, it is presented in the works published in journals in physics and computer science from the list (Bocaletti on complex networks, Costa on complex networks, Castellano on social physics of social dynamics, Brandes on methodological foundations of network analysis), as well as works representing the field of animal social networks. 
+\Remark{remove Table 3?}
+Table~\ref{maxciting} shows 20 the most \emph{citing} works (works with the largest outdegree in \textbf{CiteN}). These works are books, books introductory chapters, and review articles. Most of these works belong to the field of social sciences and cover different topics, including education, human relationships, archeology, migration, internet studies, and social media. The topic of social network analysis is not presented separately in this type of works. However, it is presented in the works published in journals in physics and computer science from the list (Bocaletti on complex networks, Costa on complex networks, Castellano on social physics of social dynamics, Brandes on methodological foundations of network analysis), as well as works representing the field of animal social networks. 
 
 \begin{table}
 \caption{Citation net: \label{maxciting} The most citing work -- outdegree}
@@ -351,10 +395,11 @@ i&	freq& 	id&	i&	freq&	id	\\ \hline
 
 \subsection{Distributions on WAn}
 
-Table~\ref{numpap} shows authors with the largest number of papers, which is shown by the indegree distribution of the \textbf{WAn} network. It can be seen that almost all of these names, except Newman, belong to Chinese authors. However, this is the result of the well-known \href{https://en.wikipedia.org/wiki/List_of_common_Chinese_surnames}{"three Zhang, four Li"} effect: as the number of original surnames in China is relatively small, there is a high chance that different authors, having the same surname and first letter of the name, shrink together, creating ``generalized'' authors. Such problem could be overcame if we had a special ID for each scientists. 
+\Remark{remove Table 4?}
+Table~\ref{numpap} shows authors with the largest number of papers, which is shown by the indegree distribution of the \textbf{WAn} network. It can be seen that almost all of these names (Wang, Zhang, Chen, Li, Liu, Lee, Kim, Yang, Wu), except Newman, belong to Chinese authors. However, this is the result of the well-known \href{https://en.wikipedia.org/wiki/List_of_common_Chinese_surnames}{"three Zhang, four Li"} effect: as the number of original surnames in China is relatively small, there is a high chance that different authors, having the same surname and first letter of the name, shrink together, creating ``generalized'' authors. Such problem could be overcame if we would use a special ID (such as ORCID) for each scientists. 
 
 \begin{table}
-\caption{WA net: \label{numpap} Authors with the largest number of papers -- indegree}
+\caption{\textbf{WAn} network: \label{numpap} Authors with the largest number of papers -- indegree}
 \renewcommand{\arraystretch}{0.9}
 \begin{center}
 \begin{tabular}{l|l|l||l|l|l}
@@ -383,7 +428,7 @@ Rank& 	Value& 	Id& 	Rank& 	Value& 	Id\\  \hline
 \end{center}
 \end{table}
 
-Looking at the outdegree of \textbf{WAn} network, we can get an information on the number of authors in works. This distribution is presented in the Table~\ref{numpapout}. It can be seen that the majority of works (95.5\%) has only one author (however, the majority of this group are works that are cited only, which contain information only on the first author). Other 4\% of all the works have from 2 to 5 authors. In some works, hovever, the amount of authors is pretty high. On the (Table~\ref{maxnumofauthors}) we present the works which have more then 25 authors. The most ``extreme'' case is the work ``Sharing and community curation of mass spectrometry data with Global Natural Products Social Molecular Networking'', published in $Nature Biotechnology$ in 2016, which has 126 authors. Almost all the works from this list belong to the fields of Natural science - medical, health, epidemiological, and behavioral studies. For these fields, the inclusion of all the authors inplementing a research project to the paper is quite a frequent situation.  However, the third rated article - ``Discussion on the paper by Handcock, Raftery and Tantrum'', - published in $Royal Statistical Society. Journal. Series A : Statistics in Society$ collect 48 ``social'' networks scientists.\medskip
+Looking at the outdegree of \textbf{WAn} network, we can get an information on the number of authors in works. This distribution is presented in the Table~\ref{numpapout}. It can be seen that the majority of works (95.5\%) has only one author (however, the majority of this group are works that are cited only, which contain information only on the first author). Other 4\% of all the works have from 2 to 5 authors. In some works, hovever, the amount of authors is pretty high. On the (Table~\ref{maxnumofauthors}) we present the works which have more then 25 authors. The most ``extreme'' case is the work ``Sharing and community curation of mass spectrometry data with Global Natural Products Social Molecular Networking'', published in \textit{Nature Biotechnology} in 2016, which has 126 authors. Almost all the works from this list belong to the fields of Natural science - medical, health, epidemiological, and behavioral studies. For these fields, the inclusion of all the authors inplementing a research project to the paper is quite a frequent situation.  However, the third rated article - ``Discussion on the paper by Handcock, Raftery and Tantrum'', - published in \textit{Royal Statistical Society. Journal. Series A : Statistics in Society} collect 48 ``social'' networks scientists.\medskip
 
 \begin{table}
 \caption{WA net: \label{numpapout} Number of authors in works -- outdegree}
@@ -558,14 +603,24 @@ To construct the one-mode network \textbf{KKn}, we applied the Newman normalizat
 
 However, exploratory analysis showed that in the obtained network, the most frequentlty words \textit{social}, \textit{network}, and \textit{analysis} were connecting most of the other keywords, that`s why we deleted these 3 nodes from the obtained network. Using Islands approach, we tried to obtain subnetwork with the size minimum 2 and maximum 75 nodes. We got a large number of islands - 342, - where the majority of islands (301) represent just pairs of keywords. The main island includes 75 nodes; there are also some islands of smaller sizes. All these islands are shown below.\medskip
 
-Large part of Main island are the keywords on the topic of networking sites and social media (such as \textit{networking, media, online, site, facebook, internet, technology, we 2.0}). Other central nodes are \textit{information} associated with networking topic,  words \textit{diffusion} and \textit{privacy}, as well as \textit{base} and \textit{datum} (which also have links to many other keywords, including \textit{big}, and \textit{mining}). Other two central keywords are \textit{model} and \textit{graph}, which are connected to each other and other nodes, such as \textit{dynamics, complex, spread, influence} (for the first one) and \textit{random, theory, centrality - betweenness, large - scale - free, cluster} (for the second). These central nodes are also connected to the words \textit{community} and \textit{algorithm}, which have links to \textit{detection} and \textit{structure}. Other topics appeared in this subnetwork are associated with \textit{health} and \textit{education}. \medskip
+Large part of Main island (Figure~\ref{kkmain}) are the keywords on the topic of networking sites and social media (such as \textit{networking, media, online, site, facebook, internet, technology, we 2.0}). Other central nodes are \textit{information} associated with networking topic,  words \textit{diffusion} and \textit{privacy}, as well as \textit{base} and \textit{datum} (which also have links to many other keywords, including \textit{big}, and \textit{mining}). Other two central keywords are \textit{model} and \textit{graph}, which are connected to each other and other nodes, such as \textit{dynamics, complex, spread, influence} (for the first one) and \textit{random, theory, centrality - betweenness, large - scale - free, cluster} (for the second). These central nodes are also connected to the words \textit{community} and \textit{algorithm}, which have links to \textit{detection} and \textit{structure}. Other topics appeared in this subnetwork are associated with \textit{health} and \textit{education}. \medskip
 
-%make picture of KK\_Main Island net (75 nodes) 
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,viewport=93 35 665 585,clip=]{KKmain.pdf}
+\end{center}
+\caption{KK network Main Island} \label{kkmain}
+\end{figure}
 
-Other islands represented at the Figure XX identify some topics being studied in network analysis (\textit{strength, weak, tie; corporate - interlock - directorate; triadic - closure; small - world}, or some broade topics under study (\textit{organ - donor - donation; persecutory - delusion - paranoia; trade - international - migration}), as well as some stable phrases (\textit{special, issue, introduction}). \medskip
+Other islands (largest are represented at the Figure~\ref{kkmid}) identify some topics being studied in network analysis (\textit{strength, weak, tie; corporate - interlock - directorate; triadic - closure; small - world}, or some broade topics under study (\textit{organ - donor - donation; persecutory - delusion - paranoia; trade - international - migration}), as well as some stable phrases (\textit{special, issue, introduction}). \medskip
 
-%picture KK_2-41(132 nodes)
-%picture KK_Pairs (should we include it?) 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,viewport=35 356 695 686,clip=]{KKmid.pdf}
+\end{center}
+\caption{KK network Medium size Islands} \label{kkmid}
+\end{figure}
 
 %******************************************************************************
 \section{Citation network}  
