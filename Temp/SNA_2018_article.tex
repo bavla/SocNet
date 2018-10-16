@@ -137,6 +137,8 @@ Darja Maltseva\affmark[1], Vladimir Batagelj\affmark[1,2,3]\\
 \textheight 23 true cm \textwidth 16 true cm
 \columnsep 10pt \columnseprule 0pt
 
+\newcommand{\denseFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{mc}\fontshape{n}\fontsize{10}{11pt}\selectfont}
+
 
 %\newcommand{\diag}{\mathop{\rm diag}\nolimits}
 
@@ -809,6 +811,16 @@ As it was already shown in the section 4.1. (Table~ \ref{numpap} the authors hav
 
 %Incert picture of Pairs - file Co\_Pairs.net (47 nodes). Make a description 
 
+description
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.7\textwidth,viewport=30 140 755 
+660,clip=]{CoPairs.pdf}
+\end{center}
+\caption{Collaboration pairs} \label{coPairs}
+\end{figure}
+
+
 However, it is interesting to compare the values of the number of works that author has (in general, written by himself or herself or in collaboration) with the values of author`s contribution to these works and index of collaborativeness with others. Because of the `Chinese problem'  mentioned above we had to exclude the names of the Chinese authors from the output presented on the Table~\ref{collab}.  The names are ordered by authors` fractional total contribution to the field.\medskip  
  
 The first rated author in sence of largest productivity is social scientist R. Burt, followed by phisician M. Newman. They are followed by P. Doreian, H. Park, and R. Dunbar. Other authors with large total contribution values are B. Wellamn, T. Valente, S. Park, P. Bonachich, L. Leidersdorf, C. Latkin, H. Litwin, and P. Marsden. There are a lot of authors representing social science in the table. The authors with the highest index of collaborativeness are marked in boldface. \medskip 
@@ -883,14 +895,85 @@ To construct the network of authors and keywords \textbf{AK}, we used normalized
 
 Using this two-mode network we can inspect all the keywords which are associated with each author. However, what is interesting is to look at the keywords for certain islands. \medskip
 
-Again, we start with the largest islands 1-3, which have, respectively, 35, 23, and 21 nodes. These islands are associated with large number of keywords. However, we can extract some `special' wirds in each group. In Island 1 these are the keywords \textit{uganda, south,saharan, epidemiology,africa,  rural, agricultural,development, tuberculosis, molecular, mycobacterium, transmission, genotype, hiv, drug}, in Island 2 - \textit{support, risk, woman, abuse, health, environment, self, drug, hiv, echange, behavior, injection, transition, population, city, integration}, in Island 3 - \textit{radiation, radioactivity, environment, measurement, cancer, clinical, medicine, family, community}.  \medskip
+Again, we start with the largest islands 1-3, which have, respectively, 35, 23, and 21 nodes (Table~\ref{ak2}). These islands are associated with large number of keywords. However, we can extract some `special' wirds in each group. In Island 1 these are the keywords \textit{uganda, south,saharan, epidemiology,africa,  rural, agricultural,development, tuberculosis, molecular, mycobacterium, transmission, genotype, hiv, drug}, in Island 2 - \textit{support, risk, woman, abuse, health, environment, self, drug, hiv, echange, behavior, injection, transition, population, city, integration}, in Island 3 - \textit{radiation, radioactivity, environment, measurement, cancer, clinical, medicine, family, community}.  \medskip
 
-Then we also looked at some certain islands with the largest values of weights between the nodes, which were identified before. For the group of authors with Barabasi in the center the keywords are \textit{network, model, time, social, scale, dynamics, community, web}. The group of Fowler, Christakis, and Shakya have keywords \textit{group, population, association, mobilization, facebook,  ownership, child, weight, national, and state}. The island of Borgatti,  Everett, and Halgin is associated with the keywords \textit{world, disease, model, structural, network, structure, role, social, exchange, graph}.  Other group of social network analysts Robins and Pattison have the words \textit{complex, difference, wireless, group, population, association, ground, chain, perceive, similarity}. The group of Snijders have the keywords \textit{similarity, peer, model, network, family, orient, use, actor, social, behavior} which of course represent their work in stochastic actor-oriented models. \medskip
+Then we also looked at some certain islands with the largest values of weights between the nodes, which were identified before Table~\ref{akw}. For the group of authors with Barabasi in the center the keywords are \textit{network, model, time, social, scale, dynamics, community, web}. The group of Fowler, Christakis, and Shakya have keywords \textit{group, population, association, mobilization, facebook,  ownership, child, weight, national, and state}. The island of Borgatti,  Everett, and Halgin is associated with the keywords \textit{world, disease, model, structural, network, structure, role, social, exchange, graph}.  Other group of social network analysts Robins and Pattison have the words \textit{complex, difference, wireless, group, population, association, ground, chain, perceive, similarity}. The group of Snijders have the keywords \textit{similarity, peer, model, network, family, orient, use, actor, social, behavior} which of course represent their work in stochastic actor-oriented models. \medskip
 
 The group with large weight of lines between Grabowska and Kosinski have the keywords \textit{network, time, model, community, social, scale, dynamics, web, world, behavior}. The large group of Litwin in the center connected to Stoekel and Shiovitz have the keywords \textit{social, older,  network, health, support, life, people, adult, israel, family}. The island of  Chinese authors wih strong ties between Wang and Ma have the keywords \textit{network, social, ranking, community, link, world, framework, model, evolution, attack}. \medskip
 
-%I have not looked at all of them - should we? 
-%need to have a look at the works 
+\begin{table}
+\caption{Clusters of authors and keywords:\label{ak2} Largest islands 1,2,3 (2)}\medskip
+\renewcommand{\arraystretch}{0.95}
+\begin{center}
+\begin{tabular}{p{1cm}|p{1cm}|p{2cm}|p{1cm}|p{2cm}|p{1cm}|p{2cm}}
+& \multicolumn{2}{c}{Island1} & \multicolumn{2}{c}{Island2} & \multicolumn{2}{c}{Island3}\\ \hline
+rank&	value&	keyword&	value&	keyword&	value&	keyword\\ \hline
+1&	0.41&	social&	4.36&	social&	0.13&	radiation\\
+2&	0.35&	network&	3.56&	network&	0.13&	public\\
+3&	0.31&	twitter&	1.18&	use&	0.13&	open\\
+4&	0.23&	situation&	0.91&	networking&	0.13&	measurement\\
+5&	0.23&	emergency&	0.83&	structure&	0.13&	environment\\
+6&	0.18&	narrative&	0.79&	drug&	0.13&	project\\
+7&	0.18&	information&	0.78&	risk&	0.13&	collaborative\\
+8&	0.17&	experience&	0.75&	hiv&	0.13&	radioactivity\\
+9&	0.17&	crisis&	0.68&	user&	0.11&	community\\
+10&	0.16&	uganda&	0.66&	woman&	0.11&	multimedia\\
+11&	0.16&	approach&	0.62&	community&	0.11&	characteristic\\
+12&	0.15&	categorization&	0.61&	sample&	0.11&	user\\
+13&	0.15&	modeling&	0.59&	role&	0.11&	model\\
+14&	0.15&	visualization&	0.56&	infection&	0.11&	share\\
+15&	0.15&	ontology&	0.54&	new&	0.11&	distribution\\ \hline
+Sum&	12.00&		& 89.76&		& 3.00&	\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{center}
+\begin{table}
+\caption{Clusters of authors and keywords:\label{akw} Clusters with largest line weights}\medskip
+\begin{tabular}{p{0.7cm}|p{1cm}|p{2cm}||p{1cm}|p{2cm}||p{1cm}|p{2.1cm}||p{1cm}|p{1.7cm}}
+ &	clu &	repr &	clu &	repr &	clu &	repr &	clu &	repr \\ \hline
+&	13381&	Barabasi&	13418&	Grabowska&	14112&	Wang&	6439&	Litwin\\\hline
+rank&	value&	keyword&	value&	keyword&	value&	keyword&	value&	keyword\\ \hline
+1&	8.31&	network&	2.12&	network&	17.54&	social&	4.32&	social\\
+2&	2.29&	social&	1.98&	social&	17.21&	network&	4.11&	network\\
+3&	2.08&	web&	1.58&	complex&	4.85&	model&	2.64&	health\\
+4&	2.04&	dynamics&	1.23&	model&	4.80&	base&	2.54&	support\\
+5&	2.04&	scale&	1.10&	dynamics&	3.56&	mobile&	2.25&	older\\
+6&	1.87&	complex&	0.99&	human&	3.47&	analysis&	1.86&	life\\
+7&	1.87&	internet&	0.90&	epidemic&	2.49&	information&	1.66&	people\\
+8&	1.78&	world&	0.64&	spread&	2.45&	community&	1.63&	adult\\
+9&	1.64&	community&	0.60&	percolation&	2.07&	networking&	1.45&	type\\
+10&	1.49&	free&	0.43&	line&	2.04&	online&	1.31&	israel\\
+11&	1.41&	model&	0.39&	society&	1.96&	trust&	1.21&	elderly\\
+12&	1.31&	science&	0.36&	hierarchical&	1.81&	algorithm&	1.01&	old\\
+13&	1.20&	link&	0.35&	pattern&	1.67&	privacy&	1.00&	age\\
+14&	1.20&	random&	0.28&	opinion&	1.59&	complex&	0.82&	american\\
+15&	1.20&	evolve&	0.28&	formation&	1.54&	behavior&	0.81&	later\\ \hline
+Sum&	89.55&	&	21.67&	&	267.40&	&	76.14&	\\ \hline\hline
+ &	clu &	repr &	clu &	repr &	clu &	repr &	clu &	repr \\ \hline
+&	13946&	Borgatti&	14024&	Christakis&	14221&	Robins&	13916&	Snijders\\ \hline
+rank&	value&	keyword&	value&	keyword&	value&	keyword&	value&	keyword\\ \hline
+1&	7.60&	network&	3.72&	network&	2.80&	network&	3.93&	network\\
+2&	3.94&	social&	3.46&	social&	2.48&	social&	3.04&	social\\
+3&	3.29&	graph&	1.16&	spread&	2.30&	model&	2.48&	model\\
+4&	2.13&	centrality&	1.15&	behavior&	1.57&	graph&	1.78&	graph\\
+5&	2.09&	analysis&	0.88&	health&	1.15&	logit&	1.35&	dynamics\\
+6&	2.02&	regular&	0.67&	large&	1.15&	analysis&	1.22&	markov\\
+7&	2.02&	role&	0.63&	smoking&	1.12&	logistic&	1.11&	random\\
+8&	1.96&	equivalence&	0.60&	model&	1.12&	regression&	0.97&	statistical\\
+9&	1.73&	semigroup&	0.54&	human&	1.02&	random&	0.95&	datum\\
+10&	1.48&	structure&	0.50&	obesity&	1.01&	markov&	0.84&	friendship\\
+11&	1.21&	relation&	0.50&	life&	0.94&	exponential&	0.84&	inference\\
+12&	1.20&	clique&	0.49&	cooperation&	0.84&	p&	0.76&	behavior\\
+13&	1.13&	similarity&	0.48&	influence&	0.77&	statistical&	0.75&	influence\\
+14&	1.12&	ebloc&	0.46&	evolution&	0.70&	semigroup&	0.73&	analysis\\
+15&	1.00&	correction&	0.45&	dynamics&	0.67&	multirelational&	0.70&	peer\\ \hline
+Sum&	92.66&	&	55.75&	&	47.89&	&	66.62&	\\
+\end{tabular}
+\end{table}
+\end{center}
+
 
 %******************************************************************************
 \section{Citation among authors}
@@ -978,7 +1061,13 @@ The Physics group has is presented by the journals \textit{Physica A-Statistical
 
 Other groups of journals citing each other are the ones on the topics of substance abuse and addiction; archeology, anthropology and antiquity, behavioral ecology and animal behavior; geriatric psychiatry; psychology and deviation; child psychology and psychiatry; medicine; family medicine, sexual and reproductive health; speech-language; computer graphics. \medskip  
 
-%Picture from JJf_Islands_Main.net (83)
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\textwidth,viewport=35 0 965 
+740,clip=]{JJfMain.pdf}
+\end{center}
+\caption{Citations among journals -- main island} \label{jjFmain}
+\end{figure}
 
 Other islands 12-115 contains only 2 nodes - they are pairs of journals. Journals with the largest weights of lines are presented on the Table~\ref{jpairs}. The links are directed: first written journal cites second one. These journals cover the wide range of disciplines, including health studies, epidemiology, medicine, surgery, veterinary disciplines, biotechnology, psychiatry, family studies, neuroscience, education, sport, archeology, ethnology, anthropology, history, engineering, mobile computing, information science.  
 
@@ -1084,9 +1173,9 @@ Kejžar, N., Černe, S. K., Batagelj, V. (2010). Network analysis of works on cl
 \section{Appendix}
 \begin{landscape}
 \LTcapwidth=220mm
+\denseFont
 \begin{longtable}{p{0.7cm}|p{0.8cm}|p{3cm}|p{14.5cm}|p{3.5cm}l}
 \caption{Cite net: \label{compareA} Overlapping of components: (1- Key Routes, 2- Main Path (CPM), 3- Island5, 4 - Island 4, Node Island, 5 - Prob Flow Island)} \\
-\small
 \renewcommand{\arraystretch}{0.7}
 year& 	 code& 	 author& 	 title& 	jour or book\\ \hline \endhead
 1934& 	6& 	 Moreno JL& 	 Who Shall Survive: A New Approach to the Problem of Human Interrelations& 	book\\
