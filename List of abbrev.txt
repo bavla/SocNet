@@ -1,0 +1,96 @@
+
+1   ***** 1495317    
+3   J ACM    1617    
+4    LNCS    1129    
+5   J DOC     830    
+6   MIS Q     359      
+8     MAN     354     
+10  ICWSM     307    
+14  T GIS     265    
+17  AMBIO     203      
+19   KIVA     170    
+20  JAIDS     162    
+21  PVLDB     159    
+22    AUK     158    
+23  J BUS     156       
+29   AAAI     111    
+31   ICML  96     
+32   NIPS  96     
+33    SDM  92          
+36    KDD  80     
+37     PS  75     
+38   ORYX  69     
+39   ISIS  65        
+41   CACM  61     
+42   PNAS  58       
+45   VINE  50        
+47  FAM J  45        
+49   EURE  44        
+52    GUT  43     
+53  VET J  42     
+    
+    
+     
+     
+58   VLDB  40     
+59  JASSS  38    
+60  ELT J  37 
+61    EMU  36     
+62  IJCAI  36     
+63    R J  35     
+    
+    
+    
+ 
+68  JOGNN  31     
+69  INT J  30     
+70  Z SOZ  30     
+71  LIB J  29     
+   
+73    ZER  28     
+    
+75  P IRE  28     
+76   TWEB  27     
+77  ALOMA  27     
+   
+    
+80  ICONO  26     
+81    ACL  25     
+82   PMLA  25     
+83   NSDI  24     
+84  SUCHT  23     
+   
+86    P T  22     
+87  EJBRM  21     
+    
+     
+
+
+92    BMJ  20
+93  HOMME  20
+
+95  PEERJ  19
+96   TKDD  19
+97  THE J  19
+
+99    WMJ  19
+
+101 ED EC  18
+102  JOSS  17
+103  OSDI  17
+
+105  JACM  17
+106  ACME  16
+
+108  TKDE  16
+
+110  CORR  15
+
+
+113 J AIS  15
+
+115  NOUS  15
+116 SIGIR  14
+117  EC B  14
+118  EDBT  14
+119    RQ  14
