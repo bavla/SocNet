@@ -272,7 +272,7 @@ After some iterations of cleaning, we finally constructed the data set used in t
 
 \subsection{Redused networks construction}
 
-As it was shown above, for the cited only  works  $(DC=0)$ only partial description is provided: we have information about the first author, and we have no information on the keywords (as there is no titles in descriptions). That is why, for further analysis we also constructed networks, which contain only works with complete description $(DC>0)$. All the link weights in the obtained networks were set to 1. The sizes of the obtained \keyw{reduced networks} \textbf{CiteR}, \textbf{WAr}, \textbf{WJr}, and \textbf{WKr} are shown in the Table~\ref{rednet}. In obtained reduced networks  the sizes of sets are as follows: works $|W| = 70,792$, authors $|A| = 93,012$, journals $|J| = 9,219$, key words $|K| = 32,409$ (remained the same).\medskip 
+As it was shown above, for the cited only  works  $(DC=0)$ only partial description is provided: we have information about the first author, and we have no information on the keywords (as there is no titles in descriptions). That is why, for further analysis we also constructed networks, which contain only works with complete description $(DC>0)$. All the link weights in the obtained networks were set to 1. The sizes of the obtained \keyw{reduced networks} \textbf{CiteR}, \textbf{WAr}, \textbf{WJsr}\Remark{names of nets}, and \textbf{WKr} are shown in the Table~\ref{rednet}. In obtained reduced networks  the sizes of sets are as follows: works $|W| = 70,792$, authors $|A| = 93,012$, journals $|J| = 9,219$, key words $|K| = 32,409$ (remained the same).\medskip 
 
 \begin{table}
 \caption{Sizes of Cleaned and Reduced networks}\label{rednet}\medskip
@@ -495,11 +495,69 @@ Value& First author & Title & Journal & Year \\ \hline\endhead
 
 \subsection{Distributions on WJn}
 
-The distributuion of number of works per journals is presented on the Figure ~\ref{worksjour}. According to the indegree distribution of the \textbf{WJn} network, the majority of jornals -- in sum, 82\% -- are represented  in the data set with 1 (57\%), 2 (12\%), 3 (6\%), 4 (4\%) or 5 (2.5\%) works. Other 18\% (12,533) journals have 6 works and more. Table~\ref{jourind} shows the most used journals, which have the maximum values of indegree distribution. In general, there are quite a lot of journals from Social sciences in the list, which are marked in boldface. The dominant journal is \textit{Lecture Notes in Computer Science}, which has more then 7,000 citations, followed by \textit{Social Science \& Medicine} and \textit{Journal of Personality and Social Psychology} with more then 3,000 citations. Other journals that have more then 2,000 citations are multidisciplinary journals \textit{Science, Proceedings of the National Academy of Sciences of the USA, Nature}, as well as  such disciplinary journals as \textit{Computers in Human Behavior, American Journal of Public Health, and American Sociological Review}. These journals are followed by other top-ranked journals in different disciplines having more than 1,500 citations, such as (descending number of citations) \textit{Physica A, Animal Behaviour, Journal of the American Medical Association, Lancet, Scientometrics, American Journal of Sociology, Academy of Management Journal, Lecture Notes in Artificial Intelligence, Journal of Applied Psychology, American Economic Review}. The main Social network analysis field`s outlet \textit{Social Networks} journal is on the19-th place. The remaining journals cover many disciplines such as  Medicine, Psychiatry, Gerontology, Epidemiology, Psychology, Management, Marketing, Computer and Information science. \medskip
+The second part of the obtained WJn network is consisted of 70425 journals. Due to the inconsistencies in titles writing in different descriptions, it included sets of nodes denoted \textit{the same journal}, that should have been shrunk. To get the list of these nodes, for each journal title we constructed a short code, which was formed out of the first two letters of each word in the journals` titles, in such as \texttt{SONEANMI} for \texttt{SOCIAL NETWORK ANALYSIS and MINING}, and then sorted it in such a way that the journal with the same codes were grouped together. We decided to manually inspect all journals with at least one of their names cited at least 200 times. In Pajek we computed the 2-mode network \textbf{Cite*WJnc} and determined the vector \textbf{wIndegJ.vec} with weighted indegrees for journals. We produced the list of candidates for inspection with 5482 lines. To additinally reduce the number of titles to inspect we decided to consider only titles that appeared in at least 3 citations. Finally, we got the list \textbf{journalK100.csv} with 3714 titles, that were manually inspected. Some examples of the journals titles grouped according to their codes are presented on the Fig~\ref{jour1}. After manual checking this list was reduced to 1688 lines. \medskip 
+
+However, some jurnal names can also be abbreviated, and there is a high chance that both of the names could be preserved at the data set -- for example, the \textit{Journal of the American Statistical Association} could be coded as \texttt{JASA} according to its title \texttt{J AM  STAT ASS} and according to its abbreviation \texttt{JASA}. That is why we also produced a list of frequent journal names of length at most 5, have chosen all the cases that could be regarded as abbreviations, such as \textit{CACM, JACM, JASA, LNCS, NIPS, JASSS, IJCAI, BMJ, JOSS}, and others, and implemented a manual search for the abbreviations of these jornals in the original list of 70,425 journals, where the values of weighted indegree of the journals were also presented. We grouped all the jornals titles which included the same abbreviation -- an example  is presented on the Fig~\ref{jour2} (it can be seen that there were different codes generated to different titles). The results of the search were added to the first obtained list, and finally the list for network shrinking was produced.  \medskip 
 
 \begin{figure}
-\centerline{\includegraphics[width=120mm]{WorksPerJour1.pdf}}
-\caption{WJn network: Distribution of number of works by journals}\label{worksjour}
+\renewcommand{\baselinestretch}{0.8}
+\scriptsize
+\begin{verbatim}
+63656		1312696	10849	SONEANMI	| SOCIAL NETWORK ANAL
+63657		1330776	3	SONEANMI	| SOCIAL NETWORKS ANAL
+63658		1311789	645	SONEANMI	| SOC NETW ANAL MIN
+63659		1313366	7	SONEANMI	| SOCIAL NETW ANAL MIN
+63660		1315722	7	SONEANMI	| SOC NETW ANAL MINING
+...
+25340		1297450	195	HUREMA	| HUM RESOURCE MANAGE
+25341		1298839	189	HUREMA	| HUMAN RESOURCE MANAG
+25343		1304542	3	HUREMA	| HUMAN RESOURCES MANA
+25344		1305503	67	HUREMA	| HUM RESOUR MANAGE
+25345		1312370	222	HUREMA	| HUM RESOUR MANAGE-US
+25352		1301632	189	HUREMAR	| HUM RESOUR MANAGE R
+25353		1303129	5	HUREMAR	| HUM RESOUR MANAG R
+...
+4188		1299141	391	AMJGEPS	| AM J GERIAT PSYCHIAT
+4189		1299905	23	AMJGEPS	| AM J GERIATRIC PSYCH
+4190		1302259	12	AMJGEPS	| AMER J GERIATR PSYCHIATR
+4191		1304932	14	AMJGEPS	| AM J GERIATR PSYCHIA
+4192		1314551	7	AMJGEPS	| AM J GERIATR PSYCHIATRY
+\end{verbatim}
+\caption{An example of different titles writing}\label{jour1}
+\end{figure}
+
+\begin{figure}
+\renewcommand{\baselinestretch}{0.8}
+\scriptsize
+\begin{verbatim}
+10524		1297183	50		5912	COAC		| COMMUN ACM
+10525		1311274	14141		6	COAC		| COMMUNICATIONS ACM
+10062		1309889	12756		61	CA		| CACM
+...
+55366		1351847	54714		1	PSPOSC 	| PS POLITICAL SCIENCE
+55768		1320199	23066		5	POSC		| POLITICAL SCI
+55769		1320573	23440		3	POSC		| POLIT SCI
+56082		1297982	849		224	PSSCPO	| PS-POLIT SCI POLIT
+56083		1298064	931		110	PSSCPO	| PS-POLITICAL SCI POL
+...
+33087		1299216	2083		1617	JAC		| J ACM
+33550		1355703	58570		2	JACJA		| J ACM JACM
+32955		1302464	5331		17	JA		| JACM
+\end{verbatim}
+\caption{An example of different titles writing with abbreviations}\label{jour2}
+\end{figure}
+
+
+After the shrinking, the new two-mode \textbf{WJsn network} was produced, with the same number of works (1,297,133) and reduced number of journals (69,146). The distributuion of number of works per journals is presented on the Figure ~\ref{worksjour}. According to the indegree distribution of the \textbf{WJsn} network, the majority of jornals -- in sum, 83\% -- are represented  in the data set with 1 (58\%), 2 (12\%), 3 (6\%), 4 (4\%) or 5 (2.5\%) works. Other 17\% (11,976) journals have 6 works and more. \medskip
+
+Table~\ref{jourind} shows the most used journals, which have the maximum values of indegree distribution. In general, there are quite a lot of journals from Social sciences -- such as Sociology, Psychology, Management and Business -- in the list, which are marked in boldface. However, the dominant journal is \textit{Lecture Notes in Computer Science}, which has 7,757 citations, followed by \textit{Social Science \& Medicine} and \textit{Journal of Personality and Social Psychology} with more then 3,000 citations. 
+Other journals that have more then 2,000 citations are multidisciplinary journals \textit{Proceedings of the National Academy of Sciences of the USA, Science, Nature}, as well as  such disciplinary journals as \textit{Computers in Human Behavior, American Journal of Public Health, and American Sociological Review}.  \medskip
+
+ These journals are followed by other top-ranked journals in different disciplines having more than 1,500 citations, such as (descending number of citations) \textit{Physica A, Animal Behaviour, American Journal of Sociology, Journal of the American Medical Association,  Lancet, Scientometrics, Academy of Management Journal, Lecture Notes in Artificial Intelligence, Journal of Applied Psychology, American Economic Review}. The main Social network analysis field`s outlet \textit{Social Networks} journal is also in this list, on the18th place, having 1642 citations. The remaining journals cover many disciplines such as  Medicine, Psychiatry, Gerontology, Epidemiology, Psychology, Management, Marketing, Computer and Information science. \medskip
+
+\begin{figure}
+\centerline{\includegraphics[width=100mm]{Rplot_WJs_new_indeg.pdf}}
+\caption{WJsn network: Distribution of number of works by journals}\label{worksjour}
 \end{figure}
 \medskip   
 
@@ -510,40 +568,37 @@ The distributuion of number of works per journals is presented on the Figure ~\r
 %\small
 \begin{tabular}{c|r|l||c|r|l}
 Rank&   	Value&   	Id&   	Rank&   	Value&   	Id \\ \hline
-1&   	7080&   	LECT NOTES COMPUT SC&   	31&   	1258&   	RES POLICY{AM J PSYCHIAT}\\   
-2&   	3859&   	SOC SCI MED&   	32&   	1221&   	J BUS RES\\   
-3&   	3408&   	J PERS SOC PSYCHOL&   	33&   	1217&   	\textbf{MANAGE SCI}\\   
-4&   	2719&   	COMPUT HUM BEHAV&   	34&   	1185&   	\textbf{ACAD MANAGE REV}\\   
-5&   	2631&   	SCIENCE&   	35&   	1182&   	\textbf{J CONSULT CLIN PSYCH}\\   
-6&   	2602&   	AM J PUBLIC HEALTH&   	36&   	1151&  \textbf {ORGAN SCI}\\   
-7&   	2599&   	P NATL ACAD SCI USA&   	37&   	1150&   	ADDICTION\\   
-8&   	2208&   	NATURE&   	38&   	1143&   	\textbf{STRATEGIC MANAGE J}\\   
-9&   	2058&   	\textbf{AM SOCIOL REV}&   	39&   	1087&   	\textbf{J GERONTOL B-PSYCHOL}\\   
-10&   	1945&   	PHYSICA A&   	40&   	1075&   	PEDIATRICS\\   
-11&   	1815&   	ANIM BEHAV&   	41&   	1055&   	AM J EPIDEMIOL\\   
-12&   	1778&   	JAMA-J AM MED ASSOC&   	42&   	1050&   	COMPUT EDUC\\   
-13&   	1765&   	\textbf{AM J SOCIOL}&    43&   1022&   	DEV PSYCHO\\   
-14&   	1763&   	LANCET&   		44&   	1022&   	\textbf{PSYCHOL BULL}\\   
-15&   	1759&   	\textbf{SCIENTOMETRICS}&   	45&   	1007&   	J ADOLESCENT HEALTH\\   
-16&   	1703&   	\textbf{ACAD MANAGE J}&   	46&   	997&   	\textbf{J MARKETING}\\   
-17&   	1632&   	LECT NOTES ARTIF INT&   	47&   	996&   	ARCH GEN PSYCHIAT\\   
-18&   	1573&   	\textbf{J APPL PSYCHOL}&   	48&   	994&   	AIDS BEHAV\\   
-19&   	1551&   	\textbf{SOC NETWORKS}&   	49&   	972&   	PERS INDIV DIFFER\\   
-20&   	1509&   	\textbf{AM ECON REV}&   	50&   	949&   	PERS SOC PSYCHOL B\\   
-21&   	1433&   	\textbf{J MARRIAGE FAM}&   	51&   	947&   	J BUS ETHICS\\   
-22&   	1400&   	BRIT MED J&   	52&   	939&   	\textbf{J MARKETING RES}\\   
-23&   	1399&   	CHILD DEV&   	53&   	925&   	INFORM SCIENCES\\   
-24&   	1373&   	EXPERT SYST APPL&   	54&   	916&   	\textbf{HARVARD BUS REV}\\   
-25&   	1365&   	NEW ENGL J MED&   	55&   	915&   	IEEE T KNOWL DATA EN\\   
-26&   	1363&   	COMMUN ACM&   	56&   	901&   	DRUG ALCOHOL DEPEN\\   
-27&   	1355&   	RES POLICY&   	57&   	900&   	WORLD DEV\\   
-28&   	1279&   	GERONTOLOGIST&   	58&   	899&   	AM J PREV MED\\   
-29&   	1275&   	BRIT J PSYCHIAT&   	59&   	895&   	ADDICT BEHAV\\   
-30&   	1271&   	\textbf{SOC FORCES}&   	60&   	893&   	\textbf{J CONSUM RES}\\  \hline
+1&	7757&	LECT NOTES COMPUT SC&	31&	1278&	\textbf{BRIT J PSYCHIAT}\\
+2&	3866&	SOC SCI MED&	32&	1267&\textbf{AM J PSYCHIAT}\\
+3&	3414&	\textbf{J PERS SOC PSYCHOL}&	33&	1244&	\textbf{STRATEGIC MANAGE J}\\
+4&	2741&	P NATL ACAD SCI USA&	34&	1225&	\textbf{MANAGE SCI}\\
+5&	2734&	COMPUT HUM BEHAV&	35&	1221&	\textbf{J BUS RES}\\
+6&	2631&	SCIENCE&	36&	1189&\textbf{ACAD MANAGE REV}\\
+7&	2609&	AM J PUBLIC HEALTH&	37&	1188&\textbf{J CONSULT CLIN PSYCH}\\
+8&	2208&	NATURE&	38&	1154&\textbf{ORGAN SCI}\\
+9&	2111&	\textbf{AM SOCIOL REV}&	39&	1150&	ADDICTION\\
+10&	1945&	PHYSICA A&	40&	1123&	CYBERPSYCHOL BEHAV\\
+11&	1825&	ANIM BEHAV&	41&	1092&	COMPUT EDUC\\
+12&	1812&	\textbf{AM J SOCIOL}&	42&	1087&	\textbf{J GERONTOL B-PSYCHOL}\\
+13&	1780&	JAMA-J AM MED ASSOC&	43&	1075&	PEDIATRICS\\
+14&	1763&	LANCET&	44&	1067&	AM J EPIDEMIOL\\
+15&	1759&	SCIENTOMETRICS&	45&	1024&\textbf{DEV PSYCHOL}\\
+16&	1703&	\textbf{ACAD MANAGE J}&	46&	1022&\textbf{PSYCHOL BULL}\\
+17&	1668&	LECT NOTES ARTIF INT&	47&	1020&	INFORM SCI\\
+18&	1642&\textbf{*SOC NETWORKS*}&	48&	1016&	J ADOLESCENT HEALTH\\
+19&	1573&\textbf{J APPL PSYCHOL}&	49&	1009&	ARCH GEN PSYCHIAT\\
+20&	1517&	AM ECON REV&	50&	997&\textbf{J MARKETING}\\
+21&	1450&	\textbf{J MARRIAGE FAM}&	51&	994&	AIDS BEHAV\\
+22&	1441&	EXPERT SYST APPL&	52&	972&	PERS INDIV DIFFER\\
+23&	1403&	BRIT MED J&	53&	949&\textbf{PERS SOC PSYCHOL B}\\
+24&	1399&	CHILD DEV&	54&	947&	J BUS ETHICS\\
+25&	1379&	\textbf{RES POLICY}&	55&	939&	\textbf{J MARKETING RES}\\
+26&	1372&	COMMUN ACM&	56&	925&	\textbf{HARVARD BUS REV}\\
+27&	1365&	NEW ENGL J MED&	57&	915&	IEEE T KNOWL DATA EN\\
+28&	1311&	PHYS REV E&	58&	914&	DRUG ALCOHOL DEPEN\\
+29&	1287&	\textbf{SOC FORCES}&	59&	908&	J ADV NURS\\
+30&	1279&	GERONTOLOGIST&	60&	906&	MIS QUART\\ \hline
 \end{tabular}
-
-	
-
 \end{table}
 
 \subsection{Distributions on WKn}
@@ -996,50 +1051,50 @@ In this section, we present the results on the citations between journals featur
 
 \subsection{Network JJf creation}
 
-To get information about citations among journals we computed the \textbf{derived JJf} network, which takes into account citations from papers published in journal \textit{i} to papers published in journal \textit{j}, which appeared in the works included into the \textbf{WJr net}. We used a \textbf{CiteR net} to get information on citations between works. As journals of different sizes were included into the data set, using the \textit{fractional approach} this network was normalized. Then the networks were multyplied in the following way. Thus, the weights in the obtained network take into account \textit{fractional} contribution of citations from papers published in journal \textit{i} to papers published in journal \textit{j}.   \medskip 
+To get information about citations among journals we computed the \textbf{derived JJsfn} network, which takes into account citations from papers published in journal \textit{i} to papers published in journal \textit{j}, which appeared in the works included into the \textbf{WJsr net}. We used a \textbf{CiteR net} to get information on citations between works. As journals of different sizes were included into the data set, using the \textit{fractional approach} this network was normalized. Then the networks were multyplied in the following way. Thus, the weights in the obtained network take into account \textit{fractional} contribution of citations from papers published in journal \textit{i} to papers published in journal \textit{j}.   \medskip 
 
-\texttt{JJf = t(WJr) * n(CiteR) * WJr}
+\texttt{JJsfn = t(WJsr) * n(CiteR) * WJsr}
 
 \subsection{Citations}
 
-Looking at the loops of the network \textbf{JJr}, we got the list of journals with highest self-citation (Table~\ref{jselfcite}). The highest value belongs to the \textit{Social Networks} journal, which is one of the main journals in the field of Social network analysis. Second highest ranked journal is the \textit{Computers in Human Behavior} -- the one in the field of Computer interactions and Cyberpsychology. Other quite highly ranked journals are \textit{Physica A-Statistical Mechanics And Its Applications, Journal of Computer-Mediated Communication, Social Science \& Medicine, and American Journal of Sociology}. However, we note that the differences between values of first and last mentioned journals are quite significant. \medskip 
+Looking at the loops of the network \textbf{JJr}, we got the list of journals with highest self-citation (Table~\ref{jselfcite}). The highest value belongs to the \textit{Social Networks} journal, one if the main journals in the field of Social network analysis. Other highly ranked journals are from the fields of Computer science and Cyberpsychology -- the journals \textit{Computers in Human Behavior} and \textit{Lecture Notes in Computer Science}. Other journals with relatively high number of internal citations are \textit{Physica A -- Statistical Mechanics and its Applications, Social Science \& Medicine, Journal of Medical Internet Research}, and {Cyberpsychology, Behavior, and Social Networking}. However, the differences between values of the first three mentioned journals are the others are quite significant. \medskip 
 
 \begin{table}
 \caption{Journals with the highest self-citation} \label{jselfcite}\medskip
 \renewcommand{\arraystretch}{0.95}
 \small
 \begin{center}
-\begin{tabular}{c|l|l} 
-\# &	Value&	Journal  \\  \hline 
-1&	1083,68&	SOC NETWORKS\\
-2&	533,84&	COMPUT HUM BEHAV \\
-3&	212,1&	LECT NOTES COMPUT SC \\
-4&	163,32&	PHYSICA A\\
-5&	135,71&	J COMPUT-MEDIAT COMM\\
-6&	111,53&	SOC SCI MED\\
-7&	110,49&	AM J SOCIOL\\
-8&	84,33&	SCIENTOMETRICS\\
-9&	68,29&	CYBERPSYCH BEH SOC \\
-10&	55,33&	NEW MEDIA SOCI\\
-11&	54,94&	J MED INTERNET RES\\
-12&	54,48&	EXPERT SYST APPL\\
-13&	51,01&	ANIM BEHAV\\ \hline 
+\begin{tabular}{c|l|l||c|l|l} 
+\# &	Value&	Journal &  \# &	Value& Journal \\ \hline 
+1&	355.6510&	\textbf{SOC NETWORKS}&	16&	18.3544&	ANIM BEHAV\\
+2&	168.3895&	\textbf{COMPUT HUM BEHAV}&	17&	17.0258&	AIDS BEHAV\\
+3&	122.5673&	\textbf{LECT NOTES COMPUT SC}&	18&	16.0264&	AM J COMMUN PSYCHOL\\
+4&	57.7481&	PHYSICA A&	19&	14.8671&	INFORM SCI\\
+5&	43.0044&	SOC SCI MED&	20&	14.1354&	KNOWL-BASED SYST\\
+6&	42.1777&	J MED INTERNET RES&	21&	12.6377&	PROF INFORM\\
+7&	41.4862&	CYBERPSYCHOL BEHAV&	22&	12.3459&	COMUNICAR\\
+8&	33.1587&	PLOS ONE&	23&	12.0034&	BEHAV ECOL SOCIOBIOL\\
+9&	32.9326&	PHYS REV E&	24&	11.8709&	AM J EPIDEMIOL\\
+10&	30.2164&	SCIENTOMETRICS&	25&	11.0110&	DECIS SUPPORT SYST\\
+11&	24.1576&	P NATL ACAD SCI USA&	26&	10.5766&	J ETHN MIGR STUD\\
+12&	23.1472&	AM J SOCIOL&	27&	10.4269&	COMPUT EDUC\\
+13&	20.0417&	LECT NOTES ARTIF INT&	28&	10.3057&	SEX TRANSM DIS\\
+14&	19.3091&	EXPERT SYST APPL&	29&	10.1905&	NATURE\\
+15&	18.7733&	NEW MEDIA SOC&	30&	9.8476&	ORGAN SCI\\
 \end{tabular} \\ 
 \end{center}
 \end{table}  
 
-We also generated Islands of size between 2 and 5, and got 115 islands, with the largest island containing 50 nodes. The Main islands is presented on the Figure~\ref{jjFmain}. There are three groups of journals: two large groups of journals in Social Sciences and Computer Science, as well as one smaller group of journals in Physics. Citations among journals have clear acyclic (hierarchical) organization. \medskip 
+We generated Islands of size between 2 and 5, and got 193 islands, with the largest island containing 50 nodes. The Main islands is presented on the Figure~\ref{jjFmain1}.Citations among journals have clear acyclic (hierarchical) organization. There can be sevral main groups of journals detected: journals in Social Sciences (on the right), Computer Science (on the left), Physics (in the middle) and General scientific journals (in the bottom).  \medskip 
 
-In the Social Sciences group, the most citing journal is \textit{Social Networks}, which is strongly connected to the \textit{Amercian Journal of Sociology}, as well as have connections with many other sociological journals (\textit{Structural Analysis in Social Sciences, American Sociological Review, Social Forces, Journal of Mathematical Sociology, Social Network Analysis}, which are, in turn, also have connections to the American Journal of Sociology. This journal is also cited by a large number of other journals from differnt fields of Social sciences: Sociology, Family studies, Social work, Psychology, Behavioral science, Communication, Migration studies, Business, Management, Organization studies, Urban and Rural studies. \medskip 
+In the \textbf{Computer Science group} of journals, the most citing position is taken by \textit{Lecture Notes in Computer Science}, which largerly cite the journals from all the groups: Computer Science (\textit{Computer Networks, Communications of the ACM, Computers in Human Behavior}, and others), Social sciences (\textit{Social Networks, Social Network Analysis and Mining, Structural Analysis in the Social Sciences, Annual Review of Sociology}), Physics (\textit{Physical Review}, and General scientific journals (\textit{Nature, Journal of Interdisciplinary Sciences, Proceedings of the National Academy of Sciences USA}. It also have equal number of outgoing and incoming citations with the journal \textit{Lecture Notes in Artficial Intelligence}, which also cites a lot of journals from different fields. Another journal from this group -- \textit{Computers in Human Behavior} is largerly citing the journal \textit{Cyberpsychology, Behavior, and Social Networking}, which also cites it back, \textit{Journal of Computer-Mediated Communication}, and other journals related to Behavioral studies and Information Systems, as well as Media. \medskip 
 
-In the Computer Science group of journals, the most citing position is taken by \textit{Computers in Human Behavior} journal, which is largerly citing \textit{Journal of Computer-Mediated Communication}, as well as \textit{CyberPsychology \& Behavior, Cyberpsychology, Behavior, and Social Networking}, which are are also connected to it, and the \textit{American Journal of Sociology}. \textit{Journal of Computer-Mediated Communication} is also cited by other journals from Somputer sciences, Education technology. \medskip 
+The group of journals from the \textbf{Physics} is presented by only three journals -- \textit{Physica A-Statistical Mechanics And Its Applications, Physical Review E, Physical Review Letter}, with the first one citing others. The \textit{Physica A, Physical Review E} are also the journals that cite largerly general scientific journals \textit{Nature} and \textit{Science}. It is also seen that the traditional, older \textbf{general scientific journals} -- \textit{Nature, Science, Journal of Interdisciplinary Sciences, Proceedings of the National Academy of Sciences USA} are cited by the newly emerged one -- \textit{Plos One}. \medskip  
 
-Two top cited journals have shared journals which cite both of them. They are \textit{Information, Communication \& Society, Communications in Computer and Information Science, Lecture Notes in Artificial Intelligence, New Media \& Society}. The journal with the largest citations of both of these jornals is \textit{Lecture Notes in Computer Science}, which is also citing other journals, such as \textit{Social Networks, Structural Analysis in Social Science}, and \textit{Nature}.\medskip 
+In the \textbf{Social Sciences group}, the most citing journal is \textit{Social Networks}, which is strongly connected to the \textit{Amercian Journal of Sociology}, as well as have outgoing connections to many other sociological journals (\textit{Journal of Mathematical Sociology, Social Forces, American Sociological Review, Social Network Analysis and Mining}, which also cite it back (however, in a less degree), and \textit{Annual Review of Sociology, Sociological Methodology}. This \textit{Social Networks} journal is also cited by other journals from differnt fields of Social sciences (Sociology, Organizational science, Information science, Methodology), as well as from the journals of the two mentioned above groups. For this journal, the largest incoming citatons go from \textit{Lecture Nodes of Computer Science,  Lecture Notes in Artficial Intelligence, Plos One, Physica A}. Thus, the journal itself cites mostly journals from the field of Social sciences, but it is being cited by the journals from other disciplines -- Computer, Physics, and General scientific fields. There are also links from \textit{Lecture Notes in Computer Science} and \textit{Plos One} to  the \textit{American Journal of Sociology}. \medskip  \medskip 
 
-The Physics group is presented by the journals \textit{Physica A-Statistical Mechanics And Its Applications, Physical Review E}, and also include some interdisciplinary journals \textit{Plos One}, \textit{Science}, and \textit{Nature}. There are links from \textit{Physica A} and \textit{Plos One} to  the \textit{American Journal of Sociology}. \medskip  
-
-Other islands (2-11) of journals citing each other (including minimum 3 journals) are the ones on the topics of substance abuse and addiction; archeology, anthropology and antiquity, behavioral ecology and animal behavior; geriatric psychiatry; psychology and deviation; child psychology and psychiatry; medicine; family medicine, sexual and reproductive health; speech-language; computer graphics. \medskip  
-
+Other 29 obtained islands of journals citing each other sized from 3 to 6 are the ones on the topics of: psychology and deviation;  psychiatry; medicine; surgery; health disabilities; substance abuse and addiction; nursering; social work; archeology and anthropology; language and sociolinguistics; economics and economic behavior; education; conflicts and peacekeeping; library science; ergonomics; transportation. There are also three journals from the field of behavioral ecology and animal behavior: \textit{Behavioral Ecology and Sociobiology} being cited by \textit{Animal Behaviour} and \textit{Behavioral Ecology}. \medskip 
+ 
 \begin{figure}
 \begin{center}
 \includegraphics[width=0.9\textwidth,viewport=35 0 965 
@@ -1048,35 +1103,50 @@ Other islands (2-11) of journals citing each other (including minimum 3 journals
 \caption{Citations among journals -- main island} \label{jjFmain}
 \end{figure}
 
-Other islands 12-115 contain only 2 nodes - they are pairs of journals. Journals with the largest weights of lines are presented on the Table~\ref{jpairs}. The links are directed: first written journal cites second one. These journals cover the wide range of disciplines, including Health studies, Epidemiology, Medicine, Surgery, Veterinary, Biotechnology, Psychiatry, Family studies, Neuroscience, Education, Sport, Archeology, Ethnology, Anthropology, History, Engineering, Mobile computing, Information science.  
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\textwidth,viewport=10 0 1045 705
+740,clip=]{JJsfmain2.pdf}
+\end{center}
+\caption{Citations among journals -- Main island} \label{jjFmain1}
+\end{figure}
+
+Other islands 31-193 contain only 2 nodes - they are pairs of journals. Journals with the largest weights of lines are presented on the Table~\ref{jpairs}. The links are directed: first written journal cites second one. These journals cover the wide range of topics, including \textit{health, health policy, psychology and psychiatry, adolescence, sex, STD and AIDS, migration, communication, demography,  business and management, consuming behavior and marketing, information science, computing, language,  peace and conflicts, engineering}. 
 
 \begin{table}
 \caption{Pairs of journals} \label{jpairs}\medskip
 \renewcommand{\arraystretch}{0.9}
 \small
-\begin{tabular}{c|l|p{6cm}||c|l|p{6cm}|}
-\# &	Value&	Journals &	\# &	Value&	Journals \\  \hline 
-1&	17,38&	SEX TRANSM DIS --  AIDS       &	21&	4&	IEEE INT SYMP INFO --  IEEE T INFORM THEORY   \\
-2&	14,17&	PREV VET MED --  TRANSBOUND EMERG DIS     &	22&	4&	HEALTH RISK SOC --  RISK ANAL      \\
-3&	10,47&	ACTA PSYCHIAT SCAND --  BRIT J PSYCHIAT     &	23&	4&	QUAL RES SPORT EXERC --  SPORT MANAG REV    \\
-4&	10,27&	IEEE T PARALL DISTR --  IEEE INFOCOM SER    &	24&	4&	UROL ONCOL-SEMIN ORI --  BJU INT      \\
-5&	8,1&	IEEE T VEH TECHNOL --  IEEE T MOBILE COMPUT   &	25&	4&	PSYCHIAT DANUB --  QJM-INT J MED      \\
-6&	6,77&	J CONSTR ENG M --  J CONSTR ENG M ASCE  &	26&	4&	COMMUNITY DENT ORAL --  J AM DENT ASSOC    \\
-7&	5,68&	SOC COGN AFFECT NEUR --  NEUROIMAGE      &	27&	4&	Z ETHNOL --  J SOC HIST      \\
-8&	5&	APHASIOLOGY --  ADULT EDUC QUART       &	28&	4&	J AM SOC HYPERTENS --  NAT BIOTECHNOL     \\
-9&	4,67&	J INTELL DISABIL RES --  J APPL RES INTELLECT   &	29&	4&	MATERN CHILD HLTH J --  J NERV MENT DIS   \\
-10&	4,67&	APPL ENERG --  ENERG BUILDINGS       &	30&	4&	TRANSPL P --  AM J TRANSPLANT      \\
-11&	4,67&	J ISL COAST ARCHAEOL --  ANTIQUITY      &	31&	4&	J AFFECT DISORDERS --  DEATH STUD      \\
-12&	4,67&	INFORM SOC-ESTUD --  PERSPECT CIENC INF      &	32&	4&	J NEW APPROACHES EDU --  ESTUD SOBRE MENSAJ P   \\
-13&	4,5&	J ACAD LIBR --  REF USER SERV Q    &	33&	4&	J ADDICT NURS --  CLIN PSYCHOL REV     \\
-14&	4,18&	CIENC SAUDE COLETIVA --  CAD SAUDE PUBLICA     &	34&	4&	INT J CARDIOL --  WIRES DATA MIN KNOWL    \\
-15&	4&	ETHN DIS --  HEART LUNG       &	35&	4&	MCN-AM J MATERN-CHIL --  AM J NURS     \\
-16&	4&	EPIDEMIOL PREV --  HUM VACC IMMUNOTHER      &	36&	4&	INT J PEDIATR-MASSHA --  BEHAV MED      \\
-17&	4&	OPTIM LETT --  ARTIF LIFE       &	37&	4&	HEALTH EXPECT --  CAN J CARDIOL      \\
-18&	4&	ACTAS UROL ESP --  AESTHET SURG J     &	38&	4&	ARCTIC ANTHROPOL --  ARCTIC        \\
-19&	4&	J RETAIL CONSUM SERV --  AUSTRALAS MARK J    &	39&	4&	REV BRAS ENFERM --  REV LAT-AM ENFERM     \\
-20&	4&	J MARITAL FAM THER --  J CONSTR PSYCHOL    &	40&	3,36&	J CHILD PSYCHOL PSYC --  J AUTISM DEV DISORD   \\ \hline 
-\end{tabular}\\
+\begin{center}
+\begin{tabular}{c|l|p{5cm}|p{5cm}|}
+\# &	value &	from journal  &	to journal \\  \hline 
+1&	8,1&	IEEE GLOB COMM CONF&	IEEE INFOCOM SER\\
+2&	6,26&	HIST COMUN SOC&	COMUNICAR\\
+3&	4,63&	J YOUTH ADOLESCENCE&	J RES ADOLESCENCE\\
+4&	4,44&	INT J GERIATR PSYCH&	J PSYCHIAT RES\\
+5&	4,38&	INT MIGR&	INT MIGR REV\\
+6&	4,31&	J BUS ETHICS&	ACAD MANAGE REV\\
+7&	3,99&	DEMOGR RES&	DEMOGRAPHY\\
+8&	3&	J INTELL FUZZY SYST&	J APPL MATHE COMPUT\\
+9&	3&	J INT DEV&	TROP MED INT HEALTH\\
+10&	3&	PERVASIVE MOB COMPUT&	INT CONF PERVAS COMP\\
+11&	2,78&	J CONSTR ENG M&	J CONSTR ENG M ASCE\\
+12&	2,68&	PHYS EDUC RES CONF&	PHYS REV SPEC TOP-PH\\
+13&	2,59&	ENERGY RES SOC SCI&	ENERG POLICY\\
+14&	2,5&	INT P ECON DEV RES&	TECHNOVATION\\
+15&	2,37&	COMPUT ASSIST LANG L&	LANG LEARN TECHNOL\\
+16&	2,33&	INFORM SOC-ESTUD&	PERSPECT CIENC INF\\
+17&	2,33&	WORLD DEV&	ECON J\\
+18&	2,31&	J PEACE RES&	J CONFLICT RESOLUT\\
+19&	2,22&	HEALTH RES POLICY SY&	HEALTH POLICY PLANN\\
+20&	2,1&	SEX HEALTH&	INT J STD AIDS\\
+21&	2&	REV LAT COMUN SOC&	PALABRA CLAVE\\
+22&	2&	J RETAIL CONSUM SERV&	AUSTRALAS MARK J\\
+23&	2&	ETHN DIS&	HEART LUNG\\
+24&	2&	IEEE INT SYMP INFO&	IEEE T INFORM THEORY\\
+25&	2&	REV BRAS ENFERM&	REV LAT-AM ENFERM\\ \hline 
+\end{tabular}
+\end{center}
 \end{table}  
 
 
