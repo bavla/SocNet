@@ -10,7 +10,7 @@ http://vladowiki.fmf.uni-lj.si/doku.php?id=tq
 
 https://github.com/bavla/TQ/
 
-https://github.com/bavla/Graph
+https://github.com/bavla/Nets ; https://github.com/bavla/Graph
 
 https://github.com/bavla/netJSON
 
