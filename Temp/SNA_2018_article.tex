@@ -909,13 +909,13 @@ The first rated author in sence of largest productivity is social scientist R. B
 \end{tabular}\\
 \end{table}
 
-Using Link islands approach, we extracted all the islands with the size between 5 and 50 nodes from the network \textbf{Ct`}. We got a large number of islands - 2,195 - with 14,227 nodes. Four largest island have, respectively, 35, 23, 21, and 19 nodes; other 70 islands have between 12 and 18 nodes. More then half of islands -- 58\% --  are composed of 5 nodes.  \medskip
+Using Link islands approach, we extracted all the simple islands with the size between 2 and 50 nodes from the network \textbf{Ct`}. We got a huge number of islands - 14,222. Four largest island have, respectively, 35, 23, 21, and 19 nodes; other 69 islands have between 12 and 18 nodes. The largest part of the network consists of clusters of size from 2 to 5.  \medskip
 
-The structures of the largest islands of size from 12 to 35 nodes is presented on the Figure (xx) (1,037 nodes). These subnetworks have different structures. Part of these structures are not very interesting: they are star-like networks, which represent one author collaborating with many others, or (almost) complete clusters (cliques), where all authors collaborate with (mostly) everyone else. However, some islands can be intesting to inspect - those large islands, which have more interesting structures \Remark{Create picture of Ct`\_Islands   (1-74), without labels, only structures }. \medskip
+The structures of the largest islands of size from 12 to 35 nodes is presented on the Figure (xx) (1,022 nodes) \Remark{Create picture of Ct`\_ Islands   simple (1-73), without labels, only structures}. These subnetworks have different structures. Part of these structures are not very interesting: they are star-like networks, which represent one author collaborating with many others, or (almost) complete clusters (cliques), where all authors collaborate with (mostly) everyone else. However, some islands can be intesting to inspect - those large islands, which have more interesting structures. The Figure (xx) provide the pictures of such selected islands (563 nodes).  \Remark{Create picture of Ct`\_Islands simple (1-73)\_chosen clusters} \medskip
 
-Another way to get interesting cases to inspect is to find the islands which have the strongest ties between the nodes. For this, we removed all the lines lower then certain trashold from the \textbf{Ct` net} and got the network of 32 nodes. Then we used and Simple islands approach and got simple line weight islands of size [2,50] out of the same network (number of islands = 14,222). Then we manualy searched for the islands to which these 32 nodes belong, and extracted them. We also found the islands for T. Snijders. These islands are presented below. Some of the authors having the strongest ties with each other goes from the field of social sciences (Everett and Boragatti, Pattison and Robins), some - from physics (Barabasi, Albert, Posfai), some - from both of the fields (Christakis and Fowler). \medskip
+Another way to get interesting cases to inspect is to find the islands which have the strongest ties between the nodes. For this, we removed all the lines lower then certain trashold from the \textbf{Ct` net} and got the network of 32 nodes. Then we manualy searched for the islands to which these 32 nodes belong, and extracted them. We also found the islands for T. Snijders. These islands are presented below. Some of the authors having the strongest ties with each other goes from the field of social sciences (Everett and Boragatti, Pattison and Robins), some - from physics (Barabasi, Albert, Posfai), some - from both of the fields (Christakis and Fowler) \Remark{picture from Ct`\_largest Ct`\_largest line weights}. \medskip
 
-To better know what these authors are working at, we made an analysis of key words in coauthorship islands, which is presented in the following section \Remark{picture fromCt`\_largest line weights.net (100 nodes)}.  \medskip
+To better know what these authors are working at, we made an analysis of key words in coauthorship islands, which is presented in the following section. \medskip
 
 %******************************************************************************
 
@@ -1049,7 +1049,7 @@ Jaccard - ? \Remark{Try to compute}
 
 In this section, we present the results on the citations between journals featuring works in the area of Social network analysis. 
 
-\subsection{Network JJf creation}
+\subsection{Network JJsfn creation}
 
 To get information about citations among journals we computed the \textbf{derived JJsfn} network, which takes into account citations from papers published in journal \textit{i} to papers published in journal \textit{j}, which appeared in the works included into the \textbf{WJsr net}. We used a \textbf{CiteR net} to get information on citations between works. As journals of different sizes were included into the data set, using the \textit{fractional approach} this network was normalized. Then the networks were multyplied in the following way. Thus, the weights in the obtained network take into account \textit{fractional} contribution of citations from papers published in journal \textit{i} to papers published in journal \textit{j}.   \medskip 
 
@@ -1057,31 +1057,33 @@ To get information about citations among journals we computed the \textbf{derive
 
 \subsection{Citations}
 
-Looking at the loops of the network \textbf{JJr}, we got the list of journals with highest self-citation (Table~\ref{jselfcite}). The highest value belongs to the \textit{Social Networks} journal, one if the main journals in the field of Social network analysis. Other highly ranked journals are from the fields of Computer science and Cyberpsychology -- the journals \textit{Computers in Human Behavior} and \textit{Lecture Notes in Computer Science}. Other journals with relatively high number of internal citations are \textit{Physica A -- Statistical Mechanics and its Applications, Social Science \& Medicine, Journal of Medical Internet Research}, and {Cyberpsychology, Behavior, and Social Networking}. However, the differences between values of the first three mentioned journals are the others are quite significant. \medskip 
+The loops of the \textbf{JJsfn} network show the journals with the highest \textbf{absolute values} of self citations (Table~\ref{jselfcite}, column ``Value''). The highest absolute value belongs to the \textit{Social Networks} journal, one if the main journals in the field of Social network analysis. Other highly ranked journals are from the fields of Computer science and Cyberpsychology -- the journals \textit{Computers in Human Behavior} and \textit{Lecture Notes in Computer Science}. Other journals with relatively high number of internal citations are \textit{Physica A -- Statistical Mechanics and its Applications, Social Science \& Medicine, Journal of Medical Internet Research}, and \textit{Cyberpsychology, Behavior, and Social Networking}. The differences between absolute values for the first three mentioned journals and others are quite significant.   \medskip 
+
+However, as different journals have different number of works, we also counted \textbf{the proportion} of journals` \textit{internal citations to themselves} and their \textit{external citations to other journals} by dividing the vector of loops to the vector of outdegree in the JJsfn network (Table~\ref{jselfcite}, column ``\%''). Several journals with the highest absolute values -- \textit{Nature, American Journal of Sociology, American Journal of Epidemiology, Journal of Medical Internet Research, Comunicar Journal} -- have quite high level of internal citation -- around the quarter. \textit{Social Networks} journal has 34\% of internal citations. \medskip 
 
 \begin{table}
 \caption{Journals with the highest self-citation} \label{jselfcite}\medskip
 \renewcommand{\arraystretch}{0.95}
 \small
 \begin{center}
-\begin{tabular}{c|l|l||c|l|l} 
-\# &	Value&	Journal &  \# &	Value& Journal \\ \hline 
-1&	355.6510&	\textbf{SOC NETWORKS}&	16&	18.3544&	ANIM BEHAV\\
-2&	168.3895&	\textbf{COMPUT HUM BEHAV}&	17&	17.0258&	AIDS BEHAV\\
-3&	122.5673&	\textbf{LECT NOTES COMPUT SC}&	18&	16.0264&	AM J COMMUN PSYCHOL\\
-4&	57.7481&	PHYSICA A&	19&	14.8671&	INFORM SCI\\
-5&	43.0044&	SOC SCI MED&	20&	14.1354&	KNOWL-BASED SYST\\
-6&	42.1777&	J MED INTERNET RES&	21&	12.6377&	PROF INFORM\\
-7&	41.4862&	CYBERPSYCHOL BEHAV&	22&	12.3459&	COMUNICAR\\
-8&	33.1587&	PLOS ONE&	23&	12.0034&	BEHAV ECOL SOCIOBIOL\\
-9&	32.9326&	PHYS REV E&	24&	11.8709&	AM J EPIDEMIOL\\
-10&	30.2164&	SCIENTOMETRICS&	25&	11.0110&	DECIS SUPPORT SYST\\
-11&	24.1576&	P NATL ACAD SCI USA&	26&	10.5766&	J ETHN MIGR STUD\\
-12&	23.1472&	AM J SOCIOL&	27&	10.4269&	COMPUT EDUC\\
-13&	20.0417&	LECT NOTES ARTIF INT&	28&	10.3057&	SEX TRANSM DIS\\
-14&	19.3091&	EXPERT SYST APPL&	29&	10.1905&	NATURE\\
-15&	18.7733&	NEW MEDIA SOC&	30&	9.8476&	ORGAN SCI\\
-\end{tabular} \\ 
+\begin{tabular}{c|l|l|l|c|l|l|l|} 
+\# &	Value& \% &	Journal &  \# &	Value& \% & Journal \\ \hline 
+1 &	\textbf{355.65}&	\textbf{0.34}&	SOC NETWORKS&	16&	       18.35 &    0.17	  &     ANIM BEHAV\\
+2 &	\textbf{168.39}&	0.22&	COMPUT HUM BEHAV&	17&    17.03 & 	  0.12	  &     AIDS BEHAV\\
+3 &	\textbf{122.57}&	0.09&	LECT NOTES COMPUT SC&	18&    16.03 & 	  0.19	  &     AM J COMMUN PSYCHO \\
+4 &	57.75&	0.13&	PHYSICA A&	19&	       14.87 &	  0.10	  &     INFORM SCI\\
+5 &	43.00&	0.14&	SOC SCI MED&	20&	       14.14 &	  0.14	  &     KNOWL-BASED SYST\\
+6 &	42.18&	\textbf{0.24}&	J MED INTERNET RES&	21&    12.64 &	  0.19	  &     PROF INFORM\\
+7 &	41.49&	0.21&	CYBERPSYCHOL BEHAV&	22&    12.35 & 	 \textbf{0.23}	  &     COMUNICAR\\
+8 &	33.16&	0.05&	PLOS ONE&	23&	       12.00 & 	  0.18	  &     BEHAV ECOL SOCIOBI \\
+9 &	32.93&	0.11&	PHYS REV E&	24&	       11.87 & 	  \textbf{0.25}	  &     AM J EPIDEMIOL\\
+10 &	30.22&	0.13&	SCIENTOMETRICS&	25&	       11.01 & 	  0.11	  &     DECIS SUPPORT SYST \\
+11 &	24.16&	0.14&	P NATL ACAD SCI USA&	26&    10.58 & 	  0.14	  &     J ETHN MIGR STUD\\
+12 &	23.15&	\textbf{0.26}&	AM J SOCIOL&	27&	       10.43 & 	  0.13	  &     COMPUT EDUC\\
+13 &	20.04&	0.05&	LECT NOTES ARTIF INT&	28&    10.31 & 	  0.18	  &     SEX TRANSM DIS\\
+14 &	19.31&	0.12&	EXPERT SYST APPL&	29&    10.19 & 	 \textbf{0.28}	  &     NATURE\\
+15 &	18.77&	0.14&	NEW MEDIA SOC&	30&	       9.85 & 	  0.09	  &     ORGAN SCI\\ \hline 
+\end{tabular} 
 \end{center}
 \end{table}  
 
@@ -1093,7 +1095,7 @@ The group of journals from the \textbf{Physics} is presented by only three journ
 
 In the \textbf{Social Sciences group}, the most citing journal is \textit{Social Networks}, which is strongly connected to the \textit{Amercian Journal of Sociology}, as well as have outgoing connections to many other sociological journals (\textit{Journal of Mathematical Sociology, Social Forces, American Sociological Review, Social Network Analysis and Mining}, which also cite it back (however, in a less degree), and \textit{Annual Review of Sociology, Sociological Methodology}. This \textit{Social Networks} journal is also cited by other journals from differnt fields of Social sciences (Sociology, Organizational science, Information science, Methodology), as well as from the journals of the two mentioned above groups. For this journal, the largest incoming citatons go from \textit{Lecture Nodes of Computer Science,  Lecture Notes in Artficial Intelligence, Plos One, Physica A}. Thus, the journal itself cites mostly journals from the field of Social sciences, but it is being cited by the journals from other disciplines -- Computer, Physics, and General scientific fields. There are also links from \textit{Lecture Notes in Computer Science} and \textit{Plos One} to  the \textit{American Journal of Sociology}. \medskip  \medskip 
 
-Other 29 obtained islands of journals citing each other sized from 3 to 6 are the ones on the topics of: psychology and deviation;  psychiatry; medicine; surgery; health disabilities; substance abuse and addiction; nursering; social work; archeology and anthropology; language and sociolinguistics; economics and economic behavior; education; conflicts and peacekeeping; library science; ergonomics; transportation. There are also three journals from the field of behavioral ecology and animal behavior: \textit{Behavioral Ecology and Sociobiology} being cited by \textit{Animal Behaviour} and \textit{Behavioral Ecology}. \medskip 
+Other 29 obtained islands of journals citing each other sized from 3 to 6 (107 nodes) are the ones on the topics of: psychology and deviation;  psychiatry; medicine; surgery; health disabilities; substance abuse and addiction; nursering; social work; archeology and anthropology; language and sociolinguistics; economics and economic behavior; education; conflicts and peacekeeping; library science; ergonomics; transportation. There are also three journals from the field of behavioral ecology and animal behavior: \textit{Behavioral Ecology and Sociobiology} being cited by \textit{Animal Behaviour} and \textit{Behavioral Ecology}. \medskip 
  
 \begin{figure}
 \begin{center}
@@ -1111,7 +1113,7 @@ Other 29 obtained islands of journals citing each other sized from 3 to 6 are th
 \caption{Citations among journals -- Main island} \label{jjFmain1}
 \end{figure}
 
-Other islands 31-193 contain only 2 nodes - they are pairs of journals. Journals with the largest weights of lines are presented on the Table~\ref{jpairs}. The links are directed: first written journal cites second one. These journals cover the wide range of topics, including \textit{health, health policy, psychology and psychiatry, adolescence, sex, STD and AIDS, migration, communication, demography,  business and management, consuming behavior and marketing, information science, computing, language,  peace and conflicts, engineering}. 
+Other islands 31-193 contain (326 nodes) only 2 nodes - they are pairs of journals. Journals with the largest weights of lines are presented on the Table~\ref{jpairs}. The links are directed: first written journal cites second one. These journals cover the wide range of topics, including \textit{health, health policy, psychology and psychiatry, adolescence, sex, STD and AIDS, migration, communication, demography,  business and management, consuming behavior and marketing, information science, computing, language,  peace and conflicts, engineering}. 
 
 \begin{table}
 \caption{Pairs of journals} \label{jpairs}\medskip
