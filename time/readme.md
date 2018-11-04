@@ -7,7 +7,10 @@ Praprotnik, S., Batagelj, V.: Spectral centrality measures in temporal networks.
 Selena Praprotnik, Vladimir Batagelj: Semirings for temporal network analysis https://arxiv.org/abs/1603.08261
 
 http://vladowiki.fmf.uni-lj.si/doku.php?id=tq
+
 https://github.com/bavla/TQ/
+
 https://github.com/bavla/Graph
+
 https://github.com/bavla/netJSON
 
