@@ -264,15 +264,15 @@ The usual \keyw{ISI name} of a work (its description in the field CR) has the fo
 
  \texttt {LastNm[:8] \texttt{+ '\_' +} FirstNm[0] \texttt{+ '(' +} PY\texttt{+ ')' +} VL \texttt{+ ':' +} BP}. \smallskip\\ For example, for the mentioned work the ISI name is \texttt{GRANOVET\_M(1985)91:481}. From the last names with prefixes \texttt{VAN}, \texttt{DE}, \ldots the space are deleted, and unusual names start with characters \texttt{*} or \texttt{\$}.\medskip 
 
-However, some problems associated with names recognition still can occur in the data base. It can turn out that the same works can be named by different short names. For example, in our case, the short names \texttt {BOYD\_D(2007)13} and \texttt {BOYD\_D(2008)13:210} were referencing the same work of Danah Boyd, originally published in 2007, but in many cases referenced as being published in 2008. \medskip 
+However, some problems associated with names recognition still can occur in the data base. It can turn out that the same works can be named by different short names. For example, the short names \texttt {BOYD\_D(2007)13} and \texttt {BOYD\_D(2008)13:210} were referencing the same work of Danah Boyd, originally published in 2007, but in many cases referenced as being published in 2008. There were also cases when the short names were different due to the discrepancies in the descriptions -- such as \texttt{GRANOVET\_M(1973)78:1360} and \texttt{GRANOVET\_M(1973)78:6}, or \texttt{COLEMAN\_J(1988)94:95} and \texttt{COLEMAN\_J(1988)94:S95}. We identified these cases for all works with the largest indegree frequencies in Cite network.\medskip 
 
 Two possibilities to correct the data are: (1) to make corrections in the local copy of original data (WoS file); and (2) to make the equivalence partition of nodes and shrink the set of works accordingly in all  obtained networks. We used the second option (Batagelj, Chapter 2). For the works with the largest counts we prepared lists of possible equivalents and manually determined equivalence classes. With a function in R we produced a \textbf{Pajek}'s partition of equivalent work names representing the same work. We used this partition to shrink the networks $\Ci$, $\WA$, $\WJ$, and $\WK$. The partitions $year$,  $DC$ and the vector $\NP$ were also shrunk.  \medskip 
 
-After some iterations of cleaning, we finally constructed the data set used in this paper. From 70,792 hits (works with full description, $DC=1$) we produced networks with sets of the following sizes: works $|W| = 1,297,133$, authors $|A| = 395,972$, journals $|J| = 70,425$, key words $|K| = 32,409$. We also removed multiple linkes and loops from the networks and named obtained cleaned networks \textbf{CiteN}, \textbf{WAn}, \textbf{WJn}, and \textbf{WKn}. The statistical properties of the obtained networks are presented in the section 4. \medskip  
+After some iterations of cleaning, we finally constructed the data set used in this paper. From 70,792 hits (works with full description, $DC=1$) we produced networks with sets of the following sizes: works $|W| = 1,297,133$, authors $|A| = 395,971$, journals $|J| = 70,425$, key words $|K| = 32,409$. We also removed multiple linkes and loops from the networks and named obtained cleaned networks \textbf{CiteN}, \textbf{WAn}, \textbf{WJn}, and \textbf{WKn}. The statistical properties of the obtained networks are presented in the section 4. \medskip  
 
 \subsection{Redused networks construction}
 
-As it was shown above, for the cited only  works  $(DC=0)$ only partial description is provided: we have information about the first author, and we have no information on the keywords (as there is no titles in descriptions). That is why, for further analysis we also constructed networks, which contain only works with complete description $(DC>0)$. All the link weights in the obtained networks were set to 1. The sizes of the obtained \keyw{reduced networks} \textbf{CiteR}, \textbf{WAr}, \textbf{WJsr}\Remark{names of nets}, and \textbf{WKr} are shown in the Table~\ref{rednet}. In obtained reduced networks  the sizes of sets are as follows: works $|W| = 70,792$, authors $|A| = 93,012$, journals $|J| = 9,219$, key words $|K| = 32,409$ (remained the same).\medskip 
+As it was shown above, for the cited only  works  $(DC=0)$ only partial description is provided: we have information about the first author, and we have no information on the keywords (as there is no titles in descriptions). That is why, for further analysis we also constructed networks, which contain only works with complete description $(DC>0)$. All the link weights in the obtained networks were set to 1. The sizes of the obtained \keyw{reduced networks} \textbf{CiteR}, \textbf{WAsr}, \textbf{WJsr}\Remark{names of nets}, and \textbf{WKr} are shown in the Table~\ref{rednet}. In obtained reduced networks  the sizes of sets are as follows: works $|W| = 70,792$, authors $|A| = 93,011$, journals $|J| = 9,219$, key words $|K| = 32,409$ (remained the same).\medskip 
 
 \begin{table}
 \caption{Sizes of Cleaned and Reduced networks}\label{rednet}\medskip
@@ -495,7 +495,7 @@ Value& First author & Title & Journal & Year \\ \hline\endhead
 
 \subsection{Distributions on WJn}
 
-The second part of the obtained WJn network is consisted of 70425 journals. Due to the inconsistencies in titles writing in different descriptions, it included sets of nodes denoted \textit{the same journal}, that should have been shrunk. To get the list of these nodes, for each journal title we constructed a short code, which was formed out of the first two letters of each word in the journals` titles, in such as \texttt{SONEANMI} for \texttt{SOCIAL NETWORK ANALYSIS and MINING}, and then sorted it in such a way that the journal with the same codes were grouped together. We decided to manually inspect all journals with at least one of their names cited at least 200 times. In Pajek we computed the 2-mode network \textbf{Cite*WJnc} and determined the vector \textbf{wIndegJ.vec} with weighted indegrees for journals. We produced the list of candidates for inspection with 5482 lines. To additinally reduce the number of titles to inspect we decided to consider only titles that appeared in at least 3 citations. Finally, we got the list \textbf{journalK100.csv} with 3714 titles, that were manually inspected. Some examples of the journals titles grouped according to their codes are presented on the Fig~\ref{jour1}. After manual checking this list was reduced to 1688 lines. \medskip 
+The second part of the obtained WJn network is consisted of 70,425 journals. Due to the inconsistencies in titles writing in different descriptions, it included sets of nodes denoted \textit{the same journal}, that should have been shrunk. To get the list of these nodes, for each journal title we constructed a short code, which was formed out of the first two letters of each word in the journals` titles, in such as \texttt{SONEANMI} for \texttt{SOCIAL NETWORK ANALYSIS and MINING}, and then sorted it in such a way that the journal with the same codes were grouped together. We decided to manually inspect all journals with at least one of their names cited at least 200 times. In Pajek we computed the 2-mode network \textbf{Cite*WJnc} and determined the vector \textbf{wIndegJ.vec} with weighted indegrees for journals. We produced the list of candidates for inspection with 5482 lines. To additinally reduce the number of titles to inspect we decided to consider only titles that appeared in at least 3 citations. Finally, we got the list \textbf{journalK100.csv} with 3714 titles, that were manually inspected. Some examples of the journals titles grouped according to their codes are presented on the Fig~\ref{jour1}. After manual checking this list was reduced to 1688 lines. \medskip 
 
 However, some jurnal names can also be abbreviated, and there is a high chance that both of the names could be preserved at the data set -- for example, the \textit{Journal of the American Statistical Association} could be coded as \texttt{JASA} according to its title \texttt{J AM  STAT ASS} and according to its abbreviation \texttt{JASA}. That is why we also produced a list of frequent journal names of length at most 5, have chosen all the cases that could be regarded as abbreviations, such as \textit{CACM, JACM, JASA, LNCS, NIPS, JASSS, IJCAI, BMJ, JOSS}, and others, and implemented a manual search for the abbreviations of these jornals in the original list of 70,425 journals, where the values of weighted indegree of the journals were also presented. We grouped all the jornals titles which included the same abbreviation -- an example  is presented on the Fig~\ref{jour2} (it can be seen that there were different codes generated to different titles). The results of the search were added to the first obtained list, and finally the list for network shrinking was produced.  \medskip 
 
@@ -829,13 +829,13 @@ Rank&   	Value&   	Id&   	Rank&   	Value&   	Id\\ \hline
 %******************************************************************************
 \section{Authors Collaboration}  
 
-In the following part, we present the patterns of collaboration between authors working in the field of Social netwirks analysis. This results are based on the analysis of the reduced network \textbf{WAr}. In general, there are different ways to create one-mode networks of collaboration between authors (AA) out of two-mode networks of works and authors (WA). These ways were presented and used in the previous works \citep{OnBibl,Understand}. Multiplying the original WAr network to transposed WAr network, and using different types of normalizations, we created three collaboration networks \textbf{Co}, \textbf{Cn}, and \textbf{Ct`}. The results are presented below. \medskip  
+In the following part, we present the patterns of collaboration between authors working in the field of Social networks analysis. This results are based on the analysis of the reduced network \textbf{WAr}. In general, there are different ways to create one-mode networks of collaboration between authors (AA) out of two-mode networks of works and authors (WA). These ways were presented and used in the previous works \citep{OnBibl,Understand}. Multiplying the original WAr network to transposed WAsr network, consisted of 70,792 works and 93,011 authors, and using different types of normalizations, we created three collaboration networks \textbf{Co}, \textbf{Cn}, and \textbf{Ct`}. The results are presented below. \medskip  
 
 \subsection{Networks creation}  
 
 The standard and the easiest way to obtain the collaboration network from the WA network was to make a \textbf{first collaboration network Co} \citep{OnBibl} by the multiplication of a transposed WA network (to AW) and initial one: \smallskip
 
-\texttt{Co = t(WA) * WA = AW * WA = AA} \smallskip
+\texttt{Co = t(WAsr) * WAsr = AWsr * WAsr = AA} \smallskip
 
 In derived network  \textbf{Co}, the weight of the edges between the nodes is equal to total number of works author i and j wrote together. The degree of each author (node) is equal to the number of works he or she co-authored. The loops are equal to the total number of works that each author have (which is also equal to the indegree values of the WA network). \medskip 
 
@@ -843,13 +843,13 @@ It was proved, however, that the proposed approach has some limitations, such as
 
 Thus, in the \textbf{second collaboration network Cn} the contribution of authors to their own works and works written with co-authors is considered. The normalization which is used create network n(WA) where the weight of each arc is divided by the sum of weights of all arcs having the same initial node as this arc (outdegree of a node) (for example, if the work has 3 authors, each weight is equal to 1/3). The network is constructed by the transposition of the WA network (to AW) and multiplying it with the (normalized) n(WA) network.\smallskip
 
-\texttt{Cn = t(WA) * n(WA), where n(WA)[w,a] = WA[w,a] / outdeg(w)} \smallskip
+\texttt{Cn = t(WAsr) * n(WAsr), where n(WAsr)[w,a] = WAsr[w,a] / outdeg(w)} \smallskip
  
 In the derived network Cn, the weight of the edges between the nodes (authors) is equal to the contribution of author i to works, that he or she wrote together with author j (which can be not symmetric). The total contribution for a given work by all its authors is equal to the number of its authors. The total contribution for an author is equal to the number of works that he or she co-authored (indegree). The diagonal (loops) of the matrix is equal to the total contribution of author to his or her own works. Based on it, Batagelj and Cerinšek \citep{OnBibl} proposed \textbf{self-sufficiency index} as the proportion of author's contribution to his/her works and the total number of works he/she co-authored, and the \textbf{collaborativness index}, which is complementary to it (is equal to 1 minus self-sufficiency). \medskip 
 
 Using another type of normalization - Newman normalization, who interpret the weight as a proportion of time spent for the collaboration with each co-author [Batagelj, slides], - the \textbf{fourth co-authorship network Ct`} \Remark{1st, 2nd, 4th - strange for reader?} was constructed, considering the total contribution of “strict collaboration” of authors i and j to works. In this case, for the initial WA network the weight of each arc is divided by the sum of weights of all arcs having the same initial node as this arc (outdegree of a node) subtracting the initial author (which is 1). Then the network Ct` is constructed by the transposition of the regularly normalized WA network (used for Cn network production) and multiplying it with this Newman normalized WA network. \smallskip
 
-\texttt{Ct` = t(n(WA)) * n’(WA), where n’(WA)[w,a] = WA[w,a] / (outdeg(w)-1)} \smallskip
+\texttt{Ct` = t(n(WAsr)) * n’(WAsr), where n’(WAsr)[w,a] = WAsr[w,a] / (outdeg(w)-1)} \smallskip
 
 In the obtained network, the weights of the edges between the nodes (authors) are equal to the total contribution of “strict collaboration” of authors i and j to works they wrote together. The total contribution for an author is counted by line weights - it is equal to the sum of the weights of all the works he or she co-authored. \Remark{Description needs a check from Vlado} \medskip 
 
@@ -864,6 +864,7 @@ As it was already shown in the section 4.1. (Table~ \ref{numpap} the authors hav
 \end{center}
 \caption{Collaboration pairs} \label{coPairs}
 \end{figure}
+\Remark{For the new picture - CoN\_Pairs.net - looks like it is the same}
 
 However, it is interesting to compare the values of the number of works that author has (in general, written by himself or herself or in collaboration) with the values of author`s contribution to these works and index of collaborativeness with others. Because of the `Chinese problem'  mentioned above we had to exclude the names of the Chinese authors from the output presented on the Table~\ref{collab}.  The names are ordered by authors` fractional total contribution to the field.\medskip  
  
@@ -909,13 +910,15 @@ The first rated author in sence of largest productivity is social scientist R. B
 \end{tabular}\\
 \end{table}
 
-Using Link islands approach, we extracted all the simple islands with the size between 2 and 50 nodes from the network \textbf{Ct`}. We got a huge number of islands - 14,222. Four largest island have, respectively, 35, 23, 21, and 19 nodes; other 69 islands have between 12 and 18 nodes. The largest part of the network consists of clusters of size from 2 to 5.  \medskip
+Using Islands approach (Simple islands), we extracted the most connected groups of nodes out of \textbf{Ct`} network. We generated 14,236 simple islands of the size between 2 and 50 nodes. Four largest islands consists of, respectively, 35, 23, 21, and 19 nodes; other 69 islands have between 12 and 18 nodes. The largest part of the network consists of clusters of size from 2 to 5. There are different ways of how to identify the islands that can be interesting for the further inspection: to look at the 1) largest islands by size, 2) islands with largest values of line weights, 3) islands included some known names.  \medskip
 
-The structures of the largest islands of size from 12 to 35 nodes is presented on the Figure (xx) (1,022 nodes) \Remark{Create picture of Ct`\_ Islands   simple (1-73), without labels, only structures}. These subnetworks have different structures. Part of these structures are not very interesting: they are star-like networks, which represent one author collaborating with many others, or (almost) complete clusters (cliques), where all authors collaborate with (mostly) everyone else. However, some islands can be intesting to inspect - those large islands, which have more interesting structures. The Figure (xx) provide the pictures of such selected islands (563 nodes).  \Remark{Create picture of Ct`\_Islands simple (1-73)\_chosen clusters} \medskip
+The structures of the \textbf{largest islands} 1-74 of size from 12 to 35 nodes is presented on the Figure (xx) (1,037 nodes). \Remark{Create picture of Ct`\_ Simple islands 1-74  (1037 nodes)}. These subnetworks have different structures. Part of these structures are not very interesting: they are star-like networks, which represent one author collaborating with many others, or (almost) complete clusters (cliques), where all authors collaborate with (mostly) everyone else. However, islands having non-trivial structures can be intesting to inspect. The Figure (xx) provide the pictures of such selected islands (501 nodes).  \Remark{Create picture of Ct`\_Simple islands 1-74\_selected clusters} \medskip
 
-Another way to get interesting cases to inspect is to find the islands which have the strongest ties between the nodes. For this, we removed all the lines lower then certain trashold from the \textbf{Ct` net} and got the network of 32 nodes. Then we manualy searched for the islands to which these 32 nodes belong, and extracted them. We also found the islands for T. Snijders. These islands are presented below. Some of the authors having the strongest ties with each other goes from the field of social sciences (Everett and Boragatti, Pattison and Robins), some - from physics (Barabasi, Albert, Posfai), some - from both of the fields (Christakis and Fowler) \Remark{picture from Ct`\_largest Ct`\_largest line weights}. \medskip
+Another way to get interesting cases to inspect is to find the islands which have the \textbf{strongest ties between the nodes}. We looked at the largest islands and found out that the ranges between the smallest and largest line values is not very high -- they are [0.018 -- 2.00] for the largest island of 35 nodes, [0.035, 2.202] for the island of 23 nodes, [0.005, 1.00] for the island of 21 nodes, and [0.022, 0.330] for the island of 19 nodes. To get islands with really strong ties, we removed all the lines lower then certain trashold [7.5] from the \textbf{Ct` net} and got the network of 32 nodes. Then we manualy searched for the islands to which these 32 nodes belong, and extracted them. We also found the islands for T. Snijders. These islands are presented below. Some of the authors having the strongest ties with each other goes from the field of social sciences (Everett and Boragatti, Pattison and Robins), some - from physics (Barabasi, Albert, Posfai), some - from both of the fields (Christakis and Fowler). \Remark{picture from Ct`\_largest line weights (91 nodes)}. \medskip
 
-To better know what these authors are working at, we made an analysis of key words in coauthorship islands, which is presented in the following section. \medskip
+Then we also seacrhed for the clusters for the \textbf{certain groups of authors}. We decided to include to the list of interesting authors those who have a high level of collaborativeness according to Cn network (table above). We manualy searched for the islands to which these 20 authors belong, and extracted them (Picture xx). \Remark{Picture from network Ct`\_Certain authors}
+
+To better know what these authors are working at, we made an analysis of key words in some of the coauthorship islands, which is presented in the following section. \medskip
 
 %******************************************************************************
 
@@ -925,87 +928,69 @@ In this section we look at the key words for some of the islands inspected in th
 
 \subsection{Network creation}  
 
-To construct the network of authors and keywords \textbf{AK}, we used normalized reduced networkds \textbf{WAr} and \textbf{WKr}.The first network was transposed and then multiplied with the second in the following way: \medskip
+To construct the network of authors and keywords \textbf{AK}, we used normalized reduced networkds \textbf{WAsr} and \textbf{WKr}.The first network was transposed and then multiplied with the second in the following way: \medskip
 
 \texttt{nAWr x nWKr = AK}
 
-\subsection{Key words in largest islands and islands with largest weights between the nodes}  
+\subsection{Key words in selected islands}  
 
-Using this two-mode network we can inspect all the keywords which are associated with each author. However, what is interesting is to look at the keywords for certain islands. Again, we start with the largest islands 1-3, which have, respectively, 35, 23, and 21 nodes. These islands are associated with large number of keywords, and on the Table~\ref{ak2} we present only those Top-15 keywords which were used more frequently. Besides the most common words (\textit{social, network}, and \textit{analysis}, there some specialized words that can characterize each island. For  Island 1 these are the keywords \textit{twitter, situation, emergence, crisis, uganda}, and others; for Island 2 - \textit{drug, risk, hiv, woman,infection}; for cluster Island 3 - \textit{radiation, radioactivity, environment, measurement}.  \medskip
+We decided to find keywords for the islands including the following authors, which were identified in the section above: \texttt{BORGATTI\_S, BARABASI\_A, FOWLER\_J, PATTISON\_P, SNIJDERS\_T, VALENTE\_T}. The results are presented below (Table~\ref{akw}, 20 top words). \medskip
 
-Then we also looked at some certain islands with the largest values of weights between the nodes, which were identified before Table~\ref{akw}. We also had to present only Top-15 keywords for each cluster. For the group of authors with Barabasi in the center the keywords are \textit{web, dynamics, scale, complex, internet, world, free, random, evolve}. The island of Borgatti,  Everett, and Halgin is associated with the keywords \textit{graph, centrality, role, equivalence, semigroup, structure, clique, similarity}. The group of Fowler, Christakis, and Shakya have keywords \textit{spread, behavior, health, smoking, obesity, influence, evolution, dynamics}. Other group of social network analysts Robins and Pattison have the words \textit{model, graph, logit, logistic, regression, random, markov, exponential, p, semigroup, multirelational}. The group of Snijders have the keywords \textit{similarity, peer, model, network, family, orient, use, actor, social, behavior} which of course represent their work in stochastic actor-oriented models. \medskip
+The top words for all these clusters are \textit{network} and \textit{social}, other keywords are special for each island. The island of Borgatti,  Everett, and Halgin is associated with the keywords \textit{graph, centrality, role, regular, equivalence, semigroup, structure, clique, homomorphism}, and others. For the group of authors with Barabasi in the center the keywords are \textit{dynamics, complex, scale,  web, community, world, internet, model, free,  evolve, random}. The group of Fowler, Christakis, and Shakya have keywords \textit{spread, behavior, health, smoking, human, cooperation, obesity, influence, evolution, dynamics}. Other group of social network analysts Robins and Pattison have the words \textit{model, graph, random, markov, ligit, ligistic, regression,exponential, p, semigroup, asterisk, multirelational}. The group of Snijders have the keywords \textit{markov, random, friendship, behavior, peer, inference, influence, stochastic, actor, longitudinal, orient} which of represent their work in stochastic actor-oriented models. The group of Valente is represented by the words \textit{health, diffusion, behavior, innovation, peer, adolescent, influence, smoking, prevention, cigarette, leader}.It can be found that Thomas Valente is working on the topics of  \textit{social networks, behavior change, and program evaluation} and \textit{uses social network analysis, health communication, and mathematical models to implement and evaluate health promotion programs designed to prevent tobacco and substance abuse, unintended fertility, and STD\/HIV infections}, and \textit{also engaged in mapping community coalitions and collaborations to improve health care delivery and reduce healthcare disparities} [https://profiles.sc-ctsi.org/thomas.valente]. Thus, we can conclude that according to our knowledge these words represent the works of the mentioned authors. 
 
-The large group of Litwin in the center connected to Stoekel and Shiovitz have the keywords \textit{health, support, older, life, people, adult, israel, elderly, old, age, american}. The group with large weight of lines between Grabowska and Kosinski have the keywords \textit{complex, model, dynamics, human, epidemic, spread, percolation, hierarchial}.The island of  Chinese authors wih strong ties between Wang and Ma have the keywords \textit{model, base, mobile, networking, online, trust, privacy}. \medskip
+\medskip
 
-\begin{table}
-\caption{Clusters of authors and keywords:\label{ak2} Largest islands 1,2,3 (2)}\medskip
-\renewcommand{\arraystretch}{0.95}
-\begin{center}
-\begin{tabular}{p{1cm}|p{1cm}|p{2cm}|p{1cm}|p{2cm}|p{1cm}|p{2cm}}
-& \multicolumn{2}{c}{Island1} & \multicolumn{2}{c}{Island2} & \multicolumn{2}{c}{Island3}\\ \hline
-rank&	value&	keyword&	value&	keyword&	value&	keyword\\ \hline
-1&	0.41&	social&	4.36&	social&	0.13&	radiation\\
-2&	0.35&	network&	3.56&	network&	0.13&	public\\
-3&	0.31&	twitter&	1.18&	use&	0.13&	open\\
-4&	0.23&	situation&	0.91&	networking&	0.13&	measurement\\
-5&	0.23&	emergency&	0.83&	structure&	0.13&	environment\\
-6&	0.18&	narrative&	0.79&	drug&	0.13&	project\\
-7&	0.18&	information&	0.78&	risk&	0.13&	collaborative\\
-8&	0.17&	experience&	0.75&	hiv&	0.13&	radioactivity\\
-9&	0.17&	crisis&	0.68&	user&	0.11&	community\\
-10&	0.16&	uganda&	0.66&	woman&	0.11&	multimedia\\
-11&	0.16&	approach&	0.62&	community&	0.11&	characteristic\\
-12&	0.15&	categorization&	0.61&	sample&	0.11&	user\\
-13&	0.15&	modeling&	0.59&	role&	0.11&	model\\
-14&	0.15&	visualization&	0.56&	infection&	0.11&	share\\
-15&	0.15&	ontology&	0.54&	new&	0.11&	distribution\\ \hline
-Sum&	12.00&		& 89.76&		& 3.00&	\\ \hline
-\end{tabular}
-\end{center}
-\end{table}
 
 \begin{center}
 \begin{table}
 \caption{Clusters of authors and keywords:\label{akw} Clusters with largest line weights}\medskip
-\begin{tabular}{p{0.7cm}|p{1cm}|p{2cm}||p{1cm}|p{2cm}||p{1cm}|p{2.1cm}||p{1cm}|p{1.7cm}}
- &	clu &	repr &	clu &	repr &	clu &	repr &	clu &	repr \\ \hline
-&	13381&	Barabasi&	13418&	Grabowska&	14112&	Wang&	6439&	Litwin\\\hline
-rank&	value&	keyword&	value&	keyword&	value&	keyword&	value&	keyword\\ \hline
-1&	8.31&	network&	2.12&	network&	17.54&	social&	4.32&	social\\
-2&	2.29&	social&	1.98&	social&	17.21&	network&	4.11&	network\\
-3&	2.08&	web&	1.58&	complex&	4.85&	model&	2.64&	health\\
-4&	2.04&	dynamics&	1.23&	model&	4.80&	base&	2.54&	support\\
-5&	2.04&	scale&	1.10&	dynamics&	3.56&	mobile&	2.25&	older\\
-6&	1.87&	complex&	0.99&	human&	3.47&	analysis&	1.86&	life\\
-7&	1.87&	internet&	0.90&	epidemic&	2.49&	information&	1.66&	people\\
-8&	1.78&	world&	0.64&	spread&	2.45&	community&	1.63&	adult\\
-9&	1.64&	community&	0.60&	percolation&	2.07&	networking&	1.45&	type\\
-10&	1.49&	free&	0.43&	line&	2.04&	online&	1.31&	israel\\
-11&	1.41&	model&	0.39&	society&	1.96&	trust&	1.21&	elderly\\
-12&	1.31&	science&	0.36&	hierarchical&	1.81&	algorithm&	1.01&	old\\
-13&	1.20&	link&	0.35&	pattern&	1.67&	privacy&	1.00&	age\\
-14&	1.20&	random&	0.28&	opinion&	1.59&	complex&	0.82&	american\\
-15&	1.20&	evolve&	0.28&	formation&	1.54&	behavior&	0.81&	later\\ \hline
-Sum&	89.55&	&	21.67&	&	267.40&	&	76.14&	\\ \hline\hline
- &	clu &	repr &	clu &	repr &	clu &	repr &	clu &	repr \\ \hline
-&	13946&	Borgatti&	14024&	Christakis&	14221&	Robins&	13916&	Snijders\\ \hline
-rank&	value&	keyword&	value&	keyword&	value&	keyword&	value&	keyword\\ \hline
-1&	7.60&	network&	3.72&	network&	2.80&	network&	3.93&	network\\
-2&	3.94&	social&	3.46&	social&	2.48&	social&	3.04&	social\\
-3&	3.29&	graph&	1.16&	spread&	2.30&	model&	2.48&	model\\
-4&	2.13&	centrality&	1.15&	behavior&	1.57&	graph&	1.78&	graph\\
-5&	2.09&	analysis&	0.88&	health&	1.15&	logit&	1.35&	dynamics\\
-6&	2.02&	regular&	0.67&	large&	1.15&	analysis&	1.22&	markov\\
-7&	2.02&	role&	0.63&	smoking&	1.12&	logistic&	1.11&	random\\
-8&	1.96&	equivalence&	0.60&	model&	1.12&	regression&	0.97&	statistical\\
-9&	1.73&	semigroup&	0.54&	human&	1.02&	random&	0.95&	datum\\
-10&	1.48&	structure&	0.50&	obesity&	1.01&	markov&	0.84&	friendship\\
-11&	1.21&	relation&	0.50&	life&	0.94&	exponential&	0.84&	inference\\
-12&	1.20&	clique&	0.49&	cooperation&	0.84&	p&	0.76&	behavior\\
-13&	1.13&	similarity&	0.48&	influence&	0.77&	statistical&	0.75&	influence\\
-14&	1.12&	ebloc&	0.46&	evolution&	0.70&	semigroup&	0.73&	analysis\\
-15&	1.00&	correction&	0.45&	dynamics&	0.67&	multirelational&	0.70&	peer\\ \hline
-Sum&	92.66&	&	55.75&	&	47.89&	&	66.62&	\\
+\begin{tabular}{p{0.7cm}|p{1.3cm}|p{2.6cm}||p{1.3cm}|p{2.6cm}||p{1.3cm}|p{2.6cm}} \hline \hline
+& \multicolumn{2}{c}{BORGATTI\_S}		& \multicolumn{2}{c}{BARABASI\_A}  & \multicolumn{2}{c}{FOWLER\_J}\\ \hline \hline
+      Rank 	&   Value  & Id		    & 	   Value  & Id		       &	 Value  & Id	    \\ \hline
+         1 	&  4.9303  & network	    &	    7.0709  & network	       &	  3.1788 &  network	    \\
+         2 	&  2.5918  & social	    &	    2.0782  & social	       &	  2.9358 &  social	    \\
+         3 	&  2.0858  & graph	    &	    1.7068  & dynamics	       &	  1.0204 &  spread	    \\
+         4 	&  1.4210  & centrality	    &	    1.6670  & complex	       &	  1.0192 &  behavior	    \\
+         5 	&  1.4202  & analysis	    &	    1.6362  & scale	       &	  0.7261 &  health	    \\
+         6 	&  1.3399  & role	    &	    1.5946  & web	       &	  0.5512 &  large	    \\
+         7 	&  1.2780  & regular	    &	    1.5516  & community	       &	  0.5169 &  model	    \\
+         8 	&  1.2424  & equivalence    &	    1.4709  & world	       &	  0.4778 &  smoking	    \\
+         9 	&  1.0530  & semigroup	    &	    1.3622  & internet	       &	  0.4522 &  human	    \\
+        10 	&  1.0000  & correction	    &	    1.1906  & model	       &	  0.4479 &  cooperation	    \\
+        11 	&  0.9891  & structure	    &	    1.1858  & free	       &	  0.4313 &  obesity	    \\
+        12 	&  0.7755  & clique	    &	    1.0210  & evolve	       &	  0.4125 &  influence	    \\
+        13 	&  0.7576  & homomorphism   &	    1.0087  & science	       &	  0.3973 &  life	    \\
+        14 	&  0.7241  & relation	    &	    0.9808  & random	       &	  0.3728 &  dynamics	    \\
+        15 	&  0.6346  & power	    &	    0.9476  & wide	       &	  0.3715 &  evolution	    \\
+        16 	&  0.6301  & betweenness    &	    0.8178  & human	       &	  0.3463 &  analysis	    \\
+        17 	&  0.6287  & exchange	    &	    0.8076  & theory	       &	  0.3286 &  cosponsorship   \\
+        18 	&  0.6232  & algorithm	    &	    0.7561  & small	       &	  0.3044 &  norm	    \\
+        19 	&  0.6167  & similarity	    &	    0.7536  & graph	       &	  0.3036 &  trial	    \\
+        20 	&  0.5595  & ebloc	    &	    0.6603  & phenomenon       &	  0.2985 &  study	    \\ \hline
+     Sum: & 63.0810	& 		  &   76.6373		& 		&  46.8865	  & 		    \\  \hline\hline
+ & \multicolumn{2}{c}{PATTISON\_P} &  \multicolumn{2}{c}{SNIJDERS\_T}	  & 	 \multicolumn{2}{c}{VALENTE\_T} \\ \hline\hline
+        Rank   &   Value  & Id		    & 	   Value  & Id		       &	 Value  & Id	    \\ \hline
+           1   & 	2.2196  &  network	    & 	2.6375  &	 network	    &	    2.5536  &	 network	   \\
+           2   & 	2.0729  &  social	    &	2.0902  &	 social		    &	    1.9553  &	 social	   \\
+           3   & 	1.7567  &  model	    &	1.6702  &	 model		    &	    1.0000  &	 untitled	   \\
+           4   & 	1.3084  &  graph	    &	1.0692  &	 graph		    &	    0.9419  &	 health	   \\
+           5   & 	0.8939  &  random	    &	0.8857  &	 dynamics	    &	    0.8737  &	 diffusion	   \\
+           6   & 	0.8583  &  markov	    &	0.7390  &	 markov		    &	    0.7802  &	 behavior	   \\
+           7   & 	0.8531  &  logit	    &	0.6903  &	 random		    &	    0.7402  &	 innovation	   \\
+           8   & 	0.8220  &  logistic	    &	0.6734  &	 friendship	    &	    0.6974  &	 model	   \\
+           9   & 	0.8220  &  regression	    &	0.6228  &	 datum		    &	    0.6521  &	 use	   \\
+          10   & 	0.8012  &  exponential	    &	0.5932  &	 statistical	    &	    0.6349  &	 peer	   \\
+          11   & 	0.7055  &  analysis	    &	0.5780  &	 behavior	    &	    0.6216  &	 adolescent	   \\
+          12   & 	0.6752  &  p		    &	0.5547  &	 analysis	    &	    0.5717  &	 influence	   \\
+          13   & 	0.5530  &  statistical	    &	0.5423  &	 peer		    &	    0.5610  &	 smoking	   \\
+          14   & 	0.5038  &  structure	    &	0.5383  &	 inference	    &	    0.5371  &	 analysis	   \\
+          15   & 	0.3561  &  semigroup	    &	0.5346  &	 influence	    &	    0.5247  &	 prevention	   \\
+          16   & 	0.3522  &  asterisk	    &	0.4623  &	 stochastic	    &	    0.4987  &	 cigarette	   \\
+          17   & 	0.3368  &  process	    &	0.4612  &	 actor		    &	    0.4979  &	 opinion	   \\
+          18   & 	0.3333  &  multirelational  &	0.4480  &	 selection	    &	    0.4860  &	 leader	   \\
+          19   & 	0.3249  &  family	    &	0.4372  &	 longitudinal	    &	    0.4545  &	 risk	   \\
+          20   & 	0.3031  &  dynamics	    &	0.3785  &	 orient		    &	    0.4491  &	 intervention  \\ \hline
+       Sum:    & 38.6110	& 		    &	46.6732 &	&       	    44.8812&	 	   \\ \hline
 \end{tabular}
 \end{table}
 \end{center}
@@ -1014,29 +999,65 @@ Sum&	92.66&	&	55.75&	&	47.89&	&	66.62&	\\
 %******************************************************************************
 \section{Citation among authors}
 
-After analysing Cite network and WA network and looking at citations between works and collaborations between authors separately, we can also look at the derieved \textbf{CiteA network}, which shows citations among authors. \medskip 
+After analysing CiteR network and WAsr network and looking at citations between works and collaborations between authors separately, we can also look at the derieved \textbf{CiteA network}, which shows citations among authors. \medskip 
 
 \subsection{Network creation} 
 
-To get information about citations among authors we computed the \textbf{derived CiteA} networkas a product of multiplication of the networks \textbf{WAr} and \textbf{CiteR}.cIn this network, the value of element CiteA[u;v] is equal to the number of citations from works coauthored by u to works coauthored by v. \smallskip
+To get information about citations among authors we computed the \textbf{derived CiteA} network as a product of multiplication of the networks \textbf{WAsr} and \textbf{CiteR}.In this network, the value of element CiteA[u;v] is equal to the number of citations from works coauthored by u to works coauthored by v. \smallskip
 
-\texttt{CiteA=t(WAr) * CiteR * WAr} \smallskip
+\texttt{CiteA=t(WAsr) * CiteR * WAsr} \smallskip
 
 We also produced the normalized version of this network, \textbf{CiteAn}, where the value of element CiteAn[u;v] is equal to the number of {fractional} contribution of citations from works coauthored by u to works coauthored by v.\smallskip
 
-\texttt{CiteA=t(WAr) * nCiteR * WAr} \smallskip
+\texttt{CiteAn=t(WAsr) * nCiteR * WAsr} \smallskip
 
 \subsection{Citations} 
 
-After the exploratory analysis of the obtined networks, we had to exclude the top-cited work of Wasserman and Faust (\texttt{[WASSERMA\_S(1994):}] from the data set as a lot of nodes were connected to it. \medskip
+Looking at the loops of the network \textbf{CiteAn}, we can see the highest \textbf{absolute values} of self citations (Table~\ref{authcite}, column ``Value'').  However, as different authors have different number of works, we also counted \textbf{the proportion} of authors` \textit{self-citations to themselves} and their \textit{external citations to others} by dividing the vector of loops to the vector of outdegree in the CiteAn network (Table~\ref{authcite}, column ``\%''). The proportion of self-citation according to the number of all other citations is pretty small for almost all the authors, however, it is pretty large for Mieybodi (31\%), Stanton (22\%), Turel (16\%), and Martinez (14\%). 
 
-Then we used Islands approach to get islands of the size [5, 200] from the \textbf{CiteA}. However, the combination of nodes with large number of citations (to Wasserman, Granovetter, Boyd, Newman) with the `Chinese cloud', which was already identified above, blured the results. This why the normalized network \textbf{CiteAn} was used for identification of islands. We got 195 islands of size between 5 and 200. \medskip 
+\begin{table}
+\caption{Authors with the highest self-citation} \label{authcite}\medskip
+\renewcommand{\arraystretch}{0.95}
+\small
+\begin{center}
+\begin{tabular}{c|l|l|l|c|l|l|l|} 
+\# &	Author & Value &	\% &  \# &	Author& Value & \% \\ \hline 
+1&	TANG\_J&	9.786&	0.025&	26&	FALOUTSO\_C&	8.169&	0.014\\
+2&	FARINE\_D&	9.778&	0.074&	27&	HANSON\_B&	8.091&	0.041\\
+3&	PENTLAND\_A&	9.746&	0.016&	28&	SUEUR\_C&	8.025&	0.092\\
+4&	MARATHE\_M&	9.528&	0.034&	29&	FRANK\_K&	7.995&	0.062\\
+5&	ZENOU\_Y&	9.466&	0.077&	30&	LI\_X&	7.966&	0.020\\
+6&	EVERETT\_M&	9.342&	0.012&	31&	MORENO\_M&	7.724&	0.034\\
+7&	KRAUSE\_J&	9.035&	0.022&	32&	THELWALL\_M&	7.698&	0.033\\
+8&	CHEN\_H&	8.975&	0.032&	33&	SHEN\_X&	7.679&	0.039\\
+9&	BERKMAN\_L&	8.949&	0.007&	34&	KENNEDY\_A&	7.619&	0.070\\
+10&	POTTERAT\_J&	8.899&	0.027&	35&	GARLAND\_S&	7.606&	0.087\\
+11&	MORRIS\_M&	8.861&	0.025&	36&	ZHANG\_D&	7.586&	0.041\\
+12&	KAZIENKO\_P&	8.802&	0.067&	37&	NOWAK\_M&	7.554&	0.021\\
+13&	SHEN\_H&	8.799&	0.049&	38&	MAGLIANO\_L&	7.542&	0.051\\
+14&	LIU\_J&	8.763&	0.034&	39&	BONACICH\_P&	7.540&	0.020\\
+15&	XU\_Q&	8.667&	0.085&	40&	LU\_R&	7.458&	0.045\\
+16&	TUCKER\_J&	8.496&	0.061&	41&	WANG\_J&	7.414&	0.023\\
+17&	SKVORETZ\_J&	8.481&	0.056&	42&	WANG\_L&	7.345&	0.038\\
+18&	THAI\_M&	8.453&	0.068&	43&	SAITO\_K&	7.335&	0.055\\
+19&	BATAGELJ\_V&	8.421&	0.032&	44&	CHEN\_W&	7.245&	0.012\\
+20&	MUTH\_S&	8.382&	0.026&	45&	FERRARI\_E&	7.209&	0.038\\
+21&	MARTINEZ\_M&	8.313&	\textbf{0.141}&	46&	COHEN\_S&	7.202&	0.010\\
+22&	LITWIN\_H&	8.297&	0.052&	47&	RYAN\_L&	7.193&	0.080\\
+23&	STANTON\_N&	8.250&	\textbf{0.216}&	48&	MEYBODI\_M&	7.175&	\textbf{0.314}\\
+24&	TUREL\_O&	8.227&	\textbf{0.161}&	49&	KIMURA\_M&	7.139&	0.053\\
+25&	ABDELZAH\_T&	8.176&	0.085&	50&	KIM\_H&	7.121&	0.037\\
+\end{tabular} 
+\end{center}
+\end{table}  
 
-The Main island of \textbf{CiteAn} network consits of 200 nodes. In this network, citations separates between M. Granovetter and D. Boyd, each of them have their own `cloud' of other authors. They are also connected through several authors citing both of them. However, most of these authors are againg from the `Chinese group' \Remark{Picture CiteAn\_Island1(200)}.  \medskip  
 
-%pictures CiteAn_Main Island - has 212 nodes. I looked at the network, and extracted Island1 again - it is file CiteAn_Island1(200). They are different. Probably, first one - is the main island frim CiteA not normalized?
+We used Islands approach (general) to get islands of the size [5, 200] from the normalized network \textbf{CiteAn} and got 414 islands of size between 5 and 200. \medskip 
 
-Figure XX presents other 21 islands consisted of minimum 10 nodes (in sum, 268 nodes). Most of these islands are star-like, meaning that the author in the center actively cites a set of other authors. There are also two more `clique-like' islands, identifying groups of connected authors who cites each other. However, there are several more interesting structures (1, 2, 3), which shows several groups of authors connected to each other \Remark{picture CiteAn\_Islands2-22}. \medskip  
+The Main island of \textbf{CiteAn} network consits of 200 nodes. \Remark{Picture CiteA\_new\_Main Island}  \medskip  
+
+Other large islands have size 66, 41, 26, 25, 24, 23, 21. \Remark{should also represent some interesting structures? Files CiteA\_new + CiteA\_new\_Islands(414).clu} \medskip  
+
 
 \section{Co-citation among authors. Bibliographic Coupling }
 
@@ -1656,3 +1677,44 @@ year& 	 code& 	 author& 	 title& 	jour or book\\ \hline \endhead
 14&	70,58&	KIM\_J&	29&	50,02&	NEWMAN\_M\\
 15&	65,13&	CHEN\_H&	30&	49,49&	CHEN\_X\
 \end{tabular}\\
+
+
+However, the combination of nodes with large number of citations (to Wasserman, Granovetter, Boyd, Newman) with the `Chinese cloud', which was already identified above, blured the results. This why the normalized network \textbf{CiteAn} was used for identification of islands. We got 195 islands of size between 5 and 200. \medskip 
+
+The Main island of \textbf{CiteAn} network consits of 200 nodes. In this network, citations separates between M. Granovetter and D. Boyd, each of them have their own `cloud' of other authors. They are also connected through several authors citing both of them. However, most of these authors are againg from the `Chinese group' \Remark{Picture CiteAn\_Island1(200)}.  \medskip  
+
+%pictures CiteAn_Main Island - has 212 nodes. I looked at the network, and extracted Island1 again - it is file CiteAn_Island1(200). They are different. Probably, first one - is the main island frim CiteA not normalized?
+
+Figure XX presents other 21 islands consisted of minimum 10 nodes (in sum, 268 nodes). Most of these islands are star-like, meaning that the author in the center actively cites a set of other authors. There are also two more `clique-like' islands, identifying groups of connected authors who cites each other. However, there are several more interesting structures (1, 2, 3), which shows several groups of authors connected to each other
+
+Using this two-mode network we can inspect all the keywords which are associated with each author. However, what is interesting is to look at the keywords for certain islands. Again, we start with the largest islands 1-3, which have, respectively, 35, 23, and 21 nodes. These islands are associated with large number of keywords, and on the Table~\ref{ak2} we present only those Top-15 keywords which were used more frequently. Besides the most common words (\textit{social, network}, and \textit{analysis}, there some specialized words that can characterize each island. For  Island 1 these are the keywords \textit{twitter, situation, emergence, crisis, uganda}, and others; for Island 2 - \textit{drug, risk, hiv, woman,infection}; for cluster Island 3 - \textit{radiation, radioactivity, environment, measurement}.  \medskip
+
+\begin{table}
+\caption{Clusters of authors and keywords:\label{ak2} Largest islands 1,2,3 (2)}\medskip
+\renewcommand{\arraystretch}{0.95}
+\begin{center}
+\begin{tabular}{p{1cm}|p{1cm}|p{2cm}|p{1cm}|p{2cm}|p{1cm}|p{2cm}}
+& \multicolumn{2}{c}{Island1} & \multicolumn{2}{c}{Island2} & \multicolumn{2}{c}{Island3}\\ \hline
+rank&	value&	keyword&	value&	keyword&	value&	keyword\\ \hline
+1&	0.41&	social&	4.36&	social&	0.13&	radiation\\
+2&	0.35&	network&	3.56&	network&	0.13&	public\\
+3&	0.31&	twitter&	1.18&	use&	0.13&	open\\
+4&	0.23&	situation&	0.91&	networking&	0.13&	measurement\\
+5&	0.23&	emergency&	0.83&	structure&	0.13&	environment\\
+6&	0.18&	narrative&	0.79&	drug&	0.13&	project\\
+7&	0.18&	information&	0.78&	risk&	0.13&	collaborative\\
+8&	0.17&	experience&	0.75&	hiv&	0.13&	radioactivity\\
+9&	0.17&	crisis&	0.68&	user&	0.11&	community\\
+10&	0.16&	uganda&	0.66&	woman&	0.11&	multimedia\\
+11&	0.16&	approach&	0.62&	community&	0.11&	characteristic\\
+12&	0.15&	categorization&	0.61&	sample&	0.11&	user\\
+13&	0.15&	modeling&	0.59&	role&	0.11&	model\\
+14&	0.15&	visualization&	0.56&	infection&	0.11&	share\\
+15&	0.15&	ontology&	0.54&	new&	0.11&	distribution\\ \hline
+Sum&	12.00&		& 89.76&		& 3.00&	\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+After the exploratory analysis of the obtined networks, we had to exclude the top-cited work of Wasserman and Faust (\texttt{[WASSERMA\_S(1994):}] from the data set as a lot of nodes were connected to it. \medskip
+
