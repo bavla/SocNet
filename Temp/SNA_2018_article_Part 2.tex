@@ -589,56 +589,55 @@ After extraction of loops from CiteA network, we looked at the authors with the 
 \caption{CiteA network: Largest line weights} \label{citealw}
 \end{figure}
 
-To overcome the overrepresentation of the authors with many works, we used fractional approach. Looking at the \textbf{loops} of the network \textbf{CiteAn}, we can see the highest \textbf{fractional values} of self citations (Table~\ref{authcite}, column ``Value'').  We also counted \textbf{the proportion} of authors` \textit{self-citations to themselves} and their \textit{external citations to others} by dividing the vector of loops to the vector of outdegree in the CiteAn network (Table~\ref{authcite}, column ``\%''). The proportion of self-citation according to the number of all other citations is pretty small for almost all the authors, however, it is pretty large for Mieybodi (31\%), Stanton (22\%), Turel (16\%), and Martinez (14\%). \medskip  
-
-\Remark{to check the table}
+To overcome the overrepresentation of the authors with many works, we used fractional approach. Looking at the \textbf{loops} of the network \textbf{CiteAn}, we can see the highest \textbf{fractional values} of self citations (Table~\ref{authcite}, column ``Value'').  We also counted \textbf{the proportion} of authors` \textit{self-citations to themselves} and their \textit{external citations to others} by dividing the vector of loops to the vector of outdegree in the CiteAn network (Table~\ref{authcite}, column ``\%''). The proportion of self-citation according to the number of all other citations varies for different authors, however, it is larger for Burt (24\%), Killworth (19\%), Dunbar (18\%), Wellman (17\%), Leydesdorf (17\%), and Atzori (17\%). \medskip  
 
 \begin{table}
 \caption{Authors with the highest self-citation} \label{authcite}\medskip
-\renewcommand{\arraystretch}{0.95}
+\renewcommand{\arraystretch}{0.99}
 \small
 \begin{center}
-\begin{tabular}{c|l|l|l|c|l|l|l|} 
-\# &	Author & Value &	\% &  \# &	Author& Value & \% \\ \hline 
-1&	TANG\_J&	9.786&	0.025&	26&	FALOUTSO\_C&	8.169&	0.014\\
-2&	FARINE\_D&	9.778&	0.074&	27&	HANSON\_B&	8.091&	0.041\\
-3&	PENTLAND\_A&	9.746&	0.016&	28&	SUEUR\_C&	8.025&	0.092\\
-4&	MARATHE\_M&	9.528&	0.034&	29&	FRANK\_K&	7.995&	0.062\\
-5&	ZENOU\_Y&	9.466&	0.077&	30&	LI\_X&	7.966&	0.020\\
-6&	EVERETT\_M&	9.342&	0.012&	31&	MORENO\_M&	7.724&	0.034\\
-7&	KRAUSE\_J&	9.035&	0.022&	32&	THELWALL\_M&	7.698&	0.033\\
-8&	CHEN\_H&	8.975&	0.032&	33&	SHEN\_X&	7.679&	0.039\\
-9&	BERKMAN\_L&	8.949&	0.007&	34&	KENNEDY\_A&	7.619&	0.070\\
-10&	POTTERAT\_J&	8.899&	0.027&	35&	GARLAND\_S&	7.606&	0.087\\
-11&	MORRIS\_M&	8.861&	0.025&	36&	ZHANG\_D&	7.586&	0.041\\
-12&	KAZIENKO\_P&	8.802&	0.067&	37&	NOWAK\_M&	7.554&	0.021\\
-13&	SHEN\_H&	8.799&	0.049&	38&	MAGLIANO\_L&	7.542&	0.051\\
-14&	LIU\_J&	8.763&	0.034&	39&	BONACICH\_P&	7.540&	0.020\\
-15&	XU\_Q&	8.667&	0.085&	40&	LU\_R&	7.458&	0.045\\
-16&	TUCKER\_J&	8.496&	0.061&	41&	WANG\_J&	7.414&	0.023\\
-17&	SKVORETZ\_J&	8.481&	0.056&	42&	WANG\_L&	7.345&	0.038\\
-18&	THAI\_M&	8.453&	0.068&	43&	SAITO\_K&	7.335&	0.055\\
-19&	BATAGELJ\_V&	8.421&	0.032&	44&	CHEN\_W&	7.245&	0.012\\
-20&	MUTH\_S&	8.382&	0.026&	45&	FERRARI\_E&	7.209&	0.038\\
-21&	MARTINEZ\_M&	8.313&	\textbf{0.141}&	46&	COHEN\_S&	7.202&	0.010\\
-22&	LITWIN\_H&	8.297&	0.052&	47&	RYAN\_L&	7.193&	0.080\\
-23&	STANTON\_N&	8.250&	\textbf{0.216}&	48&	MEYBODI\_M&	7.175&	\textbf{0.314}\\
-24&	TUREL\_O&	8.227&	\textbf{0.161}&	49&	KIMURA\_M&	7.139&	0.053\\
-25&	ABDELZAH\_T&	8.176&	0.085&	50&	KIM\_H&	7.121&	0.037\\
+\begin{tabular}{c|l|l|l|l|c|l|l|l|l|} 
+\# &	Author & loops &	outdegree & \% &  \# &	Author&  loops &	outdegree & \% \\ \hline 
+1	&DUNBAR\_R	&49.34	&274.31	&\textbf{0.18}	      & 21	&FARMER\_T	&11.88	&96.06	&0.12		   \\
+2	&LATKIN\_C	&43.23	&508.88	&0.08	      & 22	&CROFT\_D		&11.82	&151.10	&0.08	   \\
+3	&JUNG\_J		&29.26	&210.06	&0.14	      & 23	&KILLWORT\_P	&11.00	&59.19	&\textbf{0.19}		   \\
+4	&BURT\_R		&25.52	&104.54	&\textbf{0.24}	      & 24	&BERNARD\_H	&10.97	&68.68	&0.16		   \\
+5	&CHRISTAK\_N	&24.45	&180.29	&0.14	      & 25	&JAMES\_R		&10.50	&109.82	&0.10	   \\
+6	&VALENTE\_T	&24.27	&248.25	&0.10	      & 26	&FRIEDMAN\_S	&10.35	&211.26	&0.05		   \\
+7	&BARABASI\_A	&21.48	&143.84	&0.15	      & 27	&ATZORI\_L	&10.15	&59.75	&\textbf{0.17}		   \\
+8	&NEWMAN\_M	&20.23	&173.70	&0.12	      & 28	&FARINE\_D	&9.78	&115.99	&0.08		   \\
+9	&WELLMAN\_B	&17.08	&99.91	&\textbf{0.17}	      & 29	&EVERETT\_M	&9.34	&69.52	&0.13		   \\
+10	&DOREIAN\_P	&16.48	&121.24	&0.14	      & 30	&KRAUSE\_J	&9.03	&99.98	&0.09		   \\
+11	&FOWLER\_J	&15.99	&156.65	&0.10	      & 31	&BERKMAN\_L	&8.95	&88.85	&0.10		   \\
+12	&SNIJDERS\_T	&13.88	&140.77	&0.10	      & 32	&POTTERAT\_J	&8.90	&88.58	&0.10		   \\
+13	&LEYDESDO\_L	&13.80	&78.93	&\textbf{0.17}	      & 33	&MORRIS\_M	&8.86	&110.99	&0.08		   \\
+14	&ROTHENBE\_R	&13.46	&145.26	&0.09	      & 34	&KAZIENKO\_P	&8.80	&151.34	&0.06		   \\
+15	&RICE\_E		&12.77	&163.03	&0.08	      & 35	&TUCKER\_J	&8.50	&210.81	&0.04		   \\
+16	&CARLEY\_K	&12.59	&152.26	&0.08	      & 36	&SKVORETZ\_J	&8.48	&79.38	&0.11		   \\
+17	&PATTISON\_P	&12.57	&138.92	&0.09	      & 37	&BATAGELJ\_V	&8.42	&62.48	&0.13		   \\
+18	&KELLY\_J		&12.19	&162.15	&0.08	      & 38	&MUTH\_S		&8.38	&125.57	&0.07	   \\
+19	&BORGATTI\_S	&11.98	&125.75	&0.10	      & 39	&MARTINEZ\_M	&8.31	&103.10	&0.08		   \\
+20	&ROBINS\_G	&11.96	&162.65	&0.07	      & 40	&LITWIN\_H	&8.30	&97.33	&0.09		   \\ \hline 
 \end{tabular} 
 \end{center}
 \end{table}  
 
+We used Islands approach (general) to get islands of the size [5, 200] from the normalized network \textbf{CiteAn} and got 414 islands of size between 5 and 200 (3,418 nodes, or 3.7\% of all the nodes in network). Almost half of these islands (48\%) are of sizes 5 (18\%), 6 (16\%), and 7 (14\%). The largest island Main island of \textbf{CiteAn} network consits of 200 nodes (6\%). We tried to move the upper border of the treshold up to 500 nodes, and it resulted with the Main island of 500 nodes, which means that there is large nested group of nodes. Main island of 200 nodes is presented on the Figure~\ref{CiteAmisl}. In the center there is a group of physicists, surrounded by tje cloud of citations from the `Chinese group'. Most of these authors are again representatived of already mentioned `multiple authors' -- \cite{harzing2015} found them to be highly presented in the field Physics. For the purposes of better visualization, the authors cited Newman, Barabasi separately and both of them together are put to the same place (which produce 3 black lines in the picture). This group also inclues Strogatz, Leskovec, Girvan, Evans.  Left upper part of the graph is consisted of the authors from the Social sciences, traditional representatives of Social network analysis. Among them, the authors with the strongest ties are Borgatti and Everett; the authors having the largest numbders of incoming ties are Freeman (7) is Burt (4); Batagelj also has 2 connections from Ferligoj and Doreian. There is also a trird component of authors positioned around Wasserman, who is being cited by the authors also connected to each other -- Robins and Pattison, Snijders, Holland. Another author citing Wasserman (and Faust) largerly is Kazienko, also having incoming citations (they were also seen in the structures before). Another local star having a lot of incoming ties is Dunbar, having reciprocal connections with Roberts and Pearce. \medskip 
 
-We used Islands approach (general) to get islands of the size [5, 200] from the normalized network \textbf{CiteAn} and got 414 islands of size between 5 and 200. The Main island of \textbf{CiteAn} network, which consit of 200 nodes, is presented on the Figure~\ref{CiteAmisl}. In the center there is a group of physicists, surrounded by tje cloud of citations from the `Chinese group'. Most of these authors are again representatived of already mentioned `multiple authors' -- \cite{harzing2015} found them to be highly presented in the field Physics. For the purposes of better visualization, the authors cited Newman, Barabasi separately and both of them together are put to the same place (which produce 3 black lines in the picture). This group also inclues Strogatz, Leskovec, Girvan, Evans.  Left upper part of the graph is consisted of the authors from the Social sciences, traditional representatives of Social network analysis. Among them, the authors with the strongest ties are Borgatti and Everett; the authors having the largest numbders of incoming ties are Freeman (7) is Burt (4); Batagelj also has 2 connections from Ferligoj and Doreian. There is also a trird component of authors positioned around Wasserman, who is being cited by the authors also connected to each other -- Robins and Pattison, Snijders, Holland. Another author citing Wasserman (and Faust) largerly is Kazienko, also having incoming citations (they were also seen in the structures before). Another local star having a lot of incoming ties is Dunbar, having reciprocal connections with Roberts and Pearce. \medskip 
-
-Other large islands have size 66, 41, 26, 25, 24, 23, 21. \Remark{should also represent some interesting structures? Files CiteA\_new + CiteA\_new\_Islands(414).clu} \medskip  
+Second and third largest islands are composed of 66 and 41 nodes, respectively. Other islands have  26 and less nodes. Some selected large islands are presented on the Figure~\ref{CiteAislands}. First and second islands (if we count from left to right by three lines) represented by Migliano and Marasco, and Kaskutas, respectively, contain researchers from the fields of medicine, health, desease and addiction. The island of Latkin, Friedman, Potterat, and others was already mentioned above -- this is a group in the field of psychology and health. The group of Chrstakis and Moreno (different ones) represents the researchers working in the field of adolescents, teens in social media, internet addiction, and health. Island formed with Farmer contains researchers working with behavioral and emotional disorders, psychology and youth. Next group represented by Atzori is the one working in the field of internet of things, the one of Folke -- ecology. There is a group of scientists around French sociologist Bourdieu. The group of animal social network analysts Croft, Krause, Farine, and others is quite well-connected. We do not have space and time to drill into all the exported islands, but we can see that there is a large number of groups with different topic specialization. \medskip 
 
 \begin{figure}
 \begin{center}
 \includegraphics[width=0.7\textwidth]{CiteAmIsl.pdf}
 \end{center}
 \caption{CiteA:Main island} \label{CiteAmisl}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth]{CiteA_islands.pdf}
+\end{center}
+\caption{CiteA network: Largest line weights} \label{CiteAislands}
 \end{figure}
 
 \section{Citation among journals}
@@ -694,9 +693,9 @@ After removing loops from the same network, we used a line cut (with a treshold 
 \end{figure}
 \medskip
 
-The loops of the \textbf{JJsfn} network show the journals with the highest \textbf{fractional values} of self-citations (Table~\ref{jselfcite}, column ``Value''). Again, the highest value belongs to the \textit{Social Networks} journal. Other highly ranked journals are from the fields of Computer science and Cyberpsychology -- the journals \textit{Computers in Human Behavior} and \textit{Lecture Notes in Computer Science} (the previous order is a bit changed). Other journals with relatively high number of internal citations are already mentioned before \textit{Physica A, Social Science \& Medicine}, \textit{Cyberpsychology, Behavior, and Social Networking}, as well as {Journal of Medical Internet Research}, which appears in the table above on a lower place. The differences between absolute values for the first three listed journals and others are quite significant.   \medskip 
+The loops of the \textbf{JJsfn} network show the journals with the highest \textbf{fractional values} of self-citations (Table~\ref{jselfcite}, column ``Value''). Even though some level of self-citation is is typical for all journals, there are some journals that have larger levels. Again, the highest value belongs to the \textit{Social Networks} journal. Other highly ranked journals are from the fields of Computer science and Cyberpsychology -- the journals \textit{Computers in Human Behavior} and \textit{Lecture Notes in Computer Science} (the previous order is a bit changed). Other journals with relatively high number of internal citations are already mentioned before \textit{Physica A, Social Science \& Medicine}, \textit{Cyberpsychology, Behavior, and Social Networking}, as well as {Journal of Medical Internet Research}, which appears in the table above on a lower place. The differences between values for the first three listed journals and others are quite significant. \medskip 
 
-However, as different journals have different number of works, we also counted \textbf{the proportion} of journals` \textit{internal citations to themselves} and their \textit{external citations to other journals} by dividing the vector of loops to the vector of outdegree in the JJsfn network (Table~\ref{jselfcite}, column ``\%''). Several journals with the highest values -- \textit{Nature, American Journal of Sociology, American Journal of Epidemiology, Journal of Medical Internet Research, Comunicar Journal} -- have quite high level of internal citation -- around the quarter. \textit{Social Networks} journal has even more -- 34\% of internal citations. \medskip 
+However, as different journals have different number of works, we also counted \textbf{the proportion} of journals` \textit{internal citations to themselves} and their \textit{external citations to other journals} by dividing the vector of loops to the vector of outdegree in the JJsfn network (Table~\ref{jselfcite}, column ``\%''). Several journals with the highest values -- \textit{Nature, American Journal of Sociology, American Journal of Epidemiology, Journal of Medical Internet Research, Comunicar Journal} -- have quite high level of internal citation -- around the quarter. \textit{Social Networks} journal has even more -- 34\% of internal citations.  Large level of citation within a journal to the same journal may mean that it is seen as an important source of information for the scientists involved into the particular field.\medskip 
 
 \begin{table}
 \caption{Journals with the highest self-citation} \label{jselfcite}\medskip
