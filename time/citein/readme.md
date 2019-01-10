@@ -1,2 +1,2 @@
-# indigrees in temporal citation network
+# indegrees in temporal citation network
 
