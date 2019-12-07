@@ -1,6 +1,6 @@
 # Leitz's SNA data in Pajek format
 
-´´
+```
 > wdir <- "C:/Users/batagelj/Downloads/data/leitz/SN"
 > setwd(wdir)
 > source("C:\\Users\\batagelj\\work\\projects\\BM\\indirect\\Pajek.R")
@@ -23,4 +23,6 @@
 > u <- factor(T$publication,levels=W)
 > v <- factor(T$concept)
 > uv2net(u,v,Net="WK.net",twomode=TRUE)
-´´
+```
+
+
