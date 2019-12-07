@@ -1,4 +1,8 @@
-# Leitz's SNA data in Pajek format
+# Lietz's SNA data in Pajek format
+
+https://www.gesis.org/institut/mitarbeiterverzeichnis/person/haiko.lietz
+
+https://data.gesis.org/sharing/#!Detail/10.7802/1437
 
 ```
 > wdir <- "C:/Users/batagelj/Downloads/data/leitz/SN"
