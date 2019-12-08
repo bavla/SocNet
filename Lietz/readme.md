@@ -33,7 +33,7 @@ We transformed the data into Pajek format files using the following R code:
 > v <- factor(T$concept)
 > uv2net(u,v,Net="WK.net",twomode=TRUE)
 ```
-The set of functions `Pajek.R` is available [here]().
+The set of functions `Pajek.R` is available [here](https://github.com/bavla/cluRC/blob/master/readPajekNet.R).
 
 Pajek files are available in `LietzSN.zip`. It contains the following files
 * `WA.net` - authorship network: |W| = 25760,  |A| = 45580.
