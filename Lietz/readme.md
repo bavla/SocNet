@@ -33,9 +33,9 @@ Lietz, Haiko. 2016. Scale-Free Identity: The Emergence of Social Network Science
 > v <- factor(T$concept)
 > uv2net(u,v,Net="WK.net",twomode=TRUE)
 ```
-Pajek files are available in `LietzSN.zip`
-* `WA.net` -
-* WK.net -
-* domain.clu -
-* year.clu -
-* type.clu -
+Pajek files are available in `LietzSN.zip`. It contains the following files
+* `WA.net` - authorship network: |W| = 25760,  |A| = 45580
+* `WK.net` - keywords network: |W| = 25760,  |K| = 23027
+* `domain.clu` - domain partition of W;
+* `year.clu` - year partition of W
+* `type.clu` - type partition of W;  1-article  2-book  3-chapter
