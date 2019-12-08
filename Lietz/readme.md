@@ -19,7 +19,7 @@ We transformed the data into Pajek format files using the following R code:
 > W <- T[,1] 
 > vector2clu(T$domain,Clu="domain.clu")
 > vector2clu(T$year,Clu="year.clu")
-> vector2clu(as.integer(factor(T$type),Clu="type.clu")
+> vector2clu(as.integer(factor(T$type)),Clu="type.clu")
 
 > fp <- c(rep("integer",2),rep("character",2))
 > T <- read.table("authorships.txt",colClasses=fp,header=TRUE)
