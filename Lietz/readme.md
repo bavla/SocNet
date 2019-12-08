@@ -35,7 +35,7 @@ We transformed the data into Pajek format files using the following R code:
 ```
 The set of functions `Pajek.R` is available [here](https://raw.githubusercontent.com/bavla/Rnet/master/R/Pajek.R). We added a new function `uv2net`.
 
-Pajek files are available in `LietzSN.zip`. It contains the following files
+Pajek files are available in [`LietzSN.zip`](https://github.com/bavla/SocNet/raw/master/Lietz/LietzSN.zip). It contains the following files
 * `WA.net` - authorship network: |W| = 25760,  |A| = 45580.
 * `WK.net` - keywords network: |W| = 25760,  |K| = 23027; works without keywords are linked to the keyword `""`.
 * `domain.clu` - domain partition of W;
