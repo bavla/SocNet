@@ -42,8 +42,8 @@ Pajek files are available in [`LietzSN.zip`](https://github.com/bavla/SocNet/raw
 * `year.clu` - year partition of W
 * `type.clu` - type partition of W;  1-article,  2-book,  3-chapter.
 The information of domain encoding is missing. Probably it is:
-- Social Psychology & Epidemiology
-- Economic Sociology
-- Social Network Analysis
-- Network Science
-- Computational Social Science
+1 Social Psychology & Epidemiology
+2 Economic Sociology
+3 Social Network Analysis
+4 Network Science
+5 Computational Social Science
