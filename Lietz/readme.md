@@ -8,7 +8,7 @@ The data set was used in:
 
 Lietz, Haiko. 2016. Scale-Free Identity: The Emergence of Social Network Science. Dissertation, University of Duisburg Essen, Faculty of Social Sciences.
 
-
+We transformed the data into Pajek format files using the following R code:
 ```
 > wdir <- "C:/Users/batagelj/Downloads/data/leitz/SN"
 > setwd(wdir)
@@ -33,9 +33,11 @@ Lietz, Haiko. 2016. Scale-Free Identity: The Emergence of Social Network Science
 > v <- factor(T$concept)
 > uv2net(u,v,Net="WK.net",twomode=TRUE)
 ```
+The set of functions `Pajek.R` is available [here]().
+
 Pajek files are available in `LietzSN.zip`. It contains the following files
-* `WA.net` - authorship network: |W| = 25760,  |A| = 45580
-* `WK.net` - keywords network: |W| = 25760,  |K| = 23027
+* `WA.net` - authorship network: |W| = 25760,  |A| = 45580.
+* `WK.net` - keywords network: |W| = 25760,  |K| = 23027; works without keywords are linked to the keyword `""`.
 * `domain.clu` - domain partition of W;
 * `year.clu` - year partition of W
-* `type.clu` - type partition of W;  1-article  2-book  3-chapter
+* `type.clu` - type partition of W;  1-article,  2-book,  3-chapter.
