@@ -48,3 +48,7 @@ The information on domain encoding is missing. Probably it is:
 3. Social Network Analysis
 4. Network Science
 5. Computational Social Science
+
+The plan is:
+* WK: compare the results obtained for our data up to 2012 and this data + split phrases in this data and compare it as well 
+* WA: compare the results obtained for our data up to 2012 and this data
