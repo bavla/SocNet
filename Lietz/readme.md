@@ -49,6 +49,39 @@ The information on domain encoding is missing. Probably it is:
 4. Network Science
 5. Computational Social Science
 
+## Split keyword phrases into words
+
+July 4, 2020
+
+
+```
+simple <- function(s) return( 
+      gsub("^CO_","CO-",
+      gsub("^E_","E-",
+      gsub("_CO_","_CO-",
+      gsub("_E_","_E-",
+      gsub("_OF_","_",
+      gsub("_TO_","_",
+      gsub("_ON_","_",
+      gsub("_S_","_",
+      gsub("&","_",
+           s))))))))) )
+
+S <- vapply(T$concept,simple,FUN.VALUE="character",USE.NAMES=FALSE)
+P <- rep("",700000); C <- rep("",700000); j <- 0
+for(i in 1:length(S)){
+  w <- T$publication[i]; s <- S[i]
+  L <- unlist(strsplit(s,"_"))
+  for(k in L) if(nchar(k)>1){
+    j <- j+1; P[j] <- w; C[j] <- k
+  }
+}
+u <- factor(P[1:j],levels=W)
+v <- factor(C[1:j])
+uv2net(u,v,Net="WK1.net",twomode=TRUE)
+```
+## To do
+
 The plan is:
 * WK: compare the results obtained for our data up to 2012 and this data + split phrases in this data and compare it as well 
 * WA: compare the results obtained for our data up to 2012 and this data
