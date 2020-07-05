@@ -80,6 +80,8 @@ u <- factor(P[1:j],levels=W)
 v <- factor(C[1:j])
 uv2net(u,v,Net="WK1.net",twomode=TRUE)
 ```
+There are multiple links in `WK1.net`. I removed them using Pajek and saved the network as `WK1s.net`.
+
 ## To do
 
 The plan is:
