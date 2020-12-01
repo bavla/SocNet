@@ -1,0 +1,396 @@
+>>> for i,e in enumerate(L): print("{:>3}, {:<20} , 0, {:>3}, {:>3}".format(i,e[0],e[1],e[2]))
+  i, key               , type, freq, cnt
+  1, behavior             , 0,  35,  17
+  2, disease              , 1,  34,   6
+  3, older                , 0,  34,   1
+  4, self                 , 0,  33,  10
+  5, mortality            , 1,  33,   2
+  6, information          , 0,  32,  17
+  7, performance          , 0,  32,  10
+  8, gender               , 0,  32,  10
+  9, people               , 0,  32,   8
+ 10, work                 , 0,  32,   4
+ 11, strategy             , 0,  32,   2
+ 12, illness              , 0,  32,   2
+ 13, exchange             , 0,  32,   2
+ 14, management           , 0,  31,  16
+ 15, state                , 0,  31,  13
+ 16, technology           , 0,  31,  13
+ 17, drug                 , 1,  31,   9
+ 18, quality              , 0,  31,   8
+ 19, depression           , 1,  31,   7
+ 20, risk                 , 0,  30,  24
+ 21, knowledge            , 0,  30,  17
+ 22, unit                 , 0,  30,  12
+ 23, user                 , 0,  30,  12
+ 24, disorder             , 0,  30,   8
+ 25, small                , 0,  30,   7
+ 26, aid                  , 0,  30,   6
+ 27, adjustment           , 0,  30,   5
+ 28, psychosocial         , 0,  30,   1
+ 29, dynamics             , 0,  29,  20
+ 30, world                , 0,  29,  14
+ 31, hiv                  , 1,  29,  14
+ 32, peer                 , 0,  29,  12
+ 33, school               , 0,  29,   4
+ 34, experience           , 0,  29,   4
+ 35, disability           , 0,  29,   4
+ 36, base                 , 0,  28,  18
+ 37, learn                , 0,  28,  11
+ 38, public               , 0,  28,   8
+ 39, prevention           , 0,  28,   5
+ 40, web                  , 0,  27,  18
+ 41, capital              , 0,  27,  16
+ 42, infection            , 1,  27,  12
+ 43, sexual               , 1,  27,   7
+ 44, virus                , 0,  27,   1
+ 45, search               , 0,  26,   7
+ 46, transmission         , 0,  26,   7
+ 47, industry             , 0,  26,   5
+ 48, space                , 0,  26,   2
+ 49, trial                , 0,  26,   2
+ 50, trust                , 0,  25,  15
+ 51, networking           , 0,  25,  12
+ 52, media                , 0,  25,  11
+ 53, transmit             , 0,  25,   2
+ 54, classroom            , 0,  24,   1
+ 55, alliance             , 0,  24,   1
+ 56, complex              , 0,  23,  17
+ 57, digital              , 0,  23,  11
+ 58, collaborative        , 0,  23,  10
+ 59, internet             , 0,  22,  19
+ 60, collaboration        , 0,  22,  18
+ 61, virtual              , 0,  22,   9
+ 62, food                 , 0,  22,   1
+ 63, percolation          , 0,  22,   1
+ 64, online               , 0,  21,  13
+ 65, content              , 0,  21,  10
+ 66, agent                , 0,  21,   9
+ 67, logit                , 0,  21,   1
+ 68, mining               , 0,  20,  12
+ 69, site                 , 0,  20,  11
+ 70, detection            , 0,  20,   9
+ 71, mobile               , 0,  19,  12
+ 72, probability          , 0,  19,   1
+ 73, institutionalization , 0,  19,   1
+ 74, recommendation       , 0,  18,  11
+ 75, software             , 0,  18,   7
+ 76, node                 , 0,  17,   5
+ 77, privacy              , 0,  16,  11
+ 78, 0                    , 0,  16,  10
+ 79, big                  , 0,  16,   5
+ 80, mainstream           , 0,  15,   1
+ 81, sentiment            , 0,  14,   5
+ 82, facebook             , 0,  12,  11
+ 83, annotate             , 0,  12,   2
+ 84, twitter              , 0,  11,   9
+ 85, austria              , 3,  11,   1
+ 86, circulation          , 0,  11,   1
+ 87, semigroup            , 0,  10,   3
+ 88, handicapped          , 0,  10,   3
+ 89, retarded             , 0,  10,   3
+ 90, o                    , 0,  10,   1
+ 91, malignant            , 1,  10,   1
+ 92, 1914                 , 0,   9,   2
+ 93, peasant              , 0,   9,   1
+ 94, 1998                 , 0,   9,   1
+ 95, leinhardt            , 2,   8,   3
+ 96, db                   , 0,   8,   3
+ 97, dl                   , 0,   8,   2
+ 98, bibliography         , 0,   8,   2
+ 99, vernacular           , 0,   8,   1
+100, holland              , 2,   7,   2
+101, propinquity          , 0,   7,   1
+102, cup                  , 0,   7,   1
+103, cautionary           , 0,   7,   1
+104, sorensen             , 2,   7,   1
+105, freeman              , 2,   7,   1
+106, mc                   , 0,   7,   1
+107, 1988                 , 0,   7,   1
+108, psychose             , 0,   7,   1
+109, symposium            , 0,   7,   1
+110, roger                , 2,   6,   3
+111, rm                   , 0,   6,   2
+112, rehospitalization    , 1,   6,   2
+113, granovetter          , 2,   6,   1
+114, liverpool            , 3,   6,   1
+115, mississippi          , 3,   6,   1
+116, 1984                 , 0,   6,   1
+117, bronx                , 3,   6,   1
+118, enactment            , 0,   6,   1
+119, berkowitz            , 2,   5,   5
+120, mh                   , 0,   5,   3
+121, microstructural      , 0,   5,   2
+122, wasserman            , 2,   5,   2
+123, faust                , 2,   5,   2
+124, reconsideration      , 0,   5,   1
+125, tasmanian            , 3,   5,   1
+126, 1870                 , 0,   5,   1
+127, triplet              , 0,   5,   1
+128, riley                , 2,   5,   1
+129, cr                   , 0,   5,   1
+130, parachute            , 0,   5,   1
+131, scott                , 2,   5,   1
+132, lymphocyte           , 1,   5,   1
+133, royal                , 0,   5,   1
+134, sh                   , 0,   4,   3
+135, jone                 , 0,   4,   2
+136, dwell                , 0,   4,   2
+137, ebloc                , 0,   4,   2
+138, hardiness            , 0,   4,   2
+139, romney               , 2,   4,   2
+140, functionalism        , 0,   4,   1
+141, charting             , 0,   4,   1
+142, rejoinder            , 0,   4,   1
+143, jackson              , 2,   4,   1
+144, foundational         , 0,   4,   1
+145, leveling             , 0,   4,   1
+146, reexamination        , 0,   4,   1
+147, cochran              , 2,   4,   1
+148, henderson            , 2,   4,   1
+149, larner               , 2,   4,   1
+150, cerebrovascular      , 1,   4,   1
+151, destruction          , 0,   4,   1
+152, gottlieb             , 2,   3,   3
+153, bh                   , 0,   3,   3
+154, perrucci             , 2,   3,   3
+155, pilisuk              , 2,   3,   3
+156, vanijzendoorn        , 2,   3,   3
+157, lwc                  , 0,   3,   3
+158, tavecchio            , 2,   3,   3
+159, wellman              , 2,   3,   3
+160, fischer              , 2,   3,   2
+161, monastery            , 0,   3,   2
+162, hamburg              , 3,   3,   2
+163, railroad             , 0,   3,   2
+164, 1905                 , 0,   3,   2
+165, klusmann             , 2,   3,   2
+166, angermeyer           , 2,   3,   2
+167, belle                , 0,   3,   2
+168, cult                 , 0,   3,   1
+169, 1977                 , 0,   3,   1
+170, cooptation           , 0,   3,   1
+171, congruent            , 0,   3,   1
+172, shore                , 0,   3,   1
+173, moreno               , 2,   3,   1
+174, jacob                , 2,   3,   1
+175, fur                  , 0,   3,   1
+176, 68                   , 0,   3,   1
+177, lc                   , 0,   3,   1
+178, overlook             , 0,   3,   1
+179, ebd                  , 0,   3,   1
+180, yx                   , 0,   3,   1
+181, wolf                 , 2,   3,   1
+182, nosology             , 0,   3,   1
+183, pw                   , 0,   2,   2
+184, ersatz               , 0,   2,   2
+185, milroy               , 2,   2,   2
+186, blocking             , 0,   2,   2
+187, marihuana            , 0,   2,   2
+188, kincaid              , 2,   2,   2
+189, hassinger            , 2,   2,   2
+190, targ                 , 2,   2,   2
+191, ew                   , 0,   2,   2
+192, maguire              , 2,   2,   2
+193, biegel               , 2,   2,   2
+194, mendelson            , 2,   2,   2
+195, mccardle             , 2,   2,   2
+196, bowlby               , 2,   2,   2
+197, ainsworth            , 2,   2,   2
+198, milardo              , 2,   2,   2
+199, hammer               , 2,   2,   2
+200, salzinger            , 2,   2,   2
+201, antrobus             , 0,   2,   2
+202, ak                   , 0,   2,   2
+203, pattison             , 2,   2,   2
+204, polyhedral           , 0,   2,   1
+205, recidivist           , 0,   2,   1
+206, negopy               , 0,   2,   1
+207, incongruent          , 0,   2,   1
+208, nonprofessional      , 0,   2,   1
+209, illiterate           , 0,   2,   1
+210, dislocation          , 0,   2,   1
+211, autoerotic           , 0,   2,   1
+212, asphyxial            , 0,   2,   1
+213, midst                , 0,   2,   1
+214, dj                   , 0,   2,   1
+215, kindergartener       , 0,   2,   1
+216, mb                   , 0,   2,   1
+217, galileo              , 2,   2,   1
+218, macrostructural      , 0,   2,   1
+219, 1974                 , 0,   2,   1
+220, mizruchi             , 2,   2,   1
+221, 1904                 , 0,   2,   1
+222, cumulate             , 0,   2,   1
+223, 1886                 , 0,   2,   1
+224, commoditization      , 0,   2,   1
+225, jd                   , 0,   2,   1
+226, curtin               , 2,   2,   1
+227, mathematician        , 0,   2,   1
+228, dredge               , 0,   2,   1
+229, doreian              , 2,   2,   1
+230, keeper               , 0,   2,   1
+231, gunnarson            , 2,   2,   1
+232, litwin               , 2,   2,   1
+233, uproot               , 0,   2,   1
+234, yan                  , 3,   2,   1
+235, abstain              , 0,   2,   1
+236, multiunit            , 0,   2,   1
+237, rueveni              , 2,   1,   1
+238, rp                   , 0,   1,   1
+239, mohan                , 2,   1,   1
+240, cooptive             , 0,   1,   1
+241, boorman              , 2,   1,   1
+242, beggar               , 0,   1,   1
+243, carcinomatose        , 1,   1,   1
+244, tranquilizer         , 1,   1,   1
+245, stueve               , 2,   1,   1
+246, gerson               , 2,   1,   1
+247, sampson              , 2,   1,   1
+248, tecumseh             , 2,   1,   1
+249, lipnack              , 2,   1,   1
+250, backcloth            , 0,   1,   1
+251, 78                   , 0,   1,   1
+252, idempotent           , 0,   1,   1
+253, fx                   , 0,   1,   1
+254, eich                 , 0,   1,   1
+255, widowerhood          , 0,   1,   1
+256, breiger              , 2,   1,   1
+257, cyclically           , 0,   1,   1
+258, treiman              , 2,   1,   1
+259, mj                   , 0,   1,   1
+260, guecho               , 3,   1,   1
+261, arthritic            , 1,   1,   1
+262, tarb                 , 0,   1,   1
+263, sussman              , 2,   1,   1
+264, lein                 , 2,   1,   1
+265, hage                 , 2,   1,   1
+266, yhe                  , 1,   1,   1
+267, wirtschaft           , 0,   1,   1
+268, hochschule           , 0,   1,   1
+269, politik              , 0,   1,   1
+270, und                  , 0,   1,   1
+271, yom                  , 0,   1,   1
+272, kippur               , 0,   1,   1
+273, extrafamilial        , 0,   1,   1
+274, nonclient            , 0,   1,   1
+275, rehabilitate         , 1,   1,   1
+276, vanderploeg          , 2,   1,   1
+277, nonchronic           , 0,   1,   1
+278, willmott             , 2,   1,   1
+279, partialling          , 0,   1,   1
+280, spuriousness         , 0,   1,   1
+281, rsw                  , 0,   1,   1
+282, mildly               , 0,   1,   1
+283, gv                   , 0,   1,   1
+284, collani              , 2,   1,   1
+285, jargon               , 0,   1,   1
+286, topping              , 0,   1,   1
+287, borgatti             , 2,   1,   1
+288, mintz                , 2,   1,   1
+289, apm                  , 0,   1,   1
+290, dalgard              , 2,   1,   1
+291, fortin               , 2,   1,   1
+292, quebecoi             , 3,   1,   1
+293, yesterday            , 0,   1,   1
+294, demarcate            , 0,   1,   1
+295, pearce               , 2,   1,   1
+296, tuma                 , 2,   1,   1
+297, geostatistical       , 0,   1,   1
+298, donner               , 0,   1,   1
+299, sociomatrix          , 0,   1,   1
+300, err                  , 0,   1,   1
+301, sharkey              , 2,   1,   1
+302, timm                 , 2,   1,   1
+303, inversely            , 0,   1,   1
+304, juncture             , 0,   1,   1
+305, cheal                , 0,   1,   1
+306, folks                , 0,   1,   1
+307, schweizer            , 2,   1,   1
+308, ethnological         , 0,   1,   1
+309, gluckman             , 2,   1,   1
+310, gastroenteritis      , 1,   1,   1
+311, polanyi              , 2,   1,   1
+312, gumperz              , 2,   1,   1
+313, bittersweet          , 0,   1,   1
+314, imperator            , 0,   1,   1
+315, tamarin              , 0,   1,   1
+316, absentee             , 0,   1,   1
+317, encephalomyelitis    , 1,   1,   1
+318, myalgic              , 0,   1,   1
+319, costar               , 0,   1,   1
+320, preview              , 0,   1,   1
+321, vorarlberg           , 3,   1,   1
+322, judeo                , 3,   1,   1
+323, halloween            , 0,   1,   1
+324, negev                , 3,   1,   1
+325, orna                 , 0,   1,   1
+326, kcpm                 , 0,   1,   1
+327, sunbelt              , 0,   1,   1
+328, snowbird             , 0,   1,   1
+329, caledonia            , 3,   1,   1
+330, identificational     , 0,   1,   1
+331, circumstantialism    , 0,   1,   1
+332, primordialism        , 0,   1,   1
+333, issi                 , 0,   1,   1
+334, wolfsburg            , 3,   1,   1
+335, fordist              , 0,   1,   1
+336, sane                 , 0,   1,   1
+337, otago                , 3,   1,   1
+338, nonpsychotic         , 1,   1,   1
+339, kolip                , 3,   1,   1
+340, sociogrid            , 0,   1,   1
+341, circulatory          , 0,   1,   1
+342, kaiping              , 3,   1,   1
+343, ecopsychological     , 0,   1,   1
+344, scd                  , 0,   1,   1
+345, stepmother           , 0,   1,   1
+346, stepfather           , 0,   1,   1
+347, overprotective       , 0,   1,   1
+348, artiodactylum        , 0,   1,   1
+349, chd                  , 0,   1,   1
+350, stenosis             , 1,   1,   1
+351, nativism             , 0,   1,   1
+352, fiddly               , 0,   1,   1
+353, undeclared           , 0,   1,   1
+354, hartlepool           , 3,   1,   1
+355, sumbawa              , 3,   1,   1
+356, intercrop            , 0,   1,   1
+357, hedgerow             , 0,   1,   1
+358, angloceltic          , 0,   1,   1
+359, hogberga             , 3,   1,   1
+360, underimmunization    , 0,   1,   1
+361, kilkenny             , 3,   1,   1
+362, phlu                 , 3,   1,   1
+363, exhibitionist        , 0,   1,   1
+364, conibo               , 3,   1,   1
+365, mio                  , 0,   1,   1
+366, buono                , 0,   1,   1
+367, nltc                 , 0,   1,   1
+368, amenorrhea           , 1,   1,   1
+369, lactational          , 1,   1,   1
+370, isonymy              , 0,   1,   1
+371, factional            , 0,   1,   1
+372, colonialist          , 0,   1,   1
+373, antinuclear          , 0,   1,   1
+374, accordance           , 0,   1,   1
+375, sociopsychologic     , 0,   1,   1
+376, trident              , 0,   1,   1
+377, mmpi                 , 0,   1,   1
+378, waiana               , 3,   1,   1
+379, vertovec             , 2,   1,   1
+380, galaskiewicz         , 2,   1,   1
+381, kecsk                , 2,   1,   1
+382, cholecystectomy      , 1,   1,   1
+383, denver               , 3,   1,   1
+384, amalgam              , 0,   1,   1
+385, huddinge             , 0,   1,   1
+386, tranquillizer        , 0,   1,   1
+387, eriksonian           , 2,   1,   1
+388, puebloan             , 0,   1,   1
+389, igbo                 , 0,   1,   1
+390, undefined            , 0,   1,   1
+391, azithromycin         , 1,   1,   1
+392, methodical           , 0,   1,   1
+393, friedman             , 2,   1,   1
+
